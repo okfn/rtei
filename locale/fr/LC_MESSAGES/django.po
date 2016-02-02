@@ -1,0 +1,60 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-02-02 17:37+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: rtei/settings/base.py:122
+msgid "English"
+msgstr ""
+
+#: rtei/settings/base.py:123
+msgid "French"
+msgstr ""
+
+#: rtei/settings/base.py:124
+msgid "Spanish"
+msgstr ""
+
+#: rtei/settings/base.py:125
+msgid "Arabic"
+msgstr ""
+
+#: rtei/templates/rtei/tags/top_menu.html:9
+msgid "Toggle navigation"
+msgstr ""
+
+#: rtei/templates/rtei/tags/top_menu.html:34
+msgid "Search…"
+msgstr ""
+
+#: search/templates/search/search.html:6 search/templates/search/search.html:9
+#: search/templates/search/search.html:13
+msgid "Search"
+msgstr ""
+
+#: search/templates/search/search.html:29
+msgid "Previous"
+msgstr ""
+
+#: search/templates/search/search.html:33
+msgid "Next"
+msgstr ""
+
+#: search/templates/search/search.html:36
+msgid "No results found"
+msgstr ""
