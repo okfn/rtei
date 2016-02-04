@@ -1,15 +1,21 @@
 [
-{
-    "model": "wagtailcore.site",
-    "pk": 2,
-    "fields": {
-        "hostname": "localhost",
-        "port": 80,
-        "site_name": "Right to Education Index",
-        "root_page": 3,
-        "is_default_site": true
-    }
-},
+    {
+        "model": "auth.user",
+        "fields": {
+            "password": "!HphuMC62NQpkCLQoLhubOt7jLV1SmFPyL4pkiAYu",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "default",
+            "first_name": "",
+            "last_name": "",
+            "email": "",
+            "is_staff": false,
+            "is_active": false,
+            "date_joined": "2016-02-02T13:27:04.190Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
 {
     "model": "auth.group",
     "pk": 1,
@@ -209,7 +215,7 @@
         "has_unpublished_changes": false,
         "url_path": "/home/",
         "owner": [
-            "amercader"
+            "default"
         ],
         "seo_title": "Home",
         "show_in_menus": false,
@@ -239,7 +245,7 @@
         "has_unpublished_changes": false,
         "url_path": "explore/",
         "owner": [
-            "amercader"
+            "default"
         ],
         "seo_title": "",
         "show_in_menus": true,
@@ -269,7 +275,7 @@
         "has_unpublished_changes": false,
         "url_path": "about-us/",
         "owner": [
-            "amercader"
+            "default"
         ],
         "seo_title": "",
         "show_in_menus": true,
@@ -299,7 +305,7 @@
         "has_unpublished_changes": false,
         "url_path": "contact-us/",
         "owner": [
-            "amercader"
+            "default"
         ],
         "seo_title": "",
         "show_in_menus": false,
@@ -329,7 +335,7 @@
         "has_unpublished_changes": false,
         "url_path": "partners/",
         "owner": [
-            "amercader"
+            "default"
         ],
         "seo_title": "",
         "show_in_menus": true,
@@ -359,7 +365,7 @@
         "has_unpublished_changes": false,
         "url_path": "resources/",
         "owner": [
-            "amercader"
+            "default"
         ],
         "seo_title": "",
         "show_in_menus": true,
@@ -389,7 +395,7 @@
         "has_unpublished_changes": false,
         "url_path": "explore/map/",
         "owner": [
-            "amercader"
+            "default"
         ],
         "seo_title": "",
         "show_in_menus": true,
@@ -419,7 +425,7 @@
         "has_unpublished_changes": false,
         "url_path": "explore/rtei-country/",
         "owner": [
-            "amercader"
+            "default"
         ],
         "seo_title": "",
         "show_in_menus": true,
@@ -449,7 +455,7 @@
         "has_unpublished_changes": false,
         "url_path": "explore/rtei-year/",
         "owner": [
-            "amercader"
+            "default"
         ],
         "seo_title": "",
         "show_in_menus": true,
@@ -479,7 +485,7 @@
         "has_unpublished_changes": false,
         "url_path": "explore/rtei-over-time/",
         "owner": [
-            "amercader"
+            "default"
         ],
         "seo_title": "",
         "show_in_menus": true,
