@@ -1,6 +1,6 @@
 from django import template
 
-from home.models import Page
+from rtei.models import Page
 
 import logging
 log = logging.getLogger(__name__)
