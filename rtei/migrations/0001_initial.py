@@ -13,7 +13,11 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('wagtailcore', '0023_alter_page_revision_on_delete_behaviour'),
+        ('wagtailcore', '__latest__'),
+        ('wagtailadmin', '__latest__'),
+        ('wagtaildocs', '__latest__'),
+        ('wagtailimages', '__latest__'),
+        ('wagtailusers', '__latest__'),
     ]
 
     operations = [
