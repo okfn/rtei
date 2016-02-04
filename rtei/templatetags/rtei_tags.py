@@ -2,6 +2,9 @@ from django import template
 
 from home.models import Page
 
+import logging
+log = logging.getLogger(__name__)
+
 register = template.Library()
 
 
@@ -15,7 +18,7 @@ def get_site_root(context):
 def has_menu_children(page):
 
     # TODO: Use this when we add show_in_menus to the model
-    #return page.get_children().live().in_menu().exists()
+    # return page.get_children().live().in_menu().exists()
     return page.get_children().live().exists()
 
 
@@ -27,7 +30,7 @@ def top_menu(context, parent, calling_page=None):
 
     # TODO: Use this when we add show_in_menus to the model
     # menuitems = parent.get_children().live().in_menu()
-    menuitems = parent.get_children().live()
+    menuitems = parent.get_children().specific().live()
 
     for menuitem in menuitems:
         menuitem.show_dropdown = has_menu_children(menuitem)
@@ -47,7 +50,7 @@ def top_menu(context, parent, calling_page=None):
 # Retrieves the children of the top menu items for the drop downs
 @register.inclusion_tag('rtei/tags/top_menu_children.html', takes_context=True)
 def top_menu_children(context, parent):
-    menuitems_children = parent.get_children()
+    menuitems_children = parent.get_children().specific()
 
     # TODO: Use this when we add show_in_menus to the model
     #menuitems_children = menuitems_children.live().in_menu()
