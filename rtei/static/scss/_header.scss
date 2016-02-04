@@ -1,0 +1,40 @@
+@import "nav";
+
+.site-header {
+  background-color: $base-background-color;
+  height: 125px;
+
+  .container {
+    position: relative;
+  }
+
+  .logo {
+    display: block;
+    width: 140px;
+    float: left;
+    margin-top: 4px;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  #smenu {
+    @media only screen and ( min-width: $medium-screen) {
+      position: absolute;
+      top: 70px;
+      right: $base-spacing;
+    }
+  }
+
+  .results {
+    width: 80px;
+    position: absolute;
+    top: 0;
+    right: $base-spacing;
+
+    img {
+      width: 100%;
+    }
+  }
+}

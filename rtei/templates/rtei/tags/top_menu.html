@@ -1,23 +1,17 @@
-{% load rtei_tags wagtailcore_tags i18n %}
+{% load rtei_tags wagtailcore_tags i18n static %}
 {% get_site_root as site_root %}
 
-{# Implementation of bootstrap theme dropdown menu - shows top level links and their children #}
-<div role="navigation" class="navbar navbar-inverse navbar-fixed-top">
+<header class="site-header">
     <div class="container">
-        <div class="navbar-header">
-            <button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button">
-                <span class="sr-only">{% trans "Toggle navigation" %}</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            {# Link to home page #}
-            <a href="{% pageurl site_root %}" class="navbar-brand" title="{{ site_root.title }}" data-placement="bottom">
-                <i class="glyphicon glyphicon-home"></i>
-            </a>
-        </div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
+
+        <a href="{% pageurl site_root %}" class="logo" title="{{ site_root.title }}">
+          <img src="{% static 'img/logo.svg' %}" onerror="this.src='{% static 'img/logo.png' %}'" alt="{{ site_root.title }}">
+        </a>
+
+        <nav id="smenu" role="navigation">
+        	<a href="#smenu" title="Show navigation">Show navigation</a>
+        	<a href="" title="Hide navigation">Hide navigation</a>
+            <ul role="navigation">
                 {% for menuitem in menuitems %}
                     <li class="{% if menuitem.show_dropdown %}dropdown{% endif %}{% if menuitem.active %} active{% endif %}">
                         {% if menuitem.show_dropdown %}
@@ -29,7 +23,8 @@
                     </li>
                 {% endfor %}
             </ul>
-            <form class="navbar-form navbar-right" role="search" action="{% url 'search' %}" method="get">
+
+            <form class="search" role="search" action="{% url 'search' %}" method="get">
                 <div class="input-group">
                     <input type="text" name="query" class="form-control" placeholder="{% trans 'Search…' %}" value="{{ search_query }}" />
                     <div class="input-group-btn">
@@ -39,6 +34,11 @@
                     </div>
                 </div>
             </form>
-        </div>
+        </nav>
+
+        <a href="http://results.org/" class="results">
+          <img src="{% static 'img/results.svg' %}" onerror="this.src='{% static 'img/results.png' %}'" alt="RESULTS">
+        </a>
+
     </div>
-</div>
+</header>
