@@ -1,0 +1,20 @@
+language: python
+python:
+- 3.5
+sudo: false
+env:
+  fast_finish: true
+  matrix:
+  - TOXENV=py27
+  - TOXENV=py33
+  - TOXENV=py34
+  - TOXENV=py35
+install:
+- pip install tox coveralls
+script: tox
+deploy:
+  provider: heroku
+  app: rtei
+  on: master
+  api_key:
+    secure: N2ncaLGrXxKlw30lkWmF1VFNTo4amrBX2jOdpNBQhauAiej//QtDz36R4qlcGeEj11feuw9EEdb6ZsDQGd1fLh2Qu7cRB6SlQxs+B0QQbexheXHtoDa9nYkP70VVJ2UQquEUZwNNfiHa+QkKYzzFcUOYmgaTATPfdYOq0yakgV+KY9ck6eDXmi3OnIaueXv/7ajzQRgkO83GHjKT8ex95ZHdC+j4wT6qUnQ9SWQiQ/q9Sm800U5Oy9in1BS0jNtMu8JdkY5g74SpK1zg0s8yHlt/ALIZhpbDhnlCK8Bi8/dRFax64vt/a58r4Y0FGXTZrSjx+rcQvF3ZrSYZflTZKFQJxT8vrKYcgj+FlzKRrxUd4GqdrUyKwJz+b67OCFYIAamTk6OheyZFA30rhu4MpWpHGFuJ0pb7a2EJhRVbF4Izd6HnzMIuKRphO4YQOETtXRu7emWCoGSyZTKpycfB52RMcwGRRaXy7hVIPhJSUd+mtz8YnTH/fQw58VDUBJh+M3Hxhmg4h9/1i61xxxumRvBlVcVWlujIyQdCaG6skBdfdLAcCAvhvwC2JeKXrIjyuQ2G6mAeBChk3HsvwLE0644ykgK6zJqtKlhuMdT5wiavPpuM+50xneubeGaA2kXn6fuwIpWiHd3FWQJ1y2Jryrd0GflawQtn6BxqsajsQ6o=
