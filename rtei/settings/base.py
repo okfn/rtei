@@ -26,6 +26,9 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 # Application definition
 
 INSTALLED_APPS = [
+    # wagtail_modeltranslation needs to be before apps due to be translated.
+    'wagtail_modeltranslation',
+
     'home',
     'rtei',
     'search',
@@ -52,6 +55,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # 'debug_toolbar',
 ]
 
 MIDDLEWARE_CLASSES = [
