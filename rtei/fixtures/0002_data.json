@@ -11,23 +11,6 @@
     }
 },
 {
-    "model": "auth.user",
-    "fields": {
-        "password": "!HphuMC62NQpkCLQoLhubOt7jLV1SmFPyL4pkiAYu",
-        "last_login": null,
-        "is_superuser": false,
-        "username": "default",
-        "first_name": "",
-        "last_name": "",
-        "email": "",
-        "is_staff": false,
-        "is_active": false,
-        "date_joined": "2016-02-02T13:27:04.190Z",
-        "groups": [],
-        "user_permissions": []
-    }
-},
-{
     "model": "auth.group",
     "pk": 1,
     "fields": {
@@ -253,9 +236,7 @@
         "live": true,
         "has_unpublished_changes": false,
         "url_path": "/home/",
-        "owner": [
-            "default"
-        ],
+        "owner": null,
         "seo_title": "Home",
         "show_in_menus": false,
         "search_description": "",
@@ -269,83 +250,21 @@
 },
 {
     "model": "wagtailcore.page",
-    "pk": 5,
+    "pk": 14,
     "fields": {
-        "path": "000100020006",
-        "depth": 3,
-        "numchild": 4,
-        "title": "Explore",
-        "slug": "explore",
-        "content_type": [
-            "rtei",
-            "rteipage"
-        ],
-        "live": true,
-        "has_unpublished_changes": false,
-        "url_path": "explore/",
-        "owner": [
-            "default"
-        ],
-        "seo_title": "",
-        "show_in_menus": true,
-        "search_description": "",
-        "go_live_at": null,
-        "expire_at": null,
-        "expired": false,
-        "locked": false,
-        "first_published_at": "2016-02-04T13:58:19.380Z",
-        "latest_revision_created_at": "2016-02-04T15:27:14.325Z"
-    }
-},
-{
-    "model": "wagtailcore.page",
-    "pk": 6,
-    "fields": {
-        "path": "000100020002",
+        "path": "00010002000E",
         "depth": 3,
         "numchild": 0,
         "title": "About Us",
         "slug": "about-us",
         "content_type": [
             "rtei",
-            "rteipage"
+            "aboutpage"
         ],
         "live": true,
         "has_unpublished_changes": false,
-        "url_path": "about-us/",
-        "owner": [
-            "default"
-        ],
-        "seo_title": "",
-        "show_in_menus": true,
-        "search_description": "",
-        "go_live_at": null,
-        "expire_at": null,
-        "expired": false,
-        "locked": false,
-        "first_published_at": "2016-02-04T13:59:43.447Z",
-        "latest_revision_created_at": "2016-02-04T15:27:05.042Z"
-    }
-},
-{
-    "model": "wagtailcore.page",
-    "pk": 7,
-    "fields": {
-        "path": "000100020003",
-        "depth": 3,
-        "numchild": 0,
-        "title": "Contact Us",
-        "slug": "contact-us",
-        "content_type": [
-            "rtei",
-            "rteipage"
-        ],
-        "live": true,
-        "has_unpublished_changes": false,
-        "url_path": "contact-us/",
-        "owner": [
-            "default"
-        ],
+        "url_path": "/home/about-us/",
+        "owner": null,
         "seo_title": "",
         "show_in_menus": false,
         "search_description": "",
@@ -353,188 +272,466 @@
         "expire_at": null,
         "expired": false,
         "locked": false,
-        "first_published_at": "2016-02-04T13:59:56.985Z",
-        "latest_revision_created_at": "2016-02-04T15:26:54.862Z"
+        "first_published_at": "2016-02-05T16:12:16.490Z",
+        "latest_revision_created_at": "2016-02-05T16:12:16.465Z"
     }
 },
 {
     "model": "wagtailcore.page",
-    "pk": 8,
+    "pk": 15,
     "fields": {
-        "path": "000100020004",
+        "path": "00010002000D",
+        "depth": 3,
+        "numchild": 0,
+        "title": "Contact Us",
+        "slug": "contact-us",
+        "content_type": [
+            "rtei",
+            "contactuspage"
+        ],
+        "live": true,
+        "has_unpublished_changes": false,
+        "url_path": "/home/contact-us/",
+        "owner": null,
+        "seo_title": "",
+        "show_in_menus": false,
+        "search_description": "",
+        "go_live_at": null,
+        "expire_at": null,
+        "expired": false,
+        "locked": false,
+        "first_published_at": "2016-02-05T16:12:30.030Z",
+        "latest_revision_created_at": "2016-02-05T16:12:30.005Z"
+    }
+},
+{
+    "model": "wagtailcore.page",
+    "pk": 16,
+    "fields": {
+        "path": "000100020007",
+        "depth": 3,
+        "numchild": 4,
+        "title": "Explore",
+        "slug": "explore",
+        "content_type": [
+            "rtei",
+            "explorepage"
+        ],
+        "live": true,
+        "has_unpublished_changes": false,
+        "url_path": "/home/explore/",
+        "owner": null,
+        "seo_title": "",
+        "show_in_menus": false,
+        "search_description": "",
+        "go_live_at": null,
+        "expire_at": null,
+        "expired": false,
+        "locked": false,
+        "first_published_at": "2016-02-05T16:12:46.635Z",
+        "latest_revision_created_at": "2016-02-05T16:12:46.611Z"
+    }
+},
+{
+    "model": "wagtailcore.page",
+    "pk": 17,
+    "fields": {
+        "path": "00010002000B",
         "depth": 3,
         "numchild": 0,
         "title": "Partners",
         "slug": "partners",
         "content_type": [
             "rtei",
-            "rteipage"
+            "partnerspage"
         ],
         "live": true,
         "has_unpublished_changes": false,
         "url_path": "partners/",
-        "owner": [
-            "default"
-        ],
+        "owner": null,
         "seo_title": "",
-        "show_in_menus": true,
+        "show_in_menus": false,
         "search_description": "",
         "go_live_at": null,
         "expire_at": null,
         "expired": false,
         "locked": false,
-        "first_published_at": "2016-02-04T14:28:05.381Z",
-        "latest_revision_created_at": "2016-02-04T15:26:44.129Z"
+        "first_published_at": "2016-02-05T16:12:55.923Z",
+        "latest_revision_created_at": "2016-02-05T16:12:55.899Z"
     }
 },
 {
     "model": "wagtailcore.page",
-    "pk": 9,
+    "pk": 18,
     "fields": {
-        "path": "000100020005",
+        "path": "00010002000C",
         "depth": 3,
         "numchild": 0,
         "title": "Resources",
         "slug": "resources",
         "content_type": [
             "rtei",
-            "rteipage"
+            "resourcespage"
         ],
         "live": true,
         "has_unpublished_changes": false,
         "url_path": "resources/",
-        "owner": [
-            "default"
-        ],
+        "owner": null,
         "seo_title": "",
-        "show_in_menus": true,
+        "show_in_menus": false,
         "search_description": "",
         "go_live_at": null,
         "expire_at": null,
         "expired": false,
         "locked": false,
-        "first_published_at": "2016-02-04T14:28:24.722Z",
-        "latest_revision_created_at": "2016-02-04T15:24:41.948Z"
+        "first_published_at": "2016-02-05T16:13:08.309Z",
+        "latest_revision_created_at": "2016-02-05T16:13:08.284Z"
     }
 },
 {
     "model": "wagtailcore.page",
-    "pk": 10,
+    "pk": 19,
     "fields": {
-        "path": "0001000200060001",
+        "path": "0001000200070002",
         "depth": 4,
         "numchild": 0,
         "title": "Map",
         "slug": "map",
         "content_type": [
             "rtei",
-            "rteipage"
+            "explorepage"
         ],
         "live": true,
         "has_unpublished_changes": false,
-        "url_path": "explore/map/",
-        "owner": [
-            "default"
-        ],
+        "url_path": "/home/explore/map/",
+        "owner": null,
         "seo_title": "",
-        "show_in_menus": true,
+        "show_in_menus": false,
         "search_description": "",
         "go_live_at": null,
         "expire_at": null,
         "expired": false,
         "locked": false,
-        "first_published_at": "2016-02-04T14:34:48.445Z",
-        "latest_revision_created_at": "2016-02-04T15:28:12.302Z"
+        "first_published_at": "2016-02-05T16:13:48.399Z",
+        "latest_revision_created_at": "2016-02-05T16:13:48.368Z"
     }
 },
 {
     "model": "wagtailcore.page",
-    "pk": 11,
+    "pk": 20,
     "fields": {
-        "path": "0001000200060002",
+        "path": "0001000200070003",
         "depth": 4,
         "numchild": 0,
         "title": "RTEI by Country",
         "slug": "rtei-country",
         "content_type": [
             "rtei",
-            "rteipage"
+            "explorepage"
         ],
         "live": true,
         "has_unpublished_changes": false,
-        "url_path": "explore/rtei-country/",
-        "owner": [
-            "default"
-        ],
+        "url_path": "/home/explore/rtei-country/",
+        "owner": null,
         "seo_title": "",
-        "show_in_menus": true,
+        "show_in_menus": false,
         "search_description": "",
         "go_live_at": null,
         "expire_at": null,
         "expired": false,
         "locked": false,
-        "first_published_at": "2016-02-04T14:36:11.544Z",
-        "latest_revision_created_at": "2016-02-04T15:28:02.529Z"
+        "first_published_at": "2016-02-05T16:14:00.747Z",
+        "latest_revision_created_at": "2016-02-05T16:14:00.722Z"
     }
 },
 {
     "model": "wagtailcore.page",
-    "pk": 12,
+    "pk": 21,
     "fields": {
-        "path": "0001000200060003",
+        "path": "0001000200070004",
         "depth": 4,
         "numchild": 0,
         "title": "RTEI by Year",
         "slug": "rtei-year",
         "content_type": [
             "rtei",
-            "rteipage"
+            "explorepage"
         ],
         "live": true,
         "has_unpublished_changes": false,
-        "url_path": "explore/rtei-year/",
-        "owner": [
-            "default"
-        ],
+        "url_path": "/home/explore/rtei-year/",
+        "owner": null,
         "seo_title": "",
-        "show_in_menus": true,
+        "show_in_menus": false,
         "search_description": "",
         "go_live_at": null,
         "expire_at": null,
         "expired": false,
         "locked": false,
-        "first_published_at": "2016-02-04T14:36:29.132Z",
-        "latest_revision_created_at": "2016-02-04T15:27:49.042Z"
+        "first_published_at": "2016-02-05T16:14:16.886Z",
+        "latest_revision_created_at": "2016-02-05T16:14:16.857Z"
     }
 },
 {
     "model": "wagtailcore.page",
-    "pk": 13,
+    "pk": 22,
     "fields": {
-        "path": "0001000200060004",
+        "path": "0001000200070006",
         "depth": 4,
         "numchild": 0,
         "title": "RTEI over Time",
         "slug": "rtei-over-time",
         "content_type": [
             "rtei",
-            "rteipage"
+            "explorepage"
         ],
         "live": true,
         "has_unpublished_changes": false,
-        "url_path": "explore/rtei-over-time/",
-        "owner": [
-            "default"
-        ],
+        "url_path": "/home/explore/rtei-over-time/",
+        "owner": null,
         "seo_title": "",
-        "show_in_menus": true,
+        "show_in_menus": false,
         "search_description": "",
         "go_live_at": null,
         "expire_at": null,
         "expired": false,
         "locked": false,
-        "first_published_at": "2016-02-04T14:36:50.242Z",
-        "latest_revision_created_at": "2016-02-04T15:27:37.114Z"
+        "first_published_at": "2016-02-05T16:14:28.633Z",
+        "latest_revision_created_at": "2016-02-05T16:14:28.608Z"
+    }
+},
+{
+    "model": "rtei.explorepage",
+    "pk": 16,
+    "fields": {
+        "title_en": "Explore",
+        "title_fr": "",
+        "title_es": "",
+        "title_ar": "",
+        "slug_en": "explore",
+        "slug_fr": "",
+        "slug_es": "",
+        "slug_ar": "",
+        "url_path_en": "explore/",
+        "url_path_fr": "explore/",
+        "url_path_es": "explore/",
+        "url_path_ar": "explore/",
+        "seo_title_en": "",
+        "seo_title_fr": "",
+        "seo_title_es": "",
+        "seo_title_ar": "",
+        "search_description_en": "",
+        "search_description_fr": "",
+        "search_description_es": "",
+        "search_description_ar": ""
+    }
+},
+{
+    "model": "rtei.explorepage",
+    "pk": 19,
+    "fields": {
+        "title_en": "Map",
+        "title_fr": "",
+        "title_es": "",
+        "title_ar": "",
+        "slug_en": "map",
+        "slug_fr": "",
+        "slug_es": "",
+        "slug_ar": "",
+        "url_path_en": "explore/map/",
+        "url_path_fr": "explore/map/",
+        "url_path_es": "explore/map/",
+        "url_path_ar": "explore/map/",
+        "seo_title_en": "",
+        "seo_title_fr": "",
+        "seo_title_es": "",
+        "seo_title_ar": "",
+        "search_description_en": "",
+        "search_description_fr": "",
+        "search_description_es": "",
+        "search_description_ar": ""
+    }
+},
+{
+    "model": "rtei.explorepage",
+    "pk": 20,
+    "fields": {
+        "title_en": "RTEI by Country",
+        "title_fr": "",
+        "title_es": "",
+        "title_ar": "",
+        "slug_en": "rtei-country",
+        "slug_fr": "",
+        "slug_es": "",
+        "slug_ar": "",
+        "url_path_en": "explore/rtei-country/",
+        "url_path_fr": "explore/rtei-country/",
+        "url_path_es": "explore/rtei-country/",
+        "url_path_ar": "explore/rtei-country/",
+        "seo_title_en": "",
+        "seo_title_fr": "",
+        "seo_title_es": "",
+        "seo_title_ar": "",
+        "search_description_en": "",
+        "search_description_fr": "",
+        "search_description_es": "",
+        "search_description_ar": ""
+    }
+},
+{
+    "model": "rtei.explorepage",
+    "pk": 21,
+    "fields": {
+        "title_en": "RTEI by Year",
+        "title_fr": "",
+        "title_es": "",
+        "title_ar": "",
+        "slug_en": "rtei-year",
+        "slug_fr": "",
+        "slug_es": "",
+        "slug_ar": "",
+        "url_path_en": "explore/rtei-year/",
+        "url_path_fr": "explore/rtei-year/",
+        "url_path_es": "explore/rtei-year/",
+        "url_path_ar": "explore/rtei-year/",
+        "seo_title_en": "",
+        "seo_title_fr": "",
+        "seo_title_es": "",
+        "seo_title_ar": "",
+        "search_description_en": "",
+        "search_description_fr": "",
+        "search_description_es": "",
+        "search_description_ar": ""
+    }
+},
+{
+    "model": "rtei.explorepage",
+    "pk": 22,
+    "fields": {
+        "title_en": "RTEI over Time",
+        "title_fr": "",
+        "title_es": "",
+        "title_ar": "",
+        "slug_en": "rtei-over-time",
+        "slug_fr": "",
+        "slug_es": "",
+        "slug_ar": "",
+        "url_path_en": "explore/rtei-over-time/",
+        "url_path_fr": "explore/rtei-over-time/",
+        "url_path_es": "explore/rtei-over-time/",
+        "url_path_ar": "explore/rtei-over-time/",
+        "seo_title_en": "",
+        "seo_title_fr": "",
+        "seo_title_es": "",
+        "seo_title_ar": "",
+        "search_description_en": "",
+        "search_description_fr": "",
+        "search_description_es": "",
+        "search_description_ar": ""
+    }
+},
+{
+    "model": "rtei.resourcespage",
+    "pk": 18,
+    "fields": {
+        "title_en": "Resources",
+        "title_fr": "",
+        "title_es": "",
+        "title_ar": "",
+        "slug_en": "resources",
+        "slug_fr": "",
+        "slug_es": "",
+        "slug_ar": "",
+        "url_path_en": "resources/",
+        "url_path_fr": "resources/",
+        "url_path_es": "resources/",
+        "url_path_ar": "resources/",
+        "seo_title_en": "",
+        "seo_title_fr": "",
+        "seo_title_es": "",
+        "seo_title_ar": "",
+        "search_description_en": "",
+        "search_description_fr": "",
+        "search_description_es": "",
+        "search_description_ar": ""
+    }
+},
+{
+    "model": "rtei.partnerspage",
+    "pk": 17,
+    "fields": {
+        "title_en": "Partners",
+        "title_fr": "",
+        "title_es": "",
+        "title_ar": "",
+        "slug_en": "partners",
+        "slug_fr": "",
+        "slug_es": "",
+        "slug_ar": "",
+        "url_path_en": "partners/",
+        "url_path_fr": "partners/",
+        "url_path_es": "partners/",
+        "url_path_ar": "partners/",
+        "seo_title_en": "",
+        "seo_title_fr": "",
+        "seo_title_es": "",
+        "seo_title_ar": "",
+        "search_description_en": "",
+        "search_description_fr": "",
+        "search_description_es": "",
+        "search_description_ar": ""
+    }
+},
+{
+    "model": "rtei.contactuspage",
+    "pk": 15,
+    "fields": {
+        "title_en": "Contact Us",
+        "title_fr": "",
+        "title_es": "",
+        "title_ar": "",
+        "slug_en": "contact-us",
+        "slug_fr": "",
+        "slug_es": "",
+        "slug_ar": "",
+        "url_path_en": "contact-us/",
+        "url_path_fr": "contact-us/",
+        "url_path_es": "contact-us/",
+        "url_path_ar": "contact-us/",
+        "seo_title_en": "",
+        "seo_title_fr": "",
+        "seo_title_es": "",
+        "seo_title_ar": "",
+        "search_description_en": "",
+        "search_description_fr": "",
+        "search_description_es": "",
+        "search_description_ar": ""
+    }
+},
+{
+    "model": "rtei.aboutpage",
+    "pk": 14,
+    "fields": {
+        "title_en": "About Us",
+        "title_fr": "",
+        "title_es": "",
+        "title_ar": "",
+        "slug_en": "about-us",
+        "slug_fr": "",
+        "slug_es": "",
+        "slug_ar": "",
+        "url_path_en": "about-us/",
+        "url_path_fr": "about-us/",
+        "url_path_es": "about-us/",
+        "url_path_ar": "about-us/",
+        "seo_title_en": "",
+        "seo_title_fr": "",
+        "seo_title_es": "",
+        "seo_title_ar": "",
+        "search_description_en": "",
+        "search_description_fr": "",
+        "search_description_es": "",
+        "search_description_ar": ""
     }
 },
 {
@@ -565,245 +762,65 @@
     }
 },
 {
-    "model": "rtei.rteipage",
-    "pk": 5,
+    "model": "rtei.rteibasepage",
+    "pk": 14,
     "fields": {
-        "title_en": "Explore",
-        "title_fr": "",
-        "title_es": "",
-        "title_ar": "",
-        "slug_en": "explore",
-        "slug_fr": "",
-        "slug_es": "",
-        "slug_ar": "",
-        "url_path_en": "explore/",
-        "url_path_fr": "explore/",
-        "url_path_es": "explore/",
-        "url_path_ar": "explore/",
-        "seo_title_en": "",
-        "seo_title_fr": "",
-        "seo_title_es": "",
-        "seo_title_ar": "",
-        "search_description_en": "",
-        "search_description_fr": "",
-        "search_description_es": "",
-        "search_description_ar": "",
         "body": ""
     }
 },
 {
-    "model": "rtei.rteipage",
-    "pk": 6,
+    "model": "rtei.rteibasepage",
+    "pk": 15,
     "fields": {
-        "title_en": "About Us",
-        "title_fr": "",
-        "title_es": "",
-        "title_ar": "",
-        "slug_en": "about-us",
-        "slug_fr": "",
-        "slug_es": "",
-        "slug_ar": "",
-        "url_path_en": "about-us/",
-        "url_path_fr": "about-us/",
-        "url_path_es": "about-us/",
-        "url_path_ar": "about-us/",
-        "seo_title_en": "",
-        "seo_title_fr": "",
-        "seo_title_es": "",
-        "seo_title_ar": "",
-        "search_description_en": "",
-        "search_description_fr": "",
-        "search_description_es": "",
-        "search_description_ar": "",
         "body": ""
     }
 },
 {
-    "model": "rtei.rteipage",
-    "pk": 7,
+    "model": "rtei.rteibasepage",
+    "pk": 16,
     "fields": {
-        "title_en": "Contact Us",
-        "title_fr": "",
-        "title_es": "",
-        "title_ar": "",
-        "slug_en": "contact-us",
-        "slug_fr": "",
-        "slug_es": "",
-        "slug_ar": "",
-        "url_path_en": "contact-us/",
-        "url_path_fr": "contact-us/",
-        "url_path_es": "contact-us/",
-        "url_path_ar": "contact-us/",
-        "seo_title_en": "",
-        "seo_title_fr": "",
-        "seo_title_es": "",
-        "seo_title_ar": "",
-        "search_description_en": "",
-        "search_description_fr": "",
-        "search_description_es": "",
-        "search_description_ar": "",
         "body": ""
     }
 },
 {
-    "model": "rtei.rteipage",
-    "pk": 8,
+    "model": "rtei.rteibasepage",
+    "pk": 17,
     "fields": {
-        "title_en": "Partners",
-        "title_fr": "",
-        "title_es": "",
-        "title_ar": "",
-        "slug_en": "partners",
-        "slug_fr": "",
-        "slug_es": "",
-        "slug_ar": "",
-        "url_path_en": "partners/",
-        "url_path_fr": "partners/",
-        "url_path_es": "partners/",
-        "url_path_ar": "partners/",
-        "seo_title_en": "",
-        "seo_title_fr": "",
-        "seo_title_es": "",
-        "seo_title_ar": "",
-        "search_description_en": "",
-        "search_description_fr": "",
-        "search_description_es": "",
-        "search_description_ar": "",
         "body": ""
     }
 },
 {
-    "model": "rtei.rteipage",
-    "pk": 9,
+    "model": "rtei.rteibasepage",
+    "pk": 18,
     "fields": {
-        "title_en": "Resources",
-        "title_fr": "",
-        "title_es": "",
-        "title_ar": "",
-        "slug_en": "resources",
-        "slug_fr": "",
-        "slug_es": "",
-        "slug_ar": "",
-        "url_path_en": "resources/",
-        "url_path_fr": "resources/",
-        "url_path_es": "resources/",
-        "url_path_ar": "resources/",
-        "seo_title_en": "",
-        "seo_title_fr": "",
-        "seo_title_es": "",
-        "seo_title_ar": "",
-        "search_description_en": "",
-        "search_description_fr": "",
-        "search_description_es": "",
-        "search_description_ar": "",
         "body": ""
     }
 },
 {
-    "model": "rtei.rteipage",
-    "pk": 10,
+    "model": "rtei.rteibasepage",
+    "pk": 19,
     "fields": {
-        "title_en": "Map",
-        "title_fr": "",
-        "title_es": "",
-        "title_ar": "",
-        "slug_en": "map",
-        "slug_fr": "",
-        "slug_es": "",
-        "slug_ar": "",
-        "url_path_en": "explore/map/",
-        "url_path_fr": "explore/map/",
-        "url_path_es": "explore/map/",
-        "url_path_ar": "explore/map/",
-        "seo_title_en": "",
-        "seo_title_fr": "",
-        "seo_title_es": "",
-        "seo_title_ar": "",
-        "search_description_en": "",
-        "search_description_fr": "",
-        "search_description_es": "",
-        "search_description_ar": "",
         "body": ""
     }
 },
 {
-    "model": "rtei.rteipage",
-    "pk": 11,
+    "model": "rtei.rteibasepage",
+    "pk": 20,
     "fields": {
-        "title_en": "RTEI by Country",
-        "title_fr": "",
-        "title_es": "",
-        "title_ar": "",
-        "slug_en": "rtei-country",
-        "slug_fr": "",
-        "slug_es": "",
-        "slug_ar": "",
-        "url_path_en": "explore/rtei-country/",
-        "url_path_fr": "explore/rtei-country/",
-        "url_path_es": "explore/rtei-country/",
-        "url_path_ar": "explore/rtei-country/",
-        "seo_title_en": "",
-        "seo_title_fr": "",
-        "seo_title_es": "",
-        "seo_title_ar": "",
-        "search_description_en": "",
-        "search_description_fr": "",
-        "search_description_es": "",
-        "search_description_ar": "",
         "body": ""
     }
 },
 {
-    "model": "rtei.rteipage",
-    "pk": 12,
+    "model": "rtei.rteibasepage",
+    "pk": 21,
     "fields": {
-        "title_en": "RTEI by Year",
-        "title_fr": "",
-        "title_es": "",
-        "title_ar": "",
-        "slug_en": "rtei-year",
-        "slug_fr": "",
-        "slug_es": "",
-        "slug_ar": "",
-        "url_path_en": "explore/rtei-year/",
-        "url_path_fr": "explore/rtei-year/",
-        "url_path_es": "explore/rtei-year/",
-        "url_path_ar": "explore/rtei-year/",
-        "seo_title_en": "",
-        "seo_title_fr": "",
-        "seo_title_es": "",
-        "seo_title_ar": "",
-        "search_description_en": "",
-        "search_description_fr": "",
-        "search_description_es": "",
-        "search_description_ar": "",
         "body": ""
     }
 },
 {
-    "model": "rtei.rteipage",
-    "pk": 13,
+    "model": "rtei.rteibasepage",
+    "pk": 22,
     "fields": {
-        "title_en": "RTEI over Time",
-        "title_fr": "",
-        "title_es": "",
-        "title_ar": "",
-        "slug_en": "rtei-over-time",
-        "slug_fr": "",
-        "slug_es": "",
-        "slug_ar": "",
-        "url_path_en": "explore/rtei-over-time/",
-        "url_path_fr": "explore/rtei-over-time/",
-        "url_path_es": "explore/rtei-over-time/",
-        "url_path_ar": "explore/rtei-over-time/",
-        "seo_title_en": "",
-        "seo_title_fr": "",
-        "seo_title_es": "",
-        "seo_title_ar": "",
-        "search_description_en": "",
-        "search_description_fr": "",
-        "search_description_es": "",
-        "search_description_ar": "",
         "body": ""
     }
 }

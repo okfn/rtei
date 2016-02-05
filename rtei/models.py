@@ -9,6 +9,14 @@ from wagtail.wagtailadmin.edit_handlers import FieldPanel
 from wagtail_modeltranslation.models import TranslationMixin
 
 
+class RTEIBasePage(Page):
+    body = RichTextField(blank=True)
+
+    content_panels = Page.content_panels + [
+        FieldPanel('body', classname="full")
+    ]
+
+
 class RTEIPage(TranslationMixin, Page):
 
     body = RichTextField(blank=True)
@@ -16,3 +24,23 @@ class RTEIPage(TranslationMixin, Page):
     content_panels = Page.content_panels + [
         FieldPanel('body', classname="full")
     ]
+
+
+class AboutPage(TranslationMixin, RTEIBasePage):
+    pass
+
+
+class ContactUsPage(TranslationMixin, RTEIBasePage):
+    pass
+
+
+class PartnersPage(TranslationMixin, RTEIBasePage):
+    pass
+
+
+class ResourcesPage(TranslationMixin, RTEIBasePage):
+    pass
+
+
+class ExplorePage(TranslationMixin, RTEIBasePage):
+    pass

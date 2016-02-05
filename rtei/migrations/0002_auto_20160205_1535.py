@@ -13,7 +13,7 @@ def load_stores_from_fixture(apps, schema_editor):
     for app_config in django_apps.get_app_configs():
         update_contenttypes(app_config)
 
-    call_command("loaddata", "0002_initial_data")
+    call_command("loaddata", "0002_data.json")
 
 
 class Migration(migrations.Migration):
