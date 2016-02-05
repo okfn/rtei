@@ -1,0 +1,8 @@
+body {
+  background-color: lighten(#bfbfbe, 19);
+}
+
+.container {
+  @include outer-container;
+  padding: $base-spacing;
+}
