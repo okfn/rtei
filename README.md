@@ -25,17 +25,15 @@ This site is powered by [Wagtail](https://wagtail.io)
 
         python manage.py migrate
 
-* Load initial data:
-
-        python manage.py loaddata initial_data
-
 * Create a super user and run the site:
 
         python manage.py createsuperuser
         python manage.py runserver
 
 
-# Dump initial data
+# Notes for development
+
+## Dump initial data
 
 Dump a new set of initial data:
 

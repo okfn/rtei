@@ -29,7 +29,6 @@ INSTALLED_APPS = [
     # wagtail_modeltranslation needs to be before apps due to be translated.
     'wagtail_modeltranslation',
 
-    'home',
     'rtei',
     'search',
 

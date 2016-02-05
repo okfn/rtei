@@ -1,8 +1,8 @@
-from .models import HomePage
+from .models import RTEIPage
 from wagtail_modeltranslation.translation import TranslationOptions
 from wagtail_modeltranslation.decorators import register
 
 
-@register(HomePage)
-class HomePageTR(TranslationOptions):
+@register(RTEIPage)
+class RTEIPageTR(TranslationOptions):
     fields = ('title', )
