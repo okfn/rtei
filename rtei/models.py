@@ -44,3 +44,7 @@ class ResourcesPage(TranslationMixin, RTEIBasePage):
 
 class ExplorePage(TranslationMixin, RTEIBasePage):
     pass
+
+
+class ExploreChartPage(TranslationMixin, RTEIBasePage):
+    pass

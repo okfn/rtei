@@ -430,6 +430,20 @@ def scores_per_country_as_json(output_dir=OUTPUT_DIR):
         f.write(json.dumps(out))
 
 
+def c3_ready_json(output_dir=OUTPUT_DIR):
+    out = indicators_per_country(max_level=2, derived=False)
+    for country in out.keys():
+        add_main_scores(out[country])
+        add_full_score(out[country])
+
+    out = [OrderedDict([('name', c)] + list(v.items())) for c, v in out.iteritems()]
+
+    output_file = os.path.join(output_dir, 'c3_scores_per_country.json')
+
+    with open(output_file, 'w') as f:
+        f.write(json.dumps(out))
+
+
 if __name__ == '__main__':
 
     description = '''
@@ -476,6 +490,7 @@ The available outputs are:
         indicators_as_json(output_dir)
         indicators_per_country_as_json(one_file=False, output_dir=output_dir)
         scores_per_country_as_json(output_dir)
+        c3_ready_json(output_dir=output_dir)
     elif args.type == 'indicators-json':
         indicators_as_json(output_dir)
     elif args.type == 'indicators-csv':
@@ -484,3 +499,5 @@ The available outputs are:
         scores_per_country_as_json(output_dir)
     elif args.type == 'indicators-per-country':
         indicators_per_country_as_json(one_file=False, output_dir=output_dir)
+    elif args.type == 'c3-ready-json':
+        c3_ready_json(output_dir=output_dir)

@@ -3,7 +3,8 @@ from .models import (RTEIPage,
                      ContactUsPage,
                      PartnersPage,
                      ResourcesPage,
-                     ExplorePage
+                     ExplorePage,
+                     ExploreChartPage
                      )
 from wagtail_modeltranslation.translation import TranslationOptions
 from wagtail_modeltranslation.decorators import register
@@ -36,4 +37,9 @@ class ResourcesPageTR(TranslationOptions):
 
 @register(ExplorePage)
 class ExplorePageTR(TranslationOptions):
+    fields = ('title', )
+
+
+@register(ExploreChartPage)
+class ExploreChartPageTR(TranslationOptions):
     fields = ('title', )

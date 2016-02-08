@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block body_class %}template-rtei{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/c3/c3.css' %}">
+{% endblock %}
+
+{% block content %}
+    <h1>Hi!</h1>
+
+    <p>
+        You are now on: {{ self.title }}
+    </p>
+
+    <div>
+        <div id="chart"></div>
+
+        {{ self.body }}
+    </div>
+
+{% endblock %}
+
+{% block extra_js %}
+    <script src="{% static 'vendor/d3/d3.min.js' %}" charset="utf-8"></script>
+    <script src="{% static 'vendor/c3/c3.min.js' %}"></script>
+    <script type="text/javascript">
+
+        var chart = c3.generate({
+            bindto: '#chart',
+            data: {
+                url: '/static/data/c3_scores_per_country.json',
+                mimeType: 'json',
+                order: null,
+                keys: {
+                    x: 'name',
+                    // value: ['1.1', '1.2', '1.3', '1.4', '1.6', '2.1', '2.2', '2.3', '2.4', '3.1', '3.2', '3.3', '4.1', '4.2', '4.3', '5.1', '5.2', '5.3', '1', '3', '2', '5', '4', 'index'],
+                    value: ['1', '3', '2', '5', '4', 'index'],
+                },
+                groups: [
+                    // ['1.1', '1.2', '1.3', '1.4', '1.6', '2.1', '2.2', '2.3', '2.4', '3.1', '3.2', '3.3', '4.1', '4.2', '4.3', '5.1', '5.2', '5.3', '1', '3', '2', '5', '4', 'index'],
+                    ['1', '3', '2', '5', '4', 'index'],
+                ],
+                type: 'bar'
+            },
+            axis: {
+                rotated: true,
+                x: {
+                    type: 'category'
+                }
+            },
+            bar: {
+                width: 65
+            }
+        });
+    </script>
+{% endblock %}
