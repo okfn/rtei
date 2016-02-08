@@ -476,8 +476,7 @@ table {
   font-feature-settings: "kern", "liga", "tnum";
   border-collapse: collapse;
   margin: 0.75em 0;
-  table-layout: fixed;
-  width: 100%; }
+  table-layout: fixed; }
 
 th {
   border-bottom: 1px solid #999997;
