@@ -1,5 +1,9 @@
 #!/usr/bin/env python
+'''
+Data script for the RTEI website.
 
+Check ./build_data.py -h for details
+'''
 import re
 import os
 import json
@@ -36,21 +40,28 @@ SCHOOL_TYPES = {
 # Excel handler
 wb = None
 
-# This will match any codes at the beginning of the string, starting with
-# a number and ending with a colon, eg:
-# 1:
-# 1.1:
-# 1.1.1aa:
-# 1.1.1a_emp_dis:
+# Countries dictionary
+countries = None
 
+'''
+This will match any codes at the beginning of the string, starting with
+a number and ending with a colon, eg:
+1:
+1.1:
+1.1.1aa:
+1.1.1a_emp_dis:
+'''
 valid_code = re.compile(r'^(C )?(\d)(.*?)?:')
 
 
-with open(COUNTRIES_FILE, 'r') as f:
-    countries = json.load(f)
-
-
 def get_country_code(country_name, code_type='iso2'):
+    '''
+    Given a country name, return its ISO code
+
+    By default to the 2 digit code is returned (eg 'AF' for Afghanistan),
+    passing code_type='iso3' will return the 3 digit code (eg'AFG').
+    '''
+
     for country in countries:
         if (country_name == country['name'] or
            country_name == country.get('other_names')):
@@ -59,55 +70,38 @@ def get_country_code(country_name, code_type='iso2'):
 
 
 def get_numeric_cell_value(cell):
+    '''
+    Return a numeric value rounded to 4 places if it is a float, or the value
+    otherwise
+    '''
     if isinstance(cell.value, float):
         return round(cell.value, 4)
     else:
         return cell.value
 
 
-def get_country_scores():
-    out = {}
-
-    wb = load_workbook(INPUT_FILE, data_only=True)
-    for sheet in wb.get_sheet_names():
-        if ' summary' in sheet.lower():
-            country_code = get_country_code(sheet.split(' ')[0])
-            if not country_code:
-                print 'Warning: Could not get country code for {0}'.format(
-                    sheet)
-
-            ws = wb[sheet]
-
-            out[country_code] = {
-                'score': get_numeric_cell_value(ws['B2']),
-                'governance': get_numeric_cell_value(ws['B3']),
-                'international_framework': get_numeric_cell_value(ws['B4']),
-                'domestic_law': get_numeric_cell_value(ws['B5']),
-                'plan_of_action': get_numeric_cell_value(ws['B6']),
-                'monitoring_and_reporting': get_numeric_cell_value(ws['B7']),
-                'data_availability': get_numeric_cell_value(ws['B8']),
-                'availability': get_numeric_cell_value(ws['B9']),
-                'classrooms': get_numeric_cell_value(ws['B10']),
-                'sanitation': get_numeric_cell_value(ws['B11']),
-                'teachers': get_numeric_cell_value(ws['B12']),
-                'textbooks': get_numeric_cell_value(ws['B13']),
-                'accessibility': get_numeric_cell_value(ws['B14']),
-                'free_education': get_numeric_cell_value(ws['B15']),
-                'discrimination': get_numeric_cell_value(ws['B16']),
-                'participation': get_numeric_cell_value(ws['B17']),
-                'acceptability': get_numeric_cell_value(ws['B18']),
-                'aims_of_education': get_numeric_cell_value(ws['B19']),
-                'learning_environment': get_numeric_cell_value(ws['B20']),
-                'learning_outcomes': get_numeric_cell_value(ws['B21']),
-                'adaptability': get_numeric_cell_value(ws['B22']),
-                'children_with_disabilities': get_numeric_cell_value(
-                    ws['B23']),
-                'children_of_minorities': get_numeric_cell_value(ws['B24']),
-                'out_of_school_education': get_numeric_cell_value(ws['B25']),
-            }
-
-
 def parse_cell(value):
+    '''
+    Parses an indicator cell to return a tuple with its code, title and level
+
+    Indicator cells must have one of the following formats:
+
+    * {code}: {title}
+    * {code}
+
+    Codes must start with a number but they can be pretty much anything else
+    after it.
+    If there is no title available, for a limited set of conditions it will be
+    generated (codes ending in `_year` and those ending in one of the
+    MODIFIERS)
+
+    The level is calculated from the code, checking for the number of `.`
+    characters and extra modifiers.
+
+    Returns a tuple (code, title, level), with any of the values set to None if
+    it could not be computed (which should not happen).
+    '''
+
     code = None
     title = None
     level = None
@@ -156,6 +150,25 @@ def parse_cell(value):
 
 
 def get_indicators(core=True, include_columns=False):
+    '''
+    Returns a list of dicts describing the indicators. Each of the dicts
+    contains the following keys:
+
+        * `code`: The unique identifier for this indicator, examples include
+            1, 2.3, 3.3.4, 1.3a, 2.2.1_year, 3.2.1a_resp_ad.
+        * `title`: The string that describes the indicator.
+        * `level`: The hierarchy of the indicator. Without taking the derived
+            indicators into account this is straight forward: 1 -> 1, 1.1 -> 2,
+            1.1.1 -> 3, 1.1.1a -> 4. Derived indicators can have the following
+            levels: 1.2a -> 2 and 1.1.1a_resp_ad -> 4.
+        * `core`: Whether the indicator is part of the Core or the Companion
+            questionnaire. The ones to return are controlled with the `core`
+            parameter.
+        * `column` (optional, only if `include_columns` is True): The column on
+            the spreadsheet that holds the values for the indicator.
+
+    '''
+
     out = []
     if core:
         sheet = CORE_SHEET
@@ -193,6 +206,9 @@ def get_indicators(core=True, include_columns=False):
 
 
 def get_all_indicators(include_columns=False):
+    '''
+    Returns a list of all indicators. See get_indicators for details.
+    '''
 
     core_indicators = get_indicators(include_columns=include_columns)
 
@@ -212,6 +228,13 @@ def get_all_indicators(include_columns=False):
 
 
 def add_main_scores(country_indicators):
+    '''
+    Add the values for the level 1 indicators (ie 1, 2, 3, 4 and 5)
+
+    These are computed with the average of all level 2 indicators (eg 1.1,
+    1.2, etc). These are returned as a percentage rounded to 4 decimal
+    places.
+    '''
 
     scores = {}
     for code, value in country_indicators.iteritems():
@@ -229,12 +252,46 @@ def add_main_scores(country_indicators):
 
 
 def add_full_score(country_indicators):
+    '''
+    Adds the full overall score to the country indicators with the `index` key.
+
+    It is computed with the average of all level 1 indicators (ie 1, 2, 3, 4
+    and 5) returned as a percentage rounded to 4 decimal places.
+    '''
 
     values = [country_indicators[str(code)] for code in xrange(1, 6)]
     country_indicators['index'] = round(sum(values) / len(values), 4)
 
 
 def indicators_per_country(max_level=4, derived=True):
+    '''
+    Returns a dict containing the values for all indicators for all countries,
+    with the following structure:
+
+        {
+            'CL': {
+                    '1': 64.76,
+                    '1.1': 100.0,
+                    '1.1.1a': 1,
+                    '1.1.1b': 1,
+                    '1.1.1c': 1,
+                    # ...
+                    },
+            'TZ': {
+                    '1': 74.736,
+                    '1.1': 100.0,
+                    '1.1.1a': 1,
+                    '1.1.1b': 0,
+                    '1.1.1c': 1,
+                    # ...
+                    },
+
+            # ...
+        }
+
+    You can restrict the indicators returned with the `max_level` parameter
+    and whether to return `derived` (eg 1.2a or 3.2.1_ag) indicators or not.
+    '''
 
     out = OrderedDict()
 
@@ -288,7 +345,16 @@ def indicators_per_country(max_level=4, derived=True):
 
 
 def indicators_as_csv(output_dir=OUTPUT_DIR):
+    '''
+    Write a CSV file with all indicators, in the form:
 
+        code,title,core,level
+        1,Governance,True,1
+        1.1,International Framework,True,2
+        1.1.1,Is the State party to the United Nations treaties?,True,3
+
+        ...
+    '''
     indicators = get_all_indicators()
     output_file = os.path.join(output_dir, 'indicators.csv')
 
@@ -299,6 +365,29 @@ def indicators_as_csv(output_dir=OUTPUT_DIR):
 
 
 def indicators_as_json(output_dir=OUTPUT_DIR):
+    '''
+    Write a JSON file with all indicators, in the form:
+
+        {
+            "1": {
+                "core": true,
+                "level": 1,
+                "title": "Governance"
+            },
+            "1.1": {
+                "core": true,
+                "level": 2,
+                "title": "International Framework"
+            },
+            "1.1.1": {
+                "core": true,
+                "level": 3,
+                "title": "Is the State party to the United Nations treaties?"
+            },
+
+            ...
+
+    '''
 
     out = OrderedDict()
     for indicator in get_all_indicators():
@@ -379,6 +468,9 @@ The available outputs are:
     output_dir = args.output or OUTPUT_DIR
 
     wb = load_workbook(input_file, data_only=True)
+
+    with open(COUNTRIES_FILE, 'r') as f:
+        countries = json.load(f)
 
     if args.type == 'all':
         indicators_as_json(output_dir)
