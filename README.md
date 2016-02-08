@@ -53,7 +53,7 @@ The JSON data files are generated in `rtei/static/data` by default. These files 
 
 * `indicators.json`: Master dictionary that links every indicator code to its title (and level):
 
-        ```json
+    ```json
             {
                 "1": {
                     "core": true,
@@ -72,13 +72,13 @@ The JSON data files are generated in `rtei/static/data` by default. These files 
                 },
                 ...
             }
-        ```
+    ```
 
 
 * `scores_per_country.json`: Contains all level 1 and 2 scores for all countries, as well as the overall one:
 
 
-        ```json
+    ```json
             {
                 "CL": {
                     "1": 64.76,
@@ -135,12 +135,12 @@ The JSON data files are generated in `rtei/static/data` by default. These files 
 
                 ...
 
-        ```
+    ```
 
 * `{country_code}.json` (eg `CL.json`): For each of the countries available, contains all values for all indicators for that particular country:
 
 
-        ```json
+    ```json
             {
                 "1": 64.76,
                 "1.1": 100.0,
@@ -165,11 +165,7 @@ The JSON data files are generated in `rtei/static/data` by default. These files 
                 "1.1.5c": null,
 
                 ...
-        ```
-
-
-
-
+    ```
 
 ## Dump Site data
 
