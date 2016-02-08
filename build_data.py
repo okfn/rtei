@@ -60,7 +60,7 @@ def get_country_code(country_name, code_type='iso2'):
 
 def get_numeric_cell_value(cell):
     if isinstance(cell.value, float):
-        return round(cell.value, 3)
+        return round(cell.value, 4)
     else:
         return cell.value
 
@@ -225,13 +225,13 @@ def add_main_scores(country_indicators):
             scores[code[:1]].append(value * 100 if value <= 1 else value)
 
     for score, values in scores.iteritems():
-        country_indicators[score] = round(sum(values) / len(values), 3)
+        country_indicators[score] = round(sum(values) / len(values), 4)
 
 
 def add_full_score(country_indicators):
 
     values = [country_indicators[str(code)] for code in xrange(1, 6)]
-    country_indicators['index'] = round(sum(values) / len(values), 3)
+    country_indicators['index'] = round(sum(values) / len(values), 4)
 
 
 def indicators_per_country(max_level=4, derived=True):
@@ -263,7 +263,24 @@ def indicators_per_country(max_level=4, derived=True):
                     value = get_numeric_cell_value(ws_core[cell])
                 else:
                     value = get_numeric_cell_value(ws_companion[cell])
+
                 out[country_code][indicator['code']] = value
+
+                # Custom stuff :|
+
+                # 2.4 is handled a bit differently
+                if indicator['code'] == '2.4':
+                    out[country_code][indicator['code']] = (1 if value >= 1
+                                                            else value)
+
+                # Show all level 2, non derived scores (eg 1.2, 3.4, 5.1)
+                # as percentages, rounded to 3 places
+                if (indicator['code'].count('.') == 1 and
+                        not indicator['code'][-1].isalpha()):
+
+                    out[country_code][indicator['code']] = round(
+                        value * 100 if value <= 1 else value, 3)
+
         add_main_scores(out[country_code])
         add_full_score(out[country_code])
 
