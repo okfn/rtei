@@ -8,13 +8,8 @@ from wagtail.wagtailadmin.edit_handlers import FieldPanel
 
 from wagtail_modeltranslation.models import TranslationMixin
 
-
-class RTEIBasePage(Page):
-    body = RichTextField(blank=True)
-
-    content_panels = Page.content_panels + [
-        FieldPanel('body', classname="full")
-    ]
+import logging
+log = logging.getLogger(__name__)
 
 
 class RTEIPage(TranslationMixin, Page):
@@ -25,26 +20,7 @@ class RTEIPage(TranslationMixin, Page):
         FieldPanel('body', classname="full")
     ]
 
-
-class AboutPage(TranslationMixin, RTEIBasePage):
-    pass
-
-
-class ContactUsPage(TranslationMixin, RTEIBasePage):
-    pass
-
-
-class PartnersPage(TranslationMixin, RTEIBasePage):
-    pass
-
-
-class ResourcesPage(TranslationMixin, RTEIBasePage):
-    pass
-
-
-class ExplorePage(TranslationMixin, RTEIBasePage):
-    pass
-
-
-class ExploreChartPage(TranslationMixin, RTEIBasePage):
-    pass
+    def get_template(self, request, *args, **kwargs):
+        # Define a template path derived from the app name and model instance
+        # slug
+        return "%s/%s.html" % (self._meta.app_label, self.slug.replace('-', '_'))
