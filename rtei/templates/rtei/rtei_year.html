@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block body_class %}template-rtei{% endblock %}
+
+{% block content %}
+    <h1>Hi!</h1>
+    
+    <p>
+        You are now on: {{ self.title }} 
+    </p>
+
+    <p>
+        If this page has a body, here it is:
+    </p>
+
+    <div>
+        {{ self.body }}
+    </div>
+
+{% endblock %}
