@@ -69,6 +69,17 @@ def get_country_code(country_name, code_type='iso2'):
     return None
 
 
+def get_country_name(country_code):
+    '''
+    Given a country code, return the corresponding country name.
+    '''
+    code_type = 'iso2'
+    if len(country_code) == 3:
+        code_type = 'iso3'
+
+    return next((c['name'] for c in countries if c[code_type] == country_code.upper()), None)
+
+
 def get_numeric_cell_value(cell):
     '''
     Return a numeric value rounded to 4 places if it is a float, or the value
@@ -436,7 +447,7 @@ def c3_ready_json(output_dir=OUTPUT_DIR):
         add_main_scores(out[country])
         add_full_score(out[country])
 
-    out = [OrderedDict([('name', c)] + list(v.items())) for c, v in out.iteritems()]
+    out = [OrderedDict([('name', get_country_name(c))] + list(v.items())) for c, v in out.iteritems()]
 
     output_file = os.path.join(output_dir, 'c3_scores_per_country.json')
 
