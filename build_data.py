@@ -238,9 +238,9 @@ def get_all_indicators(include_columns=False):
     return indicators
 
 
-def add_main_scores(country_indicators):
+def get_main_scores(country_indicators):
     '''
-    Add the values for the level 1 indicators (ie 1, 2, 3, 4 and 5)
+    Return the values for the level 1 indicators (ie 1, 2, 3, 4 and 5)
 
     These are computed with the average of all level 2 indicators (eg 1.1,
     1.2, etc). These are returned as a percentage rounded to 4 decimal
@@ -258,8 +258,17 @@ def add_main_scores(country_indicators):
         if code.count('.') == 1 and not code[-1].isalpha():
             scores[code[:1]].append(value * 100 if value <= 1 else value)
 
-    for score, values in scores.iteritems():
-        country_indicators[score] = round(sum(values) / len(values), 4)
+    return {score: round(sum(values) / len(values), 4) for score, values in scores.iteritems()}
+
+
+def add_main_scores(country_indicators):
+    '''
+    Add the values for the level 1 indicators (ie 1, 2, 3, 4 and 5) to the
+    passed country_indicators dict.
+    '''
+
+    scores = get_main_scores(country_indicators)
+    country_indicators.update(scores)
 
 
 def add_full_score(country_indicators):
@@ -442,12 +451,10 @@ def scores_per_country_as_json(output_dir=OUTPUT_DIR):
 
 
 def c3_ready_json(output_dir=OUTPUT_DIR):
-    out = indicators_per_country(max_level=2, derived=False)
-    for country in out.keys():
-        add_main_scores(out[country])
-        add_full_score(out[country])
+    indicators = indicators_per_country(max_level=2, derived=False)
 
-    out = [OrderedDict([('name', get_country_name(c))] + list(v.items())) for c, v in out.iteritems()]
+    out = [OrderedDict([('name', get_country_name(c))] + list(get_main_scores(v).items()))
+           for c, v in indicators.iteritems()]
 
     output_file = os.path.join(output_dir, 'c3_scores_per_country.json')
 
