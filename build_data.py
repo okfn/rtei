@@ -453,7 +453,14 @@ def scores_per_country_as_json(output_dir=OUTPUT_DIR):
 def c3_ready_json(output_dir=OUTPUT_DIR):
     indicators = indicators_per_country(max_level=2, derived=False)
 
-    out = [OrderedDict([('name', get_country_name(c))] + list(get_main_scores(v).items()))
+    def normalize_main_scores(scores):
+        '''Scores are a percentage, normalize them to fit a total percentage
+        for all scores'''
+        v = get_main_scores(scores)
+        return dict((i[0], round(i[1]/(len(v)), 2)) for i in v.items())
+
+    # rearrange the ordereddict to only include the main scores.
+    out = [OrderedDict([('name', get_country_name(c))] + list(normalize_main_scores(v).items()))
            for c, v in indicators.iteritems()]
 
     output_file = os.path.join(output_dir, 'c3_scores_per_country.json')
