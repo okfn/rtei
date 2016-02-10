@@ -10,6 +10,11 @@ DATABASES['default'].update(db_from_env)
 
 SECRET_KEY = os.environ['SECRET_KEY']
 
+ALLOWED_HOSTS = [
+    'localhost',
+    'rtei.herokuapp.com'
+]
+
 try:
     from .local import *
 except ImportError:
