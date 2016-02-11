@@ -266,21 +266,24 @@ def add_main_scores(country_indicators):
     Add the values for the level 1 indicators (ie 1, 2, 3, 4 and 5) to the
     passed country_indicators dict.
     '''
+    country_indicators.update(get_main_scores(country_indicators))
 
-    scores = get_main_scores(country_indicators)
-    country_indicators.update(scores)
+
+def get_full_score(country_indicators):
+    '''
+    Return an object {'index':<num>}, where number is the computed average of
+    all level 1 indicators (ie 1, 2, 3, 4 and 5) returned as a percentage
+    rounded to 4 decimal places.
+    '''
+    values = [country_indicators[str(code)] for code in xrange(1, 6)]
+    return {'index': round(sum(values) / len(values), 4)}
 
 
 def add_full_score(country_indicators):
     '''
-    Adds the full overall score to the country indicators with the `index` key.
-
-    It is computed with the average of all level 1 indicators (ie 1, 2, 3, 4
-    and 5) returned as a percentage rounded to 4 decimal places.
+    Add the full overall score to the country indicators with the `index` key.
     '''
-
-    values = [country_indicators[str(code)] for code in xrange(1, 6)]
-    country_indicators['index'] = round(sum(values) / len(values), 4)
+    country_indicators.update(get_full_score(country_indicators))
 
 
 def indicators_per_country(max_level=4, derived=True):
@@ -455,9 +458,13 @@ def c3_ready_json(output_dir=OUTPUT_DIR):
 
     def normalize_main_scores(scores):
         '''Scores are a percentage, normalize them to fit a total percentage
-        for all scores'''
+        for all scores, rounded to 2 decimal places. An 'index' key is also
+        added who's value is the full score, as a percentage.'''
         v = get_main_scores(scores)
-        return dict((i[0], round(i[1]/(len(v)), 2)) for i in v.items())
+        index_obj = get_full_score(scores)
+        normalized_scores = dict((i[0], round(i[1]/(len(v)), 2)) for i in v.items())
+        normalized_scores.update(index_obj)
+        return normalized_scores
 
     # rearrange the ordereddict to only include the main scores.
     out = [OrderedDict([('name', get_country_name(c))] + list(normalize_main_scores(v).items()))
