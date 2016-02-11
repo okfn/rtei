@@ -686,11 +686,14 @@ body {
     margin-top: 4px; }
     .site-header .logo img {
       width: 100%; }
-  @media only screen and (min-width: 40em) {
-    .site-header #smenu {
-      position: absolute;
-      top: 70px;
-      right: 1.5em; } }
+  .site-header #smenu {
+    position: relative;
+    z-index: 1; }
+    @media only screen and (min-width: 40em) {
+      .site-header #smenu {
+        position: absolute;
+        top: 70px;
+        right: 1.5em; } }
   .site-header .results {
     width: 80px;
     position: absolute;
