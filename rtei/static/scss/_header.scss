@@ -6,6 +6,7 @@
 
   .container {
     position: relative;
+    padding: $base-spacing;
   }
 
   .logo {
@@ -22,7 +23,7 @@
   #smenu {
     position: relative;
     z-index: 1;
-    
+
     @media only screen and ( min-width: $medium-screen) {
       position: absolute;
       top: 70px;

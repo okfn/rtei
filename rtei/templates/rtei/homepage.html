@@ -1,12 +1,19 @@
 {% extends "base.html" %}
 
-{% block body_class %}template-rtei{% endblock %}
+{% block body_class %}template-home{% endblock %}
 
 {% block content %}
+  <div class="banner">
+    <div class="container">
+      Banner
+    </div>
+  </div>
+
+  <div class="main">
     <h1>Hi!</h1>
-    
+
     <p>
-        You are now on: {{ self.title }} 
+        You are now on: {{ self.title }}
     </p>
 
     <p>
@@ -16,5 +23,6 @@
     <div>
         {{ self.body }}
     </div>
+  </div>
 
 {% endblock %}

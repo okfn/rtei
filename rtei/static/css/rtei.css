@@ -555,9 +555,18 @@ body {
 .container {
   max-width: 68em;
   margin-left: auto;
+  margin-right: auto; }
+  .container::after {
+    clear: both;
+    content: "";
+    display: table; }
+
+.main {
+  max-width: 68em;
+  margin-left: auto;
   margin-right: auto;
   padding: 1.5em; }
-  .container::after {
+  .main::after {
     clear: both;
     content: "";
     display: table; }
@@ -678,7 +687,8 @@ body {
   background-color: #fff;
   height: 125px; }
   .site-header .container {
-    position: relative; }
+    position: relative;
+    padding: 1.5em; }
   .site-header .logo {
     display: block;
     width: 140px;
@@ -702,11 +712,20 @@ body {
     .site-header .results img {
       width: 100%; }
 
+.banner {
+  background-image: url("../img/chalkboard.jpg");
+  background-position: center top; }
+  @media only screen and (min-width: 40em) {
+    .banner {
+      height: 370px; } }
+
 html,
 .site-footer {
   background-color: #333333; }
 
 .site-footer {
   color: #fff; }
+  .site-footer .container {
+    padding: 1.5em; }
 
 /*# sourceMappingURL=rtei.css.map */

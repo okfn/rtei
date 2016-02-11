@@ -5,4 +5,8 @@ html,
 
 .site-footer {
   color: $base-background-color;
+
+  .container {
+    padding: $base-spacing;
+  }
 }

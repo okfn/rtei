@@ -4,5 +4,9 @@ body {
 
 .container {
   @include outer-container;
+}
+
+.main {
+  @include outer-container;
   padding: $base-spacing;
 }
