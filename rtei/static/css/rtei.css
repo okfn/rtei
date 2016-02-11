@@ -658,7 +658,8 @@ body {
         position: absolute;
         top: 100%;
         width: 200px;
-        padding-top: 0; } }
+        padding-top: 0;
+        z-index: 1; } }
   #smenu li:hover ul {
     display: block;
     left: 0;
