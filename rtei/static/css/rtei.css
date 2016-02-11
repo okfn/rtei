@@ -775,10 +775,49 @@ body {
 
 .banner {
   background-image: url("../img/chalkboard.jpg");
-  background-position: center top; }
+  background-position: center top;
+  background-color: #333333;
+  color: #fff; }
+  .banner .text {
+    padding: 1.5em;
+    text-transform: uppercase;
+    font-size: 1.125rem; }
+    .banner .text h1 {
+      font-size: 1.875rem;
+      margin-bottom: 0.375em; }
+    .banner .text p {
+      opacity: 0.7;
+      line-height: 1.2;
+      margin-bottom: 1.5em; }
+    .banner .text > a {
+      display: block;
+      color: #fff;
+      border: solid 1px #fff;
+      padding: 0.5em 1em;
+      text-align: center;
+      border-radius: 2px; }
+      .banner .text > a:hover {
+        background-color: #fff;
+        color: #333333; }
+  .banner .map {
+    display: none; }
   @media only screen and (min-width: 40em) {
-    .banner {
-      height: 370px; } }
+    .banner .container > div {
+      width: 100%;
+      display: table;
+      width: 100%;
+      table-layout: fixed;
+      height: 370px; }
+    .banner .text {
+      display: table-cell;
+      width: 33.33333%;
+      padding: 2.35765%;
+      vertical-align: middle; }
+      .banner .text > a {
+        display: inline-block; }
+    .banner .map {
+      display: table-cell;
+      width: 66.66667%; } }
 
 html,
 .site-footer {
