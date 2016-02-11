@@ -2,10 +2,15 @@
 
   $menu-height: 45px;
   $break-point: $medium-screen;
-  $active-colour: #c00;
-  $menu-colour: #333;
+  $active-colour: $red;
+  $menu-colour: #fff;
+  $link-colour: $dark-gray;
+  $toggle-colour: $link-colour;
 
   text-align: right;
+  clear: both;
+  position: relative;
+  top: - $menu-height;
 
   ul,
   li {
@@ -19,16 +24,16 @@
     text-decoration: none;
   }
 
-  &:target > ul {
+  &:target > div {
     display: block;
   }
 
   & > a {
-    width: 3.125em; /* 50 */
-    height: 3.125em; /* 50 */
+    width: $menu-height;
+    height: $menu-height;
     text-align: left;
     text-indent: -9999px;
-    background-color: $menu-colour;
+    background-color: $toggle-colour;
     position: relative;
     display: inline-block;
 
@@ -60,7 +65,7 @@
     position: relative;
 
     a {
-      color: #fff;
+      color: $link-colour;
       display: block;
 
       &:active {
@@ -72,9 +77,9 @@
   .dropdown-toggle:after {
     width: 0;
     height: 0;
-    border: 0.313em solid transparent; /* 5 */
+    border: 0.25em solid transparent; /* 5 */
     border-bottom: none;
-    border-top-color: lighten( $menu-colour, 70% );
+    border-top-color: $link-colour;
     content: '';
     vertical-align: middle;
     display: inline-block;
@@ -84,59 +89,75 @@
 
   //first level
 
-  & > ul {
-    background-color: $menu-colour;
+  & > div {
     display: none;
 
     @media only screen and ( min-width: $break-point ) {
-      height: $menu-height;
       display: block;
     }
 
-    & > li {
-      height: 100%;
-
-      &:not( :last-child ) > a {
-        border-bottom: 1px solid darken( $menu-colour, 10% );
-
-        @media only screen and ( min-width: $break-point ) {
-          border-bottom: none;
-        }
-      }
+    & > ul {
+      background-color: $menu-colour;
 
       @media only screen and ( min-width: $break-point ) {
-        float: left;
+        height: $menu-height;
+        margin-right: $menu-height;
       }
 
-      & > a {
-        line-height: $menu-height;
-        padding: 0 0.833em; /* 20 (24) */
+      & > li {
+        height: 100%;
+
+        &:not( :last-child ) > a {
+          border-bottom: 1px solid darken( $menu-colour, 10% );
+
+          @media only screen and ( min-width: $break-point ) {
+            border-bottom: none;
+          }
+        }
 
         @media only screen and ( min-width: $break-point ) {
-          height: 100%;
-          text-align: center;
+          float: left;
         }
-      }
 
-      &:not( :last-child ) > a {
-        @media only screen and ( min-width: $break-point ) {
-          border-right: 1px solid darken( $menu-colour, 10% );
+        & > a {
+          line-height: $menu-height;
+          padding: 0 0.833em; /* 20 (24) */
+
+          @media only screen and ( min-width: $break-point ) {
+            height: 100%;
+            text-align: center;
+          }
         }
+
+        //&:not( :last-child ) > a {
+          //@media only screen and ( min-width: $break-point ) {
+            //border-right: 1px solid darken( $menu-colour, 10% );
+          //}
+        //}
       }
     }
   }
 
-  & > ul > li:hover > a,
-  & > ul:not( :hover ) > li.active > a {
-    background-color: darken( $menu-colour, 10% );
+  & > div > ul > li:hover > a,
+  & > div > ul:not( :hover ) > li.active > a {
+    background-color: $dark-gray;
+    color: #fff;
+
+    &.dropdown-toggle:after {
+      border-top-color: #fff;
+    }
   }
 
   // second level
 
   li ul {
-    background-color: darken( $menu-colour, 10% );
-    padding: 1.25em; /* 20 */
+    background-color: $dark-gray;
     display: none;
+    color: #fff;
+
+    a {
+      color: inherit;
+    }
 
     @media only screen and ( min-width: $break-point ) {
       position: absolute;
@@ -159,13 +180,95 @@
   }
 
   li ul a {
-    border-top: 1px solid $menu-colour;
+    border-top: 1px solid darken( $dark-gray, 10% );
     padding: 0.75em; /* 15 (20) */
   }
 
   li ul li a:hover,
   li ul:not( :hover ) li.active a {
-   background-color: $menu-colour;
+   background-color: darken( $dark-gray, 10% );
  }
+
+ // search
+
+  #search {
+
+    & > a {
+      float: right;
+      display: inline-block;
+      height: $menu-height;
+      width: $menu-height;
+      overflow: hidden;
+      display: none;
+      color: $link-colour;
+      text-align: center;
+      line-height: $menu-height;
+
+      svg {
+        fill: currentColor;
+        height: $menu-height;
+        width: 1.3em;
+      }
+
+      @media only screen and ( min-width: $break-point ) {
+        &:first-of-type {
+          display: inline-block;
+        }
+      }
+    }
+    .search {
+      position: relative;
+        height: $menu-height;
+
+      @media only screen and ( min-width: $break-point ) {
+        display: none;
+        position: absolute;
+        top: $menu-height;
+        right: 0;
+      }
+    }
+
+    &:target {
+      & > a:first-of-type {
+        display: none;
+      }
+      & > a:last-of-type {
+        display: inline-block;
+        background-color: $dark-gray;
+        color: #fff;
+      }
+      & > .search {
+        display: block;
+      }
+    }
+
+    input,
+    button {
+      height: $menu-height;
+    }
+
+    input[type="text"] {
+      padding-right: $menu-height * 1.1;
+      border-radius: 0;
+      border: solid 3px $dark-gray;
+      box-shadow: none;
+    }
+
+    button {
+      width: $menu-height;
+      position: absolute;
+      top: 50%;
+      right: 0;
+      margin-top: - $menu-height / 2;
+      padding: 0;
+      background-color: transparent;
+      color: darken( $menu-colour, 10% );
+
+      svg {
+        width: $menu-height / 2;
+        fill: currentColor;
+      }
+    }
+  }
 
 }

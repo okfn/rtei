@@ -23,6 +23,7 @@
   #smenu {
     position: relative;
     z-index: 1;
+    text-transform: uppercase;
 
     @media only screen and ( min-width: $medium-screen) {
       position: absolute;
