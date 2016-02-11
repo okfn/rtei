@@ -1,4 +1,7 @@
 $(document).ready(function(){
+
+  var homepage = window.location.href.indexOf('explore/map') === -1;
+
   var map = L.map('map', {
       attributionControl: false
   }).setView([10, 0], 2);

@@ -1,6 +1,15 @@
 {% extends "base.html" %}
 
+{% load static %}
+
 {% block body_class %}template-home{% endblock %}
+
+{% block extra_css %}
+
+  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+  <link rel="stylesheet" type="text/css" href="{% static 'css/map.css' %}" />
+{% endblock %}
+
 
 {% block content %}
   <div class="banner">
@@ -11,8 +20,7 @@
           <p>A global index to catalyze reform across select indicators of the right to education.</p>
           <a href="explore/map/">Explore the Map</a>
         </div>
-        <div class="map">
-          [map here]
+        <div class="map" id="map">
         </div>
       </div>
     </div>
@@ -33,5 +41,12 @@
         {{ self.body }}
     </div>
   </div>
+
+{% endblock %}
+
+{% block extra_js %}
+  <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+  <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-omnivore/v0.2.0/leaflet-omnivore.min.js'></script>
+  <script src="{% static 'js/map.js' %}"></script>
 
 {% endblock %}
