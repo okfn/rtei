@@ -572,7 +572,10 @@ body {
     display: table; }
 
 #smenu {
-  text-align: right; }
+  text-align: right;
+  clear: both;
+  position: relative;
+  top: -45px; }
   #smenu ul,
   #smenu li {
     display: block;
@@ -581,16 +584,14 @@ body {
     text-align: left; }
   #smenu a {
     text-decoration: none; }
-  #smenu:target > ul {
+  #smenu:target > div {
     display: block; }
   #smenu > a {
-    width: 3.125em;
-    /* 50 */
-    height: 3.125em;
-    /* 50 */
+    width: 45px;
+    height: 45px;
     text-align: left;
     text-indent: -9999px;
-    background-color: #333;
+    background-color: #333333;
     position: relative;
     display: inline-block; }
     #smenu > a:before, #smenu > a:after {
@@ -610,58 +611,63 @@ body {
   #smenu li {
     position: relative; }
     #smenu li a {
-      color: #fff;
+      color: #333333;
       display: block; }
       #smenu li a:active {
-        background-color: #c00 !important; }
+        background-color: #af202f !important; }
   #smenu .dropdown-toggle:after {
     width: 0;
     height: 0;
-    border: 0.313em solid transparent;
+    border: 0.25em solid transparent;
     /* 5 */
     border-bottom: none;
-    border-top-color: #e6e6e6;
+    border-top-color: #333333;
     content: '';
     vertical-align: middle;
     display: inline-block;
     position: relative;
     right: -0.313em;
     /* 5 */ }
-  #smenu > ul {
-    background-color: #333;
+  #smenu > div {
     display: none; }
     @media only screen and (min-width: 40em) {
-      #smenu > ul {
-        height: 45px;
+      #smenu > div {
         display: block; } }
-    #smenu > ul > li {
-      height: 100%; }
-      #smenu > ul > li:not(:last-child) > a {
-        border-bottom: 1px solid #1a1a1a; }
-        @media only screen and (min-width: 40em) {
-          #smenu > ul > li:not(:last-child) > a {
-            border-bottom: none; } }
+    #smenu > div > ul {
+      background-color: #fff; }
       @media only screen and (min-width: 40em) {
-        #smenu > ul > li {
-          float: left; } }
-      #smenu > ul > li > a {
-        line-height: 45px;
-        padding: 0 0.833em;
-        /* 20 (24) */ }
+        #smenu > div > ul {
+          height: 45px;
+          margin-right: 45px; } }
+      #smenu > div > ul > li {
+        height: 100%; }
+        #smenu > div > ul > li:not(:last-child) > a {
+          border-bottom: 1px solid #e6e6e6; }
+          @media only screen and (min-width: 40em) {
+            #smenu > div > ul > li:not(:last-child) > a {
+              border-bottom: none; } }
         @media only screen and (min-width: 40em) {
-          #smenu > ul > li > a {
-            height: 100%;
-            text-align: center; } }
-      @media only screen and (min-width: 40em) {
-        #smenu > ul > li:not(:last-child) > a {
-          border-right: 1px solid #1a1a1a; } }
-  #smenu > ul > li:hover > a, #smenu > ul:not(:hover) > li.active > a {
-    background-color: #1a1a1a; }
+          #smenu > div > ul > li {
+            float: left; } }
+        #smenu > div > ul > li > a {
+          line-height: 45px;
+          padding: 0 0.833em;
+          /* 20 (24) */ }
+          @media only screen and (min-width: 40em) {
+            #smenu > div > ul > li > a {
+              height: 100%;
+              text-align: center; } }
+  #smenu > div > ul > li:hover > a, #smenu > div > ul:not(:hover) > li.active > a {
+    background-color: #333333;
+    color: #fff; }
+    #smenu > div > ul > li:hover > a.dropdown-toggle:after, #smenu > div > ul:not(:hover) > li.active > a.dropdown-toggle:after {
+      border-top-color: #fff; }
   #smenu li ul {
-    background-color: #1a1a1a;
-    padding: 1.25em;
-    /* 20 */
-    display: none; }
+    background-color: #333333;
+    display: none;
+    color: #fff; }
+    #smenu li ul a {
+      color: inherit; }
     @media only screen and (min-width: 40em) {
       #smenu li ul {
         position: absolute;
@@ -676,12 +682,66 @@ body {
   #smenu li:not(:first-child):hover ul {
     left: -1px; }
   #smenu li ul a {
-    border-top: 1px solid #333;
+    border-top: 1px solid #1a1a1a;
     padding: 0.75em;
     /* 15 (20) */ }
   #smenu li ul li a:hover,
   #smenu li ul:not(:hover) li.active a {
-    background-color: #333; }
+    background-color: #1a1a1a; }
+  #smenu #search > a {
+    float: right;
+    display: inline-block;
+    height: 45px;
+    width: 45px;
+    overflow: hidden;
+    display: none;
+    color: #333333;
+    text-align: center;
+    line-height: 45px; }
+    #smenu #search > a svg {
+      fill: currentColor;
+      height: 45px;
+      width: 1.3em; }
+    @media only screen and (min-width: 40em) {
+      #smenu #search > a:first-of-type {
+        display: inline-block; } }
+  #smenu #search .search {
+    position: relative;
+    height: 45px; }
+    @media only screen and (min-width: 40em) {
+      #smenu #search .search {
+        display: none;
+        position: absolute;
+        top: 45px;
+        right: 0; } }
+  #smenu #search:target > a:first-of-type {
+    display: none; }
+  #smenu #search:target > a:last-of-type {
+    display: inline-block;
+    background-color: #333333;
+    color: #fff; }
+  #smenu #search:target > .search {
+    display: block; }
+  #smenu #search input,
+  #smenu #search button {
+    height: 45px; }
+  #smenu #search input[type="text"] {
+    padding-right: 49.5px;
+    border-radius: 0;
+    border: solid 3px #333333;
+    box-shadow: none; }
+  #smenu #search button {
+    width: 45px;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    margin-top: -22.5px;
+    padding: 0;
+    background-color: transparent;
+    color: #e6e6e6; }
+    #smenu #search button svg {
+      width: 22.5px;
+      fill: currentColor; }
 
 .site-header {
   background-color: #fff;
@@ -698,7 +758,8 @@ body {
       width: 100%; }
   .site-header #smenu {
     position: relative;
-    z-index: 1; }
+    z-index: 1;
+    text-transform: uppercase; }
     @media only screen and (min-width: 40em) {
       .site-header #smenu {
         position: absolute;

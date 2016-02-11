@@ -10,30 +10,38 @@
 
         <nav id="smenu" role="navigation">
         	<a href="#smenu" title="Show navigation">Show navigation</a>
-        	<a href="" title="Hide navigation">Hide navigation</a>
+        	<a href="#" title="Hide navigation">Hide navigation</a>
+
+          <div>
+            <div id="search">
+              <a href="#search"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 685.53 685.46"><title>Show search</title><path d="M621.67,653.67A270.76,270.76,0,0,1,464,704c-150.22,0-272-121.78-272-272S313.78,160,464,160,736,281.78,736,432a270.77,270.77,0,0,1-50.33,157.67L864.38,768.38a44.59,44.59,0,0,1,0,63.24l-0.75.75a44.76,44.76,0,0,1-63.24,0L621.67,653.67h0ZM464,640c114.88,0,208-93.12,208-208S578.88,224,464,224,256,317.13,256,432s93.13,208,208,208h0Z" transform="translate(-192 -160)"/></svg></a>
+              <a href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 685.53 685.46"><title>Hide search</title><path d="M621.67,653.67A270.76,270.76,0,0,1,464,704c-150.22,0-272-121.78-272-272S313.78,160,464,160,736,281.78,736,432a270.77,270.77,0,0,1-50.33,157.67L864.38,768.38a44.59,44.59,0,0,1,0,63.24l-0.75.75a44.76,44.76,0,0,1-63.24,0L621.67,653.67h0ZM464,640c114.88,0,208-93.12,208-208S578.88,224,464,224,256,317.13,256,432s93.13,208,208,208h0Z" transform="translate(-192 -160)"/></svg></a>
+              <form class="search" role="search" action="{% url 'search' %}" method="get">
+                  <div class="input-group">
+                      <input type="text" name="query" class="form-control" placeholder="{% trans 'Search…' %}" value="{{ search_query }}" />
+                      <div class="input-group-btn">
+                          <button type="submit" class="btn btn-default">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 685.53 685.46"><title>Search</title><path d="M621.67,653.67A270.76,270.76,0,0,1,464,704c-150.22,0-272-121.78-272-272S313.78,160,464,160,736,281.78,736,432a270.77,270.77,0,0,1-50.33,157.67L864.38,768.38a44.59,44.59,0,0,1,0,63.24l-0.75.75a44.76,44.76,0,0,1-63.24,0L621.67,653.67h0ZM464,640c114.88,0,208-93.12,208-208S578.88,224,464,224,256,317.13,256,432s93.13,208,208,208h0Z" transform="translate(-192 -160)"/></svg>
+                          </button>
+                      </div>
+                  </div>
+              </form>
+            </div>
+
             <ul role="navigation">
-                {% for menuitem in menuitems %}
-                    <li class="{% if menuitem.show_dropdown %}dropdown{% endif %}{% if menuitem.active %} active{% endif %}">
-                        {% if menuitem.show_dropdown %}
-                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">{{ menuitem.title }} <b class="caret"></b></a>
-                            {% top_menu_children parent=menuitem %}
-                        {% else %}
-                            <a href="{% pageurl menuitem %}">{{ menuitem.title }}</a>
-                        {% endif %}
-                    </li>
-                {% endfor %}
+              {% for menuitem in menuitems %}
+              <li class="{% if menuitem.show_dropdown %}dropdown{% endif %}{% if menuitem.active %} active{% endif %}">
+                {% if menuitem.show_dropdown %}
+              <a data-toggle="dropdown" class="dropdown-toggle" href="#">{{ menuitem.title }} <b class="caret"></b></a>
+                {% top_menu_children parent=menuitem %}
+                {% else %}
+              <a href="{% pageurl menuitem %}">{{ menuitem.title }}</a>
+                {% endif %}
+              </li>
+              {% endfor %}
             </ul>
 
-            <form class="search" role="search" action="{% url 'search' %}" method="get">
-                <div class="input-group">
-                    <input type="text" name="query" class="form-control" placeholder="{% trans 'Search…' %}" value="{{ search_query }}" />
-                    <div class="input-group-btn">
-                        <button type="submit" class="btn btn-default">
-                            <i class="glyphicon glyphicon-search"></i>
-                        </button>
-                    </div>
-                </div>
-            </form>
+          </div>
         </nav>
 
         <a href="http://results.org/" class="results">
