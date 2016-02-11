@@ -17,6 +17,7 @@
     </p>
 
     <div>
+        <div id="chart-controls"><button type="button" id="chart-sort-by-name" class="sort asc" data-key="name">Sort by Name</button> <button type="button" id="chart-sort-by-score" class="sort asc" data-key="index">Sort by Total Score</button></div>
         <div id="chart"></div>
 
         {{ self.body }}
@@ -74,10 +75,28 @@
             });
             return chart;
         };
-        var json_data = $.getJSON("{% static 'data/c3_scores_per_country.json' %}", function(data) {
-            json_data = data;
-            chart = build_chart(json_data);
-        });
+
+        var init_sort_buttons = function() {
+            /*
+            Initializes the sort buttons.
+
+            The button has either an `asc` or `desc` class that defines its
+            current state, which can be used for styling purposes.
+            */
+
+            $('#chart-controls :button.sort').each(function(i, el) {
+                $(el).on('click', function(ev) {
+                    var btn = $(ev.target);
+                    var desc = btn.hasClass('asc');
+                    if (desc) {
+                        btn.addClass('desc').removeClass('asc');
+                    } else {
+                        btn.addClass('asc').removeClass('desc');
+                    }
+                    sortByKey(btn.data('key'), desc);
+                });
+            });
+        };
 
         var sortByKey = function(key, desc) {
             // Sort json_data by key and rebuild chart.
@@ -85,5 +104,12 @@
             if (desc) json_data.reverse();
             chart = build_chart(json_data);
         };
+
+        // Get the data and initialize the chart.
+        var json_data = $.getJSON("{% static 'data/c3_scores_per_country.json' %}", function(data) {
+            json_data = data;
+            init_sort_buttons();
+            chart = build_chart(json_data);
+        });
     </script>
 {% endblock %}
