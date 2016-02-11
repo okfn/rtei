@@ -167,6 +167,17 @@ The JSON data files are generated in `rtei/static/data` by default. These files 
                 ...
     ```
 
+### Map data
+
+The map visualizations are powered by a [TopoJSON](https://github.com/mbostock/topojson/wiki) file. This is built using two input files, `data/countries.geojson`, which is constant and does not need to be updated, and `data/scores_per_country.csv`, which needs to be updated:
+
+    ./build_data.py scores-per-country-csv
+
+After [installing](https://github.com/mbostock/topojson/wiki/Installation) the `topojson` command, this is the full command that needs to be done (note that the output file goes to the `rtei/static/data`):
+
+    topojson -p -o rtei/static/data/countries.topojson --stitch-poles false --id-property iso2 -e scores_per_country.csv data/countries.geojson
+
+
 ## Dump Site data
 
 Dump a new set of site data (this is the internal data for managing the site, like pages etc, not the data powering the visualizations):
