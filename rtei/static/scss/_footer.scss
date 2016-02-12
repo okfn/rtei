@@ -4,9 +4,70 @@ html,
 }
 
 .site-footer {
-  color: $base-background-color;
+  color: transparentize($base-background-color, 0.3);
+
+  a {
+    color: inherit;
+
+    &:hover {
+      color: $base-background-color;
+    }
+  }
+
+  svg {
+    fill: currentColor;
+  }
 
   .container {
     padding: $base-spacing;
+  }
+
+  .links,
+  .social {
+    li {
+      display: inline-block;
+      font-size: em(13);
+    }
+  }
+
+  .links {
+    li {
+      a {
+        padding-right: $small-spacing;
+        margin-right: $small-spacing;
+        border-right: solid 1px transparentize($base-background-color, 0.3);
+      }
+
+      &:last-of-type a {
+        border: none;
+      }
+    }
+  }
+
+  .social {
+    li {
+      margin-right: $small-spacing;
+
+      svg {
+        width: 1.5em;
+        height: 1.5em;
+      }
+    }
+  }
+
+  @media only screen and ( min-width: $medium-screen) {
+
+    ul {
+      @include span-columns(6);
+
+      &.social {
+        text-align: right;
+
+        li {
+          margin-left: $small-spacing;
+          margin-right: 0;
+        }
+      }
+    }
   }
 }
