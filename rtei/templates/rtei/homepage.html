@@ -19,19 +19,47 @@
   </div>
 
   <div class="main">
-    <h1>Hi!</h1>
-
-    <p>
-        You are now on: {{ self.title }}
-    </p>
-
-    <p>
-        If this page has a body, here it is:
-    </p>
 
     <div>
-        {{ self.body }}
+      <a href="explore/rtei-year/">
+        {% include "icons/bars.svg" %}
+        <h2>RTEI by Year</h2>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur velit massa, tempor eget aliquam in.
+        </p>
+      </a>
     </div>
+
+    <div>
+      <a href="explore/rtei-country/">
+        {% include "icons/earth.svg" %}
+        <h2>RTEI by Country</h2>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur velit massa, tempor eget aliquam in.
+        </p>
+      </a>
+    </div>
+
+    <div>
+      <a href="explore/rtei-over-time/">
+        {% include "icons/calendar.svg" %}
+        <h2>RTEI over Time</h2>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur velit massa, tempor eget aliquam in.
+        </p>
+      </a>
+    </div>
+
+    <div>
+      <a href="">
+        {% include "icons/download.svg" %}
+        <h2>Download the Data</h2>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur velit massa, tempor eget aliquam in.
+        </p>
+      </a>
+    </div>
+
   </div>
 
 {% endblock %}

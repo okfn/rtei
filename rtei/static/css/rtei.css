@@ -773,51 +773,79 @@ body {
     .site-header .results img {
       width: 100%; }
 
-.banner {
+.template-home .banner {
   background-image: url("../img/chalkboard.jpg");
   background-position: center top;
   background-color: #333333;
   color: #fff; }
-  .banner .text {
+  .template-home .banner .text {
     padding: 1.5em;
-    text-transform: uppercase;
-    font-size: 1.125rem; }
-    .banner .text h1 {
+    text-transform: uppercase; }
+    .template-home .banner .text h1 {
       font-size: 1.875rem;
       margin-bottom: 0.375em; }
-    .banner .text p {
+    .template-home .banner .text p {
+      font-size: 1.125rem;
       opacity: 0.7;
       line-height: 1.2;
       margin-bottom: 1.5em; }
-    .banner .text > a {
+    .template-home .banner .text > a {
       display: block;
       color: #fff;
       border: solid 1px #fff;
       padding: 0.5em 1em;
       text-align: center;
       border-radius: 2px; }
-      .banner .text > a:hover {
+      .template-home .banner .text > a:hover {
         background-color: #fff;
         color: #333333; }
-  .banner .map {
+  .template-home .banner .map {
     display: none; }
   @media only screen and (min-width: 40em) {
-    .banner .container > div {
+    .template-home .banner .container > div {
       width: 100%;
       display: table;
       width: 100%;
       table-layout: fixed;
       height: 370px; }
-    .banner .text {
+    .template-home .banner .text {
       display: table-cell;
       width: 33.33333%;
       padding: 2.35765%;
       vertical-align: middle; }
-      .banner .text > a {
+      .template-home .banner .text > a {
         display: inline-block; }
-    .banner .map {
+    .template-home .banner .map {
       display: table-cell;
       width: 66.66667%; } }
+.template-home .main > div {
+  text-align: center;
+  padding: 1.5em; }
+  .template-home .main > div a svg {
+    width: 80px;
+    height: 80px;
+    fill: #333333; }
+  .template-home .main > div a h2 {
+    font-weight: normal;
+    text-transform: uppercase;
+    font-size: 1.0625em;
+    margin-top: 1.5em;
+    margin-bottom: 0.375em; }
+  .template-home .main > div a:hover svg {
+    fill: currentColor; }
+  .template-home .main > div p {
+    color: #3b3b3b;
+    line-height: 1.3;
+    font-size: 0.875em; }
+  @media only screen and (min-width: 40em) {
+    .template-home .main > div {
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 23.23176%;
+      padding-top: 2.25em; }
+      .template-home .main > div:last-child {
+        margin-right: 0; } }
 
 html,
 .site-footer {

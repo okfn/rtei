@@ -1,65 +1,107 @@
-.banner {
-  background-image: url("../img/chalkboard.jpg");
-  background-position: center top;
-  background-color: $dark-gray;
-  color: #fff;
-
-  .text {
-    padding: $base-spacing;
-    text-transform: uppercase;
-    font-size: rem(18);
-
-    h1 {
-      font-size: rem(30);
-      margin-bottom: $small-spacing /2;
-    }
-
-    p {
-      opacity: 0.7;
-      line-height: 1.2;
-      margin-bottom: $base-spacing;
-    }
-
-    & > a {
-      display: block;
-      color: #fff;
-      border: solid 1px #fff;
-      padding: 0.5em 1em;
-      text-align: center;
-      border-radius: 2px;
-
-      &:hover {
-        background-color: #fff;
-        color: $dark-gray;
-      }
-    }
-  }
-
-  .map {
-    display: none;
-  }
-
-  @media only screen and ( min-width: $medium-screen) {
-
-    .container > div {
-      @include fill-parent();
-      @include row(table);
-      height: 370px;
-    }
+.template-home {
+  .banner {
+    background-image: url("../img/chalkboard.jpg");
+    background-position: center top;
+    background-color: $dark-gray;
+    color: #fff;
 
     .text {
-      @include span-columns(4);
-      @include pad();
-      vertical-align: middle;
+      padding: $base-spacing;
+      text-transform: uppercase;
+
+      h1 {
+        font-size: rem(30);
+        margin-bottom: $small-spacing /2;
+      }
+
+      p {
+        font-size: rem(18);
+        opacity: 0.7;
+        line-height: 1.2;
+        margin-bottom: $base-spacing;
+      }
 
       & > a {
-        display: inline-block;
+        display: block;
+        color: #fff;
+        border: solid 1px #fff;
+        padding: 0.5em 1em;
+        text-align: center;
+        border-radius: 2px;
+
+        &:hover {
+          background-color: #fff;
+          color: $dark-gray;
+        }
       }
     }
 
     .map {
-      @include span-columns(8);
-      @include reset-display;
+      display: none;
+    }
+
+    @media only screen and ( min-width: $medium-screen) {
+
+      .container > div {
+        @include fill-parent();
+        @include row(table);
+        height: 370px;
+      }
+
+      .text {
+        @include span-columns(4);
+        @include pad();
+        vertical-align: middle;
+
+        & > a {
+          display: inline-block;
+        }
+      }
+
+      .map {
+        @include span-columns(8);
+        @include reset-display;
+      }
+    }
+  }
+
+  .main {
+    & > div {
+      text-align: center;
+      padding: $base-spacing;
+
+      a {
+        svg {
+          width: 80px;
+          height: 80px;
+          fill: $dark-gray;
+        }
+
+        h2 {
+          font-weight: normal;
+          text-transform: uppercase;
+          font-size: em(17);
+          margin-top: $base-spacing;
+          margin-bottom: $small-spacing / 2;
+        }
+
+        &:hover {
+          svg {
+            fill: currentColor;
+          }
+        }
+      }
+
+      p {
+        color: $base-font-color;
+        line-height: 1.3;
+        font-size: em(14);
+      }
+
+      @media only screen and ( min-width: $medium-screen) {
+        @include span-columns(3);
+        padding-top: $base-spacing + $small-spacing;
+      }
     }
   }
 }
