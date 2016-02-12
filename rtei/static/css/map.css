@@ -1,0 +1,28 @@
+.template-explore-map .map {
+  width: 100%;
+  height: 600px;
+}
+
+.template-home .map {
+  width: 100%;
+}
+
+
+.template-home .leaflet-container {
+  background: transparent;
+}
+.leaflet-container {
+  background: #EFEFEF;
+}
+
+.rtei-map-popup .leaflet-popup-content-wrapper {
+  background:#3B3B3B;
+  color:#fff;
+  font-size:16px;
+  line-height:24px;
+  border-radius: 0;
+}
+.rtei-map-popup .leaflet-popup-tip {
+  background: #3B3B3B;
+}
+
