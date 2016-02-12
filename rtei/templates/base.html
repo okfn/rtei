@@ -35,28 +35,54 @@
         {% block content %}{% endblock %}
 
         <footer class="site-footer">
-          <div class="container">
+          <div class="primary">
 
-            <ul class="links">
-              <li>
-                <a>Contact Us</a>
-              </li>
-              <li>
-                <a>Glossary</a>
-              </li>
-            </ul>
+              <ul class="links">
+                <li>
+                  <a>Contact Us</a>
+                </li>
+                <li>
+                  <a>Glossary</a>
+                </li>
+              </ul>
 
-            <ul class="social">
-              <li>
-                <a>{% include "icons/twitter.svg" %}</a>
-              </li>
-              <li>
-                <a>{% include "icons/facebook.svg" %}</a>
-              </li>
-              <li>
-                <a>{% include "icons/youtube.svg" %}</a>
-              </li>
-            </ul>
+              <ul class="social">
+                <li>
+                  <a>{% include "icons/twitter.svg" %}</a>
+                </li>
+                <li>
+                  <a>{% include "icons/facebook.svg" %}</a>
+                </li>
+                <li>
+                  <a>{% include "icons/youtube.svg" %}</a>
+                </li>
+              </ul>
+
+          </div>
+
+          <div class="secondary">
+            <div>
+              
+              <ul class="language">
+                <li class="active">
+                  <a>EN</a>
+                </li>
+                <li>
+                  <a>ES</a>
+                </li>
+                <li>
+                  <a>FR</a>
+                </li>
+                <li>
+                  <a>AR</a>
+                </li>
+              </ul>
+
+              <a href="http://results.org/" class="results">
+                <img src="{% static 'img/results.svg' %}" onerror="this.src='{% static 'img/results.png' %}'" alt="RESULTS">
+              </a>
+            </div>
+
           </div>
         </footer>
 

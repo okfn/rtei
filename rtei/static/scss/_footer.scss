@@ -6,67 +6,141 @@ html,
 .site-footer {
   color: transparentize($base-background-color, 0.3);
 
-  a {
-    color: inherit;
+  .primary {
+    @include outer-container;
+    text-align: center;
 
-    &:hover {
-      color: $base-background-color;
-    }
-  }
+    a {
+      color: inherit;
 
-  svg {
-    fill: currentColor;
-  }
-
-  .container {
-    padding: $base-spacing;
-  }
-
-  .links,
-  .social {
-    li {
-      display: inline-block;
-      font-size: em(13);
-    }
-  }
-
-  .links {
-    li {
-      a {
-        padding-right: $small-spacing;
-        margin-right: $small-spacing;
-        border-right: solid 1px transparentize($base-background-color, 0.3);
-      }
-
-      &:last-of-type a {
-        border: none;
+      &:hover {
+        color: $base-background-color;
       }
     }
-  }
 
-  .social {
-    li {
-      margin-right: $small-spacing;
+    svg {
+      fill: currentColor;
+    }
 
-      svg {
-        width: 1.5em;
-        height: 1.5em;
+
+    .links,
+    .social {
+      padding: $base-spacing;
+
+      li {
+        display: inline-block;
+        font-size: em(13);
       }
     }
-  }
 
-  @media only screen and ( min-width: $medium-screen) {
-
-    ul {
-      @include span-columns(6);
-
-      &.social {
-        text-align: right;
-
-        li {
-          margin-left: $small-spacing;
-          margin-right: 0;
+    .links {
+      li {
+        a {
+          padding-right: $small-spacing;
+          margin-right: $small-spacing;
+          border-right: solid 1px transparentize($base-background-color, 0.3);
         }
+
+        &:last-of-type a {
+          border: none;
+        }
+      }
+    }
+
+    .social {
+      li {
+        margin-right: $small-spacing;
+
+        svg {
+          width: 1.5em;
+          height: 1.5em;
+        }
+      }
+    }
+
+    @media only screen and ( min-width: $medium-screen) {
+
+      ul {
+        @include span-columns(6);
+
+        &.links {
+          text-align: left;
+        }
+
+        &.social {
+          text-align: right;
+
+          li {
+            margin-left: $small-spacing;
+            margin-right: 0;
+          }
+        }
+      }
+    }
+  }
+
+  .secondary {
+    @include outer-container;
+    text-align: center;
+
+    @media only screen and ( min-width: $medium-screen) {
+      text-align: right;
+    }
+
+    .language {
+      display: inline-block;
+      position: relative;
+      top: -15px;
+      right: $small-spacing;
+
+      li {
+        display: inline-block;
+        font-size: em(12);
+
+        @media only screen and ( min-width: $medium-screen) {
+          color: transparentize($base-font-color, 0.3);
+        }
+
+        &.active {
+          font-weight: bold;
+
+          @media only screen and ( min-width: $medium-screen) {
+            color: $base-font-color;
+          }
+        }
+
+        a {
+          color: inherit;
+          display: inline-block;
+          padding: $small-spacing / 2;
+        }
+      }
+    }
+
+    .results {
+      display: inline-block;
+      width: 80px;
+      background-color: $red;
+
+      @media only screen and ( min-width: $medium-screen) {
+        padding-top: 7px;
+      }
+
+      img {
+        width: 100%;
+        display: block;
+      }
+    }
+
+    & > div {
+      display: inline-block;
+      padding: 0 $base-spacing;
+
+      @media only screen and ( min-width: $medium-screen) {
+        position: absolute;
+        top: 0;
+        width: 400px;
+        margin-left: -400px;
       }
     }
   }
