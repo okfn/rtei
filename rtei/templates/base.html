@@ -19,6 +19,7 @@
         {% block extra_css %}
             {# Override this in templates to add extra stylesheets #}
         {% endblock %}
+        <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
     </head>
 
     <body class="{% block body_class %}{% endblock %}">
