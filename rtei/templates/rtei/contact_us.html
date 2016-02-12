@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% load wagtailcore_tags %}
+
 {% block body_class %}template-rtei{% endblock %}
 
 {% block content %}
@@ -15,7 +17,7 @@
     </p>
 
     <div>
-        {{ self.body }}
+        {{ self.body|richtext }}
     </div>
   </div>
 
