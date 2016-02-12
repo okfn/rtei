@@ -603,7 +603,7 @@ body {
       content: ''; }
     #smenu > a:after {
       top: 60%; }
-    @media only screen and (min-width: 40em) {
+    @media only screen and (min-width: 800px) {
       #smenu > a {
         display: none; } }
   #smenu:target > a:first-of-type, #smenu:not(:target) > a:last-of-type {
@@ -630,12 +630,12 @@ body {
     /* 5 */ }
   #smenu > div {
     display: none; }
-    @media only screen and (min-width: 40em) {
+    @media only screen and (min-width: 800px) {
       #smenu > div {
         display: block; } }
     #smenu > div > ul {
       background-color: #fff; }
-      @media only screen and (min-width: 40em) {
+      @media only screen and (min-width: 800px) {
         #smenu > div > ul {
           height: 45px;
           margin-right: 45px; } }
@@ -643,17 +643,17 @@ body {
         height: 100%; }
         #smenu > div > ul > li:not(:last-child) > a {
           border-bottom: 1px solid #e6e6e6; }
-          @media only screen and (min-width: 40em) {
+          @media only screen and (min-width: 800px) {
             #smenu > div > ul > li:not(:last-child) > a {
               border-bottom: none; } }
-        @media only screen and (min-width: 40em) {
+        @media only screen and (min-width: 800px) {
           #smenu > div > ul > li {
             float: left; } }
         #smenu > div > ul > li > a {
           line-height: 45px;
           padding: 0 0.833em;
           /* 20 (24) */ }
-          @media only screen and (min-width: 40em) {
+          @media only screen and (min-width: 800px) {
             #smenu > div > ul > li > a {
               height: 100%;
               text-align: center; } }
@@ -668,7 +668,7 @@ body {
     color: #fff; }
     #smenu li ul a {
       color: inherit; }
-    @media only screen and (min-width: 40em) {
+    @media only screen and (min-width: 800px) {
       #smenu li ul {
         position: absolute;
         top: 100%;
@@ -702,13 +702,13 @@ body {
       fill: currentColor;
       height: 45px;
       width: 1.3em; }
-    @media only screen and (min-width: 40em) {
+    @media only screen and (min-width: 800px) {
       #smenu #search > a:first-of-type {
         display: inline-block; } }
   #smenu #search .search {
     position: relative;
     height: 45px; }
-    @media only screen and (min-width: 40em) {
+    @media only screen and (min-width: 800px) {
       #smenu #search .search {
         display: none;
         position: absolute;
@@ -745,21 +745,28 @@ body {
 
 .site-header {
   background-color: #fff;
-  height: 125px; }
+  height: 105px; }
+  @media only screen and (min-width: 40em) {
+    .site-header {
+      height: 125px; } }
   .site-header .container {
     position: relative;
     padding: 1.5em; }
   .site-header .logo {
     display: block;
-    width: 140px;
+    width: 100px;
     float: left;
     margin-top: 4px; }
+    @media only screen and (min-width: 40em) {
+      .site-header .logo {
+        width: 140px; } }
     .site-header .logo img {
       width: 100%; }
   .site-header #smenu {
     position: relative;
     z-index: 1;
-    text-transform: uppercase; }
+    text-transform: uppercase;
+    top: -56px; }
     @media only screen and (min-width: 40em) {
       .site-header #smenu {
         position: absolute;

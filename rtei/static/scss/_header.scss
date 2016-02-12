@@ -2,7 +2,11 @@
 
 .site-header {
   background-color: $base-background-color;
-  height: 125px;
+  height: 105px;
+
+  @media only screen and ( min-width: $medium-screen) {
+    height: 125px;
+  }
 
   .container {
     position: relative;
@@ -11,9 +15,13 @@
 
   .logo {
     display: block;
-    width: 140px;
+    width: 100px;
     float: left;
     margin-top: 4px;
+
+    @media only screen and ( min-width: $medium-screen) {
+      width: 140px;
+    }
 
     img {
       width: 100%;
@@ -24,6 +32,7 @@
     position: relative;
     z-index: 1;
     text-transform: uppercase;
+    top: -56px;
 
     @media only screen and ( min-width: $medium-screen) {
       position: absolute;
