@@ -218,7 +218,7 @@
     }
     .search {
       position: relative;
-        height: $menu-height;
+      height: $menu-height;
 
       @media only screen and ( min-width: $break-point ) {
         display: none;
