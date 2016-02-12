@@ -18,7 +18,7 @@ AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 # Necessary to overcome broken pipe error if not default US location
 # (https://github.com/boto/boto/issues/621).
-AWS_S3_HOST = 's3-eu-west-1.amazonaws.com'
+AWS_S3_HOST = os.environ.get('AWS_S3_HOST')
 MEDIA_URL = "https://%s/" % (AWS_S3_CUSTOM_DOMAIN)
 
 ALLOWED_HOSTS = [
