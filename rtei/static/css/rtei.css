@@ -603,7 +603,7 @@ body {
       content: ''; }
     #smenu > a:after {
       top: 60%; }
-    @media only screen and (min-width: 40em) {
+    @media only screen and (min-width: 800px) {
       #smenu > a {
         display: none; } }
   #smenu:target > a:first-of-type, #smenu:not(:target) > a:last-of-type {
@@ -630,12 +630,12 @@ body {
     /* 5 */ }
   #smenu > div {
     display: none; }
-    @media only screen and (min-width: 40em) {
+    @media only screen and (min-width: 800px) {
       #smenu > div {
         display: block; } }
     #smenu > div > ul {
       background-color: #fff; }
-      @media only screen and (min-width: 40em) {
+      @media only screen and (min-width: 800px) {
         #smenu > div > ul {
           height: 45px;
           margin-right: 45px; } }
@@ -643,17 +643,17 @@ body {
         height: 100%; }
         #smenu > div > ul > li:not(:last-child) > a {
           border-bottom: 1px solid #e6e6e6; }
-          @media only screen and (min-width: 40em) {
+          @media only screen and (min-width: 800px) {
             #smenu > div > ul > li:not(:last-child) > a {
               border-bottom: none; } }
-        @media only screen and (min-width: 40em) {
+        @media only screen and (min-width: 800px) {
           #smenu > div > ul > li {
             float: left; } }
         #smenu > div > ul > li > a {
           line-height: 45px;
           padding: 0 0.833em;
           /* 20 (24) */ }
-          @media only screen and (min-width: 40em) {
+          @media only screen and (min-width: 800px) {
             #smenu > div > ul > li > a {
               height: 100%;
               text-align: center; } }
@@ -668,7 +668,7 @@ body {
     color: #fff; }
     #smenu li ul a {
       color: inherit; }
-    @media only screen and (min-width: 40em) {
+    @media only screen and (min-width: 800px) {
       #smenu li ul {
         position: absolute;
         top: 100%;
@@ -702,13 +702,13 @@ body {
       fill: currentColor;
       height: 45px;
       width: 1.3em; }
-    @media only screen and (min-width: 40em) {
+    @media only screen and (min-width: 800px) {
       #smenu #search > a:first-of-type {
         display: inline-block; } }
   #smenu #search .search {
     position: relative;
     height: 45px; }
-    @media only screen and (min-width: 40em) {
+    @media only screen and (min-width: 800px) {
       #smenu #search .search {
         display: none;
         position: absolute;
@@ -745,33 +745,33 @@ body {
 
 .site-header {
   background-color: #fff;
-  height: 125px; }
+  height: 105px; }
+  @media only screen and (min-width: 40em) {
+    .site-header {
+      height: 125px; } }
   .site-header .container {
     position: relative;
     padding: 1.5em; }
   .site-header .logo {
     display: block;
-    width: 140px;
+    width: 100px;
     float: left;
     margin-top: 4px; }
+    @media only screen and (min-width: 40em) {
+      .site-header .logo {
+        width: 140px; } }
     .site-header .logo img {
       width: 100%; }
   .site-header #smenu {
     position: relative;
     z-index: 1;
-    text-transform: uppercase; }
+    text-transform: uppercase;
+    top: -56px; }
     @media only screen and (min-width: 40em) {
       .site-header #smenu {
         position: absolute;
         top: 70px;
         right: 1.5em; } }
-  .site-header .results {
-    width: 80px;
-    position: absolute;
-    top: 0;
-    right: 1.5em; }
-    .site-header .results img {
-      width: 100%; }
 
 .template-home .banner {
   background-image: url("../img/chalkboard.jpg");
@@ -853,41 +853,104 @@ html,
 
 .site-footer {
   color: rgba(255, 255, 255, 0.7); }
-  .site-footer a {
-    color: inherit; }
-    .site-footer a:hover {
-      color: #fff; }
-  .site-footer svg {
-    fill: currentColor; }
-  .site-footer .container {
-    padding: 1.5em; }
-  .site-footer .links li,
-  .site-footer .social li {
-    display: inline-block;
-    font-size: 0.8125em; }
-  .site-footer .links li a {
-    padding-right: 0.75em;
-    margin-right: 0.75em;
-    border-right: solid 1px rgba(255, 255, 255, 0.7); }
-  .site-footer .links li:last-of-type a {
-    border: none; }
-  .site-footer .social li {
-    margin-right: 0.75em; }
-    .site-footer .social li svg {
-      width: 1.5em;
-      height: 1.5em; }
-  @media only screen and (min-width: 40em) {
-    .site-footer ul {
-      float: left;
-      display: block;
-      margin-right: 2.35765%;
-      width: 48.82117%; }
-      .site-footer ul:last-child {
-        margin-right: 0; }
-      .site-footer ul.social {
-        text-align: right; }
-        .site-footer ul.social li {
-          margin-left: 0.75em;
-          margin-right: 0; } }
+  .site-footer .primary {
+    max-width: 68em;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center; }
+    .site-footer .primary::after {
+      clear: both;
+      content: "";
+      display: table; }
+    .site-footer .primary a {
+      color: inherit; }
+      .site-footer .primary a:hover {
+        color: #fff; }
+    .site-footer .primary svg {
+      fill: currentColor; }
+    .site-footer .primary .links,
+    .site-footer .primary .social {
+      padding: 1.5em; }
+      .site-footer .primary .links li,
+      .site-footer .primary .social li {
+        display: inline-block;
+        font-size: 0.8125em; }
+    .site-footer .primary .links li a {
+      padding-right: 0.75em;
+      margin-right: 0.75em;
+      border-right: solid 1px rgba(255, 255, 255, 0.7); }
+    .site-footer .primary .links li:last-of-type a {
+      border: none; }
+    .site-footer .primary .social li {
+      margin-right: 0.75em; }
+      .site-footer .primary .social li svg {
+        width: 1.5em;
+        height: 1.5em; }
+    @media only screen and (min-width: 40em) {
+      .site-footer .primary ul {
+        float: left;
+        display: block;
+        margin-right: 2.35765%;
+        width: 48.82117%; }
+        .site-footer .primary ul:last-child {
+          margin-right: 0; }
+        .site-footer .primary ul.links {
+          text-align: left; }
+        .site-footer .primary ul.social {
+          text-align: right; }
+          .site-footer .primary ul.social li {
+            margin-left: 0.75em;
+            margin-right: 0; } }
+  .site-footer .secondary {
+    max-width: 68em;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center; }
+    .site-footer .secondary::after {
+      clear: both;
+      content: "";
+      display: table; }
+    @media only screen and (min-width: 40em) {
+      .site-footer .secondary {
+        text-align: right; } }
+    .site-footer .secondary .language {
+      display: inline-block;
+      position: relative;
+      top: -15px;
+      right: 0.75em; }
+      .site-footer .secondary .language li {
+        display: inline-block;
+        font-size: 0.75em; }
+        @media only screen and (min-width: 40em) {
+          .site-footer .secondary .language li {
+            color: rgba(59, 59, 59, 0.7); } }
+        .site-footer .secondary .language li.active {
+          font-weight: bold; }
+          @media only screen and (min-width: 40em) {
+            .site-footer .secondary .language li.active {
+              color: #3b3b3b; } }
+        .site-footer .secondary .language li a {
+          color: inherit;
+          display: inline-block;
+          padding: 0.375em; }
+    .site-footer .secondary .results {
+      display: inline-block;
+      width: 80px;
+      background-color: #af202f; }
+      @media only screen and (min-width: 40em) {
+        .site-footer .secondary .results {
+          padding-top: 7px; } }
+      .site-footer .secondary .results img {
+        width: 100%;
+        display: block; }
+    .site-footer .secondary > div {
+      display: inline-block;
+      padding: 0 1.5em; }
+      @media only screen and (min-width: 40em) {
+        .site-footer .secondary > div {
+          position: absolute;
+          top: 0;
+          width: 400px;
+          margin-left: -400px; } }
 
 /*# sourceMappingURL=rtei.css.map */
