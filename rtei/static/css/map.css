@@ -7,12 +7,29 @@
   width: 100%;
 }
 
-
 .template-home .leaflet-container {
   background: transparent;
 }
 .leaflet-container {
   background: #EFEFEF;
+}
+
+.leaflet-bar{
+  border-radius: 0;
+}
+
+.leaflet-bar a:first-child {
+  border-radius: 0;
+}
+
+
+.leaflet-bar a:last-child {
+  border-radius: 0;
+}
+
+.leaflet-control-zoom a {
+  background: #333333;
+  color: white;
 }
 
 .rtei-map-popup .leaflet-popup-content-wrapper {

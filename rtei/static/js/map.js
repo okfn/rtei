@@ -103,8 +103,10 @@ RTEI.map = (function() {
     init: function() {
 
       RTEI.map.map = L.map('map', {
-          attributionControl: false
+        attributionControl: false,
+        zoomControl: false
       }).setView([10, 0], 2);
+      L.control.zoom({position: 'topright'}).addTo(RTEI.map.map);
 
       // TODO: remove once we have the final data
       var random = Boolean((location.search.split('random=')[1]||'').split('&')[0]);
