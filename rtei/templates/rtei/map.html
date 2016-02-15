@@ -12,6 +12,20 @@
 
 {% block content %}
 <div class="container">
+    <div class="indicator-switcher">
+
+        <input type="radio" name="indicator" value="index" id="indicator_index" checked="checked" /><label for="indicator_index">Overall Index</label>
+        <ul>
+            <li><input type="radio" name="indicator" value="1" id="indicator_1"/><label for="indicator_1">Governance</label></li>
+
+        <ul>
+            <li><input type="radio" name="indicator" value="1.1" id="indicator_1.1"/><label for="indicator_1.1">International Framework</label></li>
+
+        </ul>
+            <li><input type="radio" name="indicator" value="2" id="indicator_2"/><label for="indicator_2">Availability</label></li>
+        </ul>
+    </div>
+
     <div class="map" id="map">
     </div>
 </div>

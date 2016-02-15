@@ -1,6 +1,11 @@
 var RTEI = RTEI || {}
 RTEI.map = (function() {
 
+  var indicators;
+  $.getJSON('/static/data/indicators.json', function(data) {
+    indicators = data;
+  });
+
   var homepage = window.location.href.indexOf('explore/map') === -1;
 
   // get color depending on the selected index
@@ -23,7 +28,7 @@ RTEI.map = (function() {
       opacity: 1,
       color: 'white',
       fillOpacity: 1,
-      fillColor: getColor(feature.properties.index)
+      fillColor: getColor(feature.properties[RTEI.map.currentIndex])
     };
   }
 
@@ -51,18 +56,28 @@ RTEI.map = (function() {
     RTEI.map.map.fitBounds(e.target.getBounds());
   }
 
-  function onEachFeature(feature, layer) {
-
+  function popupContent(feature) {
     var content = ''
     content += '<div class="hoverinfo">';
     content += ' <h3>' + feature.properties.name + '</h3>';
     if (feature.properties.index) {
       content += ' <div class="country-score">Index: ' + feature.properties.index + '</div>';
+
+      if (feature.properties[RTEI.map.currentIndex]) {
+        content += ' <div class="country-score">: ' + feature.properties[RTEI.map.currentIndex] + '</div>';
+      }
+
+
       content += ' <div class="more-details">Click for more details</div>';
     } else {
       content += ' <div class="no-data">No data available</div>';
     }
-    layer.bindPopup(content, {
+    return content;
+  }
+
+  function onEachFeature(feature, layer) {
+
+    layer.bindPopup(popupContent(feature), {
       className: 'rtei-map-popup'}
     );
     layer.on({
@@ -94,12 +109,34 @@ RTEI.map = (function() {
       geoJSONLayer = omnivore.topojson('/static/data/countries.topojson', null , customGeoJSONLayer)
         .addTo(RTEI.map.map);
 
+    },
+
+    // Refresh the countries layer symbology depending on the current index
+    refresh() {
+      geoJSONLayer.setStyle(style);
+      geoJSONLayer.eachLayer(function(layer){
+        if (layer.closePopup) {
+//          layer.closePopup();
+        }
+        var subLayers = (!layer._layers) ? {'x': layer} : layer._layers;
+        for (var i in subLayers) {
+          if (subLayers[i]._popup) {
+            subLayers[i]._popup.setContent(popupContent(layer.feature))
+            subLayers[i]._popup.update();
+          }
+        }
+      });
     }
   }
-
-
 })()
 
 $(document).ready(function(){
     RTEI.map.init();
+
+    $('.indicator-switcher input').on('click', function(){
+      if (this.value != RTEI.map.currentIndex) {
+        RTEI.map.currentIndex = this.value;
+        RTEI.map.refresh();
+      }
+    });
 });

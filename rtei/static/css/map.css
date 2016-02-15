@@ -26,3 +26,12 @@
   background: #3B3B3B;
 }
 
+.indicator-switcher ul {
+  margin-left: 10px;
+}
+
+.indicator-switcher label {
+  display: inline-block;
+  width: 200px;
+  text-align: left;
+}
