@@ -106,7 +106,10 @@ RTEI.map = (function() {
           attributionControl: false
       }).setView([10, 0], 2);
 
-      geoJSONLayer = omnivore.topojson('/static/data/countries.topojson', null , customGeoJSONLayer)
+      // TODO: remove once we have the final data
+      var random = Boolean((location.search.split('random=')[1]||'').split('&')[0]);
+      var fileName = (random) ? 'countries_random.topojson': 'countries.topojson';
+      geoJSONLayer = omnivore.topojson('/static/data/' + fileName, null , customGeoJSONLayer)
         .addTo(RTEI.map.map);
 
     },
@@ -115,9 +118,6 @@ RTEI.map = (function() {
     refresh() {
       geoJSONLayer.setStyle(style);
       geoJSONLayer.eachLayer(function(layer){
-        if (layer.closePopup) {
-//          layer.closePopup();
-        }
         var subLayers = (!layer._layers) ? {'x': layer} : layer._layers;
         for (var i in subLayers) {
           if (subLayers[i]._popup) {
