@@ -42,3 +42,28 @@
   }
 
 }
+
+.breadcrumb {
+  background-color: $medium-gray;
+  color: #fff;
+
+  & > ol {
+    @include outer-container;
+    padding: $small-spacing $base-spacing;
+    text-transform: uppercase;
+
+    li {
+      display: inline-block;
+      font-size: em(12);
+
+      a {
+        color: inherit;
+        opacity: 0.5;
+
+        &:after {
+          content: ' / ';
+        }
+      }
+    }
+  }
+}

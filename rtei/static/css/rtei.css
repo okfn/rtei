@@ -773,6 +773,28 @@ body {
         top: 70px;
         right: 1.5em; } }
 
+.breadcrumb {
+  background-color: #595a5b;
+  color: #fff; }
+  .breadcrumb > ol {
+    max-width: 68em;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0.75em 1.5em;
+    text-transform: uppercase; }
+    .breadcrumb > ol::after {
+      clear: both;
+      content: "";
+      display: table; }
+    .breadcrumb > ol li {
+      display: inline-block;
+      font-size: 0.75em; }
+      .breadcrumb > ol li a {
+        color: inherit;
+        opacity: 0.5; }
+        .breadcrumb > ol li a:after {
+          content: ' / '; }
+
 .template-home .banner {
   background-image: url("../img/chalkboard.jpg");
   background-position: center top;

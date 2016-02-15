@@ -1,7 +1,8 @@
 {% load wagtailcore_tags %}
 
 {% if ancestors %}
-  <ol class="breadcrumb">
+<div class="breadcrumb">
+  <ol>
     {% for ancestor in ancestors %}
       {% if forloop.last %}
         <li class="active">{{ ancestor }}</li>
@@ -10,4 +11,5 @@
       {% endif %}
     {% endfor %}
   </ol>
+</div>
 {% endif %}
