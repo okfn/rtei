@@ -575,7 +575,7 @@ body {
   text-align: right;
   clear: both;
   position: relative;
-  top: -45px; }
+  top: -30px; }
   #smenu ul,
   #smenu li {
     display: block;
@@ -587,8 +587,8 @@ body {
   #smenu:target > div {
     display: block; }
   #smenu > a {
-    width: 45px;
-    height: 45px;
+    width: 30px;
+    height: 30px;
     text-align: left;
     text-indent: -9999px;
     background-color: #333333;
@@ -614,7 +614,7 @@ body {
       color: #333333;
       display: block; }
       #smenu li a:active {
-        background-color: #af202f !important; }
+        background-color: #595a5b !important; }
   #smenu .dropdown-toggle:after {
     width: 0;
     height: 0;
@@ -637,8 +637,8 @@ body {
       background-color: #fff; }
       @media only screen and (min-width: 800px) {
         #smenu > div > ul {
-          height: 45px;
-          margin-right: 45px; } }
+          height: 30px;
+          margin-right: 30px; } }
       #smenu > div > ul > li {
         height: 100%; }
         #smenu > div > ul > li:not(:last-child) > a {
@@ -650,20 +650,19 @@ body {
           #smenu > div > ul > li {
             float: left; } }
         #smenu > div > ul > li > a {
-          line-height: 45px;
-          padding: 0 0.833em;
-          /* 20 (24) */ }
+          line-height: 30px;
+          padding: 0 15px; }
           @media only screen and (min-width: 800px) {
             #smenu > div > ul > li > a {
               height: 100%;
               text-align: center; } }
   #smenu > div > ul > li:hover > a, #smenu > div > ul:not(:hover) > li.active > a {
-    background-color: #333333;
+    background-color: #595a5b;
     color: #fff; }
     #smenu > div > ul > li:hover > a.dropdown-toggle:after, #smenu > div > ul:not(:hover) > li.active > a.dropdown-toggle:after {
       border-top-color: #fff; }
   #smenu li ul {
-    background-color: #333333;
+    background-color: #595a5b;
     display: none;
     color: #fff; }
     #smenu li ul a {
@@ -682,65 +681,64 @@ body {
   #smenu li:not(:first-child):hover ul {
     left: -1px; }
   #smenu li ul a {
-    border-top: 1px solid #1a1a1a;
-    padding: 0.75em;
-    /* 15 (20) */ }
+    border-top: 1px solid #404141;
+    padding: 5px 15px; }
   #smenu li ul li a:hover,
   #smenu li ul:not(:hover) li.active a {
-    background-color: #1a1a1a; }
+    background-color: #404141; }
   #smenu #search > a {
     float: right;
     display: inline-block;
-    height: 45px;
-    width: 45px;
+    height: 30px;
+    width: 30px;
     overflow: hidden;
     display: none;
     color: #333333;
     text-align: center;
-    line-height: 45px; }
+    line-height: 30px; }
     #smenu #search > a svg {
       fill: currentColor;
-      height: 45px;
-      width: 1.3em; }
+      height: 30px;
+      width: 20px; }
     @media only screen and (min-width: 800px) {
       #smenu #search > a:first-of-type {
         display: inline-block; } }
   #smenu #search .search {
     position: relative;
-    height: 45px; }
+    height: 30px; }
     @media only screen and (min-width: 800px) {
       #smenu #search .search {
         display: none;
         position: absolute;
-        top: 45px;
+        top: 30px;
         right: 0; } }
   #smenu #search:target > a:first-of-type {
     display: none; }
   #smenu #search:target > a:last-of-type {
     display: inline-block;
-    background-color: #333333;
+    background-color: #595a5b;
     color: #fff; }
   #smenu #search:target > .search {
     display: block; }
   #smenu #search input,
   #smenu #search button {
-    height: 45px; }
+    height: 36px; }
   #smenu #search input[type="text"] {
-    padding-right: 49.5px;
+    padding: 0 33px 0 10px;
     border-radius: 0;
-    border: solid 3px #333333;
+    border: solid 3px #595a5b;
     box-shadow: none; }
   #smenu #search button {
-    width: 45px;
+    width: 30px;
     position: absolute;
     top: 50%;
     right: 0;
-    margin-top: -22.5px;
+    margin-top: -15px;
     padding: 0;
     background-color: transparent;
     color: #e6e6e6; }
     #smenu #search button svg {
-      width: 22.5px;
+      width: 15px;
       fill: currentColor; }
 
 .site-header {
@@ -770,7 +768,7 @@ body {
     @media only screen and (min-width: 40em) {
       .site-header #smenu {
         position: absolute;
-        top: 70px;
+        top: 72px;
         right: 1.5em; } }
 
 .breadcrumb {

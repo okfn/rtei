@@ -1,8 +1,8 @@
 #smenu {
 
-  $menu-height: 45px;
+  $menu-height: 30px;
   $break-point: 800px;
-  $active-colour: $red;
+  $active-colour: $medium-gray;
   $menu-colour: #fff;
   $link-colour: $dark-gray;
   $toggle-colour: $link-colour;
@@ -121,7 +121,7 @@
 
         & > a {
           line-height: $menu-height;
-          padding: 0 0.833em; /* 20 (24) */
+          padding: 0 $menu-height / 2;
 
           @media only screen and ( min-width: $break-point ) {
             height: 100%;
@@ -140,7 +140,7 @@
 
   & > div > ul > li:hover > a,
   & > div > ul:not( :hover ) > li.active > a {
-    background-color: $dark-gray;
+    background-color: $active-colour;
     color: #fff;
 
     &.dropdown-toggle:after {
@@ -151,7 +151,7 @@
   // second level
 
   li ul {
-    background-color: $dark-gray;
+    background-color: $active-colour;
     display: none;
     color: #fff;
 
@@ -180,13 +180,13 @@
   }
 
   li ul a {
-    border-top: 1px solid darken( $dark-gray, 10% );
-    padding: 0.75em; /* 15 (20) */
+    border-top: 1px solid darken( $active-colour, 10% );
+    padding: $menu-height / 6 $menu-height / 2;
   }
 
   li ul li a:hover,
   li ul:not( :hover ) li.active a {
-   background-color: darken( $dark-gray, 10% );
+   background-color: darken( $active-colour, 10% );
  }
 
  // search
@@ -207,7 +207,7 @@
       svg {
         fill: currentColor;
         height: $menu-height;
-        width: 1.3em;
+        width: $menu-height / 1.5;
       }
 
       @media only screen and ( min-width: $break-point ) {
@@ -234,7 +234,7 @@
       }
       & > a:last-of-type {
         display: inline-block;
-        background-color: $dark-gray;
+        background-color: $active-colour;
         color: #fff;
       }
       & > .search {
@@ -244,13 +244,13 @@
 
     input,
     button {
-      height: $menu-height;
+      height: $menu-height + 6px;
     }
 
     input[type="text"] {
-      padding-right: $menu-height * 1.1;
+      padding: 0 $menu-height * 1.1 0 $menu-height / 3;
       border-radius: 0;
-      border: solid 3px $dark-gray;
+      border: solid 3px $active-colour;
       box-shadow: none;
     }
 
