@@ -469,6 +469,35 @@ def scores_per_country_as_json(output_dir=OUTPUT_DIR, random_values=False):
         f.write(json.dumps(out))
 
 
+def scores_per_country_as_csv(output_dir=OUTPUT_DIR, random_values=False):
+    '''
+    Write a CSV file with the level 1 and 2 scores for each country, in the form:
+
+        iso2,index,1,1.1,1.2,..
+        CL,68.78,100,56.334,89.322,...
+
+        ...
+    '''
+    out = indicators_per_country(max_level=2, derived=False,
+                                 random_values=random_values)
+
+    out_list = []
+    for country in out.keys():
+        add_main_scores(out[country])
+        add_full_score(out[country])
+        out[country]['iso2'] = country
+        out_list.append(out[country])
+
+    file_name = ('scores_per_country.csv' if not random_values
+                 else 'scores_per_country_random.csv')
+    output_file = os.path.join(output_dir, file_name)
+
+    with open(output_file, 'w') as f:
+        w = csv.DictWriter(f, out_list[0].keys())
+        w.writeheader()
+        w.writerows(out_list)
+
+
 def c3_ready_json(output_dir=OUTPUT_DIR, random_values=False):
     indicators = indicators_per_country(max_level=2, derived=False,
                                         random_values=random_values)
@@ -512,7 +541,8 @@ The available outputs are:
 
     * `indicators-json`
     * `indicators-csv `
-    * `scores-per-country`
+    * `scores-per-country-json`
+    * `scores-per-country-csv`
     * `indicators-per-country`
     * `all`
     '''
@@ -548,9 +578,13 @@ The available outputs are:
         indicators_as_json(output_dir)
     elif args.type == 'indicators-csv':
         indicators_as_csv(output_dir)
-    elif args.type == 'scores-per-country':
+    elif args.type == 'scores-per-country-json':
         scores_per_country_as_json(output_dir, random_values=args.random)
+    elif args.type == 'scores-per-country-csv':
+        scores_per_country_as_csv(output_dir, random_values=args.random)
     elif args.type == 'indicators-per-country':
         indicators_per_country_as_json(one_file=False, output_dir=output_dir)
     elif args.type == 'c3-ready-json':
         c3_ready_json(output_dir=output_dir, random_values=args.random)
+    else:
+        print 'Unknown output type'
