@@ -36,6 +36,10 @@
         var chart;
         var json_data;
         var build_chart = function(data) {
+            // Chart height is the number of rows * 22, or 350, whichever is
+            // largest. This ensures there is adequate room for double-lined
+            // labels.
+            var height = _.max([_.size(data) * 22, 350]);
             var chart = c3.generate({
                 bindto: '#chart',
                 data: {
@@ -66,12 +70,17 @@
                         show: true,
                         max: 100,
                         padding: {
-                            top: 0
+                            top: 0,
                         }
                     }
                 },
                 bar: {
-                    width: 65
+                    width: {
+                        ratio: 0.75
+                    }
+                },
+                size: {
+                    height: height
                 }
             });
             return chart;
