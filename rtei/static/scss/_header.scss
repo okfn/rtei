@@ -36,9 +36,34 @@
 
     @media only screen and ( min-width: $medium-screen) {
       position: absolute;
-      top: 70px;
+      top: 72px;
       right: $base-spacing;
     }
   }
 
+}
+
+.breadcrumb {
+  background-color: $medium-gray;
+  color: #fff;
+
+  & > ol {
+    @include outer-container;
+    padding: $small-spacing $base-spacing;
+    text-transform: uppercase;
+
+    li {
+      display: inline-block;
+      font-size: em(12);
+
+      a {
+        color: inherit;
+        opacity: 0.5;
+
+        &:after {
+          content: ' / ';
+        }
+      }
+    }
+  }
 }

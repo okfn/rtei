@@ -2,7 +2,7 @@
   .banner {
     background-image: url("../img/chalkboard.jpg");
     background-position: center top;
-    background-color: $dark-gray;
+    background-color: $medium-gray;
     color: #fff;
 
     .text {
@@ -69,6 +69,7 @@
     & > div {
       text-align: center;
       padding: $base-spacing;
+      background-color: inherit;
 
       a {
         svg {

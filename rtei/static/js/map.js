@@ -14,12 +14,12 @@ RTEI.map = (function() {
       return '#B2B2B2';
     }
     score = parseFloat(score);
-    return score > 80 ? '#E55066' :
-           score > 60 ? '#D21E43' :
-           score > 40 ? '#8D1423' :
-           score > 20 ? '#48130B' :
-           score > 0  ? '#120E05' :
-                    '#B2B2B2';
+    return score > 80 ? '#ad2429' :
+           score > 60 ? '#df4439' :
+           score > 40 ? '#f97b5d' :
+           score > 20 ? '#fbb89d' :
+           score > 0  ? '#fde8dd' :
+                    '#bebebd';
   }
 
   function style(feature) {

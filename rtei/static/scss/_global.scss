@@ -9,4 +9,20 @@ body {
 .main {
   @include outer-container;
   padding: $base-spacing;
+
+  & > * {
+    background-color: $base-background-color;
+    margin-bottom: $base-spacing;
+  }
+  & > section {
+    padding: $base-spacing;
+
+    &.controls {
+      padding: 0;
+
+      & > button {
+        border-radius: 0;
+      }
+    }
+  }
 }
