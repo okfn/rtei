@@ -570,6 +570,15 @@ body {
     clear: both;
     content: "";
     display: table; }
+  .main > * {
+    background-color: #fff;
+    margin-bottom: 1.5em; }
+  .main > section {
+    padding: 1.5em; }
+    .main > section.controls {
+      padding: 0; }
+      .main > section.controls > button {
+        border-radius: 0; }
 
 #smenu {
   text-align: right;
@@ -840,7 +849,8 @@ body {
       width: 66.66667%; } }
 .template-home .main > div {
   text-align: center;
-  padding: 1.5em; }
+  padding: 1.5em;
+  background-color: inherit; }
   .template-home .main > div a svg {
     width: 80px;
     height: 80px;
