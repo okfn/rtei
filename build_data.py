@@ -9,6 +9,7 @@ import os
 import json
 import csv
 import argparse
+import random
 from collections import OrderedDict
 
 from openpyxl import load_workbook
@@ -286,7 +287,7 @@ def add_full_score(country_indicators):
     country_indicators.update(get_full_score(country_indicators))
 
 
-def indicators_per_country(max_level=4, derived=True):
+def indicators_per_country(max_level=4, derived=True, random_values=False):
     '''
     Returns a dict containing the values for all indicators for all countries,
     with the following structure:
@@ -314,6 +315,9 @@ def indicators_per_country(max_level=4, derived=True):
 
     You can restrict the indicators returned with the `max_level` parameter
     and whether to return `derived` (eg 1.2a or 3.2.1_ag) indicators or not.
+
+    If `random_values` is True, countries not present in the spreadsheet are
+    returned with random values (only for levels 1 and 2).
     '''
 
     out = OrderedDict()
@@ -364,6 +368,15 @@ def indicators_per_country(max_level=4, derived=True):
         add_main_scores(out[country_code])
         add_full_score(out[country_code])
 
+    if random_values:
+        for country in countries:
+            if country['iso2'] not in country_codes and country['iso2']:
+                out[country['iso2']] = {}
+                for indicator in indicators:
+                    if (indicator['level'] <= 2 and
+                            not indicator['code'][-1].isalpha()):
+                        out[country['iso2']][indicator['code']] = random.randint(
+                            0, 100)
     return out
 
 
@@ -440,21 +453,54 @@ def indicators_per_country_as_json(one_file=True, output_dir=OUTPUT_DIR):
                 f.write(json.dumps(out[country_code]))
 
 
-def scores_per_country_as_json(output_dir=OUTPUT_DIR):
+def scores_per_country_as_json(output_dir=OUTPUT_DIR, random_values=False):
 
-    out = indicators_per_country(max_level=2, derived=False)
+    out = indicators_per_country(max_level=2, derived=False,
+                                 random_values=random_values)
     for country in out.keys():
         add_main_scores(out[country])
         add_full_score(out[country])
 
-    output_file = os.path.join(output_dir, 'scores_per_country.json')
+    file_name = ('scores_per_country.json' if not random_values
+                 else 'scores_per_country_random.json')
+    output_file = os.path.join(output_dir, file_name)
 
     with open(output_file, 'w') as f:
         f.write(json.dumps(out))
 
 
-def c3_ready_json(output_dir=OUTPUT_DIR):
-    indicators = indicators_per_country(max_level=2, derived=False)
+def scores_per_country_as_csv(output_dir=OUTPUT_DIR, random_values=False):
+    '''
+    Write a CSV file with the level 1 and 2 scores for each country, in the form:
+
+        iso2,index,1,1.1,1.2,..
+        CL,68.78,100,56.334,89.322,...
+
+        ...
+    '''
+    out = indicators_per_country(max_level=2, derived=False,
+                                 random_values=random_values)
+
+    out_list = []
+    for country in out.keys():
+        add_main_scores(out[country])
+        add_full_score(out[country])
+        out[country]['iso2'] = country
+        out_list.append(out[country])
+
+    file_name = ('scores_per_country.csv' if not random_values
+                 else 'scores_per_country_random.csv')
+    output_file = os.path.join(output_dir, file_name)
+
+    with open(output_file, 'w') as f:
+        w = csv.DictWriter(f, out_list[0].keys())
+        w.writeheader()
+        w.writerows(out_list)
+
+
+def c3_ready_json(output_dir=OUTPUT_DIR, random_values=False):
+    indicators = indicators_per_country(max_level=2, derived=False,
+                                        random_values=random_values)
 
     def normalize_main_scores(scores):
         '''Scores are a percentage, normalize them to fit a total percentage
@@ -470,7 +516,9 @@ def c3_ready_json(output_dir=OUTPUT_DIR):
     out = [OrderedDict([('name', get_country_name(c))] + list(normalize_main_scores(v).items()))
            for c, v in indicators.iteritems()]
 
-    output_file = os.path.join(output_dir, 'c3_scores_per_country.json')
+    file_name = ('c3_scores_per_country.json' if not random_values
+                 else 'c3_scores_per_country_random.json')
+    output_file = os.path.join(output_dir, file_name)
 
     with open(output_file, 'w') as f:
         f.write(json.dumps(out))
@@ -493,7 +541,8 @@ The available outputs are:
 
     * `indicators-json`
     * `indicators-csv `
-    * `scores-per-country`
+    * `scores-per-country-json`
+    * `scores-per-country-csv`
     * `indicators-per-country`
     * `all`
     '''
@@ -507,6 +556,9 @@ The available outputs are:
                         help='Input Excel (xlsx) file')
     parser.add_argument('-o', '--output',
                         help='Output directory for the files')
+    parser.add_argument('-r', '--random',
+                        action='store_true',
+                        help='Fill values for missing countries with random values')
 
     args = parser.parse_args()
 
@@ -517,19 +569,22 @@ The available outputs are:
 
     with open(COUNTRIES_FILE, 'r') as f:
         countries = json.load(f)
-
     if args.type == 'all':
         indicators_as_json(output_dir)
         indicators_per_country_as_json(one_file=False, output_dir=output_dir)
-        scores_per_country_as_json(output_dir)
+        scores_per_country_as_json(output_dir, random_values=args.random)
         c3_ready_json(output_dir=output_dir)
     elif args.type == 'indicators-json':
         indicators_as_json(output_dir)
     elif args.type == 'indicators-csv':
         indicators_as_csv(output_dir)
-    elif args.type == 'scores-per-country':
-        scores_per_country_as_json(output_dir)
+    elif args.type == 'scores-per-country-json':
+        scores_per_country_as_json(output_dir, random_values=args.random)
+    elif args.type == 'scores-per-country-csv':
+        scores_per_country_as_csv(output_dir, random_values=args.random)
     elif args.type == 'indicators-per-country':
         indicators_per_country_as_json(one_file=False, output_dir=output_dir)
     elif args.type == 'c3-ready-json':
-        c3_ready_json(output_dir=output_dir)
+        c3_ready_json(output_dir=output_dir, random_values=args.random)
+    else:
+        print 'Unknown output type'

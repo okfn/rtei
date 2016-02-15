@@ -106,7 +106,12 @@
         };
 
         // Get the data and initialize the chart.
-        var json_data = $.getJSON("{% static 'data/c3_scores_per_country.json' %}", function(data) {
+        // TODO: remove once we have the final data
+        {% if request.GET.random %}
+            var json_data = $.getJSON("{% static 'data/c3_scores_per_country_random.json' %}", function(data) {
+        {% else %}
+            var json_data = $.getJSON("{% static 'data/c3_scores_per_country.json' %}", function(data) {
+        {% endif %}
             json_data = data;
             init_sort_buttons();
             chart = build_chart(json_data);
