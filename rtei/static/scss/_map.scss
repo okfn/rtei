@@ -1,0 +1,95 @@
+.rtei-map-popup .leaflet-popup-content-wrapper {
+  color: $base-font-color;
+}
+
+.template-explore-map {
+  .indicator-switcher {
+
+    label {
+      display: block;
+      cursor: pointer;
+      margin: 0;
+      padding: $base-spacing*0.75 $base-spacing;
+      font-size: em(14);
+    }
+
+    input[type="radio"] {
+      display: none;
+
+      &:checked + label {
+        background-color: $red;
+        color: $base-background-color;
+
+        & + h6 {
+          border-top-color: $base-background-color;
+        }
+      }
+    }
+
+    & > ul {
+      @include clearfix;
+
+      @media only screen and ( min-width: $medium-screen) {
+        @include fill-parent();
+        @include row(table);
+      }
+
+      & > li {
+        display: block;
+        position: relative;
+
+        &.subcat {
+          background-color: rgba($red, 0.2);
+          background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIElEQVQIW2NkQAL/////zwjjgzkgABKAcUBsRmQOSAAAIAYQAX1y8K4AAAAASUVORK5CYII=);
+        }
+
+        @media only screen and ( min-width: $medium-screen) {
+          @include span-columns(2);
+
+          &:last-child {
+            @include reset-display;
+          }
+        }
+
+        h6 {
+          text-indent: -9999em;
+          overflow: hidden;
+          width: 0;
+          height: 0;
+          border-style: solid;
+          border-width: 4px 4px 0 4px;
+          border-color: $base-font-color transparent transparent transparent;
+          position: absolute;
+          top: em(26);
+          right: em(14);
+        }
+
+        ul {
+          background-color: $base-background-color;
+          display: none;
+
+          @media only screen and ( min-width: $medium-screen) {
+            position: absolute;
+            z-index: 1;
+          }
+        }
+
+        &:hover {
+          background-color: $light-gray;
+
+          & > ul {
+            display: block;
+
+            li:hover {
+              background-color: $light-gray;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .map > div {
+    height: 600px;
+  }
+}

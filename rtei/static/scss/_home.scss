@@ -61,6 +61,12 @@
       .map {
         @include span-columns(8);
         @include reset-display;
+        background: transparent;
+
+        .leaflet-control-zoom a {
+          background: #333333;
+          color: white;
+        }
       }
     }
   }

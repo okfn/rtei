@@ -24,5 +24,13 @@ body {
         border-radius: 0;
       }
     }
+
+    &.map {
+      padding: 0;
+
+      & > .map {
+        background-color: $base-background-color;
+      }
+    }
   }
 }

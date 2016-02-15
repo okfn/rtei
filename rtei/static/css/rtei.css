@@ -579,6 +579,10 @@ body {
       padding: 0; }
       .main > section.controls > button {
         border-radius: 0; }
+    .main > section.map {
+      padding: 0; }
+      .main > section.map > .map {
+        background-color: #fff; }
 
 #smenu {
   text-align: right;
@@ -846,7 +850,11 @@ body {
         display: inline-block; }
     .template-home .banner .map {
       display: table-cell;
-      width: 66.66667%; } }
+      width: 66.66667%;
+      background: transparent; }
+      .template-home .banner .map .leaflet-control-zoom a {
+        background: #333333;
+        color: white; } }
 .template-home .main > div {
   text-align: center;
   padding: 1.5em;
@@ -876,6 +884,69 @@ body {
       padding-top: 2.25em; }
       .template-home .main > div:last-child {
         margin-right: 0; } }
+
+.rtei-map-popup .leaflet-popup-content-wrapper {
+  color: #3b3b3b; }
+
+.template-explore-map .indicator-switcher label {
+  display: block;
+  cursor: pointer;
+  margin: 0;
+  padding: 1.125em 1.5em;
+  font-size: 0.875em; }
+.template-explore-map .indicator-switcher input[type="radio"] {
+  display: none; }
+  .template-explore-map .indicator-switcher input[type="radio"]:checked + label {
+    background-color: #af202f;
+    color: #fff; }
+    .template-explore-map .indicator-switcher input[type="radio"]:checked + label + h6 {
+      border-top-color: #fff; }
+.template-explore-map .indicator-switcher > ul::after {
+  clear: both;
+  content: "";
+  display: table; }
+@media only screen and (min-width: 40em) {
+  .template-explore-map .indicator-switcher > ul {
+    width: 100%;
+    display: table;
+    width: 100%;
+    table-layout: fixed; } }
+.template-explore-map .indicator-switcher > ul > li {
+  display: block;
+  position: relative; }
+  .template-explore-map .indicator-switcher > ul > li.subcat {
+    background-color: rgba(175, 32, 47, 0.2);
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIElEQVQIW2NkQAL/////zwjjgzkgABKAcUBsRmQOSAAAIAYQAX1y8K4AAAAASUVORK5CYII=); }
+  @media only screen and (min-width: 40em) {
+    .template-explore-map .indicator-switcher > ul > li {
+      display: table-cell;
+      width: 16.66667%; } }
+  .template-explore-map .indicator-switcher > ul > li h6 {
+    text-indent: -9999em;
+    overflow: hidden;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 4px 4px 0 4px;
+    border-color: #3b3b3b transparent transparent transparent;
+    position: absolute;
+    top: 1.625em;
+    right: 0.875em; }
+  .template-explore-map .indicator-switcher > ul > li ul {
+    background-color: #fff;
+    display: none; }
+    @media only screen and (min-width: 40em) {
+      .template-explore-map .indicator-switcher > ul > li ul {
+        position: absolute;
+        z-index: 1; } }
+  .template-explore-map .indicator-switcher > ul > li:hover {
+    background-color: #bfbfbe; }
+    .template-explore-map .indicator-switcher > ul > li:hover > ul {
+      display: block; }
+      .template-explore-map .indicator-switcher > ul > li:hover > ul li:hover {
+        background-color: #bfbfbe; }
+.template-explore-map .map > div {
+  height: 600px; }
 
 html,
 .site-footer {
