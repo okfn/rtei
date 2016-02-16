@@ -13,23 +13,7 @@
 <div class="main">
 
   <section class="indicator-switcher controls">
-    <ul>
-      <li>
-        <input type="radio" name="indicator" value="index" id="indicator_index" checked="checked" /><label for="indicator_index">Overall Index</label>
-      </li>
-      <li>
-        <input type="radio" name="indicator" value="1" id="indicator_1"/><label for="indicator_1">Governance</label>
-        <h6>Sub-categories</h6>
-        <ul>
-            <li>
-              <input type="radio" name="indicator" value="1.1" id="indicator_1.1"/><label for="indicator_1.1">International Framework</label>
-            </li>
-        </ul>
-      </li>
-      <li>
-        <input type="radio" name="indicator" value="2" id="indicator_2"/><label for="indicator_2">Availability</label>
-      </li>
-    </ul>
+    {% include 'rtei/tags/map_switcher.html' %}
   </section>
 
   <section class="map">
