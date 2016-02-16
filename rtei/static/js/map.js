@@ -6,7 +6,11 @@ RTEI.map = (function() {
   // get color depending on the selected index
   function getColor(score) {
     if (!score) {
-      return '#B2B2B2';
+      if (homepage) {
+        return '#595a5b';
+      } else {
+        return '#bebebd';
+      }
     }
     score = parseFloat(score);
     return score > 80 ? '#ad2429' :
@@ -18,22 +22,35 @@ RTEI.map = (function() {
   }
 
   function style(feature) {
+
+    if (homepage) {
+      bColour = '#333';
+    } else {
+      bColour = '#fff';
+    }
+
     return {
       weight: 1,
       opacity: 1,
-      color: 'white',
+      color: bColour,
       fillOpacity: 1,
       fillColor: getColor(feature.properties[RTEI.map.currentIndex])
     };
   }
 
   function highlightFeature(e) {
+
+    if (homepage) {
+      hlColour = '#fff';
+    } else {
+      hlColour = '#666';
+    }
+
     var layer = e.target;
     layer.setStyle({
       weight: 2,
-      color: '#666',
+      color: hlColour,
       dashArray: '',
-      fillOpacity: 0.7
     });
 
     if (!L.Browser.ie && !L.Browser.opera) {

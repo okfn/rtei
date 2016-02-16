@@ -63,9 +63,31 @@
         @include reset-display;
         background: transparent;
 
-        .leaflet-control-zoom a {
-          background: #333333;
-          color: white;
+        .leaflet-control-zoom {
+          display: none;
+          box-shadow: none;
+          border-radius: $base-border-radius;
+          border: solid 1px $medium-gray;
+          overflow: hidden;
+          margin-right: $base-spacing;
+
+          a {
+            background: rgba(#fff, 0.5);
+            color: $medium-gray;
+            border-radius: 0;
+            border: solid 1px $medium-gray;
+            line-height: 22px;
+
+            &:hover {
+              background-color: #fff;
+            }
+          }
+        }
+
+        &:hover {
+          .leaflet-control-zoom {
+            display: block;
+          }
         }
       }
     }

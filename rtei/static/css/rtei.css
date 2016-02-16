@@ -861,9 +861,23 @@ body {
       display: table-cell;
       width: 66.66667%;
       background: transparent; }
-      .template-home .banner .map .leaflet-control-zoom a {
-        background: #333333;
-        color: white; } }
+      .template-home .banner .map .leaflet-control-zoom {
+        display: none;
+        box-shadow: none;
+        border-radius: 2px;
+        border: solid 1px #595a5b;
+        overflow: hidden;
+        margin-right: 1.5em; }
+        .template-home .banner .map .leaflet-control-zoom a {
+          background: rgba(255, 255, 255, 0.5);
+          color: #595a5b;
+          border-radius: 0;
+          border: solid 1px #595a5b;
+          line-height: 22px; }
+          .template-home .banner .map .leaflet-control-zoom a:hover {
+            background-color: #fff; }
+      .template-home .banner .map:hover .leaflet-control-zoom {
+        display: block; } }
 .template-home .main > div {
   text-align: center;
   padding: 1.5em;
