@@ -108,7 +108,7 @@
 
       @media only screen and ( min-width: $medium-screen) {
         left: 0;
-        margin-right: $base-spacing * 2;
+        margin-right: $base-spacing * 3;
         position: absolute;
         z-index: 1;
       }
@@ -199,6 +199,26 @@
               float: right;
             }
           }
+        }
+      }
+    }
+
+    .leaflet-control-zoom {
+      box-shadow: none;
+      border-radius: $base-border-radius;
+      overflow: hidden;
+      margin-top: $base-spacing;
+      margin-right: $base-spacing;
+
+      a {
+        background: $light-gray;
+        color: #fff;
+        border-radius: 0;
+        border: solid 1px #fff;
+        line-height: 22px;
+
+        &:hover {
+          background-color: $medium-gray;
         }
       }
     }

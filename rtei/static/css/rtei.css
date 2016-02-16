@@ -987,7 +987,7 @@ body {
     @media only screen and (min-width: 40em) {
       .template-explore-map .map .description {
         left: 0;
-        margin-right: 3em;
+        margin-right: 4.5em;
         position: absolute;
         z-index: 1; } }
     .template-explore-map .map .description .icon {
@@ -1053,6 +1053,20 @@ body {
           .template-explore-map .map .key ul li:nth-child(5):after {
             content: '100';
             float: right; }
+  .template-explore-map .map .leaflet-control-zoom {
+    box-shadow: none;
+    border-radius: 2px;
+    overflow: hidden;
+    margin-top: 1.5em;
+    margin-right: 1.5em; }
+    .template-explore-map .map .leaflet-control-zoom a {
+      background: #bfbfbe;
+      color: #fff;
+      border-radius: 0;
+      border: solid 1px #fff;
+      line-height: 22px; }
+      .template-explore-map .map .leaflet-control-zoom a:hover {
+        background-color: #595a5b; }
 @media only screen and (min-width: 53.75em) {
   .template-explore-map.sidebar-layout .indicator-switcher {
     float: left;
