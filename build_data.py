@@ -330,7 +330,7 @@ def indicators_per_country(max_level=4, derived=True, random_values=False):
     ws_core = wb[CORE_SHEET]
     ws_companion = wb[COMPANION_SHEET]
     country_codes = []
-    for i in xrange(5, len(ws_core.rows)):
+    for i in xrange(5, len(ws_core.rows) + 1):
         country_name = ws_core['A' + str(i)].value
         country_code = get_country_code(country_name)
         if not country_code:
