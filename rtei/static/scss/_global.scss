@@ -28,7 +28,7 @@ body {
     &.map {
       padding: 0;
 
-      & > .map {
+      & > .leaflet-container {
         background-color: $base-background-color;
       }
     }

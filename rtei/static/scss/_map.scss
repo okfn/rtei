@@ -97,7 +97,50 @@
     }
   }
 
-  .map > div {
+  .map .leaflet-container {
     height: 600px;
+  }
+
+  .key {
+    padding: $base-spacing;
+
+    h5 {
+      font-size: em(13);
+      font-weight: normal;
+    }
+
+    ul {
+      @include fill-parent();
+      @include row(table);
+
+      li {
+        @include span-columns(2);
+        border-top: solid 1.2em #fff;
+        text-indent: -0.5em;
+        font-size: em(12);
+
+        &:nth-child(1) {
+          border-color: #fde8dd;
+          text-indent: 0;
+        }
+        &:nth-child(2) {
+          border-color: #fbb89d;
+        }
+        &:nth-child(3) {
+          border-color: #f97b5d;
+        }
+        &:nth-child(4) {
+          border-color: #df4439;
+        }
+        &:nth-child(5) {
+          border-color: #ad2429;
+          @include reset-display;
+          &:after {
+            content: '100';
+            float: right;
+          }
+        }
+      }
+    }
   }
 }

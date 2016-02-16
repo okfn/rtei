@@ -580,7 +580,7 @@ body {
         border-radius: 0; }
     .main > section.map {
       padding: 0; }
-      .main > section.map > .map {
+      .main > section.map > .leaflet-container {
         background-color: #fff; }
 
 #smenu {
@@ -950,8 +950,38 @@ body {
       display: block; }
       .template-explore-map .indicator-switcher > ul > li:hover > ul li:hover {
         background-color: #bfbfbe; }
-.template-explore-map .map > div {
+.template-explore-map .map .leaflet-container {
   height: 600px; }
+.template-explore-map .key {
+  padding: 1.5em; }
+  .template-explore-map .key h5 {
+    font-size: 0.8125em;
+    font-weight: normal; }
+  .template-explore-map .key ul {
+    width: 100%;
+    display: table;
+    width: 100%;
+    table-layout: fixed; }
+    .template-explore-map .key ul li {
+      display: table-cell;
+      width: 16.66667%;
+      border-top: solid 1.2em #fff;
+      text-indent: -0.5em;
+      font-size: 0.75em; }
+      .template-explore-map .key ul li:nth-child(1) {
+        border-color: #fde8dd;
+        text-indent: 0; }
+      .template-explore-map .key ul li:nth-child(2) {
+        border-color: #fbb89d; }
+      .template-explore-map .key ul li:nth-child(3) {
+        border-color: #f97b5d; }
+      .template-explore-map .key ul li:nth-child(4) {
+        border-color: #df4439; }
+      .template-explore-map .key ul li:nth-child(5) {
+        border-color: #ad2429; }
+        .template-explore-map .key ul li:nth-child(5):after {
+          content: '100';
+          float: right; }
 
 html,
 .site-footer {
