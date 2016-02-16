@@ -909,7 +909,48 @@ body {
         margin-right: 0; } }
 
 .rtei-map-popup .leaflet-popup-content-wrapper {
-  color: #3b3b3b; }
+  color: #3b3b3b;
+  border-radius: 2px;
+  padding: 0;
+  overflow: hidden; }
+  .rtei-map-popup .leaflet-popup-content-wrapper .leaflet-popup-content {
+    margin: 0; }
+    .rtei-map-popup .leaflet-popup-content-wrapper .leaflet-popup-content .country-score {
+      display: inline-block;
+      background-color: #333333;
+      color: #fff;
+      padding: 0.75em; }
+      .rtei-map-popup .leaflet-popup-content-wrapper .leaflet-popup-content .country-score span {
+        display: none; }
+      .rtei-map-popup .leaflet-popup-content-wrapper .leaflet-popup-content .country-score.no {
+        background-image: url("../img/no-data.svg");
+        text-indent: -9999em;
+        width: 28px;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: 16px auto; }
+    .rtei-map-popup .leaflet-popup-content-wrapper .leaflet-popup-content .country-name {
+      padding: 0.75em;
+      display: inline-block; }
+      .rtei-map-popup .leaflet-popup-content-wrapper .leaflet-popup-content .country-name.has-properties {
+        margin-right: 30px; }
+    .rtei-map-popup .leaflet-popup-content-wrapper .leaflet-popup-content .more-details {
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      top: 10px;
+      right: 10px; }
+      .rtei-map-popup .leaflet-popup-content-wrapper .leaflet-popup-content .more-details a {
+        display: block;
+        text-indent: -9999em;
+        overflow: hidden;
+        height: 100%;
+        background-image: url("../img/circle-right.svg");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center center; }
+.rtei-map-popup .leaflet-popup-close-button {
+  display: none; }
 
 .template-explore-map .indicator-switcher label {
   display: block;

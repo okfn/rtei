@@ -1,5 +1,67 @@
-.rtei-map-popup .leaflet-popup-content-wrapper {
-  color: $base-font-color;
+.rtei-map-popup {
+
+  .leaflet-popup-content-wrapper {
+    color: $base-font-color;
+    border-radius: $base-border-radius;
+    padding: 0;
+    overflow: hidden;
+
+    .leaflet-popup-content {
+      margin: 0;
+
+      .country-score {
+        display: inline-block;
+        background-color: $dark-gray;
+        color: #fff;
+        padding: $small-spacing;
+
+        span {
+          display: none;
+        }
+
+        &.no {
+          background-image: url("../img/no-data.svg");
+          text-indent: -9999em;
+          width: 28px;
+          background-repeat: no-repeat;
+          background-position: center center;
+          background-size: 16px auto;
+        }
+      }
+
+      .country-name {
+        padding: $small-spacing;
+        display: inline-block;
+
+        &.has-properties {
+          margin-right: 30px;
+        }
+      }
+
+      .more-details {
+        position: absolute;
+        width: 15px;
+        height: 15px;
+        top: 10px;
+        right: 10px;
+
+        a {
+          display: block;
+          text-indent: -9999em;
+          overflow: hidden;
+          height: 100%;
+          background-image: url("../img/circle-right.svg");
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: center center;
+        }
+      }
+    }
+  }
+
+  .leaflet-popup-close-button {
+    display: none;
+  }
 }
 
 .template-explore-map {

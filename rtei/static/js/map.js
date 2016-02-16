@@ -71,18 +71,19 @@ RTEI.map = (function() {
   function popupContent(feature) {
     var content = ''
     content += '<div class="popup-content">';
-    content += ' <h3>' + feature.properties.name + '</h3>';
+    
+    if (RTEI.map.currentIndex != 'index' &&
+        feature.properties[RTEI.map.currentIndex]) {
+      content += ' <div class="country-score"><span>' + RTEI.map.currentIndexLabel + ': </span>' + feature.properties[RTEI.map.currentIndex] + '</div>';
+    } else if (feature.properties.index) {
+      content += ' <div class="country-score"><span>Overall Index: </span>' + feature.properties.index + '</div>';
+    }
     if (feature.properties.index) {
-      content += ' <div class="country-score">Overall Index: ' + feature.properties.index + '</div>';
-
-      if (RTEI.map.currentIndex != 'index' &&
-          feature.properties[RTEI.map.currentIndex]) {
-        content += ' <div class="country-score">' + RTEI.map.currentIndexLabel + ': ' + feature.properties[RTEI.map.currentIndex] + '</div>';
-      }
-
+      content += ' <div class="country-name has-properties">' + feature.properties.name + '</div>';
       content += ' <div class="more-details"><a href="/explore/rtei-country/?id=' + feature.properties.iso2 + '">Full country scores</a></div>';
     } else {
-      content += ' <div class="no-data">No data available</div>';
+      content += ' <div class="no country-score">No data available</div>';
+      content += ' <div class="country-name">' + feature.properties.name + '</div>';
     }
     return content;
   }
