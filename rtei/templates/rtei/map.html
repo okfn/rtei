@@ -4,7 +4,7 @@
 
 {% block extra_css %}
 
-  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+  <link rel="stylesheet" href="{% static 'vendor/leaflet/leaflet.css' %}" />
 {% endblock %}
 
 {% block body_class %}template-explore-map sidebar-layout{% endblock %}
@@ -13,23 +13,7 @@
 <div class="main">
 
   <section class="indicator-switcher controls">
-    <ul>
-      <li>
-        <input type="radio" name="indicator" value="index" id="indicator_index" checked="checked" /><label for="indicator_index">Overall Index</label>
-      </li>
-      <li>
-        <input type="radio" name="indicator" value="1" id="indicator_1"/><label for="indicator_1">Governance</label>
-        <h6>Sub-categories</h6>
-        <ul>
-            <li>
-              <input type="radio" name="indicator" value="1.1" id="indicator_1.1"/><label for="indicator_1.1">International Framework</label>
-            </li>
-        </ul>
-      </li>
-      <li>
-        <input type="radio" name="indicator" value="2" id="indicator_2"/><label for="indicator_2">Availability</label>
-      </li>
-    </ul>
+    {% include 'rtei/tags/map_switcher.html' %}
   </section>
 
   <section class="map">
@@ -72,8 +56,9 @@
 {% endblock %}
 
 {% block extra_js %}
-  <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
-  <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-omnivore/v0.2.0/leaflet-omnivore.min.js'></script>
+  <script src="{% static 'vendor/leaflet/leaflet.min.js' %}"></script>
+  <script src="{% static 'vendor/leaflet/leaflet-omnivore.min.js' %}"></script>
+
   <script src="{% static 'js/map.js' %}"></script>
 
 {% endblock %}

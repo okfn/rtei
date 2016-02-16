@@ -63,7 +63,7 @@ def get_country_code(country_name, code_type='iso2'):
     passing code_type='iso3' will return the 3 digit code (eg'AFG').
     '''
 
-    for country in countries:
+    for code, country in countries.iteritems():
         if (country_name == country['name'] or
            country_name == country.get('other_names')):
             return country[code_type]
@@ -78,7 +78,10 @@ def get_country_name(country_code):
     if len(country_code) == 3:
         code_type = 'iso3'
 
-    return next((c['name'] for c in countries if c[code_type] == country_code.upper()), None)
+    return next(
+        (c['name'] for code, c in countries.iteritems()
+         if c[code_type] == country_code.upper()),
+        None)
 
 
 def get_numeric_cell_value(cell):
@@ -327,7 +330,7 @@ def indicators_per_country(max_level=4, derived=True, random_values=False):
     ws_core = wb[CORE_SHEET]
     ws_companion = wb[COMPANION_SHEET]
     country_codes = []
-    for i in xrange(5, len(ws_core.rows)):
+    for i in xrange(5, len(ws_core.rows) + 1):
         country_name = ws_core['A' + str(i)].value
         country_code = get_country_code(country_name)
         if not country_code:

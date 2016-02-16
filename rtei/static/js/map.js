@@ -1,11 +1,6 @@
 var RTEI = RTEI || {}
 RTEI.map = (function() {
 
-  var indicators;
-  $.getJSON('/static/data/indicators.json', function(data) {
-    indicators = data;
-  });
-
   var homepage = window.location.href.indexOf('explore/map') === -1;
 
   // get color depending on the selected index
@@ -58,17 +53,17 @@ RTEI.map = (function() {
 
   function popupContent(feature) {
     var content = ''
-    content += '<div class="hoverinfo">';
+    content += '<div class="popup-content">';
     content += ' <h3>' + feature.properties.name + '</h3>';
     if (feature.properties.index) {
-      content += ' <div class="country-score">Index: ' + feature.properties.index + '</div>';
+      content += ' <div class="country-score">Overall Index: ' + feature.properties.index + '</div>';
 
-      if (feature.properties[RTEI.map.currentIndex]) {
-        content += ' <div class="country-score">: ' + feature.properties[RTEI.map.currentIndex] + '</div>';
+      if (RTEI.map.currentIndex != 'index' &&
+          feature.properties[RTEI.map.currentIndex]) {
+        content += ' <div class="country-score">' + RTEI.map.currentIndexLabel + ': ' + feature.properties[RTEI.map.currentIndex] + '</div>';
       }
 
-
-      content += ' <div class="more-details">Click for more details</div>';
+      content += ' <div class="more-details"><a href="/explore/rtei-country/?id=' + feature.properties.iso2 + '">Full country scores</a></div>';
     } else {
       content += ' <div class="no-data">No data available</div>';
     }
@@ -99,6 +94,10 @@ RTEI.map = (function() {
 
     // The index to display ('index' for the overall score, '1', '1.1', etc otherwise)
     currentIndex: 'index',
+
+    // The label for index to display (Not used for the overall score, 'Governance',
+    // 'International law', etc otherwise)
+    currentIndexLabel: null,
 
     init: function() {
 
@@ -138,6 +137,7 @@ $(document).ready(function(){
     $('.indicator-switcher input').on('click', function(){
       if (this.value != RTEI.map.currentIndex) {
         RTEI.map.currentIndex = this.value;
+        RTEI.map.currentIndexLabel = $('label[for="' + this.id + '"]').html();
         RTEI.map.refresh();
       }
     });
