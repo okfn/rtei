@@ -63,7 +63,7 @@ def get_country_code(country_name, code_type='iso2'):
     passing code_type='iso3' will return the 3 digit code (eg'AFG').
     '''
 
-    for country in countries:
+    for code, country in countries.iteritems():
         if (country_name == country['name'] or
            country_name == country.get('other_names')):
             return country[code_type]
@@ -78,7 +78,10 @@ def get_country_name(country_code):
     if len(country_code) == 3:
         code_type = 'iso3'
 
-    return next((c['name'] for c in countries if c[code_type] == country_code.upper()), None)
+    return next(
+        (c['name'] for code, c in countries.iteritems()
+         if c[code_type] == country_code.upper()),
+        None)
 
 
 def get_numeric_cell_value(cell):
