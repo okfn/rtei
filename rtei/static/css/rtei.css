@@ -982,6 +982,28 @@ body {
         .template-explore-map .key ul li:nth-child(5):after {
           content: '100';
           float: right; }
+@media only screen and (min-width: 53.75em) {
+  .template-explore-map.sidebar-layout .indicator-switcher {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 23.23176%; }
+    .template-explore-map.sidebar-layout .indicator-switcher:last-child {
+      margin-right: 0; }
+    .template-explore-map.sidebar-layout .indicator-switcher li {
+      display: block;
+      width: auto; }
+      .template-explore-map.sidebar-layout .indicator-switcher li label {
+        border-width: 0 0 1px 0; }
+      .template-explore-map.sidebar-layout .indicator-switcher li ul {
+        position: static; }
+  .template-explore-map.sidebar-layout .map {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 74.41059%; }
+    .template-explore-map.sidebar-layout .map:last-child {
+      margin-right: 0; } }
 
 html,
 .site-footer {

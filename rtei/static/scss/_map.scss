@@ -143,4 +143,29 @@
       }
     }
   }
+
+  &.sidebar-layout {
+    @media only screen and ( min-width: $large-screen) {
+      .indicator-switcher {
+        @include span-columns(3);
+
+        li {
+          display: block;
+          width: auto;
+
+          label {
+            border-width: 0 0 1px 0;
+          }
+
+          ul {
+            position: static;
+          }
+        }
+      }
+
+      .map {
+        @include span-columns(9);
+      }
+    }
+  }
 }
