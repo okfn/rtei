@@ -631,7 +631,6 @@ body {
     width: 0;
     height: 0;
     border: 0.25em solid transparent;
-    /* 5 */
     border-bottom: none;
     border-top-color: #333333;
     content: '';
@@ -639,7 +638,7 @@ body {
     display: inline-block;
     position: relative;
     right: -0.313em;
-    /* 5 */ }
+    top: -0.12em; }
   #smenu > div {
     display: none; }
     @media only screen and (min-width: 53.75em) {
