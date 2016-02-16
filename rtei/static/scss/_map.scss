@@ -11,6 +11,10 @@
       margin: 0;
       padding: $base-spacing*0.75 $base-spacing;
       font-size: em(14);
+      border-style: solid;
+      border-color: lighten($light-gray, 19);
+      border-width: 0 1px 0 0;
+      line-height: 1.2;
     }
 
     input[type="radio"] {
@@ -60,13 +64,17 @@
           border-width: 4px 4px 0 4px;
           border-color: $base-font-color transparent transparent transparent;
           position: absolute;
-          top: em(26);
-          right: em(14);
+          top: em(24);
+          right: em(16);
         }
 
         ul {
           background-color: $base-background-color;
           display: none;
+
+          label {
+            border-width: 0 1px 1px 1px;
+          }
 
           @media only screen and ( min-width: $medium-screen) {
             position: absolute;
