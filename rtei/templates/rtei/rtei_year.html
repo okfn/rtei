@@ -98,6 +98,8 @@
                 $(el).on('click', function(ev) {
                     var btn = $(ev.target);
                     var desc = btn.hasClass('asc');
+                    $('#chart-controls :button.active').removeClass('active');
+                    btn.addClass('active');
                     if (desc) {
                         btn.addClass('desc').removeClass('asc');
                     } else {
