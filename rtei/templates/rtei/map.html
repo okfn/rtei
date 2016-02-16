@@ -4,7 +4,7 @@
 
 {% block extra_css %}
 
-  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+  <link rel="stylesheet" href="{% static 'vendor/leaflet/leaflet.css' %}" />
 {% endblock %}
 
 {% block body_class %}template-explore-map{% endblock %}
@@ -44,8 +44,9 @@
 {% endblock %}
 
 {% block extra_js %}
-  <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
-  <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-omnivore/v0.2.0/leaflet-omnivore.min.js'></script>
+  <script src="{% static 'vendor/leaflet/leaflet.min.js' %}"></script>
+  <script src="{% static 'vendor/leaflet/leaflet-omnivore.min.js' %}"></script>
+
   <script src="{% static 'js/map.js' %}"></script>
 
 {% endblock %}
