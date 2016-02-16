@@ -104,7 +104,7 @@ RTEI.map = (function() {
       RTEI.map.map = L.map('map', {
         attributionControl: false,
         zoomControl: false
-      }).setView([10, 0], 2);
+      }).setView([40, 10], 1.5);
       L.control.zoom({position: 'topright'}).addTo(RTEI.map.map);
 
       // TODO: remove once we have the final data

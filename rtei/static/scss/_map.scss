@@ -97,47 +97,107 @@
     }
   }
 
-  .map .leaflet-container {
-    height: 600px;
-  }
+  .map {
+    position: relative;
 
-  .key {
-    padding: $base-spacing;
+    .description {
+      @include clearfix;
+      padding: $small-spacing;
+      margin: $small-spacing;
+      background-color: rgba($base-background-color, 0.7);
 
-    h5 {
-      font-size: em(13);
-      font-weight: normal;
+      @media only screen and ( min-width: $medium-screen) {
+        left: 0;
+        margin-right: $base-spacing * 2;
+        position: absolute;
+        z-index: 1;
+      }
+
+      .icon {
+        float: left;
+        width: 36px;
+        height: 36px;
+        background-color: $red;
+        color: #fff;
+        text-align: center;
+
+        svg {
+          fill: currentColor;
+          width: 65%;
+          height: 100%;
+        }
+      }
+      .text {
+        margin-left: 46px;
+        display: block;
+        font-size: em(14);
+        line-height: 1.2;
+
+        h2 {
+          display: inline;
+          font-size: 1em;
+
+          &:after {
+            content: ': ';
+          }
+        }
+      }
     }
 
-    ul {
-      @include fill-parent();
-      @include row(table);
+    .leaflet-container {
+      height: 450px;
 
-      li {
-        @include span-columns(2);
-        border-top: solid 1.2em #fff;
-        text-indent: -0.5em;
-        font-size: em(12);
+      @media only screen and ( min-width: $medium-screen) {
+        height: 650px;
+      }
+    }
 
-        &:nth-child(1) {
-          border-color: #fde8dd;
-          text-indent: 0;
-        }
-        &:nth-child(2) {
-          border-color: #fbb89d;
-        }
-        &:nth-child(3) {
-          border-color: #f97b5d;
-        }
-        &:nth-child(4) {
-          border-color: #df4439;
-        }
-        &:nth-child(5) {
-          border-color: #ad2429;
-          @include reset-display;
-          &:after {
-            content: '100';
-            float: right;
+    .key {
+      padding: $base-spacing;
+
+      @media only screen and ( min-width: $medium-screen) {
+        position: absolute;
+        bottom: 0;
+      }
+
+      h5 {
+        font-size: em(13);
+        font-weight: normal;
+        margin: 0;
+      }
+
+      ul {
+        @include fill-parent();
+        @include row(table);
+        padding-top: $small-spacing;
+        background-color: rgba($base-background-color, 0.5);
+
+        li {
+          @include span-columns(2);
+          border-top: solid 1.2em #fff;
+          text-indent: -0.5em;
+          font-size: em(12);
+
+          &:nth-child(1) {
+            border-color: #fde8dd;
+            text-indent: 0;
+          }
+          &:nth-child(2) {
+            border-color: #fbb89d;
+          }
+          &:nth-child(3) {
+            border-color: #f97b5d;
+          }
+          &:nth-child(4) {
+            border-color: #df4439;
+          }
+          &:nth-child(5) {
+            border-color: #ad2429;
+            @include reset-display;
+            &:after {
+              content: '100';
+              float: right;
+            }
           }
         }
       }
