@@ -40,7 +40,7 @@
       display: none;
     }
 
-    @media only screen and ( min-width: $medium-screen) {
+    @media only screen and ( min-width: $large-screen) {
 
       .container > div {
         @include fill-parent();

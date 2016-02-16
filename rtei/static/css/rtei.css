@@ -615,7 +615,7 @@ body {
       content: ''; }
     #smenu > a:after {
       top: 60%; }
-    @media only screen and (min-width: 800px) {
+    @media only screen and (min-width: 53.75em) {
       #smenu > a {
         display: none; } }
   #smenu:target > a:first-of-type, #smenu:not(:target) > a:last-of-type {
@@ -642,12 +642,12 @@ body {
     /* 5 */ }
   #smenu > div {
     display: none; }
-    @media only screen and (min-width: 800px) {
+    @media only screen and (min-width: 53.75em) {
       #smenu > div {
         display: block; } }
     #smenu > div > ul {
       background-color: #fff; }
-      @media only screen and (min-width: 800px) {
+      @media only screen and (min-width: 53.75em) {
         #smenu > div > ul {
           height: 30px;
           margin-right: 30px; } }
@@ -655,16 +655,16 @@ body {
         height: 100%; }
         #smenu > div > ul > li:not(:last-child) > a {
           border-bottom: 1px solid #e6e6e6; }
-          @media only screen and (min-width: 800px) {
+          @media only screen and (min-width: 53.75em) {
             #smenu > div > ul > li:not(:last-child) > a {
               border-bottom: none; } }
-        @media only screen and (min-width: 800px) {
+        @media only screen and (min-width: 53.75em) {
           #smenu > div > ul > li {
             float: left; } }
         #smenu > div > ul > li > a {
           line-height: 30px;
           padding: 0 15px; }
-          @media only screen and (min-width: 800px) {
+          @media only screen and (min-width: 53.75em) {
             #smenu > div > ul > li > a {
               height: 100%;
               text-align: center; } }
@@ -679,7 +679,7 @@ body {
     color: #fff; }
     #smenu li ul a {
       color: inherit; }
-    @media only screen and (min-width: 800px) {
+    @media only screen and (min-width: 53.75em) {
       #smenu li ul {
         position: absolute;
         top: 100%;
@@ -712,13 +712,13 @@ body {
       fill: currentColor;
       height: 30px;
       width: 20px; }
-    @media only screen and (min-width: 800px) {
+    @media only screen and (min-width: 53.75em) {
       #smenu #search > a:first-of-type {
         display: inline-block; } }
   #smenu #search .search {
     position: relative;
     height: 30px; }
-    @media only screen and (min-width: 800px) {
+    @media only screen and (min-width: 53.75em) {
       #smenu #search .search {
         display: none;
         position: absolute;
@@ -833,7 +833,7 @@ body {
         color: #333333; }
   .template-home .banner .map {
     display: none; }
-  @media only screen and (min-width: 40em) {
+  @media only screen and (min-width: 53.75em) {
     .template-home .banner .container > div {
       width: 100%;
       display: table;
@@ -908,7 +908,7 @@ body {
   clear: both;
   content: "";
   display: table; }
-@media only screen and (min-width: 40em) {
+@media only screen and (min-width: 53.75em) {
   .template-explore-map .indicator-switcher > ul {
     width: 100%;
     display: table;
@@ -920,7 +920,7 @@ body {
   .template-explore-map .indicator-switcher > ul > li.subcat {
     background-color: rgba(175, 32, 47, 0.2);
     background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIElEQVQIW2NkQAL/////zwjjgzkgABKAcUBsRmQOSAAAIAYQAX1y8K4AAAAASUVORK5CYII=); }
-  @media only screen and (min-width: 40em) {
+  @media only screen and (min-width: 53.75em) {
     .template-explore-map .indicator-switcher > ul > li {
       display: table-cell;
       width: 16.66667%; } }
@@ -940,7 +940,7 @@ body {
     display: none; }
     .template-explore-map .indicator-switcher > ul > li ul label {
       border-width: 0 1px 1px 1px; }
-    @media only screen and (min-width: 40em) {
+    @media only screen and (min-width: 53.75em) {
       .template-explore-map .indicator-switcher > ul > li ul {
         position: absolute;
         z-index: 1; } }

@@ -1,7 +1,7 @@
 #smenu {
 
   $menu-height: 30px;
-  $break-point: 800px;
+  $break-point: $large-screen;
   $active-colour: $medium-gray;
   $menu-colour: #fff;
   $link-colour: $dark-gray;
