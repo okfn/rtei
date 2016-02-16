@@ -1,24 +1,82 @@
 {% extends "base.html" %}
 
-{% load wagtailcore_tags %}
+{% load i18n static wagtailcore_tags %}
 
 {% block body_class %}template-rtei{% endblock %}
 
 {% block content %}
   <div class="main">
-    <h1>Hi!</h1>
 
-    <p>
-        You are now on: {{ self.title }}
-    </p>
+    <style>
+    /* TODO: Move out of here */
 
-    <p>
-        If this page has a body, here it is:
-    </p>
+    .indicator > div {
+        float: left;
+        display: block;
+        padding: 5px 10px;
+    }
 
-    <div>
-        {{ self.body|richtext }}
-    </div>
+    .indicator-title {
+        width: 90%;
+    }
+
+    .indicator-value {
+        text-align: center;
+    }
+
+    .indicators .level1 > div {
+        background: #F97B5D;
+        font-weight: bold;
+    }
+
+    .indicators .level2 > div {
+        background: #FDE8DD;
+    }
+
+    .indicators .level2 .indicator-title {
+        padding-left: 20px;
+    }
+
+    .indicators .level3 .indicator-title {
+        padding-left: 40px;
+    }
+
+    .indicators .level4 .indicator-title {
+        padding-left: 60px;
+    }
+
+
+
+    </style>
+
+
+    <select id="available-countries">
+     {% if not country_code %}
+        <option value="">{% trans "Select a country ..." %}</option>
+     {% endif %}
+     {% for code, name in available_countries.iteritems %}
+     <option value="{{ code }}" {% if code == country_code %}selected="selected"{% endif%}>{{ name }}</option>
+     {% endfor %}
+    </select>
+
+    {% if country_code %}
+        <div>{{ country_name }} ({{ country_code }})</div>
+
+        <div>{% trans "Overall Index" %}: {{ country_indicators.index }}</div>
+
+
+
+        <div class="indicators" id="indicators">
+            {% include 'rtei/tags/indicators.html' %}
+        </div>
+
+    {% endif %}
+
   </div>
+
+{% endblock %}
+
+{% block extra_js %}
+  <script src="{% static 'js/country.js' %}"></script>
 
 {% endblock %}

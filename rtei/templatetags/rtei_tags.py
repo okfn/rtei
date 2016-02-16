@@ -1,4 +1,5 @@
 from django import template
+from django.template.defaulttags import register as default_register
 
 from rtei.models import Page
 
@@ -76,3 +77,8 @@ def breadcrumbs(context):
         'ancestors': ancestors,
         'request': context['request'],
     }
+
+
+@register.filter
+def get_indicator_value(dictionary, code):
+    return dictionary.get(code) or '-'
