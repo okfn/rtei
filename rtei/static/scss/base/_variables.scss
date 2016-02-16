@@ -10,7 +10,7 @@ $base-line-height: 1.5;
 $heading-line-height: 1.2;
 
 // Other Sizes
-$base-border-radius: 3px;
+$base-border-radius: 2px;
 $base-spacing: $base-line-height * 1em;
 $small-spacing: $base-spacing / 2;
 $base-z-index: 0;
@@ -25,6 +25,7 @@ $light-gray: #bfbfbe;
 $base-background-color: #fff;
 $base-font-color: lighten($dark-gray, 3);
 $action-color: $red;
+$body-background-color:lighten($light-gray, 19);
 
 // Border
 $base-border-color: $light-gray;

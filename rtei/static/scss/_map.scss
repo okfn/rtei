@@ -12,7 +12,7 @@
       padding: $base-spacing*0.75 $base-spacing;
       font-size: em(14);
       border-style: solid;
-      border-color: lighten($light-gray, 19);
+      border-color: $body-background-color;
       border-width: 0 1px 0 0;
       line-height: 1.2;
     }
