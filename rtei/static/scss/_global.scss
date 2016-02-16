@@ -1,5 +1,5 @@
 body {
-  background-color: lighten($light-gray, 19);
+  background-color: $body-background-color;
 }
 
 .container {
@@ -22,6 +22,24 @@ body {
 
       & > button {
         border-radius: 0;
+        border-right: solid 1px $body-background-color;
+        padding: 1em 1.2em;
+
+        &:after {
+          padding-left: $small-spacing;
+        }
+
+        &.asc:after {
+          content: '\2193';
+        }
+        &.desc:after {
+          content: '\2191';
+        }
+
+        &:not(.active) {
+          background-color: inherit;
+          color: inherit;
+        }
       }
     }
 

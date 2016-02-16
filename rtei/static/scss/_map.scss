@@ -12,7 +12,7 @@
       padding: $base-spacing*0.75 $base-spacing;
       font-size: em(14);
       border-style: solid;
-      border-color: lighten($light-gray, 19);
+      border-color: $body-background-color;
       border-width: 0 1px 0 0;
       line-height: 1.2;
     }
@@ -33,7 +33,7 @@
     & > ul {
       @include clearfix;
 
-      @media only screen and ( min-width: $medium-screen) {
+      @media only screen and ( min-width: $large-screen) {
         @include fill-parent();
         @include row(table);
       }
@@ -47,7 +47,7 @@
           background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIElEQVQIW2NkQAL/////zwjjgzkgABKAcUBsRmQOSAAAIAYQAX1y8K4AAAAASUVORK5CYII=);
         }
 
-        @media only screen and ( min-width: $medium-screen) {
+        @media only screen and ( min-width: $large-screen) {
           @include span-columns(2);
 
           &:last-child {
@@ -76,7 +76,7 @@
             border-width: 0 1px 1px 1px;
           }
 
-          @media only screen and ( min-width: $medium-screen) {
+          @media only screen and ( min-width: $large-screen) {
             position: absolute;
             z-index: 1;
           }
@@ -140,6 +140,31 @@
             float: right;
           }
         }
+      }
+    }
+  }
+
+  &.sidebar-layout {
+    @media only screen and ( min-width: $large-screen) {
+      .indicator-switcher {
+        @include span-columns(3);
+
+        li {
+          display: block;
+          width: auto;
+
+          label {
+            border-width: 0 0 1px 0;
+          }
+
+          ul {
+            position: static;
+          }
+        }
+      }
+
+      .map {
+        @include span-columns(9);
       }
     }
   }

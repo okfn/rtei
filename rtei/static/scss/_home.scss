@@ -27,7 +27,7 @@
         border: solid 1px #fff;
         padding: 0.5em 1em;
         text-align: center;
-        border-radius: 2px;
+        border-radius: $base-border-radius;
 
         &:hover {
           background-color: #fff;
@@ -40,7 +40,7 @@
       display: none;
     }
 
-    @media only screen and ( min-width: $medium-screen) {
+    @media only screen and ( min-width: $large-screen) {
 
       .container > div {
         @include fill-parent();
