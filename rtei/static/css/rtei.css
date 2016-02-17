@@ -967,7 +967,7 @@ body {
   .template-explore-map .indicator-switcher input[type="radio"]:checked + label {
     background-color: #af202f;
     color: #fff; }
-    .template-explore-map .indicator-switcher input[type="radio"]:checked + label + h6 {
+    .template-explore-map .indicator-switcher input[type="radio"]:checked + label + h6:after {
       border-top-color: #fff; }
 .template-explore-map .indicator-switcher > ul::after {
   clear: both;
@@ -992,14 +992,21 @@ body {
   .template-explore-map .indicator-switcher > ul > li h6 {
     text-indent: -9999em;
     overflow: hidden;
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 4px 4px 0 4px;
-    border-color: #3b3b3b transparent transparent transparent;
+    width: 16px;
+    height: 16px;
     position: absolute;
-    top: 1.5em;
-    right: 1em; }
+    top: 1.125em;
+    right: 1.125em; }
+    .template-explore-map .indicator-switcher > ul > li h6:after {
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 4px 4px 0 4px;
+      border-color: #3b3b3b transparent transparent transparent;
+      content: '';
+      position: absolute;
+      left: 4px;
+      top: 7px; }
   .template-explore-map .indicator-switcher > ul > li ul {
     background-color: #fff;
     display: none; }
@@ -1121,8 +1128,24 @@ body {
       width: auto; }
       .template-explore-map.sidebar-layout .indicator-switcher li label {
         border-width: 0 0 1px 0; }
+      .template-explore-map.sidebar-layout .indicator-switcher li h6 {
+        cursor: pointer;
+        border-radius: 50%; }
+        .template-explore-map.sidebar-layout .indicator-switcher li h6:hover {
+          background-color: #333333; }
+          .template-explore-map.sidebar-layout .indicator-switcher li h6:hover:after {
+            border-top-color: #fff; }
+        .template-explore-map.sidebar-layout .indicator-switcher li h6.expanded {
+          -webkit-transform: rotate(-90deg);
+          -moz-transform: rotate(-90deg);
+          -ms-transform: rotate(-90deg);
+          -o-transform: rotate(-90deg);
+          transform: rotate(-90deg); }
       .template-explore-map.sidebar-layout .indicator-switcher li ul {
-        position: static; }
+        position: static;
+        display: block; }
+        .template-explore-map.sidebar-layout .indicator-switcher li ul li label {
+          padding: 0.5em 2.25em; }
   .template-explore-map.sidebar-layout .map {
     float: left;
     display: block;

@@ -86,7 +86,7 @@
         background-color: $red;
         color: $base-background-color;
 
-        & + h6 {
+        & + h6:after {
           border-top-color: $base-background-color;
         }
       }
@@ -120,14 +120,23 @@
         h6 {
           text-indent: -9999em;
           overflow: hidden;
-          width: 0;
-          height: 0;
-          border-style: solid;
-          border-width: 4px 4px 0 4px;
-          border-color: $base-font-color transparent transparent transparent;
+          width: 16px;
+          height: 16px;
           position: absolute;
-          top: em(24);
-          right: em(16);
+          top: em(18);
+          right: em(18);
+
+          &:after {
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 4px 4px 0 4px;
+            border-color: $base-font-color transparent transparent transparent;
+            content: '';
+            position: absolute;
+            left: 4px;
+            top: 7px;
+          }
         }
 
         ul {
@@ -299,8 +308,32 @@
             border-width: 0 0 1px 0;
           }
 
+          h6 {
+            cursor: pointer;
+            border-radius: 50%;
+
+            &:hover {
+              background-color: $dark-gray;
+
+              &:after {
+                border-top-color: $base-background-color;
+              }
+            }
+
+            &.expanded {
+              @include transform(rotate(-90deg));
+            }
+          }
+
           ul {
             position: static;
+            display: block;
+
+            li {
+              label {
+                padding: $small-spacing /1.5 $base-spacing * 1.5;
+              }
+            }
           }
         }
       }
