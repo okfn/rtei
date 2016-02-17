@@ -54,6 +54,10 @@ body {
         background-color: $base-background-color;
       }
     }
+
+    & > .text {
+      margin-bottom: $base-spacing;
+    }
   }
 
   // siddebar layout
