@@ -1011,7 +1011,8 @@ body {
     background-color: #fff;
     display: none; }
     .template-explore-map .indicator-switcher > ul > li ul label {
-      border-width: 0 1px 1px 1px; }
+      border-width: 0 1px 1px 1px;
+      padding: 0.5em 2.25em; }
     @media only screen and (min-width: 53.75em) {
       .template-explore-map .indicator-switcher > ul > li ul {
         position: absolute;
@@ -1116,42 +1117,40 @@ body {
       .template-explore-map .map .leaflet-control-zoom a:hover {
         background-color: #595a5b; }
 @media only screen and (min-width: 53.75em) {
-  .template-explore-map.sidebar-layout .indicator-switcher {
+  .template-explore-map .indicator-switcher {
     float: left;
     display: block;
     margin-right: 2.35765%;
     width: 23.23176%; }
-    .template-explore-map.sidebar-layout .indicator-switcher:last-child {
+    .template-explore-map .indicator-switcher:last-child {
       margin-right: 0; }
-    .template-explore-map.sidebar-layout .indicator-switcher li {
+    .template-explore-map .indicator-switcher > ul > li {
       display: block;
       width: auto; }
-      .template-explore-map.sidebar-layout .indicator-switcher li label {
+      .template-explore-map .indicator-switcher > ul > li label {
         border-width: 0 0 1px 0; }
-      .template-explore-map.sidebar-layout .indicator-switcher li h6 {
+      .template-explore-map .indicator-switcher > ul > li h6 {
         cursor: pointer;
         border-radius: 50%; }
-        .template-explore-map.sidebar-layout .indicator-switcher li h6:hover {
+        .template-explore-map .indicator-switcher > ul > li h6:hover {
           background-color: #333333; }
-          .template-explore-map.sidebar-layout .indicator-switcher li h6:hover:after {
+          .template-explore-map .indicator-switcher > ul > li h6:hover:after {
             border-top-color: #fff; }
-        .template-explore-map.sidebar-layout .indicator-switcher li h6.expanded {
+        .template-explore-map .indicator-switcher > ul > li h6.expanded {
           -webkit-transform: rotate(-90deg);
           -moz-transform: rotate(-90deg);
           -ms-transform: rotate(-90deg);
           -o-transform: rotate(-90deg);
           transform: rotate(-90deg); }
-      .template-explore-map.sidebar-layout .indicator-switcher li ul {
+      .template-explore-map .indicator-switcher > ul > li ul {
         position: static;
         display: block; }
-        .template-explore-map.sidebar-layout .indicator-switcher li ul li label {
-          padding: 0.5em 2.25em; }
-  .template-explore-map.sidebar-layout .map {
+  .template-explore-map .map {
     float: left;
     display: block;
     margin-right: 2.35765%;
     width: 74.41059%; }
-    .template-explore-map.sidebar-layout .map:last-child {
+    .template-explore-map .map:last-child {
       margin-right: 0; } }
 
 html,

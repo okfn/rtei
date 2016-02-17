@@ -16,8 +16,8 @@ $(document).ready(function() {
   });
 
   // slide
-  $( ".sidebar-layout .indicator-switcher h6" ).next( "ul" ).slideUp( "fast");
-  $( ".sidebar-layout .indicator-switcher h6" ).click(function() {
+  $( ".indicator-switcher h6" ).next( "ul" ).slideUp( "fast");
+  $( ".indicator-switcher h6" ).click(function() {
     $( this ).next( "ul" ).slideToggle();
     $( this ).toggleClass( "expanded" );
   });
