@@ -1,22 +1,24 @@
 from __future__ import unicode_literals
+import json
+import os
+from collections import OrderedDict
+
+from django.db import models
 
 from django.http import Http404
 from django.utils.translation import ugettext as _
 
 from wagtail.wagtailcore.models import Page
 from wagtail.wagtailcore.fields import RichTextField
-from wagtail.wagtailadmin.edit_handlers import FieldPanel
+from wagtail.wagtailadmin.edit_handlers import FieldPanel, InlinePanel
+from wagtail.wagtaildocs.edit_handlers import DocumentChooserPanel
+from wagtail.wagtailcore.models import Orderable
 
 from wagtail_modeltranslation.models import TranslationMixin
+from modelcluster.fields import ParentalKey
 
 import logging
 log = logging.getLogger(__name__)
-
-
-import json
-import os
-from collections import OrderedDict
-
 
 _file_cache = {}
 
@@ -201,3 +203,36 @@ class RTEIPage(TranslationMixin, Page):
         # slug
         return "%s/%s.html" % (self._meta.app_label,
                                self.slug.replace('-', '_'))
+
+
+class ResourceIndexPage(TranslationMixin, Page):
+    template = 'rtei/resources.html'
+
+    content_panels = Page.content_panels + [
+        InlinePanel('documents', label="Resource Documents"),
+    ]
+
+    def get_context(self, request):
+        context = super(ResourceIndexPage, self).get_context(request)
+        context['documents'] = self.documents.all()
+        return context
+
+
+class ResourceDocument(Orderable):
+    page = ParentalKey(ResourceIndexPage, related_name='documents')
+
+    title = models.CharField(max_length=255)
+    description = models.TextField(null=True, blank=True)
+    document_file = models.ForeignKey(
+        'wagtaildocs.Document',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+
+    panels = [
+        FieldPanel('title'),
+        FieldPanel('description'),
+        DocumentChooserPanel('document_file'),
+    ]

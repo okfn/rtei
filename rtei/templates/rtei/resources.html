@@ -12,12 +12,17 @@
         You are now on: {{ self.title }}
     </p>
 
-    <p>
-        If this page has a body, here it is:
-    </p>
-
     <div>
-        {{ self.body|richtext }}
+        <ul>
+        {% for doc in documents %}
+            {# NOTE: the document file extension is added as a class for icon styling. #}
+            <li class="{{doc.document_file.file_extension}}"><a href="{{doc.document_file.url}}" title="{{doc.document_file.title}}">
+            <h3>{{doc.title}}</h3>
+            <p>{{doc.description}}</p>
+            </a>
+            </li>
+        {% endfor %}
+        </ul>
     </div>
   </div>
 
