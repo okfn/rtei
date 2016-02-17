@@ -80,6 +80,13 @@
                 },
                 size: {
                     height: height
+                },
+                tooltip: {
+                  format: {
+                    value: function (value, ratio, id, index) {
+                        return parseFloat((value * 5).toFixed(2));
+                    }
+                  }
                 }
             });
             return chart;
