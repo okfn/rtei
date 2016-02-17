@@ -22,7 +22,6 @@ _file_cache = {}
 
 
 def get_json_file(path):
-
     if _file_cache.get(path):
         return _file_cache[path]
 
@@ -51,6 +50,10 @@ def get_scores_per_country():
                                'static', 'data', 'scores_per_country.json')
     return get_json_file(scores_file)
 
+def get_c3_scores_per_country():
+    scores_file = os.path.join(os.path.dirname(__file__),
+                               'static', 'data', 'c3_scores_per_country.json')
+    return get_json_file(scores_file)
 
 def get_indicators_for_country(country_code):
     country_file = os.path.join(os.path.dirname(__file__),
@@ -159,6 +162,13 @@ def get_country_context(context, country_code):
         context['country_name'] = get_country_name(country_code)
 
         context['country_indicators'] = country_data
+
+        for country in get_c3_scores_per_country():
+            if country['name'] == context['country_name']:
+                chart_data = country
+                break
+
+        context['chart_data'] = json.dumps([chart_data])
 
     context['available_countries'] = OrderedDict(
         sorted({code: get_country_name(code) for code, c

@@ -4,11 +4,19 @@
 
 {% block body_class %}template-rtei{% endblock %}
 
+{% block extra_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/c3/c3.css' %}">
+{% endblock %}
+
 {% block content %}
   <div class="main">
 
     <style>
     /* TODO: Move out of here */
+
+    #chart {
+        height: 120px;
+    }
 
     .indicator > div {
         float: left;
@@ -60,16 +68,20 @@
     </select>
 
     {% if country_code %}
-        <div>{{ country_name }} ({{ country_code }})</div>
 
-        <div>{% trans "Overall Index" %}: {{ country_indicators.index }}</div>
+    <section>
 
+      <h1>{{ country_name }} ({{ country_code }})</h1>
 
+      <div>{% trans "Overall Index" %}: {{ country_indicators.index }}</div>
+      <div id="chart"></div>
+    </section>
 
+    <section>
         <div class="indicators" id="indicators">
             {% include 'rtei/tags/indicators.html' %}
         </div>
-
+    </section>
     {% endif %}
 
   </div>
@@ -78,5 +90,69 @@
 
 {% block extra_js %}
   <script src="{% static 'js/country.js' %}"></script>
+    <script src="{% static 'vendor/underscore-min.js' %}" type="text/javascript" charset="utf-8"></script>
+    <script src="{% static 'vendor/d3/d3.min.js' %}" type="text/javascript" charset="utf-8"></script>
+    <script src="{% static 'vendor/c3/c3.min.js' %}" type="text/javascript" ></script>
+    <script type="text/javascript">
+        var chart;
+        var json_data;
+        var build_chart = function(data) {
+            // Chart height is the number of rows * 22, or 350, whichever is
+            // largest. This ensures there is adequate room for double-lined
+            // labels.
+            var height = _.max([_.size(data) * 22, 350]);
+            var chart = c3.generate({
+                bindto: '#chart',
+                data: {
+                    json: data,
+                    order: null,
+                    keys: {
+                        x: 'name',
+                        value: ['1', '3', '2', '5', '4']
+                    },
+                    groups: [
+                        ['1', '2', '3', '4', '5']
+                    ],
+                    names: {
+                        '1': 'Governance',
+                        '3': 'Accessibility',
+                        '2': 'Availability',
+                        '5': 'Adaptability',
+                        '4': 'Acceptability'
+                    },
+                    type: 'bar'
+                },
+                axis: {
+                    rotated: true,
+                    x: {
+                        type: 'category'
+                    },
+                    y: {
+                        show: true,
+                        max: 100,
+                        padding: {
+                            top: 0,
+                        }
+                    }
+                },
+                size: 22,
+                bar: {
+                    width: {
+                        ratio: 0.75
+                    }
+                },
+                tooltip: {
+                  format: {
+                    value: function (value, ratio, id, index) {
+                        return parseFloat((value * 5).toFixed(2));
+                    }
+                  }
+                }
+            });
+            return chart;
+        };
 
+        var data = {{ chart_data|safe }};
+        build_chart(data);
+    </script>
 {% endblock %}
