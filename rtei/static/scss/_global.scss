@@ -16,6 +16,7 @@ body {
   }
   & > section {
     padding: $base-spacing;
+    @include clearfix;
 
     &.controls {
       padding: 0;

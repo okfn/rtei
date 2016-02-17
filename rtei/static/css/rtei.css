@@ -574,6 +574,10 @@ body {
     margin-bottom: 1.5em; }
   .main > section {
     padding: 1.5em; }
+    .main > section::after {
+      clear: both;
+      content: "";
+      display: table; }
     .main > section.controls {
       padding: 0; }
       .main > section.controls > button {
