@@ -182,5 +182,12 @@ After [installing](https://github.com/mbostock/topojson/wiki/Installation) the `
 
 Dump a new set of site data (this is the internal data for managing the site, like pages etc, not the data powering the visualizations):
 
-        cd rtei
-        python manage.py dumpdata --natural-foreign --indent=4 -e contenttypes -e auth.Permission -e sessions -e wagtailcore.pagerevision -e auth.user > rtei/fixtures/data.json
+    cd rtei
+    python manage.py dumpdata --natural-foreign --indent=4 -e contenttypes -e auth.Permission -e sessions -e wagtailcore.pagerevision -e auth.user > rtei/fixtures/data.json
+
+
+## Migrate data on Heroku
+
+Database migrates can be run on heroku against the production settings with:
+
+    heroku run python ./manage.py migrate --settings=rtei.settings.production
