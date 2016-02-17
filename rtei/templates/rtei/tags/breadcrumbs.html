@@ -5,7 +5,7 @@
   <ol>
     {% for ancestor in ancestors %}
       {% if forloop.last %}
-        <li class="active">{{ ancestor }}</li>
+        <li class="active"><h1>{{ ancestor }}</h1></li>
       {% else %}
         <li><a href="{% pageurl ancestor %}">{{ ancestor }}</a></li>
       {% endif %}

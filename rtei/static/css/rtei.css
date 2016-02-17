@@ -835,6 +835,9 @@ body {
         opacity: 0.5; }
         .breadcrumb > ol li a:after {
           content: ' / '; }
+      .breadcrumb > ol li h1 {
+        margin: 0;
+        font-weight: normal; }
 
 .template-home .banner {
   background-image: url("../img/chalkboard.jpg");
