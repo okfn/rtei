@@ -27,6 +27,8 @@ body {
         width: 100%;
         text-align: left;
         position: relative;
+        font-size: em(14);
+        border-bottom: solid 1px $body-background-color;
 
         &:after {
           position: absolute;
@@ -55,7 +57,7 @@ body {
       }
     }
 
-    & > .text {
+    & > .rich-text:not(:empty) {
       margin-bottom: $base-spacing;
     }
   }
