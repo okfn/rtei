@@ -578,10 +578,14 @@ body {
       padding: 0; }
       .main > section.controls > button {
         border-radius: 0;
-        border-right: solid 1px #efefef;
-        padding: 1em 1.2em; }
+        padding: 1em 1.2em;
+        display: block;
+        width: 100%;
+        text-align: left;
+        position: relative; }
         .main > section.controls > button:after {
-          padding-left: 0.75em; }
+          position: absolute;
+          right: 1.5em; }
         .main > section.controls > button.asc:after {
           content: '\2193'; }
         .main > section.controls > button.desc:after {
@@ -593,6 +597,21 @@ body {
       padding: 0; }
       .main > section.map > .leaflet-container {
         background-color: #fff; }
+  @media only screen and (min-width: 53.75em) {
+    .main > section.controls {
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 23.23176%; }
+      .main > section.controls:last-child {
+        margin-right: 0; }
+      .main > section.controls + section {
+        float: left;
+        display: block;
+        margin-right: 2.35765%;
+        width: 74.41059%; }
+        .main > section.controls + section:last-child {
+          margin-right: 0; } }
 
 #smenu {
   text-align: right;
@@ -1116,42 +1135,27 @@ body {
       line-height: 22px; }
       .template-explore-map .map .leaflet-control-zoom a:hover {
         background-color: #595a5b; }
-@media only screen and (min-width: 53.75em) {
-  .template-explore-map .indicator-switcher {
-    float: left;
-    display: block;
-    margin-right: 2.35765%;
-    width: 23.23176%; }
-    .template-explore-map .indicator-switcher:last-child {
-      margin-right: 0; }
-    .template-explore-map .indicator-switcher > ul > li {
-      display: block;
-      width: auto; }
-      .template-explore-map .indicator-switcher > ul > li label {
-        border-width: 0 0 1px 0; }
-      .template-explore-map .indicator-switcher > ul > li h6 {
-        cursor: pointer;
-        border-radius: 50%; }
-        .template-explore-map .indicator-switcher > ul > li h6:hover {
-          background-color: #333333; }
-          .template-explore-map .indicator-switcher > ul > li h6:hover:after {
-            border-top-color: #fff; }
-        .template-explore-map .indicator-switcher > ul > li h6.expanded {
-          -webkit-transform: rotate(-90deg);
-          -moz-transform: rotate(-90deg);
-          -ms-transform: rotate(-90deg);
-          -o-transform: rotate(-90deg);
-          transform: rotate(-90deg); }
-      .template-explore-map .indicator-switcher > ul > li ul {
-        position: static;
-        display: block; }
-  .template-explore-map .map {
-    float: left;
-    display: block;
-    margin-right: 2.35765%;
-    width: 74.41059%; }
-    .template-explore-map .map:last-child {
-      margin-right: 0; } }
+.template-explore-map .indicator-switcher > ul > li {
+  display: block;
+  width: auto; }
+  .template-explore-map .indicator-switcher > ul > li label {
+    border-width: 0 0 1px 0; }
+  .template-explore-map .indicator-switcher > ul > li h6 {
+    cursor: pointer;
+    border-radius: 50%; }
+    .template-explore-map .indicator-switcher > ul > li h6:hover {
+      background-color: #333333; }
+      .template-explore-map .indicator-switcher > ul > li h6:hover:after {
+        border-top-color: #fff; }
+    .template-explore-map .indicator-switcher > ul > li h6.expanded {
+      -webkit-transform: rotate(-90deg);
+      -moz-transform: rotate(-90deg);
+      -ms-transform: rotate(-90deg);
+      -o-transform: rotate(-90deg);
+      transform: rotate(-90deg); }
+  .template-explore-map .indicator-switcher > ul > li ul {
+    position: static;
+    display: block; }
 
 html,
 .site-footer {

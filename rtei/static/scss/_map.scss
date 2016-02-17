@@ -297,45 +297,36 @@
   }
 
   // sidebar layout
-  @media only screen and ( min-width: $large-screen) {
-    .indicator-switcher {
-      @include span-columns(3);
+  .indicator-switcher {
+    & > ul > li {
+      display: block;
+      width: auto;
 
-      & > ul > li {
-        display: block;
-        width: auto;
+      label {
+        border-width: 0 0 1px 0;
+      }
 
-        label {
-          border-width: 0 0 1px 0;
-        }
+      h6 {
+        cursor: pointer;
+        border-radius: 50%;
 
-        h6 {
-          cursor: pointer;
-          border-radius: 50%;
+        &:hover {
+          background-color: $dark-gray;
 
-          &:hover {
-            background-color: $dark-gray;
-
-            &:after {
-              border-top-color: $base-background-color;
-            }
-          }
-
-          &.expanded {
-            @include transform(rotate(-90deg));
+          &:after {
+            border-top-color: $base-background-color;
           }
         }
 
-        ul {
-          position: static;
-          display: block;
+        &.expanded {
+          @include transform(rotate(-90deg));
         }
       }
-    }
 
-    .map {
-      @include span-columns(9);
+      ul {
+        position: static;
+        display: block;
+      }
     }
   }
-
 }
