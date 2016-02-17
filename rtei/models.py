@@ -52,10 +52,12 @@ def get_scores_per_country():
                                'static', 'data', 'scores_per_country.json')
     return get_json_file(scores_file)
 
+
 def get_c3_scores_per_country():
     scores_file = os.path.join(os.path.dirname(__file__),
                                'static', 'data', 'c3_scores_per_country.json')
     return get_json_file(scores_file)
+
 
 def get_indicators_for_country(country_code):
     country_file = os.path.join(os.path.dirname(__file__),
@@ -120,18 +122,26 @@ def get_map_context(context):
         ...
     ]
     '''
-    indicators = get_indicators()
-    map_indicators = []
-    for code, indicator in indicators.iteritems():
-        if (indicator['level'] <= 2 and not code[-1].isalpha()):
-            indicator['code'] = code
-            if indicator['level'] == 1:
-                if not indicator.get('subindicators'):
-                    indicator['subindicators'] = []
-                map_indicators.append(indicator)
-            else:
-                indicators[code[:1]]['subindicators'].append(indicator)
-
+    map_indicators = _file_cache.get('map_indicators', [])
+    if not map_indicators:
+        indicators = get_indicators()
+        level_1_indicators = {}
+        level_2_indicators = []
+        for code, indicator in indicators.iteritems():
+            if (indicator['level'] <= 2 and not code[-1].isalpha()):
+                map_indicator = indicator.copy()
+                map_indicator['code'] = code
+                if map_indicator['level'] == 1:
+                    if not map_indicator.get('subindicators'):
+                        map_indicator['subindicators'] = []
+                    level_1_indicators[code] = map_indicator
+                    map_indicators.append(map_indicator)
+                else:
+                    level_2_indicators.append(map_indicator)
+        for level_2_indicator in level_2_indicators:
+            code = level_2_indicator['code'][:1]
+            level_1_indicators[code]['subindicators'].append(level_2_indicator)
+        _file_cache['map_indicators'] = map_indicators
     context['indicators'] = map_indicators
 
 
@@ -151,6 +161,27 @@ def get_country_context(context, country_code):
 
     * `country_code`
     * `country_name`
+    * `country_indicators`: full indicators data for the country, in the form:
+
+        {
+            '1': 74.34,
+            '1.1': 23.43,
+            '1.1.1': None,
+            ...
+        }
+
+    * `chart_data`: data necessary to build the C3 chart for just this
+        particular country, eg:
+
+            [{
+                'name': 'Tanzania',
+                'index': 64.063,
+                '1': 16.91,
+                '3': 15.92,
+                '2': 8.68,
+                '5': 8.32,
+                '4': 14.24
+            }]
 
     '''
 
