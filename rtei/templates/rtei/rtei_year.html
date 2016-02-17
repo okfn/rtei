@@ -36,7 +36,7 @@
             // Chart height is the number of rows * 22, or 350, whichever is
             // largest. This ensures there is adequate room for double-lined
             // labels.
-            var height = _.max([_.size(data) * 22, 350]);
+            var height = _.max([_.size(data) * 22, 200]);
             var chart = c3.generate({
                 bindto: '#chart',
                 data: {
@@ -56,7 +56,14 @@
                         '5': 'Adaptability',
                         '4': 'Acceptability'
                     },
-                    type: 'bar'
+                    type: 'bar',
+                    colors: {
+                      1: '#ffb21a',
+                      2: '#4ccd55',
+                      3: '#39abe0',
+                      4: '#7d5fba',
+                      5: '#c6539b',
+                    },
                 },
                 axis: {
                     rotated: true,
@@ -67,14 +74,12 @@
                         show: true,
                         max: 100,
                         padding: {
-                            top: 0,
+                            top: 10,
                         }
                     }
                 },
                 bar: {
-                    width: {
-                        ratio: 0.75
-                    }
+                    width: 16
                 },
                 size: {
                     height: height
@@ -85,6 +90,9 @@
                         return parseFloat((value * 5).toFixed(2));
                     }
                   }
+                },
+                padding: {
+                  bottom: 20,
                 }
             });
             return chart;

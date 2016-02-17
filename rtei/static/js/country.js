@@ -24,25 +24,32 @@ RTEI.country = (function() {
                   '5': 'Adaptability',
                   '4': 'Acceptability'
               },
-              type: 'bar'
+              type: 'bar',
+              colors: {
+                1: '#ffb21a',
+                2: '#4ccd55',
+                3: '#39abe0',
+                4: '#7d5fba',
+                5: '#c6539b',
+              },
           },
           axis: {
               rotated: true,
               x: {
-                  type: 'category'
+                  type: 'category',
+                  show: false,
               },
               y: {
                   show: true,
                   max: 100,
                   padding: {
-                      top: 0,
+                      top: 10,
+                      bottom: 10,
                   }
               }
           },
           bar: {
-              width: {
-                  ratio: 0.75
-              }
+              width: 16
           },
           tooltip: {
             format: {
@@ -50,6 +57,10 @@ RTEI.country = (function() {
                   return parseFloat((value * 5).toFixed(2));
               }
             }
+          },
+          padding: {
+            bottom: 20,
+            left: 5
           }
       });
     }
@@ -73,4 +84,3 @@ $(document).ready(function(){
     }
 
 });
-

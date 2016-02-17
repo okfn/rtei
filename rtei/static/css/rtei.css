@@ -932,6 +932,14 @@ body {
       .template-home .main > div:last-child {
         margin-right: 0; } }
 
+.template-rtei .c3 path,
+.template-rtei .c3 line {
+  stroke: #fff; }
+.template-rtei .c3 svg {
+  font-family: inherit;
+  font-size: 0.8em;
+  margin-left: -5px; }
+
 .rtei-map-popup .leaflet-popup-content-wrapper {
   color: #3b3b3b;
   border-radius: 2px;
