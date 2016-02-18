@@ -1,4 +1,4 @@
-{% load static wagtailuserbar rtei_tags %}
+{% load static wagtailuserbar wagtailcore_tags rtei_tags i18n %}
 
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -62,20 +62,16 @@
 
           <div class="secondary">
             <div>
-              
               <ul class="language">
-                <li class="active">
-                  <a>EN</a>
+              {% get_available_languages as languages %}
+              {% get_current_language as current_lang_code %}
+              {% for lang_code, lang_name in languages  %}
+                {% language lang_code %}
+                <li {% if lang_code == current_lang_code %}class="active"{% endif %}>
+                  <a href="{% slugurl page.slug %}">{{ lang_code|upper }}</a>
                 </li>
-                <li>
-                  <a>ES</a>
-                </li>
-                <li>
-                  <a>FR</a>
-                </li>
-                <li>
-                  <a>AR</a>
-                </li>
+                {% endlanguage %}
+              {% endfor %}
               </ul>
 
               <a href="http://results.org/" class="results">
