@@ -33,6 +33,18 @@ This site is powered by [Wagtail](https://wagtail.io)
 
 # Notes for development
 
+## Tests
+
+Install the tests requirements:
+
+    pip install -r test-requirements.txt
+
+Run:
+
+    ./manage.py test
+
+
+
 ## Generate data
 
 The JSON data needed to power the visualizations on the site is built using the `build_data.py` script, which parses the original Excel (xlsx) file located at `data`.

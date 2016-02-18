@@ -56,6 +56,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'django_nose',
+
     'debug_toolbar',
 ]
 
@@ -161,3 +163,6 @@ COMPRESS_ENABLED = False
 # Wagtail settings
 
 WAGTAIL_SITE_NAME = "rtei"
+
+# Tests
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
