@@ -8,3 +8,4 @@ dj-database-url==0.4.0
 whitenoise==2.0.6
 django-storages==1.4
 boto==2.39.0
+django-nose==1.4.3
