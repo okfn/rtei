@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Exit immediately if any command fails
+set -e
+
+# Setup postgres user
+
+sudo -u postgres psql -c "CREATE USER rtei WITH PASSWORD 'pass' CREATEDB;"
+
+# Install requirements
+pip install -r requirements.txt
+pip install -r test-requirements.txt
+

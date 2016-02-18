@@ -1,5 +1,7 @@
 # Right to Education Index (RTEI) website
 
+[![Build Status](https://travis-ci.org/okfn/rtei.svg?branch=master)](https://travis-ci.org/okfn/rtei)
+
 This site is powered by [Wagtail](https://wagtail.io)
 
 
