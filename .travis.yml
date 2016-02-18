@@ -4,6 +4,8 @@ python:
 sudo: required
 install: ./bin/travis-setup
 script: ./manage.py test --with-coverage --cover-package=rtei
+notifications:
+  slack: openknowledge:wnDLkoYYddR3sYR9eTsBXzz2
 deploy:
   provider: heroku
   app: rtei
