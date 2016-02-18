@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% load static %}
+{% load static i18n %}
 
 {% block body_class %}template-home{% endblock %}
 
@@ -16,8 +16,8 @@
       <div>
         <div class="text">
           <h1>Right to Education Index</h1>
-          <p>A global index to catalyze reform across select indicators of the right to education.</p>
-          <a href="explore/map/">Explore the Map</a>
+          <p>{% trans "A global index to catalyze reform across select indicators of the right to education." %}</p>
+          <a href="explore/map/">{% trans "Explore the Map" %}</a>
         </div>
         <div class="map" id="map">
         </div>
@@ -30,9 +30,9 @@
     <div>
       <a href="explore/rtei-year/">
         {% include "icons/bars.svg" %}
-        <h2>RTEI by Year</h2>
+        <h2>{% trans "RTEI by Year" %}</h2>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur velit massa, tempor eget aliquam in.
+          {% trans "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur velit massa, tempor eget aliquam in." %}
         </p>
       </a>
     </div>
@@ -40,9 +40,9 @@
     <div>
       <a href="explore/rtei-country/">
         {% include "icons/earth.svg" %}
-        <h2>RTEI by Country</h2>
+        <h2>{% trans "RTEI by Country" %}</h2>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur velit massa, tempor eget aliquam in.
+          {% trans "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur velit massa, tempor eget aliquam in." %}
         </p>
       </a>
     </div>
@@ -50,9 +50,9 @@
     <div>
       <a href="explore/rtei-over-time/">
         {% include "icons/calendar.svg" %}
-        <h2>RTEI over Time</h2>
+        <h2>{% trans "RTEI over Time" %}</h2>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur velit massa, tempor eget aliquam in.
+          {% trans "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur velit massa, tempor eget aliquam in." %}
         </p>
       </a>
     </div>
@@ -60,9 +60,9 @@
     <div>
       <a href="">
         {% include "icons/download.svg" %}
-        <h2>Download the Data</h2>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur velit massa, tempor eget aliquam in.
+        <h2>{% trans "Download the Data" %}</h2>
+        <p> 
+          {% trans "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur velit massa, tempor eget aliquam in." %}
         </p>
       </a>
     </div>

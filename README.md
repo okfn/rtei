@@ -7,7 +7,7 @@ This site is powered by [Wagtail](https://wagtail.io)
 
 * Create a Postgres User and Database:
 
-        sudo -u postgres createuser -S -D -R -P -l rtei
+        sudo -u postgres createuser -d -S -R -P -l rtei
         sudo -u postgres createdb -O rtei rtei -E utf-8
 
 * Create a Virtualenv and clone this repo:
@@ -191,3 +191,61 @@ Dump a new set of site data (this is the internal data for managing the site, li
 Database migrates can be run on heroku against the production settings with:
 
     heroku run python ./manage.py migrate --settings=rtei.settings.production
+
+## Translations
+
+Translations are managed on [Transifex](https://transifex.com). You will need to install the Transifex command line client:
+
+    pip install transifex-client
+
+If you haven't already done it, you need to create a `~/.transifexrc` file with the following contents:
+
+    [https://www.transifex.com]
+    hostname = https://www.transifex.com
+    username = YOUR_USERNAME
+    password = YOUR_PASSWORD
+    token = 
+
+To test that it's properly configured, run the following on the repo directory:
+
+    tx status
+
+You should see something along these lines:
+
+    rtei -> rtei (1 of 1)
+    Translation Files:
+     - en: locale/django.pot (source)
+     - ar: locale/ar/LC_MESSAGES/django.po
+     - es: locale/es/LC_MESSAGES/django.po
+     - fr: locale/fr/LC_MESSAGES/django.po
+
+### Uploading translations to Transifex
+
+New strings added to the source code that need to be translated must be regularly extracted and uploaded to Transifex.
+
+To do so run the following:
+
+    # Extract strings from source code into po files (also keep the master pot file)
+    ./manage.py makemessages --keep-pot
+
+    # Upload to Transifex
+    tx push -s -t
+
+    #Commit new po files
+    git commit -am "Update translation files with new strings"
+
+At this point the strings are available for translation on Transifex.
+
+
+### Updating translations from Transifex
+
+Once the translators have finished workin on Transifex, update the source code translations with the following commands:
+
+    # Pull strings from Transifex
+    tx pull 
+
+    # Compile strings catalogue, ie the locale/*.mo files (You need to restart the server after this)
+    ./manage compilemessages
+
+    # Commit the changes
+    git commit -am "Updated strings from Transifex"

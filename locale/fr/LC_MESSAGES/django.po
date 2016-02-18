@@ -1,44 +1,96 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
+# Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: rtei\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-02 17:37+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"POT-Creation-Date: 2016-02-18 12:01+0000\n"
+"PO-Revision-Date: 2016-02-18 11:39+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Language-Team: French (http://www.transifex.com/okfn/rtei/language/fr/)\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: rtei/settings/base.py:122
+#: rtei/models.py:110
+msgid "No data available for this country"
+msgstr ""
+
+#: rtei/settings/base.py:129 rtei/templates/base.html.py:68
 msgid "English"
 msgstr ""
 
-#: rtei/settings/base.py:123
+#: rtei/settings/base.py:130 rtei/templates/base.html.py:74
 msgid "French"
 msgstr ""
 
-#: rtei/settings/base.py:124
+#: rtei/settings/base.py:131 rtei/templates/base.html.py:71
 msgid "Spanish"
 msgstr ""
 
-#: rtei/settings/base.py:125
+#: rtei/settings/base.py:132 rtei/templates/base.html.py:77
 msgid "Arabic"
 msgstr ""
 
-#: rtei/templates/rtei/tags/top_menu.html:9
-msgid "Toggle navigation"
+#: rtei/templates/base.html:42
+msgid "Contact Us"
 msgstr ""
 
-#: rtei/templates/rtei/tags/top_menu.html:34
+#: rtei/templates/base.html:45
+msgid "Glossary"
+msgstr ""
+
+#: rtei/templates/rtei/homepage.html:19
+msgid ""
+"A global index to catalyze reform across select indicators of the right to "
+"education."
+msgstr ""
+
+#: rtei/templates/rtei/homepage.html:20
+msgid "Explore the Map"
+msgstr ""
+
+#: rtei/templates/rtei/homepage.html:33
+msgid "RTEI by Year"
+msgstr ""
+
+#: rtei/templates/rtei/homepage.html:35 rtei/templates/rtei/homepage.html:45
+#: rtei/templates/rtei/homepage.html:55 rtei/templates/rtei/homepage.html:65
+msgid ""
+"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur velit "
+"massa, tempor eget aliquam in."
+msgstr ""
+
+#: rtei/templates/rtei/homepage.html:43
+msgid "RTEI by Country"
+msgstr ""
+
+#: rtei/templates/rtei/homepage.html:53
+msgid "RTEI over Time"
+msgstr ""
+
+#: rtei/templates/rtei/homepage.html:63
+msgid "Download the Data"
+msgstr ""
+
+#: rtei/templates/rtei/rtei_country.html:63
+msgid "Select a country ..."
+msgstr ""
+
+#: rtei/templates/rtei/rtei_country.html:76
+msgid "Overall Index"
+msgstr ""
+
+#: rtei/templates/rtei/tags/map_switcher.html:10
+msgid "Sub-categories"
+msgstr ""
+
+#: rtei/templates/rtei/tags/top_menu.html:21
 msgid "Search…"
 msgstr ""
 
