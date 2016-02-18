@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% load static wagtailcore_tags i18n %}
+
+{% block body_class %}template-blog-page{% endblock %}
+
+{% block heading %}
+  <div class="page-header">
+
+    <div class="pull-right">
+      {% for tag in self.tags.all %}
+        <a href="{% pageurl self.blog_index %}?tag={{ tag }}"
+           class="btn btn-primary btn-xs">
+          <i class="glyphicon glyphicon-tag"></i> {{ tag }}
+        </a>
+      {% endfor %}
+    </div>
+
+    <h2>
+      {{ self.title }}
+      {% if self.date %}<small>{{ self.date }}</small>{% endif %}
+    </h2>
+
+  </div>
+{% endblock %}
+
+{% block content %}
+
+  <div class="main">
+    {% if self.body %}
+        <div class="body-content">
+            {{ self.body|richtext }}
+        </div>
+    {% endif %}
+
+  </div>
+{% endblock %}

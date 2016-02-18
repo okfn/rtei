@@ -1,4 +1,4 @@
-from .models import RTEIPage, ResourceIndexPage
+from .models import RTEIPage, ResourceIndexPage, BlogIndexPage, BlogPage
 
 from wagtail_modeltranslation.translation import TranslationOptions
 from wagtail_modeltranslation.decorators import register
@@ -12,3 +12,14 @@ class RTEIPageTR(TranslationOptions):
 @register(ResourceIndexPage)
 class ResourceIndexPageTR(TranslationOptions):
     fields = ('title', )
+
+
+@register(BlogIndexPage)
+class BlogIndexPageTR(TranslationOptions):
+    fields = ('title', )
+
+
+@register(BlogPage)
+class BlogPageTR(TranslationOptions):
+    fields = ('title', )
+    fields = ('body', )
