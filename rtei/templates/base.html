@@ -1,4 +1,4 @@
-{% load static wagtailuserbar rtei_tags %}
+{% load static wagtailuserbar rtei_tags i18n %}
 
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -39,10 +39,10 @@
 
               <ul class="links">
                 <li>
-                  <a>Contact Us</a>
+                  <a>{% trans "Contact Us" %}</a>
                 </li>
                 <li>
-                  <a>Glossary</a>
+                <a>{% trans "Glossary" %}</a>
                 </li>
               </ul>
 
@@ -65,16 +65,16 @@
               
               <ul class="language">
                 <li class="active">
-                  <a>EN</a>
+                  <a title="{% trans "English" %}">EN</a>
                 </li>
                 <li>
-                  <a>ES</a>
+                  <a title="{% trans "Spanish" %}">ES</a>
                 </li>
                 <li>
-                  <a>FR</a>
+                  <a title="{% trans "French" %}">FR</a>
                 </li>
                 <li>
-                  <a>AR</a>
+                  <a title="{% trans "Arabic" %}">AR</a>
                 </li>
               </ul>
 
