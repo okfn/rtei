@@ -57,27 +57,44 @@ class SiteTestCase(WebTest):
         assert 'Chile' in page
         assert 'Overall Index' in page
 
+    # TODO: check for something relevant once content is in place
     def test_explore_rtei_over_time(self):
         page = self.app.get('/en/explore/rtei-over-time/')
 
         assert 'RTEI over Time' in page
 
+    # TODO: check for something relevant once content is in place
     def test_resources(self):
         page = self.app.get('/en/resources/')
 
         assert 'Resources' in page
 
+    # TODO: check for something relevant once content is in place
     def test_partners(self):
         page = self.app.get('/en/partners/')
 
         assert 'Partners' in page
 
+    # TODO: check for something relevant once content is in place
     def test_contact_us(self):
         page = self.app.get('/en/contact-us/')
 
         assert 'Contact Us' in page
 
+    # TODO: check for something relevant once content is in place
     def test_about_us(self):
         page = self.app.get('/en/about-us/')
 
         assert 'About Us' in page
+
+    def test_blog(self):
+
+        page = self.app.get('/en/blog/')
+
+        assert 'Page' in page
+
+    def test_blog_page(self):
+
+        page = self.app.get('/en/blog/test-post-rtei-blog/')
+
+        assert 'This is a test post' in page
