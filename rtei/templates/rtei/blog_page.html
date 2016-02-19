@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% load static wagtailcore_tags i18n %}
+
+{% block body_class %}template-blog-page{% endblock %}
+
+{% block extra_css %}
+    <style>
+      /*TODO: Move to CSS */
+      h2 {
+        font-size: 2em;
+      }
+        
+      .post-date {
+        font-size: 1em;
+        font-weight: bold;
+      }
+
+      .tags {
+        margin-top: 10px;
+      }
+
+      .post-tag {
+        padding: 2px 5px;
+        margin-right: 10px;
+        background: #fbb89d;
+      }
+
+      .body-content ul, ol {
+
+        /* TODO: reset styles for the body contents! */
+
+         list-style-type: initial;
+      }
+
+    </style>
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="main">
+
+    <section>
+      <div class="page-header">
+
+
+        <h2>
+          {{ self.title }}
+        </h2>
+
+        {% if self.date %}<span class="post-date">{{ self.date }}</span>{% endif %}
+
+        <div class="tags">
+        {% for tag in self.tags.all %}
+          <a href="{% pageurl self.blog_index %}?tag={{ tag }}" class="post-tag">
+            <i class="glyphicon glyphicon-tag"></i> {{ tag }}
+          </a>
+        {% endfor %}
+        </div>
+
+      </div>
+    </section>
+
+
+
+    {% if self.body %}
+    <section>
+        <div class="body-content">
+            {{ self.body|richtext }}
+        </div>
+    </section>
+    {% endif %}
+  </div>
+{% endblock %}

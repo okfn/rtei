@@ -501,6 +501,62 @@
     }
 },
 {
+    "model": "wagtailcore.page",
+    "pk": 13,
+    "fields": {
+        "path": "000100020007",
+        "depth": 3,
+        "numchild": 1,
+        "title": "Blog",
+        "slug": "blog",
+        "content_type": [
+            "rtei",
+            "blogindexpage"
+        ],
+        "live": true,
+        "has_unpublished_changes": false,
+        "url_path": "/homepage/blog/",
+        "owner": null,
+        "seo_title": "",
+        "show_in_menus": true,
+        "search_description": "",
+        "go_live_at": null,
+        "expire_at": null,
+        "expired": false,
+        "locked": false,
+        "first_published_at": "2016-02-19T11:09:16.848Z",
+        "latest_revision_created_at": "2016-02-19T11:09:16.758Z"
+    }
+},
+{
+    "model": "wagtailcore.page",
+    "pk": 14,
+    "fields": {
+        "path": "0001000200070001",
+        "depth": 4,
+        "numchild": 0,
+        "title": "This is a test post on the RTEI Blog",
+        "slug": "test-post-rtei-blog",
+        "content_type": [
+            "rtei",
+            "blogpage"
+        ],
+        "live": true,
+        "has_unpublished_changes": false,
+        "url_path": "/homepage/blog/test-post-rtei-blog/",
+        "owner": null,
+        "seo_title": "",
+        "show_in_menus": false,
+        "search_description": "",
+        "go_live_at": null,
+        "expire_at": null,
+        "expired": false,
+        "locked": false,
+        "first_published_at": "2016-02-19T11:19:36.135Z",
+        "latest_revision_created_at": "2016-02-19T11:21:00.250Z"
+    }
+},
+{
     "model": "rtei.rteipage",
     "pk": 3,
     "fields": {
@@ -768,6 +824,65 @@
         "search_description_es": "",
         "search_description_ar": "",
         "body": ""
+    }
+},
+{
+    "model": "rtei.blogindexpage",
+    "pk": 13,
+    "fields": {
+        "title_en": "Blog",
+        "title_fr": "Blog",
+        "title_es": "Blog",
+        "title_ar": "",
+        "slug_en": "blog",
+        "slug_fr": "blog",
+        "slug_es": "blog",
+        "slug_ar": "",
+        "url_path_en": "/homepage/blog/",
+        "url_path_fr": "/homepage/blog/",
+        "url_path_es": "/homepage/blog/",
+        "url_path_ar": "/homepage/blog/",
+        "seo_title_en": "",
+        "seo_title_fr": "",
+        "seo_title_es": "",
+        "seo_title_ar": "",
+        "search_description_en": "",
+        "search_description_fr": "",
+        "search_description_es": "",
+        "search_description_ar": ""
+    }
+},
+{
+    "model": "rtei.blogpage",
+    "pk": 14,
+    "fields": {
+        "title_en": "This is a test post on the RTEI Blog",
+        "title_fr": "",
+        "title_es": "Entrada de prueba en el blog de RTEI",
+        "title_ar": "",
+        "slug_en": "test-post-rtei-blog",
+        "slug_fr": "",
+        "slug_es": "entrada-de-prueba-en-el-blog-de-rtei",
+        "slug_ar": "",
+        "url_path_en": "/homepage/blog/test-post-rtei-blog/",
+        "url_path_fr": "/homepage/blog/test-post-rtei-blog/",
+        "url_path_es": "/homepage/blog/entrada-de-prueba-en-el-blog-de-rtei/",
+        "url_path_ar": "/homepage/blog/test-post-rtei-blog/",
+        "seo_title_en": "",
+        "seo_title_fr": "",
+        "seo_title_es": "",
+        "seo_title_ar": "",
+        "search_description_en": "",
+        "search_description_fr": "",
+        "search_description_es": "",
+        "search_description_ar": "",
+        "body": "<p>Intro with <i><b>some formatting</b></i></p><p><i><b><br/></b></i></p><h4><i><b>Heading</b></i></h4><p><i><b><br/></b></i></p><p></p><ol><li><b><i>Item</i></b></li><li><b><i>Item</i></b></li></ol><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<b><i><br/></i></b></p><p></p><p><br/></p><p></p><embed embedtype=\"media\" url=\"https://www.youtube.com/watch?v=m5aAp__XQOQ\"/>\n<p></p>",
+        "body_en": "<p>Intro with <i><b>some formatting</b></i></p><p><i><b><br/></b></i></p><h4><i><b>Heading</b></i></h4><p><i><b><br/></b></i></p><p></p><ol><li><b><i>Item</i></b></li><li><b><i>Item</i></b></li></ol><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<b><i><br/></i></b></p><p></p><p><br/></p><p></p><embed embedtype=\"media\" url=\"https://www.youtube.com/watch?v=m5aAp__XQOQ\"/>\n<p></p>",
+        "body_fr": "",
+        "body_es": "<p>Introducci\u00f3n <i><b>con formato</b></i></p><p><i><b><br/></b></i></p><h4><i><b>T\u00edtulo</b></i></h4><p><i><b><br/></b></i></p><p><ul><li><b><i>Item</i></b></li><li><b><i>Item</i></b></li></ul><p><b><i><br/></i></b></p></p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<b><i><br/></i></b></p><p><br/></p><p><embed embedtype=\"media\" url=\"https://www.youtube.com/watch?v=m5aAp__XQOQ\"/><br/></p>",
+        "body_ar": "",
+        "date": "2016-02-19",
+        "feed_image": null
     }
 }
 ]

@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% load static wagtailcore_tags i18n %}
+
+{% block body_class %}template-blog-index{% endblock %}
+
+{% block extra_css %}
+    <style>
+      /*TODO: Move to CSS */
+      .posts-list a {
+        color: #3b3b3b;
+        line-height: 1.5;
+        font-size: 0.875em;
+      }
+      .post > div {
+        display: table-cell;
+        vertical-align: top;
+      }
+
+      .post {
+        margin-bottom: 30px;
+      }
+
+      .post h3 {
+        font-size: 1.5em;
+        color: #af202f;
+      }
+
+      .post .post-image {
+        width: 200px;
+        padding-right: 20px;
+      }
+
+      .post .post-date {
+        font-size: 0.8em;
+        font-weight: bold;
+      }
+      .post .post-tag {
+        padding: 2px 5px;
+        margin-right: 10px;
+        background: #fbb89d;
+        color: #af202f;
+      }
+
+    </style>
+
+{% endblock %}
+
+{% block content %}
+  <div class="main">
+    {% if request.GET.tag|length %}
+        <h4>{% trans "Showing posts tagged as" %} {{ request.GET.tag|safe }} <a href=" {% pageurl self %} ">{% trans "Show all" %}</a></h4>
+    {% endif %}
+
+    <section>
+    <div class="posts-list">
+        {# Uses serve method defined in models.py - allows for paging if required #}
+        {# See also standard index for creating a listing with a tag #}
+        {% for blog in blogs %}
+            {% include "rtei/tags/blog_list_item.html" %}
+        {% empty %}
+            {% trans "No posts found" %}
+        {% endfor %}
+    </div>
+
+    </section>
+
+    {# Pagination - uses django.core.paginator #}
+    {# Append any other url query string variables to the next and previous links - allows tag to be passed through #}
+    <div class="row">
+        <div class="col-sm-4 previous">
+            {% if blogs.has_previous %}
+                <a href="?page={{ blogs.previous_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{ key }}={{ value }}{% endifnotequal %}{% endfor %}">{% trans "Previous" %}</a>
+            {% endif %}
+        </div>
+        <div class="col-sm-4 pages">
+            {% trans "Page" %} {{ blogs.number }} / {{ blogs.paginator.num_pages }}
+        </div>
+        <div class="col-sm-4 next">
+            {% if blogs.has_next %}
+                <a href="?page={{ blogs.next_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{ key }}={{ value }}{% endifnotequal %}{% endfor %}">{% trans "Next" %}</a>
+            {% endif %}
+        </div>
+    </div>
+
+  </div>
+
+{% endblock %}
