@@ -1,21 +1,29 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
-{# Individual blog item in a list - used on blog index and home page #}
-<a class="list-group-item" href="{% pageurl blog %}">
-  <div class="media">
+<div class="post">
     {% if blog.feed_image %}
-      <div class="media-left">
+      <div class="post-image">
         {% image blog.feed_image width-200 as img %}
+        <a href="{% pageurl blog %}">
         <img class="media-object" src="{{ img.url }}" />
+        </a>
       </div>
     {% endif %}
-    <div class="media-body">
-      <h4 class="media-heading">{{ blog.title }}</h4>
-      <p><strong>{{ blog.date }}</strong></p>
+
+    <div class="post-body">
+      <a href="{% pageurl blog %}">
+        <h3 class="post-heading">{{ blog.title }}</h3>
+      </a>
+      <p class="post-date">{{ blog.date }}</p>
       {% if blog.search_description %}
         <p>{{ blog.search_description }}</p>
       {% endif %}
     </div>
-  </div>
-</a>
 
+    {% for tag in blog.tags.all %}
+      <a href="{% pageurl self %}?tag={{ tag }}" class="post-tag">
+        <i class="glyphicon glyphicon-tag"></i> {{ tag }}
+      </a>
+    {% endfor %}
+
+</div>

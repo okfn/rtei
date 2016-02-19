@@ -6,6 +6,44 @@
 
 {% block extra_css %}
     <link rel="stylesheet" type="text/css" href="{% static 'vendor/c3/c3.css' %}">
+    <style>
+      /*TODO: Move to CSS */
+      .posts-list a {
+        color: #3b3b3b;
+        line-height: 1.5;
+        font-size: 0.875em;
+      }
+      .post > div {
+        display: table-cell;
+        vertical-align: top;
+      }
+
+      .post {
+        margin-bottom: 30px;
+      }
+
+      .post h3 {
+        font-size: 1.5em;
+        color: #af202f;
+      }
+
+      .post .post-image {
+        width: 200px;
+        padding-right: 20px;
+      }
+
+      .post .post-date {
+        font-size: 0.8em;
+        font-weight: bold;
+      }
+      .post .post-tag {
+        padding: 2px 5px;
+        margin-right: 10px;
+        background: #fbb89d;
+      }
+
+    </style>
+
 {% endblock %}
 
 {% block content %}
@@ -14,15 +52,18 @@
         <h4>Showing posts tagged as {{ request.GET.tag|safe }} <a href=" {% pageurl self %} ">Show all</a></h4>
     {% endif %}
 
-    <div class="list-group">
+    <section>
+    <div class="posts-list">
         {# Uses serve method defined in models.py - allows for paging if required #}
         {# See also standard index for creating a listing with a tag #}
         {% for blog in blogs %}
             {% include "rtei/tags/blog_list_item.html" %}
         {% empty %}
-            No blogs found
+            No posts found
         {% endfor %}
     </div>
+
+    </section>
 
     {# Pagination - uses django.core.paginator #}
     {# Append any other url query string variables to the next and previous links - allows tag to be passed through #}
