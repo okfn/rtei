@@ -18,9 +18,7 @@ def get_site_root(context):
 
 def has_menu_children(page):
 
-    # TODO: Use this when we add show_in_menus to the model
-    # return page.get_children().live().in_menu().exists()
-    return page.get_children().live().exists()
+    return page.get_children().live().in_menu().exists()
 
 
 # Retrieves the top menu items - the immediate children of the parent page
@@ -29,9 +27,7 @@ def has_menu_children(page):
 @register.inclusion_tag('rtei/tags/top_menu.html', takes_context=True)
 def top_menu(context, parent, calling_page=None):
 
-    # TODO: Use this when we add show_in_menus to the model
-    # menuitems = parent.get_children().live().in_menu()
-    menuitems = parent.get_children().specific().live()
+    menuitems = parent.get_children().live().in_menu()
 
     for menuitem in menuitems:
         menuitem.show_dropdown = has_menu_children(menuitem)
@@ -53,9 +49,7 @@ def top_menu(context, parent, calling_page=None):
 def top_menu_children(context, parent):
     menuitems_children = parent.get_children().specific()
 
-    # TODO: Use this when we add show_in_menus to the model
-    #menuitems_children = menuitems_children.live().in_menu()
-    menuitems_children = menuitems_children.live()
+    menuitems_children = menuitems_children.live().in_menu()
     return {
         'parent': parent,
         'menuitems_children': menuitems_children,
