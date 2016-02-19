@@ -13,7 +13,7 @@ class Migration(migrations.Migration):
     dependencies = [
         ('wagtailcore', '0023_alter_page_revision_on_delete_behaviour'),
         ('wagtaildocs', '0004_capitalizeverbose'),
-        ('rtei', '0002_auto_20160209_1343'),
+        ('rtei', '0003_load_fixtures'),
     ]
 
     operations = [

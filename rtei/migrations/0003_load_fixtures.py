@@ -11,12 +11,13 @@ def load_stores_from_fixture(apps, schema_editor):
     for app_config in django_apps.get_app_configs():
         update_contenttypes(app_config)
 
-    call_command("loaddata", "0002_data.json")
+    call_command("loaddata", "0003_data.json")
 
 
 class Migration(migrations.Migration):
     dependencies = [
         ('rtei', '0001_initial'),
+        ('rtei', '0002_blog_model'),
     ]
 
     operations = [

@@ -16,7 +16,7 @@ class Migration(migrations.Migration):
         ('wagtailcore', '0023_alter_page_revision_on_delete_behaviour'),
         ('taggit', '0002_auto_20150616_2121'),
         ('wagtailimages', '0010_change_on_delete_behaviour'),
-        ('rtei', '0004_auto_20160217_1030'),
+        ('rtei', '0001_initial'),
     ]
 
     operations = [
