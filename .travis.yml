@@ -6,6 +6,8 @@ install: ./bin/travis-setup
 script: ./manage.py test --with-coverage --cover-package=rtei
 notifications:
   slack: openknowledge:wnDLkoYYddR3sYR9eTsBXzz2
+  on_success: never
+  on_failure: change
 deploy:
   provider: heroku
   app: rtei
