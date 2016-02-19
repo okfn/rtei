@@ -5,7 +5,6 @@
 {% block body_class %}template-blog-index{% endblock %}
 
 {% block extra_css %}
-    <link rel="stylesheet" type="text/css" href="{% static 'vendor/c3/c3.css' %}">
     <style>
       /*TODO: Move to CSS */
       .posts-list a {
@@ -40,6 +39,7 @@
         padding: 2px 5px;
         margin-right: 10px;
         background: #fbb89d;
+        color: #af202f;
       }
 
     </style>
@@ -49,7 +49,7 @@
 {% block content %}
   <div class="main">
     {% if request.GET.tag|length %}
-        <h4>Showing posts tagged as {{ request.GET.tag|safe }} <a href=" {% pageurl self %} ">Show all</a></h4>
+        <h4>{% trans "Showing posts tagged as" %} {{ request.GET.tag|safe }} <a href=" {% pageurl self %} ">{% trans "Show all" %}</a></h4>
     {% endif %}
 
     <section>
@@ -59,7 +59,7 @@
         {% for blog in blogs %}
             {% include "rtei/tags/blog_list_item.html" %}
         {% empty %}
-            No posts found
+            {% trans "No posts found" %}
         {% endfor %}
     </div>
 
@@ -70,15 +70,15 @@
     <div class="row">
         <div class="col-sm-4 previous">
             {% if blogs.has_previous %}
-                <a href="?page={{ blogs.previous_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{ key }}={{ value }}{% endifnotequal %}{% endfor %}">Previous</a>
+                <a href="?page={{ blogs.previous_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{ key }}={{ value }}{% endifnotequal %}{% endfor %}">{% trans "Previous" %}</a>
             {% endif %}
         </div>
         <div class="col-sm-4 pages">
-            Page {{ blogs.number }} of {{ blogs.paginator.num_pages }}
+            {% trans "Page" %} {{ blogs.number }} / {{ blogs.paginator.num_pages }}
         </div>
         <div class="col-sm-4 next">
             {% if blogs.has_next %}
-                <a href="?page={{ blogs.next_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{ key }}={{ value }}{% endifnotequal %}{% endfor %}">Next</a>
+                <a href="?page={{ blogs.next_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{ key }}={{ value }}{% endifnotequal %}{% endfor %}">{% trans "Next" %}</a>
             {% endif %}
         </div>
     </div>

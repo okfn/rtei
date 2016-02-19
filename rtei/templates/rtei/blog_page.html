@@ -4,34 +4,72 @@
 
 {% block body_class %}template-blog-page{% endblock %}
 
-{% block heading %}
-  <div class="page-header">
+{% block extra_css %}
+    <style>
+      /*TODO: Move to CSS */
+      h2 {
+        font-size: 2em;
+      }
+        
+      .post-date {
+        font-size: 1em;
+        font-weight: bold;
+      }
 
-    <div class="pull-right">
-      {% for tag in self.tags.all %}
-        <a href="{% pageurl self.blog_index %}?tag={{ tag }}"
-           class="btn btn-primary btn-xs">
-          <i class="glyphicon glyphicon-tag"></i> {{ tag }}
-        </a>
-      {% endfor %}
-    </div>
+      .tags {
+        margin-top: 10px;
+      }
 
-    <h2>
-      {{ self.title }}
-      {% if self.date %}<small>{{ self.date }}</small>{% endif %}
-    </h2>
+      .post-tag {
+        padding: 2px 5px;
+        margin-right: 10px;
+        background: #fbb89d;
+      }
 
-  </div>
+      .body-content ul, ol {
+
+        /* TODO: reset styles for the body contents! */
+
+         list-style-type: initial;
+      }
+
+    </style>
+
 {% endblock %}
 
 {% block content %}
 
   <div class="main">
+
+    <section>
+      <div class="page-header">
+
+
+        <h2>
+          {{ self.title }}
+        </h2>
+
+        {% if self.date %}<span class="post-date">{{ self.date }}</span>{% endif %}
+
+        <div class="tags">
+        {% for tag in self.tags.all %}
+          <a href="{% pageurl self.blog_index %}?tag={{ tag }}" class="post-tag">
+            <i class="glyphicon glyphicon-tag"></i> {{ tag }}
+          </a>
+        {% endfor %}
+        </div>
+
+      </div>
+    </section>
+
+
+
     {% if self.body %}
+    <section>
         <div class="body-content">
             {{ self.body|richtext }}
         </div>
+    </section>
     {% endif %}
-
   </div>
 {% endblock %}
