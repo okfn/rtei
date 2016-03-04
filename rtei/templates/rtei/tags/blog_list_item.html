@@ -3,7 +3,7 @@
 <div class="post">
     {% if blog.feed_image %}
       <div class="post-image">
-        {% image blog.feed_image width-200 as img %}
+        {% image blog.feed_image width-600 as img %}
         <a href="{% pageurl blog %}">
         <img class="media-object" src="{{ img.url }}" />
         </a>
@@ -17,6 +17,8 @@
       <p class="post-date">{{ blog.date }}</p>
       {% if blog.search_description %}
         <p>{{ blog.search_description }}</p>
+      {% elif blog.intro %}
+      <p>{{ blog.intro }}</p>
       {% endif %}
     </div>
 

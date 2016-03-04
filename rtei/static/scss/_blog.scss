@@ -1,0 +1,109 @@
+.template-blog-index {
+
+}
+
+.template-blog-page {
+  .main {
+
+    & > article {
+      @include media($medium-screen) {
+        padding: $base-spacing * 2;
+      }
+    }
+
+    .page-header {
+
+      h1 {
+        font-size: 2em;
+        font-weight: 600;
+        margin-bottom: 0.5em;
+
+        @include media($medium-screen) {
+          font-size: 2.4em;
+        }
+      }
+
+      .post-date {
+        color: transparentize($base-font-color, 0.6);
+        font-size: 0.9em;
+        margin-top: -0.5em;
+        margin-bottom: 0.75em;
+        display: block;
+      }
+
+      .image {
+        padding-top: 33%;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        margin-bottom: $base-spacing;
+      }
+
+      .intro {
+        font-size: 1.1em;
+        line-height: 1.4em;
+        margin-bottom: 1.2em;
+        font-style: italic;
+
+        @include media($medium-screen) {
+          font-size: 1.2em;
+        }
+      }
+    }
+
+    .body-content {
+
+      h2 {
+        font-size: 1.6em;
+      }
+
+      h3 {
+        font-size: 1.4em;
+      }
+
+      h4 {
+        font-size: 1.2em;
+      }
+
+      ul {
+        @extend %default-ul;
+      }
+
+      ol {
+        @extend %default-ol;
+      }
+    }
+
+    .page-footer {
+      .tags {
+        margin-top: $base-spacing;
+      }
+    }
+  }
+}
+
+.post-tag {
+  padding: $small-spacing /2 $base-spacing;
+  background: $medium-gray;
+  color: $base-background-color;
+  margin-right: $small-spacing;
+  border-radius: $base-border-radius;
+
+  &:hover {
+    background-color: $action-color;
+  }
+}
+
+.pagination {
+  background-color: inherit;
+
+  .previous {
+    @include span-columns(4);
+  }
+  .pages {
+    @include span-columns(4);
+  }
+  .next {
+    @include span-columns(4);
+  }
+}

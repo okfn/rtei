@@ -7,14 +7,17 @@ body {
 }
 
 .main {
-  @include outer-container;
-  padding: $base-spacing;
+  @include media($medium-screen) {
+    @include outer-container;
+    padding: $base-spacing;
+  }
 
   & > * {
     background-color: $base-background-color;
     margin-bottom: $base-spacing;
   }
-  & > section {
+  & > section,
+  & > article {
     padding: $base-spacing;
     @include clearfix;
 

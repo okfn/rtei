@@ -246,6 +246,7 @@ class BlogPageTag(TaggedItemBase):
 
 class BlogPage(TranslationMixin, Page):
 
+    intro = models.TextField(blank=True)
     body = RichTextField(blank=True)
     tags = ClusterTaggableManager(through=BlogPageTag, blank=True)
     date = models.DateField("Post date")
@@ -269,6 +270,7 @@ class BlogPage(TranslationMixin, Page):
 BlogPage.content_panels = [
     FieldPanel('title', classname="full title"),
     FieldPanel('date'),
+    FieldPanel('intro', classname="full"),
     FieldPanel('body', classname="full"),
 ]
 
@@ -276,4 +278,3 @@ BlogPage.promote_panels = Page.promote_panels + [
     ImageChooserPanel('feed_image'),
     FieldPanel('tags'),
 ]
-
