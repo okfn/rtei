@@ -1,5 +1,54 @@
 .template-blog-index {
+  .posts-list {
+    background-color: inherit;
+    @include clearfix;
 
+    .post {
+      background-color: $base-background-color;
+      overflow: hidden;
+
+      .post-image {
+        padding-top: 62%;
+        display: block;
+        background-image:url("../img/placeholder.png");
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+      }
+
+      .post-body {
+        padding: $base-spacing $base-spacing $small-spacing $base-spacing;
+        height: 20em;
+        overflow: hidden;
+
+        .post-heading {
+          font-size: 1.5em;
+        }
+
+        .post-date {
+          color: transparentize($base-font-color, 0.6);
+          font-size: 0.9em;
+          margin-top: -0.5em;
+          margin-bottom: 0.75em;
+          display: block;
+        }
+      }
+
+      .post-tag {
+        display: none;
+      }
+
+      .more {
+        margin: 0 $base-spacing $base-spacing $base-spacing;
+        display: inline-block;
+      }
+
+      @include media($medium-screen) {
+        @include span-columns(4);
+        @include omega(3n);
+      }
+    }
+  }
 }
 
 .template-blog-page {

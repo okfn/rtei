@@ -10,7 +10,6 @@
         <h4>{% trans "Showing posts tagged as" %} {{ request.GET.tag|safe }} <a href=" {% pageurl self %} ">{% trans "Show all" %}</a></h4>
     {% endif %}
 
-    <section>
     <div class="posts-list">
         {# Uses serve method defined in models.py - allows for paging if required #}
         {# See also standard index for creating a listing with a tag #}
@@ -20,8 +19,6 @@
             {% trans "No posts found" %}
         {% endfor %}
     </div>
-
-    </section>
 
     {# Pagination - uses django.core.paginator #}
     {# Append any other url query string variables to the next and previous links - allows tag to be passed through #}
@@ -42,5 +39,16 @@
     </div>
 
   </div>
+
+{% endblock %}
+
+{% block extra_js %}
+  <script>
+  $(document).ready(function() {
+    $(".posts-list .post-body").dotdotdot({
+      	watch	: true,
+    });
+  });
+  </script>
 
 {% endblock %}

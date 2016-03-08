@@ -2,13 +2,10 @@
 
 <div class="post">
     {% if blog.feed_image %}
-      <div class="post-image">
-        {% image blog.feed_image width-600 as img %}
-        <a href="{% pageurl blog %}">
-        <img class="media-object" src="{{ img.url }}" />
-        </a>
-      </div>
+    {% image blog.feed_image width-620 as img %}
     {% endif %}
+    <a href="{% pageurl blog %}" class="post-image"{% if img %} style="background-image:url('{{ img.url }}')"{% endif %}></a>
+
 
     <div class="post-body">
       <a href="{% pageurl blog %}">
@@ -27,5 +24,9 @@
         <i class="glyphicon glyphicon-tag"></i> {{ tag }}
       </a>
     {% endfor %}
+
+    <a href="{% pageurl blog %}" class="more">
+      Read more
+    </a>
 
 </div>
