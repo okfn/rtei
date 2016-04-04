@@ -861,11 +861,11 @@ body {
   background-color: #595a5b;
   color: #fff; }
   .template-home .banner .text {
-    padding: 1.5em;
-    text-transform: uppercase; }
+    padding: 1.5em; }
     .template-home .banner .text h1 {
       font-size: 1.875rem;
-      margin-bottom: 0.375em; }
+      margin-bottom: 0.375em;
+      text-transform: uppercase; }
     .template-home .banner .text p {
       font-size: 1.125rem;
       opacity: 0.7;

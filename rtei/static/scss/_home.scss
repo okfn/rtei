@@ -7,11 +7,11 @@
 
     .text {
       padding: $base-spacing;
-      text-transform: uppercase;
 
       h1 {
         font-size: rem(30);
         margin-bottom: $small-spacing /2;
+        text-transform: uppercase;
       }
 
       p {
