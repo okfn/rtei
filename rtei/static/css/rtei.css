@@ -375,7 +375,8 @@ button {
   text-decoration: none;
   user-select: none;
   vertical-align: middle;
-  white-space: nowrap; }
+  white-space: nowrap;
+  outline: none; }
   input[type="button"]:hover, input[type="button"]:focus, input[type="reset"]:hover, input[type="reset"]:focus, input[type="submit"]:hover, input[type="submit"]:focus,
   button:hover,
   button:focus {
@@ -521,10 +522,23 @@ h6 {
   font-family: "Lato", "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
   font-size: 1em;
   line-height: 1.2;
-  margin: 0 0 0.75em; }
+  margin: 0 0 0.2em; }
+
+h2 {
+  font-size: 2em; }
+
+h3 {
+  font-size: 1.7em; }
+
+h4 {
+  font-size: 1.4em; }
+
+h5 {
+  font-size: 1.1em; }
 
 p {
-  margin: 0 0 0.75em; }
+  margin: 0 0 0.75em;
+  font-size: 0.95em; }
 
 a {
   color: #af202f;
@@ -599,13 +613,6 @@ body {
       position: relative;
       font-size: 0.875em;
       border-bottom: solid 1px #efefef; }
-      .main > section.controls > button:after, .main > article.controls > button:after {
-        position: absolute;
-        right: 1.5em; }
-      .main > section.controls > button.asc:after, .main > article.controls > button.asc:after {
-        content: '\2193'; }
-      .main > section.controls > button.desc:after, .main > article.controls > button.desc:after {
-        content: '\2191'; }
       .main > section.controls > button:not(.active), .main > article.controls > button:not(.active) {
         background-color: inherit;
         color: inherit; }
@@ -630,6 +637,46 @@ body {
       width: 74.41059%; }
       .main > section.controls + section:last-child {
         margin-right: 0; } }
+.main .sort > button {
+  position: relative;
+  font-size: 0.875em; }
+  .main .sort > button:after {
+    position: absolute;
+    right: 1.5em;
+    background-color: #fff;
+    color: #af202f;
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    right: 1em;
+    border-radius: 50%;
+    text-align: center;
+    overflow: hidden; }
+  .main .sort > button.asc:after {
+    content: '\2193';
+    line-height: 0.3em; }
+  .main .sort > button.desc:after {
+    content: '\2191';
+    line-height: 1.3em; }
+  .main .sort > button:not(.active) {
+    background-color: inherit;
+    color: inherit; }
+    .main .sort > button:not(.active):after {
+      background-color: #bfbfbe;
+      color: inherit; }
+.main .content .sort {
+  margin-bottom: 0.375em; }
+  @media only screen and (min-width: 53.75em) {
+    .main .content .sort {
+      text-align: right; } }
+  .main .content .sort button {
+    padding-right: 3em;
+    background-color: inherit;
+    color: inherit; }
+    .main .content .sort button:after {
+      color: #fff; }
+    .main .content .sort button.active:after {
+      background-color: #af202f; }
 
 #smenu {
   text-align: right;

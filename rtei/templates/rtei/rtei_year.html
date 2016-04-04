@@ -11,11 +11,21 @@
 {% block content %}
   <div class="main">
 
-    <section id="chart-controls" class="controls">
-      <button type="button" id="chart-sort-by-name" class="sort asc" data-key="name">{% trans "Sort by Name" %}</button><button type="button" id="chart-sort-by-score" class="sort asc" data-key="index">{% trans "Sort by Total Score" %}</button>
+    <section class="controls">
+      left column
     </section>
-    <section>
+    <section class="content">
+      <h2>{% trans "Overall Index Score" %}</h2>
+      {% if self.body %}
       {{ self.body|richtext }}
+      {% else %}
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget nisl tempor, semper magna vel, faucibus lectus. Aliquam interdum pulvinar est quis dictum. Donec et mi sollicitudin, scelerisque nulla in, efficitur sem. Proin risus enim, finibus in metus scelerisque.
+      </p>
+      {% endif %}
+      <div id="chart-controls" class="sort">
+        <button type="button" id="chart-sort-by-name" class="sort asc" data-key="name">{% trans "Sort by Name" %}</button><button type="button" id="chart-sort-by-score" class="sort asc" data-key="index">{% trans "Sort by Total Score" %}</button>
+      </div>
       <div id="chart"></div>
     </section>
 

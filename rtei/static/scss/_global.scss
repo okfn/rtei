@@ -34,18 +34,6 @@ body {
         font-size: em(14);
         border-bottom: solid 1px $body-background-color;
 
-        &:after {
-          position: absolute;
-          right: $base-spacing;
-        }
-
-        &.asc:after {
-          content: '\2193';
-        }
-        &.desc:after {
-          content: '\2191';
-        }
-
         &:not(.active) {
           background-color: inherit;
           color: inherit;
@@ -73,6 +61,72 @@ body {
 
       & + section {
         @include span-columns(9);
+      }
+    }
+  }
+
+  .sort {
+    & > button {
+      position: relative;
+      font-size: em(14);
+
+      &:after {
+        position: absolute;
+        right: $base-spacing;
+        background-color: #fff;
+        color: $action-color;
+        display: inline-block;
+        width: 1em;
+        height: 1em;
+        right: 1em;
+        border-radius: 50%;
+        text-align: center;
+        overflow: hidden;
+      }
+
+      &.asc:after {
+        content: '\2193';
+        line-height: 0.3em;
+      }
+      &.desc:after {
+        content: '\2191';
+        line-height: 1.3em;
+      }
+
+      &:not(.active) {
+        background-color: inherit;
+        color: inherit;
+
+        &:after {
+          background-color: $light-gray;
+          color: inherit;
+        }
+      }
+    }
+  }
+
+  .content {
+    .sort {
+      margin-bottom: $small-spacing/2;
+
+      @media only screen and ( min-width: $large-screen) {
+        text-align: right;
+      }
+
+      button {
+        padding-right: 3em;
+        background-color: inherit;
+        color: inherit;
+
+        &:after {
+          color: #fff;
+        }
+
+        &.active {
+          &:after {
+            background-color: $action-color;
+          }
+        }
       }
     }
   }
