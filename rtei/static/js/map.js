@@ -71,7 +71,7 @@ RTEI.map = (function() {
   function popupContent(feature) {
     var content = ''
     content += '<div class="popup-content">';
-    
+
     if (RTEI.map.currentIndex != 'index' &&
         feature.properties[RTEI.map.currentIndex]) {
       content += ' <div class="country-score"><span>' + RTEI.map.currentIndexLabel + ': </span>' + feature.properties[RTEI.map.currentIndex] + '</div>';
