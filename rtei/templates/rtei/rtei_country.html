@@ -2,7 +2,7 @@
 
 {% load i18n static wagtailcore_tags %}
 
-{% block body_class %}template-rtei{% endblock %}
+{% block body_class %}template-rtei by-country{% endblock %}
 
 {% block extra_css %}
     <link rel="stylesheet" type="text/css" href="{% static 'vendor/c3/c3.css' %}">
@@ -56,30 +56,48 @@
 
 
     </style>
+    <section>
+    {% if not country_code %}
+      {% if self.body %}
+      {{ self.body|richtext }}
+      {% else %}
+      <h2>Lorem ipsum</h2>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget nisl tempor, semper magna vel, faucibus lectus. Aliquam interdum pulvinar est quis dictum. Donec et mi sollicitudin, scelerisque nulla in, efficitur sem. Proin risus enim, finibus in metus scelerisque.
+      </p>
+      {% endif %}
+    {% endif %}
 
+    {% if country_code %}
+      <button class="export">Export all</button>
+    {% endif %}
 
-    <select id="available-countries">
-     {% if not country_code %}
-        <option value="">{% trans "Select a country ..." %}</option>
-     {% endif %}
-     {% for code, name in available_countries.iteritems %}
-     <option value="{{ code }}" {% if code == country_code %}selected="selected"{% endif%}>{{ name }}</option>
-     {% endfor %}
-    </select>
+      <div class="select">
+        <select id="available-countries">
+         {% if not country_code %}
+            <option value="">{% trans "Select a country ..." %}</option>
+         {% endif %}
+         {% for code, name in available_countries.iteritems %}
+         <option value="{{ code }}" {% if code == country_code %}selected="selected"{% endif%}>{{ name }}</option>
+         {% endfor %}
+        </select>
+      </div>    
+    </section>
 
     {% if country_code %}
 
-    <section>
+    <section class="controls">
+      left column
+    </section>
 
-      <h1>{{ country_name }} ({{ country_code }})</h1>
+    <section>
+      <h2>{{ country_name }} ({{ country_code }})</h2>
 
       <div>{% trans "Overall Index" %}: {{ country_indicators.index }}</div>
       {% if chart_data %}
         <div id="chart" data-chart-data="{{ chart_data }}"></div>
       {% endif %}
-    </section>
 
-    <section>
         <div class="indicators" id="indicators">
             {% include 'rtei/tags/indicators.html' %}
         </div>

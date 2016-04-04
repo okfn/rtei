@@ -15,6 +15,10 @@ body {
   & > * {
     background-color: $base-background-color;
     margin-bottom: $base-spacing;
+
+    :last-child {
+      margin-bottom: 0;
+    }
   }
   & > section,
   & > article {

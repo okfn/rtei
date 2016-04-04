@@ -74,4 +74,41 @@ select {
   margin-bottom: $base-spacing;
   max-width: 100%;
   width: auto;
+  padding: 0.75em 1em;
+}
+
+.select {
+  display: inline-block;
+	position: relative;
+
+	select {
+    padding: 0.45em 2.5em 0.45em 1em;
+    cursor: pointer;
+    @include appearance(none);
+    border-radius: $base-border-radius;
+    border: $base-border;
+
+    &::-ms-expand {
+      display: none;
+    }
+  }
+
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    right: 0.8em;
+    top: 0.9em;
+    height: 0;
+    border-style: solid;
+    border-color: transparent transparent $base-font-color transparent;
+    border-width: 0 0.3em 0.3em 0.3em;
+    pointer-events: none;
+  }
+
+  &:after {
+    border-width: 0.3em 0.3em 0 0.3em;
+    border-color: $base-font-color transparent transparent transparent;
+    top: 1.4em;
+  }
 }
