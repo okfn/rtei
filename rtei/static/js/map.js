@@ -7,7 +7,7 @@ RTEI.map = (function() {
   function getColor(score) {
     if (!score) {
       if (homepage) {
-        return '#595a5b';
+        return 'rgba(255,255,255,0.4)';
       } else {
         return '#bebebd';
       }
