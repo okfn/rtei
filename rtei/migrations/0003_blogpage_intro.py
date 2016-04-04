@@ -8,7 +8,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('rtei', '0005_resource_model_update'),
+        ('rtei', '0002_blog_model'),
     ]
 
     operations = [

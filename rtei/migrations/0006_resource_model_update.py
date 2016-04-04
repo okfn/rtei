@@ -54,7 +54,7 @@ def create_new_resources_index_page(apps, schema_editor):
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('rtei', '0004_resource_model'),
+        ('rtei', '0005_resource_model'),
     ]
 
     operations = [

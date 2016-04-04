@@ -16,8 +16,7 @@ def load_stores_from_fixture(apps, schema_editor):
 
 class Migration(migrations.Migration):
     dependencies = [
-        ('rtei', '0001_initial'),
-        ('rtei', '0002_blog_model'),
+        ('rtei', '0003_blogpage_intro'),
     ]
 
     operations = [
