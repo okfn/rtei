@@ -889,17 +889,17 @@ body {
       display: table;
       width: 100%;
       table-layout: fixed;
-      height: 370px; }
+      height: 500px; }
     .template-home .banner .text {
       display: table-cell;
-      width: 33.33333%;
-      padding: 2.35765%;
+      width: 25%;
+      padding-right: 0;
       vertical-align: middle; }
       .template-home .banner .text > a {
         display: inline-block; }
     .template-home .banner .map {
       display: table-cell;
-      width: 66.66667%;
+      width: 75%;
       background: transparent; }
       .template-home .banner .map .leaflet-control-zoom {
         display: none;

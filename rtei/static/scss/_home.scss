@@ -45,12 +45,12 @@
       .container > div {
         @include fill-parent();
         @include row(table);
-        height: 370px;
+        height: 500px;
       }
 
       .text {
-        @include span-columns(4);
-        @include pad();
+        @include span-columns(3);
+        padding-right: 0;
         vertical-align: middle;
 
         & > a {
@@ -59,7 +59,7 @@
       }
 
       .map {
-        @include span-columns(8);
+        @include span-columns(9);
         @include reset-display;
         background: transparent;
 

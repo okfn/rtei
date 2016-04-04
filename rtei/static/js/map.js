@@ -118,12 +118,20 @@ RTEI.map = (function() {
     currentIndexLabel: null,
 
     init: function() {
+      if (homepage) {
+        RTEI.map.map = L.map('map', {
+          attributionControl: false,
+          zoomControl: false
+        }).setView([43, 15], 1.60);
+        L.control.zoom({position: 'topright'}).addTo(RTEI.map.map);
 
-      RTEI.map.map = L.map('map', {
-        attributionControl: false,
-        zoomControl: false
-      }).setView([40, 10], 1.5);
-      L.control.zoom({position: 'topright'}).addTo(RTEI.map.map);
+      } else {
+        RTEI.map.map = L.map('map', {
+          attributionControl: false,
+          zoomControl: false
+        }).setView([40, 10], 1.5);
+        L.control.zoom({position: 'topright'}).addTo(RTEI.map.map);
+      }
 
       // TODO: remove once we have the final data
       var random = Boolean((location.search.split('random=')[1]||'').split('&')[0]);
