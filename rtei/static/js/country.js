@@ -83,4 +83,12 @@ $(document).ready(function(){
       RTEI.country.initChart(chartData);
     }
 
+
+    // indicators
+    $( ".indicator:not(.level1) span" ).css('display', 'none');
+
+    $( ".indicator.level1" ).click(function() {
+      $(this).nextUntil(".indicator.level1").toggleClass("open").find( "span" ).slideToggle("slow");
+    });
+
 });

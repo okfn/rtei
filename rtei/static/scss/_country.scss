@@ -3,4 +3,27 @@
     float: right;
     background-color: $medium-gray;
   }
+
+  .indicators {
+    display: table;
+    width: 100%;
+
+    .indicator {
+      display: table-row;
+
+      span {
+        display: block;
+      }
+
+      .indicator-title,
+      .indicator-value {
+        display: table-cell;
+      }
+
+      .indicator-value {
+        text-align: right;
+      }
+    }
+  }
+
 }

@@ -2,7 +2,11 @@
 
 {% for code, indicator in indicators.iteritems %}
 <div class="indicator level{{ indicator.level }}">
-  <div class="indicator-title">{{ code }} - {{ indicator.title }}</div>
+  <div class="indicator-title">
+    <span>
+      {{ code }} - {{ indicator.title }}
+    </span>
+  </div>
   <div class="indicator-value">
     <span id="value-{{ code }}">
       {% if country_indicators %}

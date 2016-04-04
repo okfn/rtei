@@ -1269,6 +1269,18 @@ body {
 .by-country .export {
   float: right;
   background-color: #595a5b; }
+.by-country .indicators {
+  display: table;
+  width: 100%; }
+  .by-country .indicators .indicator {
+    display: table-row; }
+    .by-country .indicators .indicator span {
+      display: block; }
+    .by-country .indicators .indicator .indicator-title,
+    .by-country .indicators .indicator .indicator-value {
+      display: table-cell; }
+    .by-country .indicators .indicator .indicator-value {
+      text-align: right; }
 
 .template-blog-index .posts-list {
   background-color: inherit; }

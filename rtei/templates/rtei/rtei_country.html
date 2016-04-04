@@ -18,38 +18,38 @@
         height: 120px;
     }
 
-    .indicator > div {
+    .indicators_old .indicator > div {
         float: left;
         display: block;
         padding: 5px 10px;
     }
 
-    .indicator-title {
+    .indicators_old .indicator-title {
         width: 90%;
     }
 
-    .indicator-value {
+    .indicators_old .indicator-value {
         text-align: center;
     }
 
-    .indicators .level1 > div {
+    .indicators_old  .level1 > div {
         background: #F97B5D;
         font-weight: bold;
     }
 
-    .indicators .level2 > div {
+    .indicators_old  .level2 > div {
         background: #FDE8DD;
     }
 
-    .indicators .level2 .indicator-title {
+    .indicators_old  .level2 .indicator-title {
         padding-left: 20px;
     }
 
-    .indicators .level3 .indicator-title {
+    .indicators_old  .level3 .indicator-title {
         padding-left: 40px;
     }
 
-    .indicators .level4 .indicator-title {
+    .indicators_old  .level4 .indicator-title {
         padding-left: 60px;
     }
 
@@ -101,6 +101,11 @@
         <div class="indicators" id="indicators">
             {% include 'rtei/tags/indicators.html' %}
         </div>
+<!--
+        <div class="indicators_old" id="indicators">
+            {% include 'rtei/tags/indicators.html' %}
+        </div>
+-->
     </section>
     {% endif %}
 
