@@ -45,7 +45,6 @@ INSTALLED_APPS = [
     'wagtail.wagtailcore',
 
     'modelcluster',
-    'compressor',
     'taggit',
     'storages',
 
@@ -142,8 +141,7 @@ LOCALE_PATHS = (
 
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'compressor.finders.CompressorFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder'
 ]
 
 STATICFILES_DIRS = [
@@ -157,8 +155,6 @@ STATIC_URL = '/static/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
-
-COMPRESS_ENABLED = False
 
 # Wagtail settings
 
