@@ -62,10 +62,12 @@ def get_country_code(country_name, code_type='iso2'):
     By default to the 2 digit code is returned (eg 'AF' for Afghanistan),
     passing code_type='iso3' will return the 3 digit code (eg'AFG').
     '''
-
+    if not country_name:
+        return None
     for code, country in countries.iteritems():
         if (country_name == country['name'] or
-           country_name == country.get('other_names')):
+            ('other_names' in country and
+             country_name == country.get('other_names'))):
             return country[code_type]
     return None
 
@@ -259,10 +261,10 @@ def get_main_scores(country_indicators):
         if code[:1] not in scores:
             scores[code[:1]] = []
 
-        if code.count('.') == 1 and not code[-1].isalpha():
+        if code.count('.') == 1 and not code[-1].isalpha() and value is not None:
             scores[code[:1]].append(value * 100 if value <= 1 else value)
 
-    return {score: round(sum(values) / len(values), 4) for score, values in scores.iteritems()}
+    return {score: round(sum(values) / len(values), 4) for score, values in scores.iteritems() if values}
 
 
 def add_main_scores(country_indicators):
@@ -279,7 +281,8 @@ def get_full_score(country_indicators):
     all level 1 indicators (ie 1, 2, 3, 4 and 5) returned as a percentage
     rounded to 4 decimal places.
     '''
-    values = [country_indicators[str(code)] for code in xrange(1, 6)]
+    values = [country_indicators[str(code)] for code in xrange(1, 6)
+              if str(code) in country_indicators]
     return {'index': round(sum(values) / len(values), 4)}
 
 
@@ -332,15 +335,17 @@ def indicators_per_country(max_level=4, derived=True, random_values=False):
     country_codes = []
     for i in xrange(5, len(ws_core.rows) + 1):
         country_name = ws_core['A' + str(i)].value
+        if not country_name:
+            continue
         country_code = get_country_code(country_name)
         if not country_code:
             print 'Warning: Could not get country code for {0}'.format(
                 country_name)
         country_codes.append(country_code)
         out[country_code] = OrderedDict()
-
     for i, country_code in enumerate(country_codes):
         for indicator in indicators:
+
             if indicator['level'] <= max_level and indicator.get('column'):
                 if not derived and indicator['code'][-1].isalpha():
                     # Avoid derived indicators (eg 1.2a or 3.2.1_ag)
@@ -357,17 +362,17 @@ def indicators_per_country(max_level=4, derived=True, random_values=False):
 
                 # 2.4 is handled a bit differently
                 if indicator['code'] == '2.4':
-                    out[country_code][indicator['code']] = (1 if value >= 1
-                                                            else value)
+                    value = 1 if value >= 1 else value
+                    out[country_code][indicator['code']] = value
 
                 # Show all level 2, non derived scores (eg 1.2, 3.4, 5.1)
                 # as percentages, rounded to 3 places
                 if (indicator['code'].count('.') == 1 and
-                        not indicator['code'][-1].isalpha()):
+                        not indicator['code'][-1].isalpha() and
+                        value is not None):
 
                     out[country_code][indicator['code']] = round(
                         value * 100 if value <= 1 else value, 3)
-
         add_main_scores(out[country_code])
         add_full_score(out[country_code])
 
