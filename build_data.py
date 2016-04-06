@@ -62,10 +62,12 @@ def get_country_code(country_name, code_type='iso2'):
     By default to the 2 digit code is returned (eg 'AF' for Afghanistan),
     passing code_type='iso3' will return the 3 digit code (eg'AFG').
     '''
-
+    if not country_name:
+        return None
     for code, country in countries.iteritems():
         if (country_name == country['name'] or
-           country_name == country.get('other_names')):
+            ('other_names' in country and
+             country_name == country.get('other_names'))):
             return country[code_type]
     return None
 
@@ -196,27 +198,37 @@ def get_indicators(core=True, include_columns=False):
     codes_done = []
     for i in (0, 2, 3):
         for cell in ws.rows[i]:
+            indicator = None
             if cell.value:
-                    code, title, level = parse_cell(cell.value)
-                    if not code or code in codes_done:
+                code, title, level = parse_cell(cell.value)
+                if not code:
+                    continue
+                if code in codes_done:
+                    if i == 3:
+                        # Use the previous one
+                        indicator = [o for o in out if o['code'] == code][0]
+                    else:
                         continue
-
+                else:
+                    codes_done.append(code)
+                if not indicator:
                     indicator = {
                         'code': code,
                         'title': title,
                         'core': core,
                         'level': level
                     }
-                    if i == 3 and include_columns:
+                    out.append(indicator)
+                if i == 3 and include_columns:
+                    if title == 'Response':
+                        indicator['column_response'] = cell.column
+                    else:
                         indicator['column'] = cell.column
 
-                    codes_done.append(code)
-                    out.append(indicator)
             else:
                 # Other indicators
                 # print cell.value
                 pass
-
     return out
 
 
@@ -259,10 +271,10 @@ def get_main_scores(country_indicators):
         if code[:1] not in scores:
             scores[code[:1]] = []
 
-        if code.count('.') == 1 and not code[-1].isalpha():
+        if code.count('.') == 1 and not code[-1].isalpha() and value is not None:
             scores[code[:1]].append(value * 100 if value <= 1 else value)
 
-    return {score: round(sum(values) / len(values), 4) for score, values in scores.iteritems()}
+    return {score: round(sum(values) / len(values), 4) for score, values in scores.iteritems() if values}
 
 
 def add_main_scores(country_indicators):
@@ -279,7 +291,8 @@ def get_full_score(country_indicators):
     all level 1 indicators (ie 1, 2, 3, 4 and 5) returned as a percentage
     rounded to 4 decimal places.
     '''
-    values = [country_indicators[str(code)] for code in xrange(1, 6)]
+    values = [country_indicators[str(code)] for code in xrange(1, 6)
+              if str(code) in country_indicators]
     return {'index': round(sum(values) / len(values), 4)}
 
 
@@ -290,11 +303,34 @@ def add_full_score(country_indicators):
     country_indicators.update(get_full_score(country_indicators))
 
 
-def indicators_per_country(max_level=4, derived=True, random_values=False):
+def indicators_per_country(max_level=4, derived=True, random_values=False,
+                           responses=True):
     '''
     Returns a dict containing the values for all indicators for all countries,
     with the following structure:
 
+        {
+            'CL': {
+                    '1': 64.76,
+                    '1.1': 100.0,
+                    '1.1.1a': 'Yes',
+                    '1.1.1b': 'Yes',
+                    '1.1.1c': 'Yes',
+                    # ...
+                    },
+            'TZ': {
+                    '1': 74.736,
+                    '1.1': 100.0,
+                    '1.1.1a': 'Yes',
+                    '1.1.1b': 'No',
+                    '1.1.1c': 'Yes',
+                    # ...
+                    },
+
+            # ...
+        }
+
+    If responses is False, the actual indicator value is returned:
         {
             'CL': {
                     '1': 64.76,
@@ -332,20 +368,24 @@ def indicators_per_country(max_level=4, derived=True, random_values=False):
     country_codes = []
     for i in xrange(5, len(ws_core.rows) + 1):
         country_name = ws_core['A' + str(i)].value
+        if not country_name:
+            continue
         country_code = get_country_code(country_name)
         if not country_code:
             print 'Warning: Could not get country code for {0}'.format(
                 country_name)
         country_codes.append(country_code)
         out[country_code] = OrderedDict()
-
     for i, country_code in enumerate(country_codes):
         for indicator in indicators:
             if indicator['level'] <= max_level and indicator.get('column'):
                 if not derived and indicator['code'][-1].isalpha():
                     # Avoid derived indicators (eg 1.2a or 3.2.1_ag)
                     continue
-                cell = indicator['column'] + str(i + 5)
+                if responses and indicator.get('column_response'):
+                    cell = indicator['column_response'] + str(i + 5)
+                else:
+                    cell = indicator['column'] + str(i + 5)
                 if indicator['core']:
                     value = get_numeric_cell_value(ws_core[cell])
                 else:
@@ -357,17 +397,17 @@ def indicators_per_country(max_level=4, derived=True, random_values=False):
 
                 # 2.4 is handled a bit differently
                 if indicator['code'] == '2.4':
-                    out[country_code][indicator['code']] = (1 if value >= 1
-                                                            else value)
+                    value = 1 if value >= 1 else value
+                    out[country_code][indicator['code']] = value
 
                 # Show all level 2, non derived scores (eg 1.2, 3.4, 5.1)
                 # as percentages, rounded to 3 places
                 if (indicator['code'].count('.') == 1 and
-                        not indicator['code'][-1].isalpha()):
+                        not indicator['code'][-1].isalpha() and
+                        value is not None):
 
                     out[country_code][indicator['code']] = round(
                         value * 100 if value <= 1 else value, 3)
-
         add_main_scores(out[country_code])
         add_full_score(out[country_code])
 
