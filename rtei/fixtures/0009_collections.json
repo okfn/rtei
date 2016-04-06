@@ -1,0 +1,72 @@
+[
+{
+    "model": "wagtailcore.collection",
+    "pk": 1,
+    "fields": {
+        "path": "0001",
+        "depth": 1,
+        "numchild": 6,
+        "name": "Root"
+    }
+},
+{
+    "model": "wagtailcore.collection",
+    "pk": 2,
+    "fields": {
+        "path": "00010001",
+        "depth": 2,
+        "numchild": 0,
+        "name": "Completed Questionnaires"
+    }
+},
+{
+    "model": "wagtailcore.collection",
+    "pk": 3,
+    "fields": {
+        "path": "00010002",
+        "depth": 2,
+        "numchild": 0,
+        "name": "Supporting Documents"
+    }
+},
+{
+    "model": "wagtailcore.collection",
+    "pk": 4,
+    "fields": {
+        "path": "00010003",
+        "depth": 2,
+        "numchild": 0,
+        "name": "Global Reports"
+    }
+},
+{
+    "model": "wagtailcore.collection",
+    "pk": 5,
+    "fields": {
+        "path": "00010004",
+        "depth": 2,
+        "numchild": 0,
+        "name": "Country Briefs"
+    }
+},
+{
+    "model": "wagtailcore.collection",
+    "pk": 6,
+    "fields": {
+        "path": "00010005",
+        "depth": 2,
+        "numchild": 0,
+        "name": "Background Information"
+    }
+},
+{
+    "model": "wagtailcore.collection",
+    "pk": 7,
+    "fields": {
+        "path": "00010006",
+        "depth": 2,
+        "numchild": 0,
+        "name": "E-course"
+    }
+}
+]

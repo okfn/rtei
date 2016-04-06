@@ -1,29 +1,95 @@
 {% extends "base.html" %}
 
-{% load wagtailcore_tags %}
+{% load wagtailcore_tags i18n %}
 
-{% block body_class %}template-rtei{% endblock %}
+{% block body_class %}template-rtei resources{% endblock %}
 
 {% block content %}
   <div class="main">
-    <h1>Hi!</h1>
 
-    <p>
-        You are now on: {{ self.title }}
-    </p>
-
-    <div>
-        <ul>
-        {% for doc in documents %}
-            {# NOTE: the document file extension is added as a class for icon styling. #}
-            <li class="{{doc.document_file.file_extension}}"><a href="{{doc.document_file.url}}" title="{{doc.document_file.title}}">
-            <h3>{{doc.title}}</h3>
-            <p>{{doc.description}}</p>
-            </a>
-            </li>
+    <section class="controls">
+      <form method="get" accept-charset="utf-8">
+        {# NOTE: output all years #}
+        Year:
+        <select name="year">
+            <option value="">All</option>
+        {% for year in years %}
+            <option value="{{year}}">{{year}}</option>
         {% endfor %}
-        </ul>
-    </div>
+        </select>
+
+        {# NOTE: output all countries #}
+        Country:
+        <select name="country">
+            <option value="">All</option>
+        {% for country in countries %}
+            <option value="{{country}}">{{country}}</option>
+        {% endfor %}
+        </select>
+
+        {# NOTE: output all collections #}
+        Category:
+        <select name="collection">
+            <option value="">All</option>
+        {% for collection in collections %}
+            <option value="{{collection.0}}">{{collection.1}}</option>
+        {% endfor %}
+        </select>
+
+        <input type="submit" />
+    </form>
+    </section>
+
+    <section>
+      <h2>{{ self.title }}</h2>
+      {% if self.body %}
+      {{ self.body|richtext }}
+      {% else %}
+      <p>
+        Welcome to the resource library. For the most recent Right to Education Index resource see below or use the drop down menu to search filter resources by country, year, or subcategory.
+      </p>
+      {% endif %}
+      <h3>{% trans "Latest Resources" %}</h3>
+
+      <ul class="resources-list">
+        {% for doc in documents %}
+        <li>
+          <a class="icon" href="{{doc.url}}" title="{{doc.title}}">
+            {% if doc.file_extension == "pdf" %}
+            {% include "icons/file-pdf.svg" %}
+            {% else %}
+            {% include "icons/file.svg" %}
+            {% endif %}
+          </a>
+
+          <span class="text">
+            <h3><a href="{{doc.url}}" title="{{doc.title}}">{{doc.title}}</a></h3>
+            {% if doc.description %}
+               {{doc.description|richtext}}
+            {% endif %}
+          </span>
+        </li>
+        {% endfor %}
+      </ul>
+
+      <!--
+      <ul>
+      {% for doc in documents %}
+          {# NOTE: the document file extension is added as a class for icon styling. #}
+          <li class="{{doc.file_extension}}"><a href="{{doc.url}}" title="{{doc.title}}">
+          <h3>{{doc.title}} {% if doc.year %}- {{doc.year}}{% endif %} {% if doc.country %}- {{doc.country}}{% endif %}</h3>
+          {% if doc.collection %}
+              <h4>{{doc.collection}}</h4>
+          {% endif %}
+          {% if doc.description %}
+             {{doc.description|richtext}}
+          {% endif %}
+          </a></li>
+      {% endfor %}
+      </ul>
+    -->
+    </section>
+
   </div>
 
 {% endblock %}

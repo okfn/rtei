@@ -160,5 +160,7 @@ MEDIA_URL = '/media/'
 
 WAGTAIL_SITE_NAME = "rtei"
 
+WAGTAILDOCS_DOCUMENT_MODEL = 'rtei.RteiDocument'
+
 # Tests
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
