@@ -52,9 +52,10 @@
       <h3>{% trans "Latest Resources" %}</h3>
 
       <ul class="resources-list">
+        {% for doc in documents %}
         <li>
-          <a class="icon" href="{{doc.document_file.url}}" title="{{doc.document_file.title}}">
-            {% if doc.document_file.file_extension == "pdf" %}
+          <a class="icon" href="{{doc.url}}" title="{{doc.title}}">
+            {% if doc.file_extension == "pdf" %}
             {% include "icons/file-pdf.svg" %}
             {% else %}
             {% include "icons/file.svg" %}
@@ -62,30 +63,14 @@
           </a>
 
           <span class="text">
-            <h3><a href="{{doc.document_file.url}}" title="{{doc.document_file.title}}">Document One</a></h3>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget nisl tempor, semper magna vel, faucibus lectus.
-            </p>
-          </span>
-        </li>
-        <li>
-          <a class="icon" href="{{doc.document_file.url}}" title="{{doc.document_file.title}}">
-            {% if doc.document_file.file_extension == "pdf" %}
-            {% include "icons/file-pdf.svg" %}
-            {% else %}
-            {% include "icons/file.svg" %}
+            <h3><a href="{{doc.url}}" title="{{doc.title}}">{{doc.title}}</a></h3>
+            {% if doc.description %}
+               {{doc.description|richtext}}
             {% endif %}
-          </a>
-
-          <span class="text">
-            <h3><a href="{{doc.document_file.url}}" title="{{doc.document_file.title}}">Document Two</a></h3>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget nisl tempor, semper magna vel, faucibus lectus.
-            </p>
           </span>
         </li>
+        {% endfor %}
       </ul>
-
 
       <!--
       <ul>
