@@ -96,6 +96,7 @@
           position: absolute;
           top: 0.8em;
           right: 0;
+          @include transform(rotate(-90deg));
           @include transition(all 0.2s ease-in-out);
         }
       }
@@ -103,7 +104,7 @@
       &.open {
         & > .indicator {
           &:after {
-            @include transform(rotate(-90deg));
+            @include transform(rotate(0deg));
           }
         }
       }
