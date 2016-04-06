@@ -83,7 +83,7 @@
       display: none;
 
       &:checked + label {
-        background-color: $red;
+        background-color: $index-color;
         color: $base-background-color;
 
         & + h6:after {
@@ -105,8 +105,7 @@
         position: relative;
 
         &.subcat {
-          background-color: rgba($red, 0.2);
-          background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIElEQVQIW2NkQAL/////zwjjgzkgABKAcUBsRmQOSAAAIAYQAX1y8K4AAAAASUVORK5CYII=);
+          background-color: rgba($index-color, 0.1);
         }
 
         @media only screen and ( min-width: $large-screen) {
@@ -189,7 +188,7 @@
         float: left;
         width: 36px;
         height: 36px;
-        background-color: $red;
+        background-color: $index-color;
         color: #fff;
         text-align: center;
 
@@ -251,20 +250,20 @@
           font-size: em(12);
 
           &:nth-child(1) {
-            border-color: #fde8dd;
+            border-color: lighten($index-color, 39);
             text-indent: 0;
           }
           &:nth-child(2) {
-            border-color: #fbb89d;
+            border-color: lighten($index-color, 30);
           }
           &:nth-child(3) {
-            border-color: #f97b5d;
+            border-color: lighten($index-color, 21);
           }
           &:nth-child(4) {
-            border-color: #df4439;
+            border-color: lighten($index-color, 12);
           }
           &:nth-child(5) {
-            border-color: #ad2429;
+            border-color: $index-color;
             @include reset-display;
             &:after {
               content: '100';
@@ -329,5 +328,55 @@
         display: block;
       }
     }
+  }
+
+  @mixin map-colours($colour){
+    .indicator-switcher {
+      input[type="radio"]:checked + label {
+        background-color: $colour;
+      }
+      & > ul  > li.subcat {
+        background-color: rgba($colour, 0.1);
+      }
+    }
+    .map {
+      .description .icon {
+        background-color: $colour;
+      }
+      .key {
+        ul li {
+          &:nth-child(1) {
+            border-color: lighten($colour, 39);
+          }
+          &:nth-child(2) {
+            border-color: lighten($colour, 30);
+          }
+          &:nth-child(3) {
+            border-color: lighten($colour, 21);
+          }
+          &:nth-child(4) {
+            border-color: lighten($colour, 12);
+          }
+          &:nth-child(5) {
+            border-color: $colour;
+          }
+        }
+      }
+    }
+  }
+  &.governance {
+    @include map-colours($governance-color);
+  }
+  &.availability {
+    @include map-colours($availability-color);
+  }
+  &.accessibility {
+    @include map-colours($accessibility-color);
+  }
+  &.acceptability {
+    @include map-colours($acceptability-color);
+  }
+  &.adaptability {
+    @include map-colours($adaptability-color);
   }
 }
