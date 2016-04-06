@@ -26,11 +26,11 @@ RTEI.country = (function() {
               },
               type: 'bar',
               colors: {
-                1: '#ffb21a',
-                2: '#4ccd55',
-                3: '#39abe0',
-                4: '#7d5fba',
-                5: '#c6539b',
+                1: '#c35727',
+                2: '#bdb831',
+                3: '#af1f2c',
+                4: '#357b9e',
+                5: '#469a8f',
               },
           },
           axis: {

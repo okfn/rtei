@@ -35,47 +35,47 @@
 
       &:nth-child(1) {
         & > .indicator > .indicator-title .code {
-          background-color: $yellow;
+          background-color: $governance-color;
         }
         ul li:before,
         & > ul:after {
-          background-color: transparentize($yellow, 0.7);
+          background-color: transparentize($governance-color, 0.7);
         }
       }
       &:nth-child(2) {
         & > .indicator > .indicator-title .code {
-          background-color: $green;
+          background-color: $availability-color;
         }
         ul li:before,
         & > ul:after {
-          background-color: transparentize($green, 0.7);
+          background-color: transparentize($availability-color, 0.7);
         }
       }
       &:nth-child(3) {
         & > .indicator > .indicator-title .code {
-          background-color: $blue;
+          background-color: $accessibility-color;
         }
         ul li:before,
         & > ul:after {
-          background-color: transparentize($blue, 0.7);
+          background-color: transparentize($accessibility-color, 0.7);
         }
       }
       &:nth-child(4) {
         & > .indicator > .indicator-title .code {
-          background-color: $purple;
+          background-color: $acceptability-color;
         }
         ul li:before,
         & > ul:after {
-          background-color: transparentize($purple, 0.7);
+          background-color: transparentize($acceptability-color, 0.7);
         }
       }
       &:nth-child(5) {
         & > .indicator > .indicator-title .code {
-          background-color: $pink;
+          background-color: $adaptability-color;
         }
         ul li:before,
         & > ul:after {
-          background-color: transparentize($pink, 0.7);
+          background-color: transparentize($adaptability-color, 0.7);
         }
       }
     }
