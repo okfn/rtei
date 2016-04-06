@@ -172,18 +172,21 @@ class ResourceIndexPage(TranslationMixin, Page):
         string args in the passed request.'''
         resources = RteiDocument.objects.filter(is_resource=True)
 
-        # Don't want resources from the root collection.
+        # Don't want documents from the root collection.
         resources = resources.exclude(collection__id=get_root_collection_id())
 
-        if request.GET.get('year'):
-            resources = resources.filter(year=request.GET.get('year'))
+        year = request.GET.get('year')
+        if year:
+            resources = resources.filter(year=year)
 
-        if request.GET.get('country'):
-            resources = resources.filter(country=request.GET.get('country'))
+        country = request.GET.get('country')
+        if country:
+            resources = resources.filter(country=country)
 
-        if request.GET.get('collection'):
+        collection = request.GET.get('collection')
+        if collection:
             resources = resources.filter(
-                collection=request.GET.get('collection'))
+                collection=collection)
 
         return resources
 
@@ -215,7 +218,17 @@ class ResourceIndexPage(TranslationMixin, Page):
     def get_context(self, request):
         context = super(ResourceIndexPage, self).get_context(request)
         resources = self.resources(request)
-        context['documents'] = resources
+
+        if not any(request.GET.get(key)
+           for key in ['year', 'country', 'collection']):
+            # no querystring params, so just return the most recent resoure
+            resources_to_display = resources.order_by('-created_at')[:1]
+        else:
+            resources_to_display = resources
+
+        context['documents'] = resources_to_display
+
+        # Get data to populate filter dropdowns from resources.
         context['years'] = self.years(resources)
         context['countries'] = self.countries(resources)
         context['collections'] = self.collections(resources)
