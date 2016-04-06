@@ -7,13 +7,13 @@ from django.db import models
 from django.http import Http404
 from django.utils.translation import ugettext as _
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.core.validators import RegexValidator
 
-from wagtail.wagtailcore.models import Page
+from wagtail.wagtailcore.models import Page, get_root_collection_id
 from wagtail.wagtailcore.fields import RichTextField
-from wagtail.wagtailadmin.edit_handlers import (FieldPanel, InlinePanel,
-                                                MultiFieldPanel)
-from wagtail.wagtaildocs.edit_handlers import DocumentChooserPanel
-from wagtail.wagtailcore.models import Orderable
+from wagtail.wagtailadmin.edit_handlers import FieldPanel
+from wagtail.wagtaildocs.models import AbstractDocument
+
 
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsearch import index
@@ -167,34 +167,88 @@ class RTEIPage(TranslationMixin, Page):
 class ResourceIndexPage(TranslationMixin, Page):
     template = 'rtei/resources.html'
 
-    content_panels = Page.content_panels + [
-        InlinePanel('documents', label="Resource Documents"),
-    ]
+    def resources(self, request):
+        '''Return a queryset of resource documents, filtered based on query
+        string args in the passed request.'''
+        resources = RteiDocument.objects.filter(is_resource=True)
+
+        # Don't want resources from the root collection.
+        resources = resources.exclude(collection__id=get_root_collection_id())
+
+        if request.GET.get('year'):
+            resources = resources.filter(year=request.GET.get('year'))
+
+        if request.GET.get('country'):
+            resources = resources.filter(country=request.GET.get('country'))
+
+        if request.GET.get('collection'):
+            resources = resources.filter(
+                collection=request.GET.get('collection'))
+
+        return resources
+
+    def years(self, resources):
+        '''Return a list of years used as values for the `year` property of
+        document model.'''
+        years = resources.order_by('-year') \
+            .exclude(year__exact='') \
+            .values_list('year', flat=True).distinct()
+        return years
+
+    def countries(self, resources):
+        '''Return a list of counties used as values for the `country` property
+        of document models.'''
+        countries = resources.order_by('country') \
+            .exclude(country__exact='').values_list('country', flat=True) \
+            .distinct()
+        return countries
+
+    def collections(self, resources):
+        '''Return a list of collections used as values for the `collection`
+        property of document models.'''
+        collections = resources.order_by('collection') \
+            .exclude(collection__name='Root') \
+            .values_list('collection__id', 'collection__name') \
+            .distinct()
+        return collections
 
     def get_context(self, request):
         context = super(ResourceIndexPage, self).get_context(request)
-        context['documents'] = self.documents.all()
+        resources = self.resources(request)
+        context['documents'] = resources
+        context['years'] = self.years(resources)
+        context['countries'] = self.countries(resources)
+        context['collections'] = self.collections(resources)
         return context
 
 
-class ResourceDocument(Orderable):
-    page = ParentalKey(ResourceIndexPage, related_name='documents')
+class RteiDocument(AbstractDocument):
+    '''A custom Document adding fields needed by RTEI Resource items.'''
 
-    title = models.CharField(max_length=255)
-    description = models.TextField(null=True, blank=True)
-    document_file = models.ForeignKey(
-        'wagtaildocs.Document',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name='+'
+    year = models.CharField(validators=[
+        RegexValidator(regex='^\d{4}$',
+                       message='Must be 4 numbers',
+                       code='nomatch')],
+                       help_text='e.g. 1999',
+                       max_length=4,
+                       blank=True)
+
+    country = models.CharField(max_length=256, blank=True)
+    is_resource = models.BooleanField(default=True,
+                                      help_text="Determines whether document "
+                                      "appears on the Resources page.")
+    description = RichTextField(blank=True)
+
+    admin_form_fields = (
+        'title',
+        'description',
+        'file',
+        'collection',
+        'country',
+        'year',
+        'is_resource',
+        'tags'
     )
-
-    panels = [
-        FieldPanel('title'),
-        FieldPanel('description'),
-        DocumentChooserPanel('document_file'),
-    ]
 
 
 class BlogIndexPage(TranslationMixin, Page):
