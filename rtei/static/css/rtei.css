@@ -1251,17 +1251,22 @@ body {
     border-width: 0 0 1px 0; }
   .template-explore-map .indicator-switcher > ul > li h6 {
     cursor: pointer;
-    border-radius: 50%; }
+    border-radius: 50%;
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    transform: rotate(-90deg); }
     .template-explore-map .indicator-switcher > ul > li h6:hover {
       background-color: #333333; }
       .template-explore-map .indicator-switcher > ul > li h6:hover:after {
         border-top-color: #fff; }
     .template-explore-map .indicator-switcher > ul > li h6.expanded {
-      -webkit-transform: rotate(-90deg);
-      -moz-transform: rotate(-90deg);
-      -ms-transform: rotate(-90deg);
-      -o-transform: rotate(-90deg);
-      transform: rotate(-90deg); }
+      -webkit-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg); }
   .template-explore-map .indicator-switcher > ul > li ul {
     position: static;
     display: block; }

@@ -309,6 +309,7 @@
       h6 {
         cursor: pointer;
         border-radius: 50%;
+        @include transform(rotate(-90deg));
 
         &:hover {
           background-color: $dark-gray;
@@ -319,7 +320,7 @@
         }
 
         &.expanded {
-          @include transform(rotate(-90deg));
+          @include transform(rotate(0deg));
         }
       }
 
