@@ -6,12 +6,15 @@ from collections import OrderedDict
 _file_cache = {}
 
 
-def get_json_file(path):
+def get_json_file(path, ordered_dict=True):
     if _file_cache.get(path):
         return _file_cache[path]
 
     with open(path) as f:
-        out = json.load(f, object_pairs_hook=OrderedDict)
+        if ordered_dict:
+            out = json.load(f, object_pairs_hook=OrderedDict)
+        else:
+            out = json.load(f)
 
     _file_cache[path] = out
 
@@ -21,7 +24,7 @@ def get_json_file(path):
 def get_indicators():
     indicators_file = os.path.join(os.path.dirname(__file__),
                                    'static', 'data', 'indicators.json')
-    return get_json_file(indicators_file)
+    return get_json_file(indicators_file, ordered_dict=False)
 
 
 def get_countries():
@@ -64,27 +67,3 @@ def get_country_name(country_code):
         (c['name'] for code, c in get_countries().iteritems()
          if c[code_type] == country_code.upper()),
         None)
-
-
-def get_map_indicators():
-    map_indicators = _file_cache.get('map_indicators', [])
-    if not map_indicators:
-        indicators = get_indicators()
-        level_1_indicators = {}
-        level_2_indicators = []
-        for code, indicator in indicators.iteritems():
-            if (indicator['level'] <= 2 and not code[-1].isalpha()):
-                map_indicator = indicator.copy()
-                map_indicator['code'] = code
-                if map_indicator['level'] == 1:
-                    if not map_indicator.get('subindicators'):
-                        map_indicator['subindicators'] = []
-                    level_1_indicators[code] = map_indicator
-                    map_indicators.append(map_indicator)
-                else:
-                    level_2_indicators.append(map_indicator)
-        for level_2_indicator in level_2_indicators:
-            code = level_2_indicator['code'][:1]
-            level_1_indicators[code]['subindicators'].append(level_2_indicator)
-        _file_cache['map_indicators'] = map_indicators
-    return map_indicators
