@@ -18,9 +18,9 @@ $(document).ready(function() {
   // slide
   $( ".indicator-switcher h6" ).next( "ul" ).slideUp( "fast");
 
-  $( ".indicator-switcher label" ).click(function() {
-    $( ".indicator-switcher li:not(.subcat) input:not(:checked) + label + h6" ).removeClass( "expanded" );
-    $( ".indicator-switcher li:not(.subcat) input:not(:checked) + label + h6 + ul" ).slideUp();
+  $( ".indicator-switcher > ul > li > label" ).click(function() {
+    $( ".indicator-switcher h6" ).removeClass( "expanded" );
+    $( ".indicator-switcher ul.subindicators" ).slideUp();
   });
 
   $( ".indicator-switcher h6, .indicator-switcher label" ).click(function() {
