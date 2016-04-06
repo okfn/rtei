@@ -42,7 +42,7 @@ def get_map_context(context):
             'title': 'Governance',
             'level': 1,
             'core': True,
-            'subindicators': [
+            'indicators': [
                 {
                     'code': '1.1',
                     'title': 'International Framework',
@@ -63,14 +63,14 @@ def get_map_context(context):
             'title': 'Availability',
             'level': 1,
             'core': True,
-            'subindicators': [
+            'indicators': [
                 ...
             ]
         },
         ...
     ]
     '''
-    context['indicators'] = data.get_map_indicators()
+    context['indicators'] = data.get_indicators()
 
 
 def get_country_context(context, country_code):
@@ -135,7 +135,6 @@ def get_country_context(context, country_code):
         sorted({code: data.get_country_name(code) for code, c
                 in data.get_scores_per_country().iteritems()}.items(),
                key=lambda t: t[1]))
-
     context['indicators'] = data.get_indicators()
 
 

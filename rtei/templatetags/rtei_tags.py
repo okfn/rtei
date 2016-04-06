@@ -75,4 +75,12 @@ def breadcrumbs(context):
 
 @register.filter
 def get_indicator_value(dictionary, code):
-    return dictionary.get(code) or '-'
+    return dictionary.get(code, '')
+
+
+@register.inclusion_tag('rtei/tags/indicators.html')
+def indicators_list(indicators, country_indicators):
+    return {
+        'indicators': indicators,
+        'country_indicators': country_indicators
+    }

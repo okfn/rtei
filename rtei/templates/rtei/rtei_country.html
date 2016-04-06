@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% load i18n static wagtailcore_tags %}
+{% load i18n static wagtailcore_tags rtei_tags %}
 
 {% block body_class %}template-rtei by-country{% endblock %}
 
@@ -53,133 +53,9 @@
         <div id="chart" data-chart-data="{{ chart_data }}"></div>
       {% endif %}
 
-        <ol id="indicators" class="indicators">
-          <li>
-            <div class="indicator">
-              <span class="indicator-title">
-                <span class="code">1</span> Governance
-              </span>
-              <span class="indicator-value">
-                64.76
-              </span>
-            </div>
-            <ul>
-              <li>
-                <div class="indicator">
-                  <span class="indicator-title">
-                    <span class="code">1.1</span> International Framework
-                  </span>
-                  <span class="indicator-value">
-                    100.0
-                  </span>
-                </div>
-                <ul>
-                  <li>
-                    <div class="indicator">
-                      <span class="indicator-title">
-                        <span class="code">1.1.1</span> Is the State party to the following United Nations treaties?
-                      </span>
-                      <span class="indicator-value">
-                        -
-                      </span>
-                    </div>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <div class="indicator">
-              <span class="indicator-title">
-                <span class="code">2</span> Availability
-              </span>
-              <span class="indicator-value">
-                51.95
-              </span>
-            </div>
-            <ul>
-              <li>
-                <div class="indicator">
-                  <span class="indicator-title">
-                    <span class="code">2.1</span> Classrooms
-                  </span>
-                  <span class="indicator-value">
-                    33.3
-                  </span>
-                </div>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <div class="indicator">
-              <span class="indicator-title">
-                <span class="code">3</span> Accessibility
-              </span>
-              <span class="indicator-value">
-                88.3833
-              </span>
-            </div>
-            <ul>
-              <li>
-                <div class="indicator">
-                  <span class="indicator-title">
-                    <span class="code">3.1</span> Free Education
-                  </span>
-                  <span class="indicator-value">
-                    89.6
-                  </span>
-                </div>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <div class="indicator">
-              <span class="indicator-title">
-                <span class="code">4</span> Acceptability
-              </span>
-              <span class="indicator-value">
-                80.8
-              </span>
-            </div>
-            <ul>
-              <li>
-                <div class="indicator">
-                  <span class="indicator-title">
-                    <span class="code">4.1</span> Aims of Education
-                  </span>
-                  <span class="indicator-value">
-                    68.4
-                  </span>
-                </div>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <div class="indicator">
-              <span class="indicator-title">
-                <span class="code">5</span> Adaptability
-              </span>
-              <span class="indicator-value">
-                55.4333
-              </span>
-            </div>
-            <ul>
-              <li>
-                <div class="indicator">
-                  <span class="indicator-title">
-                    <span class="code">5.1</span> Children with Disabilities
-                  </span>
-                  <span class="indicator-value">
-                    66.5
-                  </span>
-                </div>
-              </li>
-            </ul>
-          </li>
-        </ol>
-<!--
-            {% include 'rtei/tags/indicators.html' %}
--->
+      <ol id="indicators" class="indicators">
+        {% indicators_list indicators country_indicators %}
+      </ol>
     </section>
     {% endif %}
 
