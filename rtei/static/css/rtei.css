@@ -570,6 +570,8 @@ h5 {
 p {
   margin: 0 0 0.75em;
   font-size: 0.95em; }
+  p + h2, p + h3, p + h4, p + h5, p + h6 {
+    margin-top: 0.75em; }
 
 a {
   color: #af202f;
@@ -1447,6 +1449,37 @@ body {
       left: -30em; }
     .by-country .indicators ul li .code:after {
       content: ' - '; }
+
+.template-rtei.resources .resources-list li {
+  padding-top: 0.75em;
+  clear: left; }
+  .template-rtei.resources .resources-list li .icon {
+    display: none; }
+    .template-rtei.resources .resources-list li .icon svg {
+      width: 100%;
+      height: auto;
+      fill: #3b3b3b; }
+    .template-rtei.resources .resources-list li .icon:hover svg {
+      fill: currentColor; }
+    @media only screen and (min-width: 53.75em) {
+      .template-rtei.resources .resources-list li .icon {
+        float: left;
+        display: block;
+        margin-right: 2.35765%;
+        width: 6.17215%; }
+        .template-rtei.resources .resources-list li .icon:last-child {
+          margin-right: 0; } }
+  .template-rtei.resources .resources-list li .text h3 {
+    font-size: 1.4em;
+    margin-bottom: 0.1em; }
+  @media only screen and (min-width: 53.75em) {
+    .template-rtei.resources .resources-list li .text {
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 91.4702%; }
+      .template-rtei.resources .resources-list li .text:last-child {
+        margin-right: 0; } }
 
 .template-blog-index .posts-list {
   background-color: inherit; }

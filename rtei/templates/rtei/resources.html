@@ -1,29 +1,77 @@
 {% extends "base.html" %}
 
-{% load wagtailcore_tags %}
+{% load wagtailcore_tags i18n %}
 
-{% block body_class %}template-rtei{% endblock %}
+{% block body_class %}template-rtei resources{% endblock %}
 
 {% block content %}
   <div class="main">
-    <h1>Hi!</h1>
 
-    <p>
-        You are now on: {{ self.title }}
-    </p>
+    <section class="controls">
+      left
+    </section>
 
-    <div>
-        <ul>
-        {% for doc in documents %}
-            {# NOTE: the document file extension is added as a class for icon styling. #}
-            <li class="{{doc.document_file.file_extension}}"><a href="{{doc.document_file.url}}" title="{{doc.document_file.title}}">
-            <h3>{{doc.title}}</h3>
-            <p>{{doc.description}}</p>
-            </a>
-            </li>
-        {% endfor %}
-        </ul>
-    </div>
+    <section>
+      <h2>{{ self.title }}</h2>
+      {% if self.body %}
+      {{ self.body|richtext }}
+      {% else %}
+      <p>
+        Welcome to the resource library. For the most recent Right to Education Index resource see below or use the drop down menu to search filter resources by country, year, or subcategory.
+      </p>
+      {% endif %}
+      <h3>{% trans "Latest Resources" %}</h3>
+
+      <ul class="resources-list">
+        <li>
+          <a class="icon" href="{{doc.document_file.url}}" title="{{doc.document_file.title}}">
+            {% if doc.document_file.file_extension == "pdf" %}
+            {% include "icons/file-pdf.svg" %}
+            {% else %}
+            {% include "icons/file.svg" %}
+            {% endif %}
+          </a>
+
+          <span class="text">
+            <h3><a href="{{doc.document_file.url}}" title="{{doc.document_file.title}}">Document One</a></h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget nisl tempor, semper magna vel, faucibus lectus.
+            </p>
+          </span>
+        </li>
+        <li>
+          <a class="icon" href="{{doc.document_file.url}}" title="{{doc.document_file.title}}">
+            {% if doc.document_file.file_extension == "pdf" %}
+            {% include "icons/file-pdf.svg" %}
+            {% else %}
+            {% include "icons/file.svg" %}
+            {% endif %}
+          </a>
+
+          <span class="text">
+            <h3><a href="{{doc.document_file.url}}" title="{{doc.document_file.title}}">Document Two</a></h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget nisl tempor, semper magna vel, faucibus lectus.
+            </p>
+          </span>
+        </li>
+      </ul>
+
+
+      <!--
+      <ul>
+      {% for doc in documents %}
+          {# NOTE: the document file extension is added as a class for icon styling. #}
+          <li class="{{doc.document_file.file_extension}}"><a href="{{doc.document_file.url}}" title="{{doc.document_file.title}}">
+          <h3>{{doc.title}}</h3>
+          <p>{{doc.description}}</p>
+          </a>
+          </li>
+      {% endfor %}
+      </ul>
+    -->
+    </section>
+
   </div>
 
 {% endblock %}
