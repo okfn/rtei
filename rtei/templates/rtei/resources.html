@@ -8,7 +8,36 @@
   <div class="main">
 
     <section class="controls">
-      left
+      <form method="get" accept-charset="utf-8">
+        {# NOTE: output all years #}
+        Year:
+        <select name="year">
+            <option value="">All</option>
+        {% for year in years %}
+            <option value="{{year}}">{{year}}</option>
+        {% endfor %}
+        </select>
+
+        {# NOTE: output all countries #}
+        Country:
+        <select name="country">
+            <option value="">All</option>
+        {% for country in countries %}
+            <option value="{{country}}">{{country}}</option>
+        {% endfor %}
+        </select>
+
+        {# NOTE: output all collections #}
+        Category:
+        <select name="collection">
+            <option value="">All</option>
+        {% for collection in collections %}
+            <option value="{{collection.0}}">{{collection.1}}</option>
+        {% endfor %}
+        </select>
+
+        <input type="submit" />
+    </form>
     </section>
 
     <section>
@@ -62,11 +91,15 @@
       <ul>
       {% for doc in documents %}
           {# NOTE: the document file extension is added as a class for icon styling. #}
-          <li class="{{doc.document_file.file_extension}}"><a href="{{doc.document_file.url}}" title="{{doc.document_file.title}}">
-          <h3>{{doc.title}}</h3>
-          <p>{{doc.description}}</p>
-          </a>
-          </li>
+          <li class="{{doc.file_extension}}"><a href="{{doc.url}}" title="{{doc.title}}">
+          <h3>{{doc.title}} {% if doc.year %}- {{doc.year}}{% endif %} {% if doc.country %}- {{doc.country}}{% endif %}</h3>
+          {% if doc.collection %}
+              <h4>{{doc.collection}}</h4>
+          {% endif %}
+          {% if doc.description %}
+             {{doc.description|richtext}}
+          {% endif %}
+          </a></li>
       {% endfor %}
       </ul>
     -->
