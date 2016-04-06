@@ -163,7 +163,13 @@ $(document).ready(function(){
     $('.indicator-switcher input').on('click', function(){
       if (this.value != RTEI.map.currentIndex) {
         RTEI.map.currentIndex = this.value;
-        RTEI.map.currentIndexLabel = $('label[for="' + this.id + '"]').html();
+        RTEI.map.currentIndexLabel = $('label[for="' + this.id + '"]').text();
+        if (this.id.indexOf('.') !== -1) {
+          className = $('label[for="' + this.id.substring(0, this.id.indexOf('.')) + '"]').text();
+        } else {
+          className = RTEI.map.currentIndexLabel;
+        }
+        $('body').attr('class', 'template-explore-map ' + className.toLowerCase().replace(' ', '_'));
         RTEI.map.refresh();
       }
     });

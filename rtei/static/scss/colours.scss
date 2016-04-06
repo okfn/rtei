@@ -1,0 +1,122 @@
+@import "base/colours";
+/*
+Category colours, for reference only
+*/
+
+@mixin colour-one($colour) {
+  color: $colour;
+}
+@mixin colour-two($colour) {
+  color: lighten($colour, 12);
+}
+@mixin colour-three($colour) {
+  color: lighten($colour, 21);
+}
+@mixin colour-four($colour) {
+  color: lighten($colour, 30);
+}
+@mixin colour-five($colour) {
+  color: lighten($colour, 39);
+}
+
+/* Overall Index */
+.index-one {
+  @include colour-one($index-color);
+}
+.index-two {
+  @include colour-two($index-color);
+}
+.index-three {
+  @include colour-three($index-color);
+}
+.index-four {
+  @include colour-four($index-color);
+}
+.index-five {
+  @include colour-five($index-color);
+}
+
+/* Governance */
+.governance-one {
+  @include colour-one($governance-color);
+}
+.governance-two {
+  @include colour-two($governance-color);
+}
+.governance-three {
+  @include colour-three($governance-color);
+}
+.governance-four {
+  @include colour-four($governance-color);
+}
+.governance-five {
+  @include colour-five($governance-color);
+}
+
+/* Availability */
+.availability-one {
+  @include colour-one($availability-color);
+}
+.availability-two {
+  @include colour-two($availability-color);
+}
+.availability-three {
+  @include colour-three($availability-color);
+}
+.availability-four {
+  @include colour-four($availability-color);
+}
+.availability-five {
+  @include colour-five($availability-color);
+}
+
+/* Accessibility */
+.accessibility-one {
+  @include colour-one($accessibility-color);
+}
+.accessibility-two {
+  @include colour-two($accessibility-color);
+}
+.accessibility-three {
+  @include colour-three($accessibility-color);
+}
+.accessibility-four {
+  @include colour-four($accessibility-color);
+}
+.accessibility-five {
+  @include colour-five($accessibility-color);
+}
+
+/* Acceptability */
+.acceptability-one {
+  @include colour-one($acceptability-color);
+}
+.acceptability-two {
+  @include colour-two($acceptability-color);
+}
+.acceptability-three {
+  @include colour-three($acceptability-color);
+}
+.acceptability-four {
+  @include colour-four($acceptability-color);
+}
+.acceptability-five {
+  @include colour-five($acceptability-color);
+}
+
+/* Adaptability */
+.adaptability-one {
+  @include colour-one($adaptability-color);
+}
+.adaptability-two {
+  @include colour-two($adaptability-color);
+}
+.adaptability-three {
+  @include colour-three($adaptability-color);
+}
+.adaptability-four {
+  @include colour-four($adaptability-color);
+}
+.adaptability-five {
+  @include colour-five($adaptability-color);
+}

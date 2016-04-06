@@ -1093,7 +1093,7 @@ body {
 .template-explore-map .indicator-switcher input[type="radio"] {
   display: none; }
   .template-explore-map .indicator-switcher input[type="radio"]:checked + label {
-    background-color: #af202f;
+    background-color: #4598c2;
     color: #fff; }
     .template-explore-map .indicator-switcher input[type="radio"]:checked + label + h6:after {
       border-top-color: #fff; }
@@ -1111,8 +1111,7 @@ body {
   display: block;
   position: relative; }
   .template-explore-map .indicator-switcher > ul > li.subcat {
-    background-color: rgba(175, 32, 47, 0.2);
-    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIElEQVQIW2NkQAL/////zwjjgzkgABKAcUBsRmQOSAAAIAYQAX1y8K4AAAAASUVORK5CYII=); }
+    background-color: rgba(69, 152, 194, 0.1); }
   @media only screen and (min-width: 53.75em) {
     .template-explore-map .indicator-switcher > ul > li {
       display: table-cell;
@@ -1171,7 +1170,7 @@ body {
       float: left;
       width: 36px;
       height: 36px;
-      background-color: #af202f;
+      background-color: #4598c2;
       color: #fff;
       text-align: center; }
       .template-explore-map .map .description .icon svg {
@@ -1217,16 +1216,16 @@ body {
         text-indent: -0.5em;
         font-size: 0.75em; }
         .template-explore-map .map .key ul li:nth-child(1) {
-          border-color: #fde8dd;
+          border-color: #dbebf3;
           text-indent: 0; }
         .template-explore-map .map .key ul li:nth-child(2) {
-          border-color: #fbb89d; }
+          border-color: #b8d8e8; }
         .template-explore-map .map .key ul li:nth-child(3) {
-          border-color: #f97b5d; }
+          border-color: #96c5dc; }
         .template-explore-map .map .key ul li:nth-child(4) {
-          border-color: #df4439; }
+          border-color: #73b2d1; }
         .template-explore-map .map .key ul li:nth-child(5) {
-          border-color: #ad2429; }
+          border-color: #4598c2; }
           .template-explore-map .map .key ul li:nth-child(5):after {
             content: '100';
             float: right; }
@@ -1270,6 +1269,86 @@ body {
   .template-explore-map .indicator-switcher > ul > li ul {
     position: static;
     display: block; }
+.template-explore-map.governance .indicator-switcher input[type="radio"]:checked + label {
+  background-color: #c35727; }
+.template-explore-map.governance .indicator-switcher > ul > li.subcat {
+  background-color: rgba(195, 87, 39, 0.1); }
+.template-explore-map.governance .map .description .icon {
+  background-color: #c35727; }
+.template-explore-map.governance .map .key ul li:nth-child(1) {
+  border-color: #f2cfbf; }
+.template-explore-map.governance .map .key ul li:nth-child(2) {
+  border-color: #ebb299; }
+.template-explore-map.governance .map .key ul li:nth-child(3) {
+  border-color: #e39572; }
+.template-explore-map.governance .map .key ul li:nth-child(4) {
+  border-color: #db784c; }
+.template-explore-map.governance .map .key ul li:nth-child(5) {
+  border-color: #c35727; }
+.template-explore-map.availability .indicator-switcher input[type="radio"]:checked + label {
+  background-color: #bdb831; }
+.template-explore-map.availability .indicator-switcher > ul > li.subcat {
+  background-color: rgba(189, 184, 49, 0.1); }
+.template-explore-map.availability .map .description .icon {
+  background-color: #bdb831; }
+.template-explore-map.availability .map .key ul li:nth-child(1) {
+  border-color: #f0eec5; }
+.template-explore-map.availability .map .key ul li:nth-child(2) {
+  border-color: #e7e4a1; }
+.template-explore-map.availability .map .key ul li:nth-child(3) {
+  border-color: #ddda7c; }
+.template-explore-map.availability .map .key ul li:nth-child(4) {
+  border-color: #d4cf58; }
+.template-explore-map.availability .map .key ul li:nth-child(5) {
+  border-color: #bdb831; }
+.template-explore-map.accessibility .indicator-switcher input[type="radio"]:checked + label {
+  background-color: #af1f2c; }
+.template-explore-map.accessibility .indicator-switcher > ul > li.subcat {
+  background-color: rgba(175, 31, 44, 0.1); }
+.template-explore-map.accessibility .map .description .icon {
+  background-color: #af1f2c; }
+.template-explore-map.accessibility .map .key ul li:nth-child(1) {
+  border-color: #efa6ac; }
+.template-explore-map.accessibility .map .key ul li:nth-child(2) {
+  border-color: #e87f88; }
+.template-explore-map.accessibility .map .key ul li:nth-child(3) {
+  border-color: #e15864; }
+.template-explore-map.accessibility .map .key ul li:nth-child(4) {
+  border-color: #da3140; }
+.template-explore-map.accessibility .map .key ul li:nth-child(5) {
+  border-color: #af1f2c; }
+.template-explore-map.acceptability .indicator-switcher input[type="radio"]:checked + label {
+  background-color: #357b9e; }
+.template-explore-map.acceptability .indicator-switcher > ul > li.subcat {
+  background-color: rgba(53, 123, 158, 0.1); }
+.template-explore-map.acceptability .map .description .icon {
+  background-color: #357b9e; }
+.template-explore-map.acceptability .map .key ul li:nth-child(1) {
+  border-color: #b4d5e6; }
+.template-explore-map.acceptability .map .key ul li:nth-child(2) {
+  border-color: #92c2da; }
+.template-explore-map.acceptability .map .key ul li:nth-child(3) {
+  border-color: #6fafcf; }
+.template-explore-map.acceptability .map .key ul li:nth-child(4) {
+  border-color: #4d9cc3; }
+.template-explore-map.acceptability .map .key ul li:nth-child(5) {
+  border-color: #357b9e; }
+.template-explore-map.adaptability .indicator-switcher input[type="radio"]:checked + label {
+  background-color: #469a8f; }
+.template-explore-map.adaptability .indicator-switcher > ul > li.subcat {
+  background-color: rgba(70, 154, 143, 0.1); }
+.template-explore-map.adaptability .map .description .icon {
+  background-color: #469a8f; }
+.template-explore-map.adaptability .map .key ul li:nth-child(1) {
+  border-color: #c3e4e0; }
+.template-explore-map.adaptability .map .key ul li:nth-child(2) {
+  border-color: #a4d5cf; }
+.template-explore-map.adaptability .map .key ul li:nth-child(3) {
+  border-color: #84c7be; }
+.template-explore-map.adaptability .map .key ul li:nth-child(4) {
+  border-color: #64b9ae; }
+.template-explore-map.adaptability .map .key ul li:nth-child(5) {
+  border-color: #469a8f; }
 
 .by-country .export {
   float: right;
@@ -1296,25 +1375,25 @@ body {
     position: relative;
     left: -30em; }
   .by-country .indicators > li:nth-child(1) > .indicator > .indicator-title .code {
-    background-color: #ffb21a; }
+    background-color: #c35727; }
   .by-country .indicators > li:nth-child(1) ul li:before, .by-country .indicators > li:nth-child(1) > ul:after {
-    background-color: rgba(255, 178, 26, 0.3); }
+    background-color: rgba(195, 87, 39, 0.3); }
   .by-country .indicators > li:nth-child(2) > .indicator > .indicator-title .code {
-    background-color: #4ccd55; }
+    background-color: #bdb831; }
   .by-country .indicators > li:nth-child(2) ul li:before, .by-country .indicators > li:nth-child(2) > ul:after {
-    background-color: rgba(76, 205, 85, 0.3); }
+    background-color: rgba(189, 184, 49, 0.3); }
   .by-country .indicators > li:nth-child(3) > .indicator > .indicator-title .code {
-    background-color: #39abe0; }
+    background-color: #af1f2c; }
   .by-country .indicators > li:nth-child(3) ul li:before, .by-country .indicators > li:nth-child(3) > ul:after {
-    background-color: rgba(57, 171, 224, 0.3); }
+    background-color: rgba(175, 31, 44, 0.3); }
   .by-country .indicators > li:nth-child(4) > .indicator > .indicator-title .code {
-    background-color: #7d5fba; }
+    background-color: #357b9e; }
   .by-country .indicators > li:nth-child(4) ul li:before, .by-country .indicators > li:nth-child(4) > ul:after {
-    background-color: rgba(125, 95, 186, 0.3); }
+    background-color: rgba(53, 123, 158, 0.3); }
   .by-country .indicators > li:nth-child(5) > .indicator > .indicator-title .code {
-    background-color: #c6539b; }
+    background-color: #469a8f; }
   .by-country .indicators > li:nth-child(5) ul li:before, .by-country .indicators > li:nth-child(5) > ul:after {
-    background-color: rgba(198, 83, 155, 0.3); }
+    background-color: rgba(70, 154, 143, 0.3); }
   .by-country .indicators .has-children > .indicator {
     cursor: pointer;
     position: relative; }
