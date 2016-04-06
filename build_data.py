@@ -198,27 +198,37 @@ def get_indicators(core=True, include_columns=False):
     codes_done = []
     for i in (0, 2, 3):
         for cell in ws.rows[i]:
+            indicator = None
             if cell.value:
-                    code, title, level = parse_cell(cell.value)
-                    if not code or code in codes_done:
+                code, title, level = parse_cell(cell.value)
+                if not code:
+                    continue
+                if code in codes_done:
+                    if i == 3:
+                        # Use the previous one
+                        indicator = [o for o in out if o['code'] == code][0]
+                    else:
                         continue
-
+                else:
+                    codes_done.append(code)
+                if not indicator:
                     indicator = {
                         'code': code,
                         'title': title,
                         'core': core,
                         'level': level
                     }
-                    if i == 3 and include_columns:
+                    out.append(indicator)
+                if i == 3 and include_columns:
+                    if title == 'Response':
+                        indicator['column_response'] = cell.column
+                    else:
                         indicator['column'] = cell.column
 
-                    codes_done.append(code)
-                    out.append(indicator)
             else:
                 # Other indicators
                 # print cell.value
                 pass
-
     return out
 
 
@@ -293,11 +303,34 @@ def add_full_score(country_indicators):
     country_indicators.update(get_full_score(country_indicators))
 
 
-def indicators_per_country(max_level=4, derived=True, random_values=False):
+def indicators_per_country(max_level=4, derived=True, random_values=False,
+                           responses=True):
     '''
     Returns a dict containing the values for all indicators for all countries,
     with the following structure:
 
+        {
+            'CL': {
+                    '1': 64.76,
+                    '1.1': 100.0,
+                    '1.1.1a': 'Yes',
+                    '1.1.1b': 'Yes',
+                    '1.1.1c': 'Yes',
+                    # ...
+                    },
+            'TZ': {
+                    '1': 74.736,
+                    '1.1': 100.0,
+                    '1.1.1a': 'Yes',
+                    '1.1.1b': 'No',
+                    '1.1.1c': 'Yes',
+                    # ...
+                    },
+
+            # ...
+        }
+
+    If responses is False, the actual indicator value is returned:
         {
             'CL': {
                     '1': 64.76,
@@ -345,12 +378,14 @@ def indicators_per_country(max_level=4, derived=True, random_values=False):
         out[country_code] = OrderedDict()
     for i, country_code in enumerate(country_codes):
         for indicator in indicators:
-
             if indicator['level'] <= max_level and indicator.get('column'):
                 if not derived and indicator['code'][-1].isalpha():
                     # Avoid derived indicators (eg 1.2a or 3.2.1_ag)
                     continue
-                cell = indicator['column'] + str(i + 5)
+                if responses and indicator.get('column_response'):
+                    cell = indicator['column_response'] + str(i + 5)
+                else:
+                    cell = indicator['column'] + str(i + 5)
                 if indicator['core']:
                     value = get_numeric_cell_value(ws_core[cell])
                 else:
