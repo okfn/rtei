@@ -443,35 +443,58 @@ def indicators_as_csv(output_dir=OUTPUT_DIR):
         w.writerows(indicators)
 
 
+def get_nested_indicators(parent_indicator, all_indicators):
+    if parent_indicator['level'] >= 4:
+        return
+    out = []
+    for indicator in all_indicators:
+        if (indicator['code'].startswith(parent_indicator['code']) and
+                indicator['level'] == parent_indicator['level'] + 1):
+            if indicator['level'] < 4:
+                indicator['indicators'] = get_nested_indicators(indicator,
+                                                                all_indicators)
+            out.append(indicator)
+
+    return out
+
+
 def indicators_as_json(output_dir=OUTPUT_DIR):
     '''
-    Write a JSON file with all indicators, in the form:
+    Write a JSON file with all indicators nested, in the form:
 
-        {
-            "1": {
+        [
+            {
+                "code": "1",
                 "core": true,
                 "level": 1,
                 "title": "Governance"
-            },
-            "1.1": {
-                "core": true,
-                "level": 2,
-                "title": "International Framework"
-            },
-            "1.1.1": {
-                "core": true,
-                "level": 3,
-                "title": "Is the State party to the United Nations treaties?"
+                "indicators": [
+                    {
+                        "code": "1.1",
+                        "core": true,
+                        "level": 2,
+                        "title": "International Framework"
+                        "indicators": [
+                            {
+                                "code": "1.1.1",
+                                "core": true,
+                                "level": 3,
+                                "title": "Is the State party to the United Nations treaties?"
+                            }
+                        ]
+                    }
+                ]
             },
 
             ...
-
+        ]
     '''
 
-    out = OrderedDict()
-    for indicator in get_all_indicators():
-        code = indicator.pop('code')
-        out[code] = indicator
+    out = []
+    indicators = get_all_indicators()
+    for indicator in [i for i in indicators if i['level'] == 1]:
+        indicator['indicators'] = get_nested_indicators(indicator, indicators)
+        out.append(indicator)
 
     output_file = os.path.join(output_dir, 'indicators.json')
 

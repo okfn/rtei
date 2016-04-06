@@ -1,18 +1,20 @@
 {% load rtei_tags %}
 
-{% for code, indicator in indicators.iteritems %}
-<div class="indicator level{{ indicator.level }}">
-  <div class="indicator-title">
-    <span>
-      {{ code }} - {{ indicator.title }}
-    </span>
-  </div>
-  <div class="indicator-value">
-    <span id="value-{{ code }}">
-      {% if country_indicators %}
-      {{ country_indicators|get_indicator_value:code }}
-      {% endif %}
-    </span>
-  </div>
-</div>
+{% for indicator in indicators %}
+  <li>
+    <div class="indicator">
+      <span class="indicator-title">
+        <span class="code">{{ indicator.code }}</span>{{ indicator.title }}
+      </span>
+      <span class="indicator-value">
+        {{ country_indicators|get_indicator_value:indicator.code }}
+      </span>
+    </div>
+    {% if indicator.indicators %}
+      <ul>
+      {% indicators_list indicator.indicators country_indicators %}
+      </ul>
+    {% endif %}
+
+  </li>
 {% endfor %}
