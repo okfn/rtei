@@ -1251,17 +1251,22 @@ body {
     border-width: 0 0 1px 0; }
   .template-explore-map .indicator-switcher > ul > li h6 {
     cursor: pointer;
-    border-radius: 50%; }
+    border-radius: 50%;
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    transform: rotate(-90deg); }
     .template-explore-map .indicator-switcher > ul > li h6:hover {
       background-color: #333333; }
       .template-explore-map .indicator-switcher > ul > li h6:hover:after {
         border-top-color: #fff; }
     .template-explore-map .indicator-switcher > ul > li h6.expanded {
-      -webkit-transform: rotate(-90deg);
-      -moz-transform: rotate(-90deg);
-      -ms-transform: rotate(-90deg);
-      -o-transform: rotate(-90deg);
-      transform: rotate(-90deg); }
+      -webkit-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg); }
   .template-explore-map .indicator-switcher > ul > li ul {
     position: static;
     display: block; }
@@ -1270,17 +1275,99 @@ body {
   float: right;
   background-color: #595a5b; }
 .by-country .indicators {
-  display: table;
-  width: 100%; }
+  overflow-x: hidden; }
+  .by-country .indicators > li > .indicator > span {
+    font-weight: bold; }
+    .by-country .indicators > li > .indicator > span.indicator-title > .code {
+      display: inline-block;
+      background-color: #af202f;
+      font-size: 0.9em;
+      padding: 0.05em 0.4em;
+      min-width: 1.45em;
+      text-align: center;
+      margin-right: 0.2em;
+      color: #fff; }
+  .by-country .indicators > li > ul:after {
+    content: '';
+    width: 100em;
+    height: 1px;
+    display: block;
+    background-color: #bfbfbe;
+    position: relative;
+    left: -30em; }
+  .by-country .indicators > li:nth-child(1) > .indicator > .indicator-title .code {
+    background-color: #c35727; }
+  .by-country .indicators > li:nth-child(1) ul li:before, .by-country .indicators > li:nth-child(1) > ul:after {
+    background-color: rgba(195, 87, 39, 0.3); }
+  .by-country .indicators > li:nth-child(2) > .indicator > .indicator-title .code {
+    background-color: #bdb831; }
+  .by-country .indicators > li:nth-child(2) ul li:before, .by-country .indicators > li:nth-child(2) > ul:after {
+    background-color: rgba(189, 184, 49, 0.3); }
+  .by-country .indicators > li:nth-child(3) > .indicator > .indicator-title .code {
+    background-color: #af1f2c; }
+  .by-country .indicators > li:nth-child(3) ul li:before, .by-country .indicators > li:nth-child(3) > ul:after {
+    background-color: rgba(175, 31, 44, 0.3); }
+  .by-country .indicators > li:nth-child(4) > .indicator > .indicator-title .code {
+    background-color: #357b9e; }
+  .by-country .indicators > li:nth-child(4) ul li:before, .by-country .indicators > li:nth-child(4) > ul:after {
+    background-color: rgba(53, 123, 158, 0.3); }
+  .by-country .indicators > li:nth-child(5) > .indicator > .indicator-title .code {
+    background-color: #469a8f; }
+  .by-country .indicators > li:nth-child(5) ul li:before, .by-country .indicators > li:nth-child(5) > ul:after {
+    background-color: rgba(70, 154, 143, 0.3); }
+  .by-country .indicators .has-children > .indicator {
+    cursor: pointer;
+    position: relative; }
+    .by-country .indicators .has-children > .indicator:after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 0.3em 0.3em 0 0.3em;
+      border-color: #3b3b3b transparent transparent transparent;
+      position: absolute;
+      top: 0.8em;
+      right: 0;
+      -webkit-transform: rotate(-90deg);
+      -moz-transform: rotate(-90deg);
+      -ms-transform: rotate(-90deg);
+      -o-transform: rotate(-90deg);
+      transform: rotate(-90deg);
+      -webkit-transition: all 0.2s ease-in-out;
+      -moz-transition: all 0.2s ease-in-out;
+      transition: all 0.2s ease-in-out; }
+  .by-country .indicators .has-children.open > .indicator:after {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg); }
   .by-country .indicators .indicator {
-    display: table-row; }
-    .by-country .indicators .indicator span {
-      display: block; }
+    clear: both; }
     .by-country .indicators .indicator .indicator-title,
     .by-country .indicators .indicator .indicator-value {
-      display: table-cell; }
+      display: block;
+      padding-top: 0.25em;
+      padding-bottom: 0.25em; }
+    .by-country .indicators .indicator .indicator-title {
+      float: left;
+      width: 80%; }
     .by-country .indicators .indicator .indicator-value {
-      text-align: right; }
+      text-align: right;
+      padding-right: 1em; }
+  .by-country .indicators ul li {
+    padding-left: 1em; }
+    .by-country .indicators ul li:before {
+      content: '';
+      width: 100em;
+      height: 1px;
+      display: block;
+      background-color: #bfbfbe;
+      position: relative;
+      left: -30em; }
+    .by-country .indicators ul li .code:after {
+      content: ' - '; }
 
 .template-blog-index .posts-list {
   background-color: inherit; }

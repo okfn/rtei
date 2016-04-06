@@ -26,11 +26,11 @@ RTEI.country = (function() {
               },
               type: 'bar',
               colors: {
-                1: '#ffb21a',
-                2: '#4ccd55',
-                3: '#39abe0',
-                4: '#7d5fba',
-                5: '#c6539b',
+                1: '#c35727',
+                2: '#bdb831',
+                3: '#af1f2c',
+                4: '#357b9e',
+                5: '#469a8f',
               },
           },
           axis: {
@@ -85,10 +85,9 @@ $(document).ready(function(){
 
 
     // indicators
-    $( ".indicator:not(.level1) span" ).css('display', 'none');
-
-    $( ".indicator.level1" ).click(function() {
-      $(this).nextUntil(".indicator.level1").toggleClass("open").find( "span" ).slideToggle("slow");
+    $("#indicators ul").slideUp().parent().addClass("has-children");
+    $('#indicators .indicator').click(function(e){
+      $(this).parent().children('ul').not(':animated').slideToggle().parent().toggleClass("open");
     });
 
 });
