@@ -63,9 +63,28 @@
           </a>
 
           <span class="text">
-            <h3><a href="{{doc.url}}" title="{{doc.title}}">{{doc.title}}</a></h3>
+            <h3><a href="{{doc.url}}" title="{{doc.title}}">{{doc.title}}{% if doc.country %} - {{doc.country}}{% endif %}{% if doc.year %} - {{doc.year}}{% endif %}</a></h3>
             {% if doc.description %}
                {{doc.description|richtext}}
+            {% endif %}
+            {% if doc.year or doc.country or doc.collection %}
+            <ul class="meta">
+              {% if doc.year %}
+              <li>
+                {{doc.year}}
+              </li>
+              {% endif %}
+              {% if doc.country %}
+              <li>
+                {{doc.country}}
+              </li>
+              {% endif %}
+              {% if doc.collection %}
+              <li>
+                {{doc.collection}}
+              </li>
+              {% endif %}
+            </ul>
             {% endif %}
           </span>
         </li>

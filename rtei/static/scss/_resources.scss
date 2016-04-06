@@ -4,6 +4,8 @@
     li {
       padding-top: $small-spacing;
       clear: left;
+      padding-bottom: $small-spacing;
+      margin-bottom: $small-spacing;
 
       .icon {
         display: none;
@@ -22,6 +24,7 @@
 
         @media only screen and ( min-width: $large-screen) {
           @include span-columns(1);
+          padding-top: 0.1em;
         }
       }
 
@@ -32,6 +35,15 @@
         }
         @media only screen and ( min-width: $large-screen) {
           @include span-columns(11);
+        }
+
+        .meta {
+          li {
+            display: inline-block;
+            background-color: lighten($light-gray,15);
+            font-size: 0.85em;
+            padding: 0 0.4em;
+          }
         }
       }
     }
