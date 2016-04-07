@@ -3,6 +3,15 @@ RTEI.map = (function() {
 
   var homepage = window.location.href.indexOf('explore/map') === -1;
 
+  var colors = {
+    index: ['#4598c2', '#73b2d1', '#96c5dc', '#b8d8e8', '#dbebf3'],
+    1: ['#c35727', '#db784c', '#e39572', '#ebb299', '#f2cfbf'],  // governance
+    2: ['#bdb831', '#d4cf58', '#ddda7c', '#e7e4a1', '#f0eec5'],  // availability
+    3: ['#af1f2c', '#da3140', '#e15864', '#e87f88', '#efa6ac'],  // accessibility
+    4: ['#357b9e', '#4d9cc3', '#6fafcf', '#92c2da', '#b4d5e6'],  // acceptability
+    5: ['#469a8f', '#64b9ae', '#84c7be', '#a4d5cf', '#c3e4e0']  // adaptability
+  };
+
   // get color depending on the selected index
   function getColor(score) {
     if (!score) {
@@ -13,11 +22,15 @@ RTEI.map = (function() {
       }
     }
     score = parseFloat(score);
-    return score > 80 ? '#ad2429' :
-           score > 60 ? '#df4439' :
-           score > 40 ? '#f97b5d' :
-           score > 20 ? '#fbb89d' :
-           score > 0  ? '#fde8dd' :
+
+    var palette = (RTEI.map.currentIndex.indexOf('.') !== -1) ?
+      colors[RTEI.map.currentIndex.substring(0, RTEI.map.currentIndex.indexOf('.'))] :
+      colors[RTEI.map.currentIndex];
+    return score > 80 ? palette[0] :
+           score > 60 ? palette[1] :
+           score > 40 ? palette[2] :
+           score > 20 ? palette[3] :
+           score > 0  ? palette[4] :
                     '#bebebd';
   }
 
