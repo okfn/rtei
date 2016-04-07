@@ -12,13 +12,13 @@
 {% block content %}
 <div class="main">
 
-  <section class="indicator-switcher controls">
-    {% include 'rtei/tags/map_switcher.html' %}
-
-  </section>
-
-  <section class="indicator-switcher controls">
-    {% include 'rtei/tags/theme_switcher.html' %}
+  <section class="controls">
+    <div class="indicator-switcher">
+      {% include 'rtei/tags/map_switcher.html' %}
+    </div>
+    <div class="indicator-switcher">
+      {% include 'rtei/tags/theme_switcher.html' %}
+    </div>
   </section>
 
   <section class="map">

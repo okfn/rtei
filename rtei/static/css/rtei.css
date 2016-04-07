@@ -662,9 +662,13 @@ body {
     float: left;
     display: block;
     margin-right: 2.35765%;
-    width: 23.23176%; }
+    width: 23.23176%;
+    background-color: transparent; }
     .main > section.controls:last-child {
       margin-right: 0; }
+    .main > section.controls > div {
+      margin-bottom: 1.5em;
+      background-color: #fff; }
     .main > section.controls + section {
       float: left;
       display: block;
@@ -1086,7 +1090,7 @@ body {
   display: block;
   cursor: pointer;
   margin: 0;
-  padding: 1.125em 1.5em;
+  padding: 1.125em 3em 1.125em 1.5em;
   font-size: 0.875em;
   border-style: solid;
   border-color: #efefef;

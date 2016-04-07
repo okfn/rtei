@@ -62,6 +62,12 @@ body {
   @media only screen and ( min-width: $large-screen) {
     & > section.controls {
       @include span-columns(3);
+      background-color: transparent;
+
+      & > div {
+        margin-bottom: $base-spacing;
+        background-color: $base-background-color;
+      }
 
       & + section {
         @include span-columns(9);
