@@ -209,8 +209,12 @@ def get_indicators(core=True, include_columns=False):
                         indicator = [o for o in out if o['code'] == code][0]
                     else:
                         continue
+                elif '_year' in code and i == 3:
+                    indicator = [o for o in out
+                                 if o['code'] == code.replace('_year', '')][0]
                 else:
                     codes_done.append(code)
+
                 if not indicator:
                     indicator = {
                         'code': code,
@@ -222,9 +226,10 @@ def get_indicators(core=True, include_columns=False):
                 if i == 3 and include_columns:
                     if title == 'Response':
                         indicator['column_response'] = cell.column
+                    elif '_year' in code:
+                        indicator['column_year'] = cell.column
                     else:
                         indicator['column'] = cell.column
-
             else:
                 # Other indicators
                 # print cell.value
@@ -387,9 +392,15 @@ def indicators_per_country(max_level=4, derived=True, random_values=False,
                 else:
                     cell = indicator['column'] + str(i + 5)
                 if indicator['core']:
-                    value = get_numeric_cell_value(ws_core[cell])
+                    worksheet = ws_core
                 else:
-                    value = get_numeric_cell_value(ws_companion[cell])
+                    worksheet = ws_companion
+
+                value = get_numeric_cell_value(worksheet[cell])
+
+                if responses and indicator.get('column_year'):
+                    cell_year = indicator['column_year'] + str(i + 5)
+                    value = '{0} ({1})'.format(value, worksheet[cell_year].value)
 
                 out[country_code][indicator['code']] = value
 
