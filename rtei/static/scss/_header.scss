@@ -18,6 +18,8 @@
     width: 100px;
     float: left;
     margin-top: 4px;
+    position: relative;
+    z-index: 1;
 
     @media only screen and ( min-width: $medium-screen) {
       width: 140px;
