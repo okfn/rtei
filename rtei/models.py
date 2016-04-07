@@ -221,8 +221,10 @@ class ResourceIndexPage(TranslationMixin, Page):
         for filter_name in ['year', 'country', 'collection']:
             filter_value = request.GET.get(filter_name)
             if filter_value:
-                kwargs = {'{0}'.format(filter_name): filter_value}
-                resources_to_display = resources_to_display.filter(**kwargs)
+                if filter_value != "all":
+                    kwargs = {'{0}'.format(filter_name): filter_value}
+                    resources_to_display = resources_to_display.filter(
+                        **kwargs)
                 has_filter = True
 
         # No filter? Just return the most recent resource.

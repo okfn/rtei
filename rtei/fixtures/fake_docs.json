@@ -1,0 +1,206 @@
+[
+{
+    "model": "rtei.rteidocument",
+    "pk": 1,
+    "fields": {
+        "collection": 2,
+        "title": "A Questionnaire",
+        "file": "documents/Avril14.pdf",
+        "created_at": "2016-04-07T16:02:13.491Z",
+        "uploaded_by_user": [
+            "brew"
+        ],
+        "year": "1999",
+        "country": "United Kingdom",
+        "is_resource": true,
+        "description": "A short questionnaire"
+    }
+},
+{
+    "model": "rtei.rteidocument",
+    "pk": 2,
+    "fields": {
+        "collection": 2,
+        "title": "Another Questionnaire",
+        "file": "documents/Avril14.pdf",
+        "created_at": "2016-04-07T16:02:13.491Z",
+        "uploaded_by_user": [
+            "brew"
+        ],
+        "year": "2009",
+        "country": "Belgium",
+        "is_resource": true,
+        "description": "Another short questionnaire"
+    }
+},
+{
+    "model": "rtei.rteidocument",
+    "pk": 3,
+    "fields": {
+        "collection": 4,
+        "title": "A Global Report",
+        "file": "documents/Avril14.pdf",
+        "created_at": "2016-04-07T16:02:13.491Z",
+        "uploaded_by_user": [
+            "brew"
+        ],
+        "year": "2012",
+        "country": "United Kingdom",
+        "is_resource": true,
+        "description": "A wonderful report"
+    }
+},
+{
+    "model": "rtei.rteidocument",
+    "pk": 4,
+    "fields": {
+        "collection": 3,
+        "title": "Supporting Docs",
+        "file": "documents/Avril14.pdf",
+        "created_at": "2016-04-07T16:02:13.491Z",
+        "uploaded_by_user": [
+            "brew"
+        ],
+        "year": "1978",
+        "country": "United Kingdom",
+        "is_resource": true,
+        "description": ""
+    }
+},
+{
+    "model": "rtei.rteidocument",
+    "pk": 5,
+    "fields": {
+        "collection": 5,
+        "title": "A Brief about a Country",
+        "file": "documents/Avril14.pdf",
+        "created_at": "2016-04-07T16:02:13.491Z",
+        "uploaded_by_user": [
+            "brew"
+        ],
+        "year": "1999",
+        "country": "United Kingdom",
+        "is_resource": true,
+        "description": "A short brief"
+    }
+},
+{
+    "model": "rtei.rteidocument",
+    "pk": 6,
+    "fields": {
+        "collection": 2,
+        "title": "So Many Questions",
+        "file": "documents/Avril14.pdf",
+        "created_at": "2016-04-07T16:02:13.491Z",
+        "uploaded_by_user": [
+            "brew"
+        ],
+        "year": "2009",
+        "country": "Belgium",
+        "is_resource": true,
+        "description": "Another short questionnaire"
+    }
+},
+{
+    "model": "rtei.rteidocument",
+    "pk": 7,
+    "fields": {
+        "collection": 4,
+        "title": "A Global Report",
+        "file": "documents/Avril14.pdf",
+        "created_at": "2016-04-07T16:02:13.491Z",
+        "uploaded_by_user": [
+            "brew"
+        ],
+        "year": "2012",
+        "country": "France",
+        "is_resource": true,
+        "description": "A wonderful report"
+    }
+},
+{
+    "model": "rtei.rteidocument",
+    "pk": 8,
+    "fields": {
+        "collection": 3,
+        "title": "Supporting Docs",
+        "file": "documents/Avril14.pdf",
+        "created_at": "2016-04-07T16:02:13.491Z",
+        "uploaded_by_user": [
+            "brew"
+        ],
+        "year": "1978",
+        "country": "United Kingdom",
+        "is_resource": true,
+        "description": ""
+    }
+},
+{
+    "model": "rtei.rteidocument",
+    "pk": 9,
+    "fields": {
+        "collection": 2,
+        "title": "A Questionnaire",
+        "file": "documents/Avril14.pdf",
+        "created_at": "2016-04-07T16:02:13.491Z",
+        "uploaded_by_user": [
+            "brew"
+        ],
+        "year": "1999",
+        "country": "United Kingdom",
+        "is_resource": true,
+        "description": "A short questionnaire"
+    }
+},
+{
+    "model": "rtei.rteidocument",
+    "pk": 10,
+    "fields": {
+        "collection": 2,
+        "title": "Another Questionnaire",
+        "file": "documents/Avril14.pdf",
+        "created_at": "2016-04-07T16:02:13.491Z",
+        "uploaded_by_user": [
+            "brew"
+        ],
+        "year": "2009",
+        "country": "Belgium",
+        "is_resource": true,
+        "description": "Another short questionnaire"
+    }
+},
+{
+    "model": "rtei.rteidocument",
+    "pk": 11,
+    "fields": {
+        "collection": 4,
+        "title": "A Global Report",
+        "file": "documents/Avril14.pdf",
+        "created_at": "2016-04-07T16:02:13.491Z",
+        "uploaded_by_user": [
+            "brew"
+        ],
+        "year": "2012",
+        "country": "United Kingdom",
+        "is_resource": true,
+        "description": "A wonderful report"
+    }
+},
+{
+    "model": "rtei.rteidocument",
+    "pk": 12,
+    "fields": {
+        "collection": 3,
+        "title": "Supporting Docs",
+        "file": "documents/Avril14.pdf",
+        "created_at": "2016-04-07T16:02:13.491Z",
+        "uploaded_by_user": [
+            "brew"
+        ],
+        "year": "1978",
+        "country": "United Kingdom",
+        "is_resource": true,
+        "description": ""
+    }
+}
+]

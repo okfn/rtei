@@ -58,9 +58,10 @@
 
   background-color: $base-background-color;
 
-  // .js & input[type="submit"] {
-  //   display: none;
-  // }
+  & input[type="submit"] {
+    margin-top: $base-spacing*0.75;
+    float: right;
+  }
 
   label {
     display: block;

@@ -7,7 +7,7 @@
     <h6>{% trans "Sub-categories" %}</h6>
     <ul class="subfilter">
       <li>
-        <input type="radio" name="year" value="" id="filter_year_all"/><label for="filter_year_all">{% trans "All" %}</label></input>
+        <input type="radio" name="year" value="all" id="filter_year_all" {% if request.GET.year == "all" %}checked="checked"{% endif %}/><label for="filter_year_all">{% trans "All Years" %}</label></input>
       </li>
       {% for year in years %}
       <li>
@@ -22,7 +22,7 @@
     <h6>{% trans "Sub-categories" %}</h6>
     <ul class="subfilter">
       <li>
-        <input type="radio" name="country" value="" id="filter_country_all"/><label for="filter_country_all">{% trans "All" %}</label></input>
+        <input type="radio" name="country" value="all" id="filter_country_all" {% if request.GET.country == "all" %}checked="checked"{% endif %}/><label for="filter_country_all">{% trans "All Countries" %}</label></input>
       </li>
       {% for country in countries %}
       <li>
@@ -37,7 +37,7 @@
     <h6>{% trans "Sub-categories" %}</h6>
     <ul class="subfilter">
       <li>
-        <input type="radio" name="collection" value="" id="filter_collection_all"/><label for="filter_collection_all">{% trans "All" %}</label></input>
+        <input type="radio" name="collection" value="all" id="filter_collection_all" {% if request.GET.collection == "all" %}checked="checked"{% endif %}/><label for="filter_collection_all">{% trans "All Collections" %}</label></input>
       </li>
       {% for collection in collections %}
       <li>
@@ -48,5 +48,5 @@
   </li>
 </ul>
 
-<input type="submit" />
+<input type="submit" value="{% trans "Apply Filters" %}" />
 </form>

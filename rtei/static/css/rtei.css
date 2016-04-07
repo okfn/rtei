@@ -1525,6 +1525,9 @@ body {
 
 .filter.controls form {
   background-color: #fff; }
+  .filter.controls form input[type="submit"] {
+    margin-top: 1.125em;
+    float: right; }
   .filter.controls form label {
     display: block;
     cursor: pointer;
