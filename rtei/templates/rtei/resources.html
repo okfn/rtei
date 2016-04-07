@@ -96,22 +96,6 @@
         {% endfor %}
       </ul>
 
-      <!--
-      <ul>
-      {% for doc in documents %}
-          {# NOTE: the document file extension is added as a class for icon styling. #}
-          <li class="{{doc.file_extension}}"><a href="{{doc.url}}" title="{{doc.title}}">
-          <h3>{{doc.title}} {% if doc.year %}- {{doc.year}}{% endif %} {% if doc.country %}- {{doc.country}}{% endif %}</h3>
-          {% if doc.collection %}
-              <h4>{{doc.collection}}</h4>
-          {% endif %}
-          {% if doc.description %}
-             {{doc.description|richtext}}
-          {% endif %}
-          </a></li>
-      {% endfor %}
-      </ul>
-    -->
     </section>
 
   </div>
