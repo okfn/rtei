@@ -1178,7 +1178,8 @@ body {
       height: 36px;
       background-color: #4598c2;
       color: #fff;
-      text-align: center; }
+      text-align: center;
+      padding: 0.1em; }
       .template-explore-map .map .description .icon svg {
         fill: currentColor;
         width: 65%;
