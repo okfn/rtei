@@ -1,8 +1,7 @@
-#{$all-button-inputs},
-button {
+@mixin button($bg-colour:$action-color) {
   @include appearance(none);
   -webkit-font-smoothing: antialiased;
-  background-color: $action-color;
+  background-color: $bg-colour;
   border-radius: $base-border-radius;
   border: none;
   color: #fff;
@@ -29,4 +28,9 @@ button {
     cursor: not-allowed;
     opacity: 0.5;
   }
+}
+
+#{$all-button-inputs},
+button {
+  @include button ();
 }
