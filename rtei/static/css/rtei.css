@@ -1456,9 +1456,12 @@ body {
 
 .template-rtei.resources .resources-list li {
   padding-top: 0.75em;
-  clear: left;
   padding-bottom: 0.75em;
   margin-bottom: 0.75em; }
+  .template-rtei.resources .resources-list li::after {
+    clear: both;
+    content: "";
+    display: table; }
   .template-rtei.resources .resources-list li .icon {
     display: none; }
     .template-rtei.resources .resources-list li .icon svg {

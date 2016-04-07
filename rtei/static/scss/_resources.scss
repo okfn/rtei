@@ -3,9 +3,9 @@
 
     li {
       padding-top: $small-spacing;
-      clear: left;
       padding-bottom: $small-spacing;
       margin-bottom: $small-spacing;
+      @include clearfix;
 
       .icon {
         display: none;
