@@ -662,9 +662,13 @@ body {
     float: left;
     display: block;
     margin-right: 2.35765%;
-    width: 23.23176%; }
+    width: 23.23176%;
+    background-color: transparent; }
     .main > section.controls:last-child {
       margin-right: 0; }
+    .main > section.controls > div {
+      margin-bottom: 1.5em;
+      background-color: #fff; }
     .main > section.controls + section {
       float: left;
       display: block;
@@ -1086,7 +1090,7 @@ body {
   display: block;
   cursor: pointer;
   margin: 0;
-  padding: 1.125em 1.5em;
+  padding: 1.125em 3em 1.125em 1.5em;
   font-size: 0.875em;
   border-style: solid;
   border-color: #efefef;
@@ -1174,7 +1178,8 @@ body {
       height: 36px;
       background-color: #4598c2;
       color: #fff;
-      text-align: center; }
+      text-align: center;
+      padding: 0.1em; }
       .template-explore-map .map .description .icon svg {
         fill: currentColor;
         width: 65%;
@@ -1193,9 +1198,10 @@ body {
     height: 450px; }
     @media only screen and (min-width: 40em) {
       .template-explore-map .map .leaflet-container {
-        height: 650px; } }
+        height: 715px; } }
   .template-explore-map .map .key {
-    padding: 1.5em; }
+    padding: 0.75em 1.5em 1.5em 1.5em;
+    background-color: rgba(255, 255, 255, 0.5); }
     @media only screen and (min-width: 40em) {
       .template-explore-map .map .key {
         position: absolute;
@@ -1209,8 +1215,7 @@ body {
       display: table;
       width: 100%;
       table-layout: fixed;
-      padding-top: 0.75em;
-      background-color: rgba(255, 255, 255, 0.5); }
+      padding-top: 0.75em; }
       .template-explore-map .map .key ul li {
         display: table-cell;
         width: 16.66667%;
@@ -1231,6 +1236,26 @@ body {
           .template-explore-map .map .key ul li:nth-child(5):after {
             content: '100';
             float: right; }
+    .template-explore-map .map .key dl {
+      font-size: 0.8125em; }
+      .template-explore-map .map .key dl dt,
+      .template-explore-map .map .key dl dd {
+        display: block;
+        margin: 0; }
+      .template-explore-map .map .key dl dt {
+        clear: left;
+        float: left; }
+        .template-explore-map .map .key dl dt:after {
+          content: ':\00a0'; }
+      @media only screen and (min-width: 40em) {
+        .template-explore-map .map .key dl dt {
+          display: none; }
+        .template-explore-map .map .key dl dd {
+          width: 25%;
+          float: left; }
+          .template-explore-map .map .key dl dd:last-child {
+            float: right;
+            text-align: right; } }
   .template-explore-map .map .leaflet-control-zoom {
     box-shadow: none;
     border-radius: 2px;
