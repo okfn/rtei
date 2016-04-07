@@ -44,7 +44,7 @@
       </li>
       {% for country in countries %}
       <li>
-        <input type="radio" name="country" value="{{ country }}" id="filter_country_{{ country }}" {% if request.GET.country == country %}checked="checked"{% endif %}/><label for="filter_country_{{ country }}">{{ country }}</label></input>
+        <input type="radio" name="country" value="{{ country }}" id="filter_country_{{ country|slugify }}" {% if request.GET.country == country %}checked="checked"{% endif %}/><label for="filter_country_{{ country|slugify }}">{{ country }}</label></input>
       </li>
       {% endfor %}
     </ul>
