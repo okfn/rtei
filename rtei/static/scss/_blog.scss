@@ -17,8 +17,8 @@
       }
 
       .post-body {
-        padding: $base-spacing $base-spacing $small-spacing $base-spacing;
-        height: 20em;
+        padding: $base-spacing $base-spacing $small-spacing/2 $base-spacing;
+        height: 12em;
         overflow: hidden;
 
         .post-heading {
@@ -28,8 +28,7 @@
         .post-date {
           color: transparentize($base-font-color, 0.6);
           font-size: 0.9em;
-          margin-top: -0.5em;
-          margin-bottom: 0.75em;
+          margin-bottom: 0.4em;
           display: block;
         }
       }
@@ -39,13 +38,14 @@
       }
 
       .more {
+        @include button;
         margin: 0 $base-spacing $base-spacing $base-spacing;
-        display: inline-block;
       }
 
       @include media($medium-screen) {
         @include span-columns(4);
         @include omega(3n);
+        margin-bottom: $base-spacing;
       }
     }
   }
@@ -65,7 +65,7 @@
       h1 {
         font-size: 2em;
         font-weight: 600;
-        margin-bottom: 0.5em;
+        margin-bottom: 0.2em;
 
         @include media($medium-screen) {
           font-size: 2.4em;
@@ -75,8 +75,7 @@
       .post-date {
         color: transparentize($base-font-color, 0.6);
         font-size: 0.9em;
-        margin-top: -0.5em;
-        margin-bottom: 0.75em;
+        margin-bottom: 0.8em;
         display: block;
       }
 
