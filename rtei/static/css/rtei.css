@@ -899,7 +899,9 @@ body {
     display: block;
     width: 100px;
     float: left;
-    margin-top: 4px; }
+    margin-top: 4px;
+    position: relative;
+    z-index: 1; }
     @media only screen and (min-width: 40em) {
       .site-header .logo {
         width: 140px; } }
@@ -1859,7 +1861,13 @@ html,
       display: table; }
     @media only screen and (min-width: 40em) {
       .site-footer .secondary {
-        text-align: right; } }
+        text-align: right;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        margin: 0;
+        max-width: none; } }
     .site-footer .secondary .language {
       display: inline-block;
       position: relative;
@@ -1895,9 +1903,13 @@ html,
       padding: 0 1.5em; }
       @media only screen and (min-width: 40em) {
         .site-footer .secondary > div {
-          position: absolute;
-          top: 0;
-          width: 400px;
-          margin-left: -400px; } }
+          display: block;
+          max-width: 68em;
+          margin-left: auto;
+          margin-right: auto; }
+          .site-footer .secondary > div::after {
+            clear: both;
+            content: "";
+            display: table; } }
 
 /*# sourceMappingURL=rtei.css.map */
