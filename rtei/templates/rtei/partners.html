@@ -6,19 +6,20 @@
 
 {% block content %}
   <div class="main">
-    <h1>Hi there, partner!</h1>
+    <section class="navigation controls">
+      links here
+    </section>
 
-    <p>
-        You are now on: {{ self.title }}
-    </p>
-
-    <p>
-        If this page has a body, here it is:
-    </p>
-
-    <div>
-        {{ self.body|richtext }}
-    </div>
+    <section>
+      {% if self.body %}
+      {{ self.body|richtext }}
+      {% else %}
+      <h2>{{ self.title }}</h2>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget nisl tempor, semper magna vel, faucibus lectus. Aliquam interdum pulvinar est quis dictum. Donec et mi sollicitudin, scelerisque nulla in, efficitur sem. Proin risus enim, finibus in metus scelerisque.
+      </p>
+      {% endif %}
+    </section>
   </div>
 
 {% endblock %}
