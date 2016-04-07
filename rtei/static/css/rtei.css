@@ -1498,7 +1498,7 @@ body {
     .template-rtei.resources .resources-list li .text .meta li.extension {
       text-transform: uppercase; }
 
-.filter.controls label {
+.filter.controls form label {
   display: block;
   cursor: pointer;
   margin: 0;
@@ -1508,33 +1508,33 @@ body {
   border-color: #efefef;
   border-width: 0 1px 0 0;
   line-height: 1.2; }
-.filter.controls input[type="radio"] {
+.filter.controls form input[type="radio"] {
   display: none; }
-  .filter.controls input[type="radio"]:checked + label {
+  .filter.controls form input[type="radio"]:checked + label {
     background-color: #4598c2;
     color: #fff; }
-    .filter.controls input[type="radio"]:checked + label + h6:after {
+    .filter.controls form input[type="radio"]:checked + label + h6:after {
       border-top-color: #fff; }
-.filter.controls > ul::after {
+.filter.controls form > ul::after {
   clear: both;
   content: "";
   display: table; }
 @media only screen and (min-width: 53.75em) {
-  .filter.controls > ul {
+  .filter.controls form > ul {
     width: 100%;
     display: table;
     width: 100%;
     table-layout: fixed; } }
-.filter.controls > ul > li {
+.filter.controls form > ul > li {
   display: block;
   position: relative; }
-  .filter.controls > ul > li.subcat {
+  .filter.controls form > ul > li.subcat {
     background-color: rgba(69, 152, 194, 0.1); }
   @media only screen and (min-width: 53.75em) {
-    .filter.controls > ul > li {
+    .filter.controls form > ul > li {
       display: table-cell;
       width: 16.66667%; } }
-  .filter.controls > ul > li h6 {
+  .filter.controls form > ul > li h6 {
     text-indent: -9999em;
     overflow: hidden;
     width: 16px;
@@ -1542,7 +1542,7 @@ body {
     position: absolute;
     top: 1.125em;
     right: 1.125em; }
-    .filter.controls > ul > li h6:after {
+    .filter.controls form > ul > li h6:after {
       width: 0;
       height: 0;
       border-style: solid;
@@ -1552,22 +1552,49 @@ body {
       position: absolute;
       left: 4px;
       top: 7px; }
-  .filter.controls > ul > li ul {
+  .filter.controls form > ul > li ul {
     background-color: #fff;
     display: none; }
-    .filter.controls > ul > li ul label {
+    .filter.controls form > ul > li ul label {
       border-width: 0 1px 1px 1px;
       padding: 0.5em 2.25em; }
     @media only screen and (min-width: 53.75em) {
-      .filter.controls > ul > li ul {
+      .filter.controls form > ul > li ul {
         position: absolute;
         z-index: 1; } }
-  .filter.controls > ul > li:hover {
+  .filter.controls form > ul > li:hover {
     background-color: #bfbfbe; }
-    .filter.controls > ul > li:hover > ul {
+    .filter.controls form > ul > li:hover > ul {
       display: block; }
-      .filter.controls > ul > li:hover > ul li:hover {
+      .filter.controls form > ul > li:hover > ul li:hover {
         background-color: #bfbfbe; }
+
+.filter.controls form > ul > li {
+  display: block;
+  width: auto; }
+  .filter.controls form > ul > li label {
+    border-width: 0 0 1px 0; }
+  .filter.controls form > ul > li h6 {
+    cursor: pointer;
+    border-radius: 50%;
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    transform: rotate(-90deg); }
+    .filter.controls form > ul > li h6:hover {
+      background-color: #333333; }
+      .filter.controls form > ul > li h6:hover:after {
+        border-top-color: #fff; }
+    .filter.controls form > ul > li h6.expanded {
+      -webkit-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg); }
+  .filter.controls form > ul > li ul {
+    position: static;
+    display: block; }
 
 .template-blog-index .posts-list {
   background-color: inherit; }
