@@ -225,6 +225,15 @@ class ResourceIndexPage(TranslationMixin, Page):
         else:
             resources_to_display = resources
 
+        page = request.GET.get('page')
+        paginator = Paginator(resources_to_display, 1)
+        try:
+            resources_to_display = paginator.page(page)
+        except PageNotAnInteger:
+            resources_to_display = paginator.page(1)
+        except EmptyPage:
+            resources_to_display = paginator.page(paginator.num_pages)
+
         context['documents'] = resources_to_display
 
         # Get data to populate filter dropdowns from resources.
