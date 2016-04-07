@@ -1492,6 +1492,8 @@ body {
     background-color: #e5e5e5;
     font-size: 0.85em;
     padding: 0 0.4em; }
+    .template-rtei.resources .resources-list li .text .meta li.extension {
+      text-transform: uppercase; }
 
 .template-blog-index .posts-list {
   background-color: inherit; }

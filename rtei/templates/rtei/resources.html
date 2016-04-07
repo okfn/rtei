@@ -67,7 +67,7 @@
             {% if doc.description %}
                {{doc.description|richtext}}
             {% endif %}
-            {% if doc.year or doc.country or doc.collection %}
+            {% if doc.year or doc.country or doc.collection or doc.file_extension %}
             <ul class="meta">
               {% if doc.year %}
               <li>
@@ -82,6 +82,11 @@
               {% if doc.collection %}
               <li>
                 {{doc.collection}}
+              </li>
+              {% endif %}
+              {% if doc.file_extension %}
+              <li class="extension">
+                {{doc.file_extension}}
               </li>
               {% endif %}
             </ul>
