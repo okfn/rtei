@@ -1366,7 +1366,7 @@ body {
       padding: 0.05em 0.4em;
       min-width: 1.45em;
       text-align: center;
-      margin-right: 0.2em;
+      margin-right: 0.5em;
       color: #fff; }
   .by-country .indicators > li > ul:after {
     content: '';
@@ -1378,24 +1378,24 @@ body {
     left: -30em; }
   .by-country .indicators > li:nth-child(1) > .indicator > .indicator-title .code {
     background-color: #c35727; }
-  .by-country .indicators > li:nth-child(1) ul li:before, .by-country .indicators > li:nth-child(1) > ul:after {
-    background-color: rgba(195, 87, 39, 0.3); }
+  .by-country .indicators > li:nth-child(1) ul li .indicator:before, .by-country .indicators > li:nth-child(1) > ul:after {
+    background-color: rgba(172, 96, 62, 0.15); }
   .by-country .indicators > li:nth-child(2) > .indicator > .indicator-title .code {
     background-color: #bdb831; }
-  .by-country .indicators > li:nth-child(2) ul li:before, .by-country .indicators > li:nth-child(2) > ul:after {
-    background-color: rgba(189, 184, 49, 0.3); }
+  .by-country .indicators > li:nth-child(2) ul li .indicator:before, .by-country .indicators > li:nth-child(2) > ul:after {
+    background-color: rgba(165, 162, 73, 0.15); }
   .by-country .indicators > li:nth-child(3) > .indicator > .indicator-title .code {
     background-color: #af1f2c; }
-  .by-country .indicators > li:nth-child(3) ul li:before, .by-country .indicators > li:nth-child(3) > ul:after {
-    background-color: rgba(175, 31, 44, 0.3); }
+  .by-country .indicators > li:nth-child(3) ul li .indicator:before, .by-country .indicators > li:nth-child(3) > ul:after {
+    background-color: rgba(154, 52, 61, 0.15); }
   .by-country .indicators > li:nth-child(4) > .indicator > .indicator-title .code {
     background-color: #357b9e; }
-  .by-country .indicators > li:nth-child(4) ul li:before, .by-country .indicators > li:nth-child(4) > ul:after {
-    background-color: rgba(53, 123, 158, 0.3); }
+  .by-country .indicators > li:nth-child(4) ul li .indicator:before, .by-country .indicators > li:nth-child(4) > ul:after {
+    background-color: rgba(74, 116, 137, 0.15); }
   .by-country .indicators > li:nth-child(5) > .indicator > .indicator-title .code {
     background-color: #469a8f; }
-  .by-country .indicators > li:nth-child(5) ul li:before, .by-country .indicators > li:nth-child(5) > ul:after {
-    background-color: rgba(70, 154, 143, 0.3); }
+  .by-country .indicators > li:nth-child(5) ul li .indicator:before, .by-country .indicators > li:nth-child(5) > ul:after {
+    background-color: rgba(92, 132, 126, 0.15); }
   .by-country .indicators .has-children > .indicator {
     cursor: pointer;
     position: relative; }
@@ -1439,7 +1439,11 @@ body {
       padding-right: 1em; }
   .by-country .indicators ul li {
     padding-left: 1em; }
-    .by-country .indicators ul li:before {
+    .by-country .indicators ul li::after {
+      clear: both;
+      content: "";
+      display: table; }
+    .by-country .indicators ul li .indicator:before {
       content: '';
       width: 100em;
       height: 1px;

@@ -18,7 +18,7 @@
           padding: 0.05em 0.4em;
           min-width: 1.45em;
           text-align: center;
-          margin-right: 0.2em;
+          margin-right: 0.5em;
           color: #fff;
         }
       }
@@ -37,45 +37,45 @@
         & > .indicator > .indicator-title .code {
           background-color: $governance-color;
         }
-        ul li:before,
+        ul li .indicator:before,
         & > ul:after {
-          background-color: transparentize($governance-color, 0.7);
+          background-color: transparentize(desaturate( $governance-color, 20% ), 0.85);
         }
       }
       &:nth-child(2) {
         & > .indicator > .indicator-title .code {
           background-color: $availability-color;
         }
-        ul li:before,
+        ul li .indicator:before,
         & > ul:after {
-          background-color: transparentize($availability-color, 0.7);
+          background-color: transparentize(desaturate($availability-color, 20% ), 0.85);
         }
       }
       &:nth-child(3) {
         & > .indicator > .indicator-title .code {
           background-color: $accessibility-color;
         }
-        ul li:before,
+        ul li .indicator:before,
         & > ul:after {
-          background-color: transparentize($accessibility-color, 0.7);
+          background-color: transparentize(desaturate($accessibility-color, 20% ), 0.85);
         }
       }
       &:nth-child(4) {
         & > .indicator > .indicator-title .code {
           background-color: $acceptability-color;
         }
-        ul li:before,
+        ul li .indicator:before,
         & > ul:after {
-          background-color: transparentize($acceptability-color, 0.7);
+          background-color: transparentize(desaturate($acceptability-color, 20% ), 0.85);
         }
       }
       &:nth-child(5) {
         & > .indicator > .indicator-title .code {
           background-color: $adaptability-color;
         }
-        ul li:before,
+        ul li .indicator:before,
         & > ul:after {
-          background-color: transparentize($adaptability-color, 0.7);
+          background-color: transparentize(desaturate($adaptability-color, 20% ), 0.85);
         }
       }
     }
@@ -133,8 +133,9 @@
     ul {
       li {
         padding-left: 1em;
+        @include clearfix;
 
-        &:before {
+        .indicator:before {
           content: '';
           width: 100em;
           height: 1px;
