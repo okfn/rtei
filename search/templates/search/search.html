@@ -6,15 +6,22 @@
 {% block title %}{% trans "Search" %}{% endblock %}
 
 {% block content %}
-    <h1>{% trans "Search" %}</h1>
 
+<div class="main">
+  <section class="search controls">
     <form action="{% url 'search' %}" method="get">
         <input type="text" name="query"{% if search_query %} value="{{ search_query }}"{% endif %}>
-        <input type="submit" value="{% trans 'Search' %}">
+        <button type="submit" class="btn btn-default">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 685.53 685.46"><title>Search</title><path d="M621.67,653.67A270.76,270.76,0,0,1,464,704c-150.22,0-272-121.78-272-272S313.78,160,464,160,736,281.78,736,432a270.77,270.77,0,0,1-50.33,157.67L864.38,768.38a44.59,44.59,0,0,1,0,63.24l-0.75.75a44.76,44.76,0,0,1-63.24,0L621.67,653.67h0ZM464,640c114.88,0,208-93.12,208-208S578.88,224,464,224,256,317.13,256,432s93.13,208,208,208h0Z" transform="translate(-192 -160)"></path></svg>
+        </button>
     </form>
+  </section>
+
+  <section>
+    <h2>{% trans "Search Results" %}</h2>
 
     {% if search_results %}
-        <ul>
+        <ul class="results">
             {% for result in search_results %}
                 <li>
                     <h4><a href="{% pageurl result %}">{{ result }}</a></h4>
@@ -35,4 +42,6 @@
     {% elif search_query %}
         {% trans "No results found" %}
     {% endif %}
+  </section>
+</div>
 {% endblock %}
