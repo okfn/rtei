@@ -1498,6 +1498,77 @@ body {
     .template-rtei.resources .resources-list li .text .meta li.extension {
       text-transform: uppercase; }
 
+.filter.controls label {
+  display: block;
+  cursor: pointer;
+  margin: 0;
+  padding: 1.125em 1.5em;
+  font-size: 0.875em;
+  border-style: solid;
+  border-color: #efefef;
+  border-width: 0 1px 0 0;
+  line-height: 1.2; }
+.filter.controls input[type="radio"] {
+  display: none; }
+  .filter.controls input[type="radio"]:checked + label {
+    background-color: #4598c2;
+    color: #fff; }
+    .filter.controls input[type="radio"]:checked + label + h6:after {
+      border-top-color: #fff; }
+.filter.controls > ul::after {
+  clear: both;
+  content: "";
+  display: table; }
+@media only screen and (min-width: 53.75em) {
+  .filter.controls > ul {
+    width: 100%;
+    display: table;
+    width: 100%;
+    table-layout: fixed; } }
+.filter.controls > ul > li {
+  display: block;
+  position: relative; }
+  .filter.controls > ul > li.subcat {
+    background-color: rgba(69, 152, 194, 0.1); }
+  @media only screen and (min-width: 53.75em) {
+    .filter.controls > ul > li {
+      display: table-cell;
+      width: 16.66667%; } }
+  .filter.controls > ul > li h6 {
+    text-indent: -9999em;
+    overflow: hidden;
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    top: 1.125em;
+    right: 1.125em; }
+    .filter.controls > ul > li h6:after {
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 4px 4px 0 4px;
+      border-color: #3b3b3b transparent transparent transparent;
+      content: '';
+      position: absolute;
+      left: 4px;
+      top: 7px; }
+  .filter.controls > ul > li ul {
+    background-color: #fff;
+    display: none; }
+    .filter.controls > ul > li ul label {
+      border-width: 0 1px 1px 1px;
+      padding: 0.5em 2.25em; }
+    @media only screen and (min-width: 53.75em) {
+      .filter.controls > ul > li ul {
+        position: absolute;
+        z-index: 1; } }
+  .filter.controls > ul > li:hover {
+    background-color: #bfbfbe; }
+    .filter.controls > ul > li:hover > ul {
+      display: block; }
+      .filter.controls > ul > li:hover > ul li:hover {
+        background-color: #bfbfbe; }
+
 .template-blog-index .posts-list {
   background-color: inherit; }
   .template-blog-index .posts-list::after {

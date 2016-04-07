@@ -166,26 +166,13 @@ class RTEIPage(TranslationMixin, Page):
 class ResourceIndexPage(TranslationMixin, Page):
     template = 'rtei/resources.html'
 
-    def resources(self, request):
+    def resources(self):
         '''Return a queryset of resource documents, filtered based on query
         string args in the passed request.'''
         resources = RteiDocument.objects.filter(is_resource=True)
 
         # Don't want documents from the root collection.
         resources = resources.exclude(collection__id=get_root_collection_id())
-
-        year = request.GET.get('year')
-        if year:
-            resources = resources.filter(year=year)
-
-        country = request.GET.get('country')
-        if country:
-            resources = resources.filter(country=country)
-
-        collection = request.GET.get('collection')
-        if collection:
-            resources = resources.filter(
-                collection=collection)
 
         return resources
 
@@ -194,14 +181,16 @@ class ResourceIndexPage(TranslationMixin, Page):
         document model.'''
         years = resources.order_by('-year') \
             .exclude(year__exact='') \
-            .values_list('year', flat=True).distinct()
+            .values_list('year', flat=True) \
+            .distinct()
         return years
 
     def countries(self, resources):
         '''Return a list of counties used as values for the `country` property
         of document models.'''
         countries = resources.order_by('country') \
-            .exclude(country__exact='').values_list('country', flat=True) \
+            .exclude(country__exact='') \
+            .values_list('country', flat=True) \
             .distinct()
         return countries
 
@@ -209,24 +198,39 @@ class ResourceIndexPage(TranslationMixin, Page):
         '''Return a list of collections used as values for the `collection`
         property of document models.'''
         collections = resources.order_by('collection') \
-            .exclude(collection__name='Root') \
+            .exclude(collection__id=get_root_collection_id()) \
             .values_list('collection__id', 'collection__name') \
             .distinct()
         return collections
 
     def get_context(self, request):
         context = super(ResourceIndexPage, self).get_context(request)
-        resources = self.resources(request)
+        # Get all resource documents as a queryset
+        resources = self.resources()
 
-        if not any(request.GET.get(key)
-           for key in ['year', 'country', 'collection']):
-            # no querystring params, so just return the most recent resoure
-            resources_to_display = resources.order_by('-created_at')[:1]
-        else:
-            resources_to_display = resources
+        # Get data to populate filter dropdowns from resources.
+        context['years'] = self.years(resources)
+        context['countries'] = self.countries(resources)
+        context['collections'] = self.collections(resources)
+
+        # Get the resource documents to display
+        resources_to_display = resources.order_by('-created_at')
+
+        # Filter resources to display as necessary.
+        has_filter = False
+        for filter_name in ['year', 'country', 'collection']:
+            filter_value = request.GET.get(filter_name)
+            if filter_value:
+                kwargs = {'{0}'.format(filter_name): filter_value}
+                resources_to_display = resources_to_display.filter(**kwargs)
+                has_filter = True
+
+        # No filter? Just return the most recent resource.
+        if not has_filter:
+            resources_to_display = resources_to_display[:1]
 
         page = request.GET.get('page')
-        paginator = Paginator(resources_to_display, 1)
+        paginator = Paginator(resources_to_display, 10)
         try:
             resources_to_display = paginator.page(page)
         except PageNotAnInteger:
@@ -236,10 +240,6 @@ class ResourceIndexPage(TranslationMixin, Page):
 
         context['documents'] = resources_to_display
 
-        # Get data to populate filter dropdowns from resources.
-        context['years'] = self.years(resources)
-        context['countries'] = self.countries(resources)
-        context['collections'] = self.collections(resources)
         return context
 
 

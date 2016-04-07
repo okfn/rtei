@@ -8,36 +8,7 @@
   <div class="main">
 
     <section class="filter controls">
-      <form method="get" accept-charset="utf-8">
-        {# NOTE: output all years #}
-        Year:
-        <select name="year">
-            <option value="">All</option>
-        {% for year in years %}
-            <option value="{{year}}">{{year}}</option>
-        {% endfor %}
-        </select>
-
-        {# NOTE: output all countries #}
-        Country:
-        <select name="country">
-            <option value="">All</option>
-        {% for country in countries %}
-            <option value="{{country}}">{{country}}</option>
-        {% endfor %}
-        </select>
-
-        {# NOTE: output all collections #}
-        Category:
-        <select name="collection">
-            <option value="">All</option>
-        {% for collection in collections %}
-            <option value="{{collection.0}}">{{collection.1}}</option>
-        {% endfor %}
-        </select>
-
-        <input type="submit" />
-    </form>
+        {% include 'rtei/tags/resources_filter.html' %}
     </section>
 
     <section>
