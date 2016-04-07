@@ -38,9 +38,9 @@ class SiteTestCase(WebTest):
         assert 'Map' in page
 
     def test_explore_rtei_year(self):
-        page = self.app.get('/en/explore/rtei-year/')
+        page = self.app.get('/en/explore/rtei-theme/')
 
-        assert 'RTEI by Year' in page
+        assert 'Sort by Name' in page
 
     def test_explore_rtei_country(self):
         page = self.app.get('/en/explore/rtei-country/')
@@ -63,11 +63,10 @@ class SiteTestCase(WebTest):
 
         assert 'RTEI over Time' in page
 
-    # TODO: check for something relevant once content is in place
     def test_resources(self):
         page = self.app.get('/en/resources/')
 
-        assert 'Resources' in page
+        assert 'Latest Resource' in page
 
     # TODO: check for something relevant once content is in place
     def test_partners(self):
@@ -83,9 +82,9 @@ class SiteTestCase(WebTest):
 
     # TODO: check for something relevant once content is in place
     def test_about_us(self):
-        page = self.app.get('/en/about-us/')
+        page = self.app.get('/en/about/')
 
-        assert 'About Us' in page
+        assert 'About' in page
 
     def test_blog(self):
 
