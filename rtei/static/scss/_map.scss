@@ -219,12 +219,13 @@
       height: 450px;
 
       @media only screen and ( min-width: $medium-screen) {
-        height: 650px;
+        height: 715px;
       }
     }
 
     .key {
-      padding: $base-spacing;
+      padding: $small-spacing $base-spacing $base-spacing $base-spacing;
+      background-color: rgba($base-background-color, 0.5);
 
       @media only screen and ( min-width: $medium-screen) {
         position: absolute;
@@ -241,7 +242,6 @@
         @include fill-parent();
         @include row(table);
         padding-top: $small-spacing;
-        background-color: rgba($base-background-color, 0.5);
 
         li {
           @include span-columns(2);
@@ -268,6 +268,42 @@
             &:after {
               content: '100';
               float: right;
+            }
+          }
+        }
+      }
+
+      dl {
+        font-size: em(13);
+
+        dt,
+        dd {
+          display: block;
+          margin: 0;
+        }
+
+        dt {
+          clear: left;
+          float: left;
+
+          &:after {
+            content: ':\00a0';
+          }
+        }
+
+        @media only screen and ( min-width: $medium-screen) {
+
+          dt {
+            display: none;
+          }
+
+          dd {
+            width: 25%;
+            float: left;
+
+            &:last-child {
+              float: right;
+              text-align: right;
             }
           }
         }
