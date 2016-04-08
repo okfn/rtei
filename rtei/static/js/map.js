@@ -23,9 +23,15 @@ RTEI.map = (function() {
     }
     score = parseFloat(score);
 
-    var palette = (RTEI.map.currentIndex.indexOf('.') !== -1) ?
-      colors[RTEI.map.currentIndex.substring(0, RTEI.map.currentIndex.indexOf('.'))] :
-      colors[RTEI.map.currentIndex];
+    var palette;
+
+    if (RTEI.map.currentIndex.substring(0, 1) == 't') {
+      palette = colors.index;
+    } else {
+      palette = (RTEI.map.currentIndex.indexOf('.') !== -1) ?
+        colors[RTEI.map.currentIndex.substring(0, RTEI.map.currentIndex.indexOf('.'))] :
+        colors[RTEI.map.currentIndex];
+    }
     return score > 80 ? palette[0] :
            score > 60 ? palette[1] :
            score > 40 ? palette[2] :
@@ -174,10 +180,14 @@ $(document).ready(function(){
     RTEI.map.init();
 
     $('.indicator-switcher input').on('click', function(){
+      var isTheme = (this.value.substring(0, 1) == 't');
       if (this.value != RTEI.map.currentIndex) {
         RTEI.map.currentIndex = this.value;
         RTEI.map.currentIndexLabel = $('label[for="' + this.id + '"]').text();
-        if (this.id.indexOf('.') !== -1) {
+
+        if (isTheme) {
+          className = 'overall_index';
+        } else if (this.id.indexOf('.') !== -1) {
           className = $('label[for="' + this.id.substring(0, this.id.indexOf('.')) + '"]').text();
         } else {
           className = RTEI.map.currentIndexLabel;

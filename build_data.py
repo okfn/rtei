@@ -500,6 +500,75 @@ def indicators_per_country(max_level=4, derived=True, random_values=False,
     return out
 
 
+def themes_per_country(prefix=None, random_values=False):
+    '''
+    Returns a dict containing the values for all themes for all countries,
+    with the following structure:
+
+        {
+            'CL': {
+                    '1A.A': 68.4,
+                    '2A': 100.0,
+                    '3A': 83.07,
+                    # ...
+                    },
+            'TZ': {
+                    '1A.A': 83.25,
+                    '2A': 100.0,
+                    '3A': 63.18,
+                    # ...
+                    },
+
+            # ...
+        }
+
+    If `prefix` is provided, it will be added at the beginning of the code
+    (eg to mix themes and indicators).
+
+    If `random_values` is True, countries not present in the spreadsheet are
+    returned with random values.
+    '''
+
+    out = OrderedDict()
+
+    themes = get_themes(include_columns=True)
+    ws = wb[THEMES_SHEET]
+    country_codes = []
+    for i in xrange(3, len(ws.rows) + 1):
+        country_name = ws['A' + str(i)].value
+        if not country_name:
+            continue
+        country_code = get_country_code(country_name)
+        if not country_code:
+            print 'Warning: Could not get country code for {0}'.format(
+                country_name)
+        country_codes.append(country_code)
+        out[country_code] = OrderedDict()
+    for i, country_code in enumerate(country_codes):
+        for theme in themes:
+            if theme['level'] == 2 and theme.get('column'):
+                cell = theme['column'] + str(i + 4)
+
+                value = get_numeric_cell_value(ws[cell])
+
+                if isinstance(value, basestring):
+                    value = None
+
+                key = str(prefix) + theme['code'] if prefix else theme['code']
+
+                out[country_code][key] = value
+
+    if random_values:
+        for country in countries:
+            if country['iso2'] not in country_codes and country['iso2']:
+                out[country['iso2']] = {}
+                for theme in themes:
+                    if (theme['level'] == 2):
+                        out[country['iso2']][theme['code']] = random.randint(
+                            0, 100)
+    return out
+
+
 def indicators_as_csv(output_dir=OUTPUT_DIR):
     '''
     Write a CSV file with all indicators, in the form:
@@ -666,21 +735,28 @@ def scores_per_country_as_json(output_dir=OUTPUT_DIR, random_values=False):
 
 def scores_per_country_as_csv(output_dir=OUTPUT_DIR, random_values=False):
     '''
-    Write a CSV file with the level 1 and 2 scores for each country, in the form:
+    Write a CSV file with the level 1 and 2 scores for each country, as well as
+    the transversal themes, in the form:
 
-        iso2,index,1,1.1,1.2,..
-        CL,68.78,100,56.334,89.322,...
+        iso2,index,1,1.1,1.2,..,t1.A.A
+        CL,68.78,100,56.334,89.322,...,68.4
 
         ...
+
+    Note that transversal theme codes are prefixed with `t` to avoid conflicts
     '''
     out = indicators_per_country(max_level=2, derived=False,
                                  random_values=random_values)
+    themes = themes_per_country(prefix='t', random_values=random_values)
 
     out_list = []
     for country in out.keys():
+        if country in themes:
+            out[country].update(themes[country])
         add_main_scores(out[country])
         add_full_score(out[country])
         out[country]['iso2'] = country
+
         out_list.append(out[country])
 
     file_name = ('scores_per_country.csv' if not random_values
