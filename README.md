@@ -102,6 +102,27 @@ The JSON data files are generated in `rtei/static/data` by default. These files 
             ]
     ```
 
+* `themes.json`: Master dictionary that links every theme code to its title (and level). Themes are nested, eg:
+
+    ```json
+        [
+            {
+                "code": "1",
+                "level": 1,
+                "title": "Children with Disabilities"
+                "children": [
+                    {
+                        "code": "1.A.A",
+                        "level": 2,
+                        "title": "Structure and Support"
+                    }
+                ]
+            },
+
+            ...
+        ]
+
+    ```
 
 * `scores_per_country.json`: Contains all level 1 and 2 scores for all countries, as well as the overall one:
 

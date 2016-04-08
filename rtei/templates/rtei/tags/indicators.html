@@ -10,9 +10,9 @@
         {{ country_indicators|get_indicator_value:indicator.code }}
       </span>
     </div>
-    {% if indicator.indicators %}
+    {% if indicator.children %}
       <ul>
-      {% indicators_list indicator.indicators country_indicators %}
+      {% indicators_list indicator.children country_indicators %}
       </ul>
     {% endif %}
 

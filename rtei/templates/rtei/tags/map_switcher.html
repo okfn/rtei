@@ -9,7 +9,7 @@
     <input type="radio" name="indicator" value="{{ indicator.code }}" id="indicator_{{ indicator.code }}"/><label for="indicator_{{ indicator.code }}">{% trans indicator.title %}</label>
     <h6>{% trans "Sub-categories" %}</h6>
     <ul class="subindicators">
-      {% for subindicator in indicator.indicators %}
+      {% for subindicator in indicator.children %}
         <li>
           <input type="radio" name="indicator" value="{{ subindicator.code }}" id="indicator_{{ subindicator.code }}"/><label for="indicator_{{ subindicator.code }}">{% trans subindicator.title %}</label>
         </li>

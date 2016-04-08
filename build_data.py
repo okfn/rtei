@@ -20,6 +20,7 @@ OUTPUT_DIR = 'rtei/static/data'
 
 CORE_SHEET = 'Core Questionnaire'
 COMPANION_SHEET = 'Companion Questionnaire'
+THEMES_SHEET = 'Transversal Themes'
 
 MODIFIERS = {
     'gp': 'Gender Parity',
@@ -97,7 +98,35 @@ def get_numeric_cell_value(cell):
         return cell.value
 
 
-def parse_cell(value):
+def get_level_for_indicator(code):
+    if code.count('.') == 0:
+        # 1
+        level = 1
+    elif code.count('.') == 1:
+        # 1.2
+        level = 2
+    elif code.count('.') == 2:
+        try:
+            int(code.replace('.', ''))
+            # 1.3.4
+            level = 3
+        except ValueError:
+            # 1.5.6a or 1.5.6a_dis
+            level = 4
+    return level
+
+
+def get_level_for_theme(code):
+    if not code[-1].isalpha():
+        # 1
+        level = 1
+    else:
+        # 1A or 1A.B
+        level = 2
+    return level
+
+
+def parse_cell(value, theme=False):
     '''
     Parses an indicator cell to return a tuple with its code, title and level
 
@@ -131,20 +160,8 @@ def parse_cell(value):
             .replace(code + ':', '') \
             .replace('C ', '') \
             .strip()
-        if code.count('.') == 0:
-            # 1
-            level = 1
-        elif code.count('.') == 1:
-            # 1.2
-            level = 2
-        elif code.count('.') == 2:
-            try:
-                int(code.replace('.', ''))
-                # 1.3.4
-                level = 3
-            except ValueError:
-                # 1.5.6a or 1.5.6a_dis
-                level = 4
+        level = (get_level_for_theme(code) if theme
+                 else get_level_for_indicator(code))
     elif '_year' in value.split()[0]:
         code = value.split()[0]
         title = 'Year'
@@ -164,6 +181,51 @@ def parse_cell(value):
         level = 4
 
     return code, title, level
+
+
+def get_themes(include_columns=False, only_with_values=True):
+    '''
+    Returns a list of dicts describing the transversal themes. Each of the
+    dicts contains the following keys:
+
+        * `code`: The unique identifier for this indicator, examples include
+            1, 1.A, 1.A.B
+        * `title`: The string that describes the indicator.
+        * `level`: The hierarchy of the indicator (level 1 or 2)
+        * `column` (optional, only if `include_columns` is True): The column on
+            the spreadsheet that holds the values for the indicator.
+
+    '''
+
+    out = []
+    sheet = THEMES_SHEET
+    ws = wb[sheet]
+
+    codes_done = []
+    for i in (1, 2):
+        for cell in ws.rows[i]:
+            theme = None
+            if cell.value:
+                code, title, level = parse_cell(cell.value, theme=True)
+                if not code or code in codes_done:
+                    continue
+                codes_done.append(code)
+
+                if only_with_values:
+                    # Check if the theme actually has values on the spreadsheet
+                    value_cell = ws[cell.column + '4']
+                    if not type(value_cell.value) in (float, long, int):
+                        continue
+
+                theme = {
+                    'code': code,
+                    'title': title,
+                    'level': level
+                }
+                out.append(theme)
+                if i == 2 and include_columns:
+                    theme['column'] = cell.column
+    return out
 
 
 def get_indicators(core=True, include_columns=False):
@@ -462,9 +524,27 @@ def get_nested_indicators(parent_indicator, all_indicators):
         if (indicator['code'].startswith(parent_indicator['code']) and
                 indicator['level'] == parent_indicator['level'] + 1):
             if indicator['level'] < 4:
-                indicator['indicators'] = get_nested_indicators(indicator,
-                                                                all_indicators)
+                nested_indicators = get_nested_indicators(indicator,
+                                                          all_indicators)
+                if nested_indicators:
+                    indicator['children'] = nested_indicators
             out.append(indicator)
+
+    return out
+
+
+def get_nested_themes(parent_theme, all_themes):
+    out = []
+    for theme in all_themes:
+        numeric_part = ''.join([x for x in theme['code'] if x.isdigit()])
+        if (numeric_part == parent_theme['code']
+                and theme['level'] == parent_theme['level'] + 1):
+            if theme['level'] < 4:
+                nested_themes = get_nested_themes(theme,
+                                                  all_themes)
+                if nested_themes:
+                    theme['children'] = nested_themes
+            out.append(theme)
 
     return out
 
@@ -479,13 +559,13 @@ def indicators_as_json(output_dir=OUTPUT_DIR):
                 "core": true,
                 "level": 1,
                 "title": "Governance"
-                "indicators": [
+                "children": [
                     {
                         "code": "1.1",
                         "core": true,
                         "level": 2,
                         "title": "International Framework"
-                        "indicators": [
+                        "children": [
                             {
                                 "code": "1.1.1",
                                 "core": true,
@@ -504,10 +584,44 @@ def indicators_as_json(output_dir=OUTPUT_DIR):
     out = []
     indicators = get_all_indicators()
     for indicator in [i for i in indicators if i['level'] == 1]:
-        indicator['indicators'] = get_nested_indicators(indicator, indicators)
+        indicator['children'] = get_nested_indicators(indicator, indicators)
         out.append(indicator)
 
     output_file = os.path.join(output_dir, 'indicators.json')
+
+    with open(output_file, 'w') as f:
+        f.write(json.dumps(out))
+
+
+def themes_as_json(output_dir=OUTPUT_DIR):
+    '''
+    Write a JSON file with all themes nested, in the form:
+
+        [
+            {
+                "code": "1",
+                "level": 1,
+                "title": "Children with Disabilities"
+                "children": [
+                    {
+                        "code": "1.A.A",
+                        "level": 2,
+                        "title": "Structure and Support"
+                    }
+                ]
+            },
+
+            ...
+        ]
+    '''
+
+    out = []
+    themes = get_themes(only_with_values=True)
+    for theme in [i for i in themes if i['level'] == 1]:
+        theme['children'] = get_nested_themes(theme, themes)
+        out.append(theme)
+
+    output_file = os.path.join(output_dir, 'themes.json')
 
     with open(output_file, 'w') as f:
         f.write(json.dumps(out))
@@ -618,6 +732,7 @@ The available outputs are:
 
     * `indicators-json`
     * `indicators-csv `
+    * `themes-json`
     * `scores-per-country-json`
     * `scores-per-country-csv`
     * `indicators-per-country`
@@ -648,11 +763,14 @@ The available outputs are:
         countries = json.load(f)
     if args.type == 'all':
         indicators_as_json(output_dir)
+        themes_as_json(output_dir)
         indicators_per_country_as_json(one_file=False, output_dir=output_dir)
         scores_per_country_as_json(output_dir, random_values=args.random)
         c3_ready_json(output_dir=output_dir)
     elif args.type == 'indicators-json':
         indicators_as_json(output_dir)
+    elif args.type == 'themes-json':
+        themes_as_json(output_dir)
     elif args.type == 'indicators-csv':
         indicators_as_csv(output_dir)
     elif args.type == 'scores-per-country-json':
