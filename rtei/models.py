@@ -246,6 +246,7 @@ class ResourceIndexPage(TranslationMixin, Page):
             resources_to_display = paginator.page(paginator.num_pages)
 
         context['documents'] = resources_to_display
+        context['has_filter'] = has_filter
 
         return context
 

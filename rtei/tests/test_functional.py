@@ -6,6 +6,7 @@ eq_ = nose.tools.eq_
 
 
 class SiteTestCase(WebTest):
+    fixtures = ['fake_docs.json']
 
     def test_home(self):
         page = self.app.get('/').follow()
@@ -67,6 +68,21 @@ class SiteTestCase(WebTest):
         page = self.app.get('/en/resources/')
 
         assert 'Latest Resource' in page
+
+    def test_resources_with_filter_with_results(self):
+        '''The fixture fake_docs.json has resource with the year 1999.'''
+        page = self.app.get('/en/resources/?year=1999')
+
+        assert 'Latest Resource' not in page
+        assert 'No resources found that match the selected filters' not in page
+
+    def test_resources_with_filter_no_results(self):
+        '''The fixture fake_docs.json doesn't have resources with the year
+        2020'''
+        page = self.app.get('/en/resources/?year=2020')
+
+        assert 'Latest Resource' not in page
+        assert 'No resources found that match the selected filters' in page
 
     # TODO: check for something relevant once content is in place
     def test_partners(self):
