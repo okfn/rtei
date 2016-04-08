@@ -4,7 +4,7 @@
 <ul>
   <li>
     <label>{% trans "Years" %}</label>
-    <h6>{% trans "Sub-categories" %}</h6>
+    <h6 class="expanded">{% trans "Sub-categories" %}</h6>
     <ul class="subfilter">
       <li>
         <input type="radio" name="year" value="all" id="filter_year_all" {% if request.GET.year == "all" %}checked="checked"{% endif %}/><label for="filter_year_all">{% trans "All Years" %}</label></input>
@@ -19,7 +19,7 @@
 
   <li>
     <label>{% trans "Countries" %}</label>
-    <h6>{% trans "Sub-categories" %}</h6>
+    <h6 class="expanded">{% trans "Sub-categories" %}</h6>
     <ul class="subfilter">
       <li>
         <input type="radio" name="country" value="all" id="filter_country_all" {% if request.GET.country == "all" %}checked="checked"{% endif %}/><label for="filter_country_all">{% trans "All Countries" %}</label></input>
@@ -34,7 +34,7 @@
 
   <li>
     <label>{% trans "Categories" %}</label>
-    <h6>{% trans "Sub-categories" %}</h6>
+    <h6 class="expanded">{% trans "Sub-categories" %}</h6>
     <ul class="subfilter">
       <li>
         <input type="radio" name="collection" value="all" id="filter_collection_all" {% if request.GET.collection == "all" %}checked="checked"{% endif %}/><label for="filter_collection_all">{% trans "All Collections" %}</label></input>

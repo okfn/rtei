@@ -33,19 +33,17 @@ $(document).ready(function() {
 
 
   // RESOURCE FILTER
-  // parent class
-  $('.filter input').click(function () {
-    // $("li").removeClass("subcat");
-  });
-
+  // add 'subcat' class if an active child input is present onload
   $('.filter input:checked').closest("ul").closest("li").addClass("subcat");
 
+  // add 'subcat' class if a child input is activated
   $('.filter ul ul input').click(function () {
     $(this).closest("ul").closest("li").addClass("subcat");
   });
 
-  // slide
-  $( ".filter h6" ).next( "ul" ).slideUp( "fast");
+  // slide non active filter menus up onload
+  $( ".filter form > ul > li:not('.subcat') ul" ).slideUp("fast");
+  $( ".filter form > ul > li:not('.subcat') h6").removeClass("expanded");
 
   $( ".filter > ul > li > label" ).click(function() {
     $( ".filter h6" ).removeClass( "expanded" );
