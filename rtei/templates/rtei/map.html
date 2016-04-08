@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% load static i18n %}
+{% load static i18n rtei_tags %}
 
 {% block extra_css %}
 
@@ -13,12 +13,7 @@
 <div class="main">
 
   <section class="controls">
-    <div class="indicator-switcher">
-      {% include 'rtei/tags/map_switcher.html' %}
-    </div>
-    <div class="indicator-switcher">
-      {% include 'rtei/tags/theme_switcher.html' %}
-    </div>
+    {% include 'rtei/tags/left_menu.html' %}
   </section>
 
   <section class="map">

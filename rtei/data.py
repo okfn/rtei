@@ -27,6 +27,12 @@ def get_indicators():
     return get_json_file(indicators_file, ordered_dict=False)
 
 
+def get_themes():
+    themes_file = os.path.join(os.path.dirname(__file__),
+                               'static', 'data', 'themes.json')
+    return get_json_file(themes_file, ordered_dict=False)
+
+
 def get_countries():
     countries_file = os.path.join(os.path.dirname(__file__),
                                   '..', 'data', 'countries.json')

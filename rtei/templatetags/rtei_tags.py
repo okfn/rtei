@@ -84,3 +84,12 @@ def indicators_list(indicators, country_indicators):
         'indicators': indicators,
         'country_indicators': country_indicators
     }
+
+
+@register.inclusion_tag('rtei/tags/switcher.html')
+def switcher(indicators, show_overall=True, themes=False):
+    return {
+        'indicators': indicators,
+        'show_overall': show_overall,
+        'themes': themes,
+    }

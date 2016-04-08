@@ -69,8 +69,13 @@ def get_map_context(context):
         },
         ...
     ]
+
+    We also pass the `themes` variable to build the second menu, with
+    identical format.
+
     '''
     context['indicators'] = data.get_indicators()
+    context['themes'] = data.get_themes()
 
 
 def get_country_context(context, country_code):
