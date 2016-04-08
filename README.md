@@ -72,15 +72,15 @@ The JSON data files are generated in `rtei/static/data` by default. These files 
                 {
                     "code": "1",
                     "core": true,
-                    "indicators": [
+                    "children": [
                         {
                             "code": "1.1",
                             "core": true,
-                            "indicators": [
+                            "children": [
                                 {
                                     "code": "1.1.1",
                                     "core": true,
-                                    "indicators": [
+                                    "children": [
                                         {
                                             "code": "1.1.1a",
                                             "core": true,
