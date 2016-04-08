@@ -65,27 +65,41 @@ Most of the times you will want to:
 
 The JSON data files are generated in `rtei/static/data` by default. These files are:
 
-* `indicators.json`: Master dictionary that links every indicator code to its title (and level):
+* `indicators.json`: Master dictionary that links every indicator code to its title (and level). Indicators are nested, eg:
 
     ```json
-            {
-                "1": {
+            [
+                {
+                    "code": "1",
                     "core": true,
-                    "level": 1,
-                    "title": "Governance"
-                },
-                "1.1": {
-                    "core": true,
-                    "level": 2,
-                    "title": "International Framework"
-                },
-                "1.1.1": {
-                    "core": true,
-                    "level": 3,
-                    "title": "Is the State party to the following United Nations treaties?"
-                },
+                    "indicators": [
+                        {
+                            "code": "1.1",
+                            "core": true,
+                            "indicators": [
+                                {
+                                    "code": "1.1.1",
+                                    "core": true,
+                                    "indicators": [
+                                        {
+                                            "code": "1.1.1a",
+                                            "core": true,
+                                            "level": 4,
+                                            "title": "The International Covenant of Economic, Social and Cultural Rights"
+                                        },
+                                        {
+                                            "code": "1.1.1b",
+                                            "core": true,
+                                            "level": 4,
+                                            "title": "The Convention on the Rights of the Child"
+                                        },
+                                        ...
+                                    ]
+                                }
+                        }
+                }
                 ...
-            }
+            ]
     ```
 
 
@@ -151,33 +165,31 @@ The JSON data files are generated in `rtei/static/data` by default. These files 
 
     ```
 
-* `{country_code}.json` (eg `CL.json`): For each of the countries available, contains all values for all indicators for that particular country:
+* `{country_code}.json` (eg `CL.json`): For each of the countries available, contains all values for all indicators for that particular country. The values are the user-friendly responses shown on the frontend:
 
 
     ```json
             {
-                "1": 64.76,
+                "1": 64.267,
                 "1.1": 100.0,
-                "1.1.1a": 1,
-                "1.1.1b": 1,
-                "1.1.1c": 1,
-                "1.1.1d": 1,
-                "1.1.1e": 1,
-                "1.1.1f": 1,
-                "1.1.1g": 1,
-                "1.1.1h": 1,
-                "1.1.2a": 1,
-                "1.1.3a": 1,
-                "1.1.3b": 1,
-                "1.1.3c": 1,
-                "1.1.4a": 1,
-                "1.1.4b": 1,
-                "1.1.4c": 1,
-                "1.1.4d": 1,
-                "1.1.5a": null,
-                "1.1.5b": null,
-                "1.1.5c": null,
-
+                "1.1.1a": "Yes",
+                "1.1.1b": "Yes",
+                "1.1.1c": "Yes",
+                "1.1.1d": "Yes",
+                "1.1.1e": "Yes",
+                "1.1.1f": "Yes",
+                "1.1.1g": "Yes",
+                "1.1.1h": "Yes",
+                "1.1.2a": "Yes",
+                "1.1.3a": "Yes",
+                "1.1.3b": "Yes",
+                "1.1.3c": "Yes",
+                "1.1.4a": "Yes",
+                "1.1.4b": "Yes",
+                "1.1.4c": "Yes",
+                "1.1.4d": "Yes",
+                "1.1.5a": "Not Applicable",
+                "1.1.5b": "Not Applicable",
                 ...
     ```
 
