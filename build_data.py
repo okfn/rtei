@@ -99,6 +99,7 @@ def get_numeric_cell_value(cell):
 
 
 def get_level_for_indicator(code):
+
     if code.count('.') == 0:
         # 1
         level = 1
@@ -113,6 +114,9 @@ def get_level_for_indicator(code):
         except ValueError:
             # 1.5.6a or 1.5.6a_dis
             level = 4
+    else:
+        raise ValueError('Wrong indicator code: {0}'.format(code))
+
     return level
 
 
