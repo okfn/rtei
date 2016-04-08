@@ -193,6 +193,10 @@ $(document).ready(function(){
           className = RTEI.map.currentIndexLabel;
         }
         $('body').attr('class', 'template-explore-map ' + className.toLowerCase().replace(' ', '_'));
+
+        // Update description over map
+        $('#current-indicator-label').text($('div[id="desc_label_' + RTEI.map.currentIndex +'"]').text());
+        $('#current-indicator-desc').text($('div[id="desc_' + RTEI.map.currentIndex +'"]').text());
         RTEI.map.refresh();
       }
     });
