@@ -196,4 +196,22 @@ $(document).ready(function(){
         RTEI.map.refresh();
       }
     });
+
+    $( ".indicator-switcher h6, .indicator-switcher label" ).click(function() {
+      var $this = $(this);
+
+      var code = $this.attr('for').replace('indicator_', '');
+      var isTheme = (code.substring(0, 1) == 't');
+      if (isTheme) {
+        if (code.slice(-1).search(/[A-Za-z\s]/) === -1) {
+          // First level Tranversal Theme, we want to select the first child
+          // by default
+          $this.parent().children('ul.subindicators').children('li').first().children('input').click();
+          return false;
+        }
+      }
+
+
+    });
+
 });
