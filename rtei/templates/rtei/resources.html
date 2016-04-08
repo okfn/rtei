@@ -20,70 +20,72 @@
         {% trans "Welcome to the resource library. For the most recent Right to Education Index resource see below or use the drop down menu to search filter resources by country, year, or subcategory." %}
       </p>
       {% endif %}
-      <h3>{% trans "Latest Resource" %}</h3>
-
-      <ul class="resources-list">
-        {% for doc in documents %}
-        <li>
-          <a class="icon" href="{{doc.url}}" title="{{doc.title}}">
-            {% if doc.file_extension == "pdf" %}
-            {% include "icons/file-pdf.svg" %}
-            {% else %}
-            {% include "icons/file.svg" %}
-            {% endif %}
-          </a>
-
-          <span class="text">
-            <h3><a href="{{doc.url}}" title="{{doc.title}}">{{doc.title}}{% if doc.country %} - {{doc.country}}{% endif %}{% if doc.year %} - {{doc.year}}{% endif %}</a></h3>
-            {% if doc.description %}
-               {{doc.description|richtext}}
-            {% endif %}
-            {% if doc.year or doc.country or doc.collection or doc.file_extension %}
-            <ul class="meta">
-              {% if doc.year %}
-              <li>
-                {{doc.year}}
-              </li>
-              {% endif %}
-              {% if doc.country %}
-              <li>
-                {{doc.country}}
-              </li>
-              {% endif %}
-              {% if doc.collection %}
-              <li>
-                {{doc.collection}}
-              </li>
-              {% endif %}
-              {% if doc.file_extension %}
-              <li class="extension">
-                {{doc.file_extension}}
-              </li>
-              {% endif %}
-            </ul>
-            {% endif %}
-          </span>
-        </li>
-        {% endfor %}
-      </ul>
-
-        {# Pagination - uses django.core.paginator #}
-        {# Append any other url query string variables to the next and previous links - allows tag to be passed through #}
-        <div class="pagination">
-            <div class="previous">
-                {% if documents.has_previous %}
-                    <a href="?page={{ documents.previous_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{ key }}={{ value }}{% endifnotequal %}{% endfor %}">{% trans "Previous" %}</a>
+      {% if not documents %}
+          <h4>{% trans "No resources found that match the selected filters" %}</h4>
+      {% else %}
+          <ul class="resources-list">
+            {% for doc in documents %}
+            <li>
+              <a class="icon" href="{{doc.url}}" title="{{doc.title}}">
+                {% if doc.file_extension == "pdf" %}
+                {% include "icons/file-pdf.svg" %}
+                {% else %}
+                {% include "icons/file.svg" %}
                 {% endif %}
-            </div>
-            <div class="pages">
-                {% trans "Page" %} {{ documents.number }} / {{ documents.paginator.num_pages }}
-            </div>
-            <div class="next">
-                {% if documents.has_next %}
-                    <a href="?page={{ documents.next_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{ key }}={{ value }}{% endifnotequal %}{% endfor %}">{% trans "Next" %}</a>
+              </a>
+
+              <span class="text">
+                <h3><a href="{{doc.url}}" title="{{doc.title}}">{{doc.title}}{% if doc.country %} - {{doc.country}}{% endif %}{% if doc.year %} - {{doc.year}}{% endif %}</a></h3>
+                {% if doc.description %}
+                   {{doc.description|richtext}}
                 {% endif %}
-            </div>
-        </div>
+                {% if doc.year or doc.country or doc.collection or doc.file_extension %}
+                <ul class="meta">
+                  {% if doc.year %}
+                  <li>
+                    {{doc.year}}
+                  </li>
+                  {% endif %}
+                  {% if doc.country %}
+                  <li>
+                    {{doc.country}}
+                  </li>
+                  {% endif %}
+                  {% if doc.collection %}
+                  <li>
+                    {{doc.collection}}
+                  </li>
+                  {% endif %}
+                  {% if doc.file_extension %}
+                  <li class="extension">
+                    {{doc.file_extension}}
+                  </li>
+                  {% endif %}
+                </ul>
+                {% endif %}
+              </span>
+            </li>
+            {% endfor %}
+          </ul>
+
+          {# Pagination - uses django.core.paginator #}
+          {# Append any other url query string variables to the next and previous links - allows tag to be passed through #}
+          <div class="pagination">
+              <div class="previous">
+                  {% if documents.has_previous %}
+                      <a href="?page={{ documents.previous_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{ key }}={{ value }}{% endifnotequal %}{% endfor %}">{% trans "Previous" %}</a>
+                  {% endif %}
+              </div>
+              <div class="pages">
+                  {% trans "Page" %} {{ documents.number }} / {{ documents.paginator.num_pages }}
+              </div>
+              <div class="next">
+                  {% if documents.has_next %}
+                      <a href="?page={{ documents.next_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{ key }}={{ value }}{% endifnotequal %}{% endfor %}">{% trans "Next" %}</a>
+                  {% endif %}
+              </div>
+          </div>
+      {% endif %}
 
     </section>
 
