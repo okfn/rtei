@@ -16,15 +16,15 @@
       {% if self.body %}
       {{ self.body|richtext }}
       {% else %}
-      <h2>Lorem ipsum</h2>
+      <h2>{% trans "RTEI by Country" %}</h2>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget nisl tempor, semper magna vel, faucibus lectus. Aliquam interdum pulvinar est quis dictum. Donec et mi sollicitudin, scelerisque nulla in, efficitur sem. Proin risus enim, finibus in metus scelerisque.
+        {% trans "Explore progress on the right to education in individual countries. Use the pull down menu to select a country and download the completed country questionnaire." %}
       </p>
       {% endif %}
     {% endif %}
 
     {% if country_code %}
-      <button class="export">Export all</button>
+      <button class="export">{% trans "Export all" %}</button>
     {% endif %}
 
       <div class="select">
