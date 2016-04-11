@@ -12,6 +12,7 @@
          value="{% if themes %}t{% endif %}{{ indicator.code }}"
          id="indicator_{% if themes %}t{% endif %}{{ indicator.code }}"/>
   <label for="indicator_{% if themes %}t{% endif %}{{ indicator.code }}">{% trans indicator.title %}</label>
+    {% if show_second_level %}
     <h6>{% trans "Sub-categories" %}</h6>
     <ul class="subindicators">
       {% for subindicator in indicator.children %}
@@ -23,6 +24,7 @@
         </li>
       {% endfor %}
     </ul>
+    {% endif %}
   </li>
   {% endfor %}
 </ul>

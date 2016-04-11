@@ -2,7 +2,7 @@
 
 {% for indicator in indicators %}
   <li>
-    <div class="indicator">
+    <div id="indicator_{{ indicator.code }}" class="indicator">
       <span class="indicator-title">
         <span class="code">{{ indicator.code }}</span>{{ indicator.title }}
       </span>

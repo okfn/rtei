@@ -1,7 +1,11 @@
 {% load rtei_tags %}
 
 <div class="indicator-switcher indicators">
-  {% switcher indicators show_overall=True %}
+  {% if for_map %}
+    {% switcher indicators show_overall=True show_second_level=True %}
+  {% else %}
+    {% switcher indicators show_overall=True show_second_level=False %}
+  {% endif %}
 </div>
 <div class="indicator-switcher themes">
   {% switcher themes show_overall=False themes=True%}

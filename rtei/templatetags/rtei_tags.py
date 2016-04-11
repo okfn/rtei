@@ -86,10 +86,21 @@ def indicators_list(indicators, country_indicators):
     }
 
 
+@register.inclusion_tag('rtei/tags/left_menu.html')
+def left_menu(indicators, themes, for_map=False):
+    return {
+        'indicators': indicators,
+        'themes': themes,
+        'for_map': for_map,
+    }
+
+
 @register.inclusion_tag('rtei/tags/switcher.html')
-def switcher(indicators, show_overall=True, themes=False):
+def switcher(indicators, show_overall=True, show_second_level=True,
+             themes=False):
     return {
         'indicators': indicators,
         'show_overall': show_overall,
+        'show_second_level': show_second_level,
         'themes': themes,
     }
