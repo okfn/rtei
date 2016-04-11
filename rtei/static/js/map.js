@@ -185,37 +185,11 @@ $(document).ready(function(){
         RTEI.map.currentIndex = this.value;
         RTEI.map.currentIndexLabel = $('label[for="' + this.id + '"]').text();
 
-        if (isTheme) {
-          className = 'overall_index';
-        } else if (this.id.indexOf('.') !== -1) {
-          className = $('label[for="' + this.id.substring(0, this.id.indexOf('.')) + '"]').text();
-        } else {
-          className = RTEI.map.currentIndexLabel;
-        }
-        $('body').attr('class', 'template-explore-map ' + className.toLowerCase().replace(' ', '_'));
-
         // Update description over map
         $('#current-indicator-label').text($('div[id="desc_label_' + RTEI.map.currentIndex +'"]').text());
         $('#current-indicator-desc').text($('div[id="desc_' + RTEI.map.currentIndex +'"]').text());
         RTEI.map.refresh();
       }
-    });
-
-    $( ".indicator-switcher h6, .indicator-switcher label" ).click(function() {
-      var $this = $(this);
-
-      var code = $this.attr('for').replace('indicator_', '');
-      var isTheme = (code.substring(0, 1) == 't');
-      if (isTheme) {
-        if (code.slice(-1).search(/[A-Za-z\s]/) === -1) {
-          // First level Tranversal Theme, we want to select the first child
-          // by default
-          $this.parent().children('ul.subindicators').children('li').first().children('input').click();
-          return false;
-        }
-      }
-
-
     });
 
 });
