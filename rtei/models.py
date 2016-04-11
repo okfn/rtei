@@ -135,12 +135,13 @@ def get_country_context(context, country_code):
                 break
 
         context['chart_data'] = json.dumps([chart_data])
+        context['indicators'] = data.get_indicators()
+        context['themes'] = data.get_themes()
 
     context['available_countries'] = OrderedDict(
         sorted({code: data.get_country_name(code) for code, c
                 in data.get_scores_per_country().iteritems()}.items(),
                key=lambda t: t[1]))
-    context['indicators'] = data.get_indicators()
 
 
 class RTEIPage(TranslationMixin, Page):

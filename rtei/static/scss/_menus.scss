@@ -1,0 +1,167 @@
+body {
+  .indicator-switcher {
+
+    label {
+      display: block;
+      cursor: pointer;
+      margin: 0;
+      padding: $base-spacing*0.75 3em $base-spacing*0.75 $base-spacing;
+      font-size: em(14);
+      border-style: solid;
+      border-color: $body-background-color;
+      border-width: 0 1px 0 0;
+      line-height: 1.2;
+    }
+
+    input[type="radio"] {
+      display: none;
+
+      &:checked + label {
+        background-color: $index-color;
+        color: $base-background-color;
+
+        & + h6:after {
+          border-top-color: $base-background-color;
+        }
+      }
+    }
+
+    & > ul {
+      @include clearfix;
+
+      @media only screen and ( min-width: $large-screen) {
+        @include fill-parent();
+        @include row(table);
+      }
+
+      & > li {
+        display: block;
+        position: relative;
+        padding-left: 0;
+
+        &.subcat {
+          background-color: rgba($index-color, 0.1);
+        }
+
+        @media only screen and ( min-width: $large-screen) {
+          @include span-columns(2);
+
+          &:last-child {
+            @include reset-display;
+          }
+        }
+
+        h6 {
+          text-indent: -9999em;
+          overflow: hidden;
+          width: 16px;
+          height: 16px;
+          position: absolute;
+          top: em(18);
+          right: em(18);
+
+          &:after {
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 4px 4px 0 4px;
+            border-color: $base-font-color transparent transparent transparent;
+            content: '';
+            position: absolute;
+            left: 4px;
+            top: 7px;
+          }
+        }
+
+        ul {
+          background-color: $base-background-color;
+          display: none;
+
+          label {
+            border-width: 0 1px 1px 1px;
+            padding: $small-spacing /1.5 $base-spacing * 1.5;
+          }
+
+          @media only screen and ( min-width: $large-screen) {
+            position: absolute;
+            z-index: 1;
+          }
+        }
+
+        &:hover {
+          background-color: $light-gray;
+
+          & > ul {
+            display: block;
+
+            li:hover {
+              background-color: $light-gray;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // sidebar layout
+  .indicator-switcher {
+    & > ul > li {
+      display: block;
+      width: auto;
+      padding-left: 0;
+
+      label {
+        border-width: 0 0 1px 0;
+      }
+
+      h6 {
+        cursor: pointer;
+        border-radius: 50%;
+        @include transform(rotate(-90deg));
+
+        &:hover {
+          background-color: $dark-gray;
+
+          &:after {
+            border-top-color: $base-background-color;
+          }
+        }
+
+        &.expanded {
+          @include transform(rotate(0deg));
+        }
+      }
+
+      ul {
+        position: static;
+        display: block;
+      }
+    }
+  }
+
+  @mixin map-colours($colour){
+    .indicator-switcher {
+      input[type="radio"]:checked + label {
+        background-color: $colour;
+      }
+      & > ul  > li.subcat {
+        background-color: rgba($colour, 0.1);
+      }
+    }
+  }
+  &.governance {
+    @include map-colours($governance-color);
+  }
+  &.availability {
+    @include map-colours($availability-color);
+  }
+  &.accessibility {
+    @include map-colours($accessibility-color);
+  }
+  &.acceptability {
+    @include map-colours($acceptability-color);
+  }
+  &.adaptability {
+    @include map-colours($adaptability-color);
+  }
+}

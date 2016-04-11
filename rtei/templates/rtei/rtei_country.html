@@ -42,7 +42,7 @@
     {% if country_code %}
 
     <section class="controls">
-      left column
+      {% include 'rtei/tags/left_menu.html' %}
     </section>
 
     <section>
@@ -53,7 +53,7 @@
         <div id="chart" data-chart-data="{{ chart_data }}"></div>
       {% endif %}
 
-      <ol id="indicators" class="indicators">
+      <ol id="indicators" class="indicators-for-country">
         {% indicators_list indicators country_indicators %}
       </ol>
     </section>

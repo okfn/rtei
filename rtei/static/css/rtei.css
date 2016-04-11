@@ -1044,6 +1044,125 @@ body {
   font-size: 0.8em;
   margin-left: -5px; }
 
+body .indicator-switcher label {
+  display: block;
+  cursor: pointer;
+  margin: 0;
+  padding: 1.125em 3em 1.125em 1.5em;
+  font-size: 0.875em;
+  border-style: solid;
+  border-color: #efefef;
+  border-width: 0 1px 0 0;
+  line-height: 1.2; }
+body .indicator-switcher input[type="radio"] {
+  display: none; }
+  body .indicator-switcher input[type="radio"]:checked + label {
+    background-color: #4598c2;
+    color: #fff; }
+    body .indicator-switcher input[type="radio"]:checked + label + h6:after {
+      border-top-color: #fff; }
+body .indicator-switcher > ul::after {
+  clear: both;
+  content: "";
+  display: table; }
+@media only screen and (min-width: 53.75em) {
+  body .indicator-switcher > ul {
+    width: 100%;
+    display: table;
+    width: 100%;
+    table-layout: fixed; } }
+body .indicator-switcher > ul > li {
+  display: block;
+  position: relative;
+  padding-left: 0; }
+  body .indicator-switcher > ul > li.subcat {
+    background-color: rgba(69, 152, 194, 0.1); }
+  @media only screen and (min-width: 53.75em) {
+    body .indicator-switcher > ul > li {
+      display: table-cell;
+      width: 16.66667%; } }
+  body .indicator-switcher > ul > li h6 {
+    text-indent: -9999em;
+    overflow: hidden;
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    top: 1.125em;
+    right: 1.125em; }
+    body .indicator-switcher > ul > li h6:after {
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 4px 4px 0 4px;
+      border-color: #3b3b3b transparent transparent transparent;
+      content: '';
+      position: absolute;
+      left: 4px;
+      top: 7px; }
+  body .indicator-switcher > ul > li ul {
+    background-color: #fff;
+    display: none; }
+    body .indicator-switcher > ul > li ul label {
+      border-width: 0 1px 1px 1px;
+      padding: 0.5em 2.25em; }
+    @media only screen and (min-width: 53.75em) {
+      body .indicator-switcher > ul > li ul {
+        position: absolute;
+        z-index: 1; } }
+  body .indicator-switcher > ul > li:hover {
+    background-color: #bfbfbe; }
+    body .indicator-switcher > ul > li:hover > ul {
+      display: block; }
+      body .indicator-switcher > ul > li:hover > ul li:hover {
+        background-color: #bfbfbe; }
+body .indicator-switcher > ul > li {
+  display: block;
+  width: auto;
+  padding-left: 0; }
+  body .indicator-switcher > ul > li label {
+    border-width: 0 0 1px 0; }
+  body .indicator-switcher > ul > li h6 {
+    cursor: pointer;
+    border-radius: 50%;
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    transform: rotate(-90deg); }
+    body .indicator-switcher > ul > li h6:hover {
+      background-color: #333333; }
+      body .indicator-switcher > ul > li h6:hover:after {
+        border-top-color: #fff; }
+    body .indicator-switcher > ul > li h6.expanded {
+      -webkit-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg); }
+  body .indicator-switcher > ul > li ul {
+    position: static;
+    display: block; }
+body.governance .indicator-switcher input[type="radio"]:checked + label {
+  background-color: #c35727; }
+body.governance .indicator-switcher > ul > li.subcat {
+  background-color: rgba(195, 87, 39, 0.1); }
+body.availability .indicator-switcher input[type="radio"]:checked + label {
+  background-color: #bdb831; }
+body.availability .indicator-switcher > ul > li.subcat {
+  background-color: rgba(189, 184, 49, 0.1); }
+body.accessibility .indicator-switcher input[type="radio"]:checked + label {
+  background-color: #af1f2c; }
+body.accessibility .indicator-switcher > ul > li.subcat {
+  background-color: rgba(175, 31, 44, 0.1); }
+body.acceptability .indicator-switcher input[type="radio"]:checked + label {
+  background-color: #357b9e; }
+body.acceptability .indicator-switcher > ul > li.subcat {
+  background-color: rgba(53, 123, 158, 0.1); }
+body.adaptability .indicator-switcher input[type="radio"]:checked + label {
+  background-color: #469a8f; }
+body.adaptability .indicator-switcher > ul > li.subcat {
+  background-color: rgba(70, 154, 143, 0.1); }
+
 .rtei-map-popup .leaflet-popup-content-wrapper {
   color: #3b3b3b;
   border-radius: 2px;
@@ -1382,11 +1501,11 @@ body {
 .by-country .export {
   float: right;
   background-color: #595a5b; }
-.by-country .indicators {
+.by-country .indicators-for-country {
   overflow-x: hidden; }
-  .by-country .indicators > li > .indicator > span {
+  .by-country .indicators-for-country > li > .indicator > span {
     font-weight: bold; }
-    .by-country .indicators > li > .indicator > span.indicator-title > .code {
+    .by-country .indicators-for-country > li > .indicator > span.indicator-title > .code {
       display: inline-block;
       background-color: #af202f;
       font-size: 0.9em;
@@ -1395,7 +1514,7 @@ body {
       text-align: center;
       margin-right: 0.5em;
       color: #fff; }
-  .by-country .indicators > li > ul:after {
+  .by-country .indicators-for-country > li > ul:after {
     content: '';
     width: 100em;
     height: 1px;
@@ -1403,30 +1522,30 @@ body {
     background-color: #bfbfbe;
     position: relative;
     left: -30em; }
-  .by-country .indicators > li:nth-child(1) > .indicator > .indicator-title .code {
+  .by-country .indicators-for-country > li:nth-child(1) > .indicator > .indicator-title .code {
     background-color: #c35727; }
-  .by-country .indicators > li:nth-child(1) ul li .indicator:before, .by-country .indicators > li:nth-child(1) > ul:after {
+  .by-country .indicators-for-country > li:nth-child(1) ul li .indicator:before, .by-country .indicators-for-country > li:nth-child(1) > ul:after {
     background-color: rgba(172, 96, 62, 0.15); }
-  .by-country .indicators > li:nth-child(2) > .indicator > .indicator-title .code {
+  .by-country .indicators-for-country > li:nth-child(2) > .indicator > .indicator-title .code {
     background-color: #bdb831; }
-  .by-country .indicators > li:nth-child(2) ul li .indicator:before, .by-country .indicators > li:nth-child(2) > ul:after {
+  .by-country .indicators-for-country > li:nth-child(2) ul li .indicator:before, .by-country .indicators-for-country > li:nth-child(2) > ul:after {
     background-color: rgba(165, 162, 73, 0.15); }
-  .by-country .indicators > li:nth-child(3) > .indicator > .indicator-title .code {
+  .by-country .indicators-for-country > li:nth-child(3) > .indicator > .indicator-title .code {
     background-color: #af1f2c; }
-  .by-country .indicators > li:nth-child(3) ul li .indicator:before, .by-country .indicators > li:nth-child(3) > ul:after {
+  .by-country .indicators-for-country > li:nth-child(3) ul li .indicator:before, .by-country .indicators-for-country > li:nth-child(3) > ul:after {
     background-color: rgba(154, 52, 61, 0.15); }
-  .by-country .indicators > li:nth-child(4) > .indicator > .indicator-title .code {
+  .by-country .indicators-for-country > li:nth-child(4) > .indicator > .indicator-title .code {
     background-color: #357b9e; }
-  .by-country .indicators > li:nth-child(4) ul li .indicator:before, .by-country .indicators > li:nth-child(4) > ul:after {
+  .by-country .indicators-for-country > li:nth-child(4) ul li .indicator:before, .by-country .indicators-for-country > li:nth-child(4) > ul:after {
     background-color: rgba(74, 116, 137, 0.15); }
-  .by-country .indicators > li:nth-child(5) > .indicator > .indicator-title .code {
+  .by-country .indicators-for-country > li:nth-child(5) > .indicator > .indicator-title .code {
     background-color: #469a8f; }
-  .by-country .indicators > li:nth-child(5) ul li .indicator:before, .by-country .indicators > li:nth-child(5) > ul:after {
+  .by-country .indicators-for-country > li:nth-child(5) ul li .indicator:before, .by-country .indicators-for-country > li:nth-child(5) > ul:after {
     background-color: rgba(92, 132, 126, 0.15); }
-  .by-country .indicators .has-children > .indicator {
+  .by-country .indicators-for-country .has-children > .indicator {
     cursor: pointer;
     position: relative; }
-    .by-country .indicators .has-children > .indicator:after {
+    .by-country .indicators-for-country .has-children > .indicator:after {
       content: '';
       display: block;
       width: 0;
@@ -1445,32 +1564,32 @@ body {
       -webkit-transition: all 0.2s ease-in-out;
       -moz-transition: all 0.2s ease-in-out;
       transition: all 0.2s ease-in-out; }
-  .by-country .indicators .has-children.open > .indicator:after {
+  .by-country .indicators-for-country .has-children.open > .indicator:after {
     -webkit-transform: rotate(0deg);
     -moz-transform: rotate(0deg);
     -ms-transform: rotate(0deg);
     -o-transform: rotate(0deg);
     transform: rotate(0deg); }
-  .by-country .indicators .indicator {
+  .by-country .indicators-for-country .indicator {
     clear: both; }
-    .by-country .indicators .indicator .indicator-title,
-    .by-country .indicators .indicator .indicator-value {
+    .by-country .indicators-for-country .indicator .indicator-title,
+    .by-country .indicators-for-country .indicator .indicator-value {
       display: block;
       padding-top: 0.25em;
       padding-bottom: 0.25em; }
-    .by-country .indicators .indicator .indicator-title {
+    .by-country .indicators-for-country .indicator .indicator-title {
       float: left;
       width: 80%; }
-    .by-country .indicators .indicator .indicator-value {
+    .by-country .indicators-for-country .indicator .indicator-value {
       text-align: right;
       padding-right: 1em; }
-  .by-country .indicators ul li {
+  .by-country .indicators-for-country ul li {
     padding-left: 1em; }
-    .by-country .indicators ul li::after {
+    .by-country .indicators-for-country ul li::after {
       clear: both;
       content: "";
       display: table; }
-    .by-country .indicators ul li .indicator:before {
+    .by-country .indicators-for-country ul li .indicator:before {
       content: '';
       width: 100em;
       height: 1px;
@@ -1478,7 +1597,7 @@ body {
       background-color: #bfbfbe;
       position: relative;
       left: -30em; }
-    .by-country .indicators ul li .code:after {
+    .by-country .indicators-for-country ul li .code:after {
       content: ' - '; }
 
 .template-rtei.resources .resources-list li {
