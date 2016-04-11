@@ -489,9 +489,9 @@ def indicators_per_country(max_level=4, derived=True, random_values=False,
         add_full_score(out[country_code])
 
     if random_values:
-        for country in countries:
+        for code, country in countries.iteritems():
             if country['iso2'] not in country_codes and country['iso2']:
-                out[country['iso2']] = {}
+                out[country['iso2']] = OrderedDict()
                 for indicator in indicators:
                     if (indicator['level'] <= 2 and
                             not indicator['code'][-1].isalpha()):
@@ -559,12 +559,14 @@ def themes_per_country(prefix=None, random_values=False):
                 out[country_code][key] = value
 
     if random_values:
-        for country in countries:
+        for code, country in countries.iteritems():
             if country['iso2'] not in country_codes and country['iso2']:
-                out[country['iso2']] = {}
+                out[country['iso2']] = OrderedDict()
                 for theme in themes:
                     if (theme['level'] == 2):
-                        out[country['iso2']][theme['code']] = random.randint(
+                        key = (str(prefix) + theme['code'] if prefix
+                               else theme['code'])
+                        out[country['iso2']][key] = random.randint(
                             0, 100)
     return out
 
@@ -816,6 +818,7 @@ The available outputs are:
     * `scores-per-country-json`
     * `scores-per-country-csv`
     * `indicators-per-country`
+    * `c3-ready-json`
     * `all`
     '''
 
