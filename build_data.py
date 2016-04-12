@@ -828,7 +828,8 @@ def c3_ready_json(output_dir=OUTPUT_DIR, random_values=False):
         added who's value is the full score, as a percentage.'''
         v = get_main_scores(scores)
         index_obj = get_full_score(scores)
-        normalized_scores = dict((i[0], round(i[1]/(len(v)), 2)) for i in v.items())
+        normalized_scores = OrderedDict((i[0], round(i[1]/(len(v)), 2))
+                                        for i in v.items())
         normalized_scores.update(index_obj)
         return normalized_scores
 
