@@ -140,6 +140,7 @@ RTEI.map = (function() {
       if (homepage) {
         RTEI.map.map = L.map('map', {
           attributionControl: false,
+          scrollWheelZoom: false,
           zoomControl: false
         }).setView([43, 15], 1.60);
         L.control.zoom({position: 'topright'}).addTo(RTEI.map.map);
