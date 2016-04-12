@@ -83,6 +83,43 @@ $(document).ready(function(){
       RTEI.country.initChart(chartData);
     }
 
+    // Menu switcher
+    $('.indicator-switcher input').on('click', function(){
+      var isTheme = (this.value.substring(0, 1) == 't');
+      if (this.value != RTEI.country.currentIndex) {
+        RTEI.country.currentIndex = this.value;
+
+        if (this.value == 'index') {
+          // Show all sections, collapsed
+          for (var i = 1; i <= 5; i++) {
+            if ($('#indicator_container_' + i).is(':hidden')) {
+              $('#indicator_container_' + i).show();
+            }
+            if ($('#indicator_container_' + i).hasClass('open')) {
+              $('#indicator_item_' + i).click();
+            }
+          }
+        } else if (!isTheme) {
+          // Hide other sections
+          for (var i = 1; i <= 5; i++) {
+            if (String(i) !== this.value) {
+              $('#indicator_container_' + i).hide();
+            }
+          }
+          // Expand relevant section
+          if ($('#indicator_container_' + this.value).is(':hidden')) {
+            $('#indicator_container_' + this.value).show();
+          }
+          if (!$('#indicator_container_' + this.value).hasClass('open')) {
+            $('#indicator_item_' + this.value).click();
+          }
+
+        } else {
+          // TODO
+        }
+      }
+    });
+
 
     // indicators
     $("#indicators ul").slideUp().parent().addClass("has-children");
