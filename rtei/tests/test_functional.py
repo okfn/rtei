@@ -65,23 +65,31 @@ class SiteTestCase(WebTest):
         assert 'RTEI over Time' in page
 
     def test_resources(self):
+        # first page
         page = self.app.get('/en/resources/')
 
-        assert 'Latest Resource' in page
+        assert 'All Resources' in page
+        self.assertEqual(len(page.context['documents']), 10)
+
+        # second page
+        page_two = self.app.get('/en/resources/?page=2')
+        self.assertEqual(len(page_two.context['documents']), 2)
 
     def test_resources_with_filter_with_results(self):
-        '''The fixture fake_docs.json has resource with the year 1999.'''
+        '''The fixture fake_docs.json has resources with the year 1998.'''
         page = self.app.get('/en/resources/?year=1999')
+        self.assertEqual(len(page.context['documents']), 3)
 
-        assert 'Latest Resource' not in page
+        assert 'All Resources' not in page
         assert 'No resources found that match the selected filters' not in page
 
     def test_resources_with_filter_no_results(self):
         '''The fixture fake_docs.json doesn't have resources with the year
         2020'''
         page = self.app.get('/en/resources/?year=2020')
+        self.assertEqual(len(page.context['documents']), 0)
 
-        assert 'Latest Resource' not in page
+        assert 'All Resources' not in page
         assert 'No resources found that match the selected filters' in page
 
     # TODO: check for something relevant once content is in place

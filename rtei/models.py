@@ -233,10 +233,6 @@ class ResourceIndexPage(TranslationMixin, Page):
                         **kwargs)
                 has_filter = True
 
-        # No filter? Just return the most recent resource.
-        if not has_filter:
-            resources_to_display = resources_to_display[:1]
-
         page = request.GET.get('page')
         paginator = Paginator(resources_to_display, 10)
         try:
