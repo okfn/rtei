@@ -380,7 +380,7 @@ def get_main_scores(country_indicators):
     Return the values for the level 1 indicators (ie 1, 2, 3, 4 and 5)
 
     These are computed with the average of all level 2 indicators (eg 1.1,
-    1.2, etc). These are returned as a percentage rounded to 4 decimal
+    1.2, etc). These are returned as a percentage rounded to 2 decimal
     places.
     '''
 
@@ -395,7 +395,7 @@ def get_main_scores(country_indicators):
         if code.count('.') == 1 and not code[-1].isalpha() and value is not None:
             scores[code[:1]].append(value * 100 if value <= 1 else value)
 
-    return {score: round(sum(values) / len(values), 4) for score, values in scores.iteritems() if values}
+    return {score: round(sum(values) / len(values), 2) for score, values in scores.iteritems() if values}
 
 
 def add_main_scores(country_indicators):
@@ -606,7 +606,10 @@ def themes_per_country(prefix=None, random_values=False):
 
                 key = str(prefix) + theme['code'] if prefix else theme['code']
 
-                out[country_code][key] = value
+                if isinstance(value, (long, float)):
+                    out[country_code][key] = round(value, 2)
+                else:
+                    out[country_code][key] = value
 
     if random_values:
         for code, country in countries.iteritems():
