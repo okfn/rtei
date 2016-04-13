@@ -186,6 +186,41 @@ The JSON data files are generated in `rtei/static/data` by default. These files 
 
     ```
 
+* `c3_scores_per_country.json`: C3 optimized data for the country bar charts. Contains all level 1 and 2 scores normalized for all countries, as well as the overall one and the transversal themes:
+
+
+    ```json
+        [
+          {
+            "1": 12.85,
+            "1.1": 20.0,
+            "1.2": 10.0,
+            "1.3": 0.0,
+            "1.4": 16.88,
+            "1.5": 17.39,
+            "2": 15.13,
+            "2.1": 8.32,
+            "2.2": 24.0,
+            "2.3": 18.3,
+            "2.4": 25.0,
+            "index": 72.90,
+            "name": "Chile",
+            "t1A.A": 68.4,
+            "t2A": 100,
+            "t3A": 83.07,
+            "t3B": 72.03,
+            "t4A": 55.53,
+            "t5A": 76.14,
+            "t6A": 71.1,
+            "t7A": 75,
+            "t7B": 75.59,
+            "t8A": 66.66,
+            "t9A": 0
+          },
+          ...
+    ]
+    ```
+
 * `{country_code}.json` (eg `CL.json`): For each of the countries available, contains all values for all indicators for that particular country. The values are the user-friendly responses shown on the frontend:
 
 

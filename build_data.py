@@ -836,23 +836,82 @@ def scores_per_country_as_csv(output_dir=OUTPUT_DIR, random_values=False):
 
 
 def c3_ready_json(output_dir=OUTPUT_DIR, random_values=False):
+    '''
+    Writes a C3 optimized JSON file to display the country bar charts.
+
+    Contains a list of objects, one for each country. First and second level
+    indicators are normalized to fit the total percentage of each category.
+    Transversal themes are included rounded to two decimal places.
+
+    [
+      {
+        "1": 12.85,
+        "1.1": 20.0,
+        "1.2": 10.0,
+        "1.3": 0.0,
+        "1.4": 16.88,
+        "1.5": 17.39,
+        "2": 15.13,
+        "2.1": 8.32,
+        "2.2": 24.0,
+        "2.3": 18.3,
+        "2.4": 25.0,
+        "index": 72.90,
+        "name": "Chile",
+        "t1A.A": 68.4,
+        "t2A": 100,
+        "t3A": 83.07,
+        "t3B": 72.03,
+        "t4A": 55.53,
+        "t5A": 76.14,
+        "t6A": 71.1,
+        "t7A": 75,
+        "t7B": 75.59,
+        "t8A": 66.66,
+        "t9A": 0
+      },
+      ...
+    ]
+    '''
+
     indicators = indicators_per_country(max_level=2, derived=False,
                                         random_values=random_values)
 
-    def normalize_main_scores(scores):
-        '''Scores are a percentage, normalize them to fit a total percentage
-        for all scores, rounded to 2 decimal places. An 'index' key is also
-        added who's value is the full score, as a percentage.'''
-        v = get_main_scores(scores)
-        index_obj = get_full_score(scores)
-        normalized_scores = OrderedDict((i[0], round(i[1]/(len(v)), 2))
-                                        for i in v.items())
-        normalized_scores.update(index_obj)
-        return normalized_scores
+    themes = themes_per_country(prefix='t', random_values=random_values)
 
-    # rearrange the ordereddict to only include the main scores.
-    out = [OrderedDict([('name', get_country_name(c))] + list(normalize_main_scores(v).items()))
-           for c, v in indicators.iteritems()]
+    out = []
+    for country_code, values in indicators.iteritems():
+        item = OrderedDict()
+
+        # Normalize scores
+        scores = {str(n): [] for n in xrange(1, 6)}
+        scores['main'] = []
+        for code, value in values.iteritems():
+            if code == 'index':
+                continue
+            if '.' not in code:
+                scores['main'].append(value)
+            else:
+                scores[code[:1]].append(value)
+
+        for code, value in values.iteritems():
+            if code == 'index':
+                continue
+            if '.' not in code:
+                item[code] = round(value / len(scores['main']), 2)
+            else:
+                item[code] = round(value / len(scores[code[:1]]), 2)
+
+        # Add Transversal themes
+        item.update(themes[country_code])
+
+        # Add full score
+        item.update(get_full_score(values))
+
+        # Add country name
+        item['name'] = get_country_name(country_code)
+
+        out.append(item)
 
     file_name = ('c3_scores_per_country.json' if not random_values
                  else 'c3_scores_per_country_random.json')
