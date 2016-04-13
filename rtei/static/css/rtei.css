@@ -1502,7 +1502,8 @@ body.adaptability .indicator-switcher > ul > li.subcat {
   float: right;
   background-color: #595a5b; }
 .template-rtei-by-country .indicators-for-country {
-  overflow-x: hidden; }
+  overflow-x: hidden;
+  margin-top: 4em; }
   .template-rtei-by-country .indicators-for-country > li > .indicator > span {
     font-weight: bold; }
     .template-rtei-by-country .indicators-for-country > li > .indicator > span.indicator-title > .code {

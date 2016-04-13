@@ -1,8 +1,90 @@
 var RTEI = RTEI || {}
 RTEI.country = (function() {
 
+  var themesMappings = $('#theme_indicators').data('themes-mappings');
   return {
-    initChart: function(data){
+
+    currentIndex: null,
+
+    showThemeIndicators(code) {
+
+      var ul = document.getElementById('theme_indicator_' + code);
+      if (!ul) {
+        ul = $('<ul>')
+          .attr('id', 'theme_indicator_' + code)
+          .attr('class', 'theme_indicator');
+
+        var indicatorCodes = themesMappings[code.replace('t', '')];
+
+        $.each(indicatorCodes, function(index, indicatorCode) {
+          ul.append(
+            $(document.getElementById('indicator_container_' + indicatorCode)).clone()
+          );
+        });
+        $('#theme_indicators').append(ul);
+        ul.hide().slideToggle();
+      } else {
+        $(ul).slideToggle();
+      }
+    },
+
+    showIndicators(code) {
+      var isTheme = (code.substring(0, 1) == 't');
+      if (code != RTEI.country.currentIndex) {
+        RTEI.country.currentIndex = code;
+
+        if (!isTheme) {
+          if ($('#indicators').is(':hidden')) {
+            $('#indicators').show();
+          }
+          if ($('#theme_indicators').is(':visible')) {
+            $('#theme_indicators').hide();
+          }
+
+          if (code == 'index') {
+            // Show all sections, collapsed
+            for (var i = 1; i <= 5; i++) {
+              if ($('#indicator_container_' + i).is(':hidden')) {
+                $('#indicator_container_' + i).show();
+              }
+              if ($('#indicator_container_' + i).hasClass('open')) {
+                $('#indicator_item_' + i).click();
+              }
+            }
+          } else {
+            // Hide other sections
+            for (var i = 1; i <= 5; i++) {
+              if (String(i) !== code) {
+                $('#indicator_container_' + i).hide();
+              }
+            }
+            // Expand relevant section
+            if ($('#indicator_container_' + code).is(':hidden')) {
+              $('#indicator_container_' + code).show();
+            }
+            if (!$('#indicator_container_' + code).hasClass('open')) {
+              $('#indicator_item_' + code).click();
+            }
+          }
+        } else {
+          if ($('#theme_indicators').is(':hidden')) {
+            $('#theme_indicators').show();
+          }
+          if ($('#indicators').is(':visible')) {
+            $('#indicators').hide();
+          }
+
+          $.each($('.theme_indicator'), function(index, ol) {
+            if (ol.id.replace('theme_indicator_', '') != code) {
+              $(ol).hide();
+            }
+          });
+          RTEI.country.showThemeIndicators(code);
+        }
+      }
+    },
+
+    initChart: function(data) {
       var chart;
       var json_data;
       var chart = c3.generate({
@@ -85,39 +167,7 @@ $(document).ready(function(){
 
     // Menu switcher
     $('.indicator-switcher input').on('click', function(){
-      var isTheme = (this.value.substring(0, 1) == 't');
-      if (this.value != RTEI.country.currentIndex) {
-        RTEI.country.currentIndex = this.value;
-
-        if (this.value == 'index') {
-          // Show all sections, collapsed
-          for (var i = 1; i <= 5; i++) {
-            if ($('#indicator_container_' + i).is(':hidden')) {
-              $('#indicator_container_' + i).show();
-            }
-            if ($('#indicator_container_' + i).hasClass('open')) {
-              $('#indicator_item_' + i).click();
-            }
-          }
-        } else if (!isTheme) {
-          // Hide other sections
-          for (var i = 1; i <= 5; i++) {
-            if (String(i) !== this.value) {
-              $('#indicator_container_' + i).hide();
-            }
-          }
-          // Expand relevant section
-          if ($('#indicator_container_' + this.value).is(':hidden')) {
-            $('#indicator_container_' + this.value).show();
-          }
-          if (!$('#indicator_container_' + this.value).hasClass('open')) {
-            $('#indicator_item_' + this.value).click();
-          }
-
-        } else {
-          // TODO
-        }
-      }
+      RTEI.country.showIndicators(this.value);
     });
 
 
