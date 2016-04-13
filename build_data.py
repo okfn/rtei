@@ -191,8 +191,22 @@ def parse_cell(value, theme=False):
 def get_themes_mappings():
     ''' Returns a dict with the Transversal Themes mappings
 
-    Keys are the TT code (eg "1A") and values are a list of indicator ids
-    (eg "1.2.3", "4.3.5b"...)
+    Keys are the TT code (eg "1A.A") and values are a list of dicts with
+    indicator ids and titles, eg:
+
+    {
+        "1A.A": [
+            {
+                "code": "1.4.4j",
+                "title": "Is data disaggregated by disability status?"
+            },
+            {
+                "code": "3.2.1j",
+                "title": "Do national laws forbid discrimination in education by disability status?"
+            },
+        ],
+
+     }
     '''
 
     out = {}
@@ -211,12 +225,14 @@ def get_themes_mappings():
                     if cell.value:
                         code, title, level = parse_cell(cell.value)
                         if code:
-                            out[theme_code].append(code)
+                            out[theme_code].append({'code': code,
+                                                    'title': title})
 
     return out
 
 
-def get_themes(include_columns=False, only_with_values=True):
+def get_themes(include_columns=False, only_with_values=True,
+               include_indicators=False):
     '''
     Returns a list of dicts describing the transversal themes. Each of the
     dicts contains the following keys:
@@ -233,6 +249,8 @@ def get_themes(include_columns=False, only_with_values=True):
     out = []
     sheet = THEMES_SHEET
     ws = wb[sheet]
+    if include_indicators:
+        mappings = get_themes_mappings()
 
     codes_done = []
     for i in (1, 2):
@@ -255,6 +273,9 @@ def get_themes(include_columns=False, only_with_values=True):
                     'title': title,
                     'level': level
                 }
+                if include_indicators and code in mappings:
+                    theme['indicators'] = mappings[code]
+
                 out.append(theme)
                 if i == 2 and include_columns:
                     theme['column'] = cell.column
@@ -711,6 +732,17 @@ def themes_as_json(output_dir=OUTPUT_DIR):
                         "code": "1.A.A",
                         "level": 2,
                         "title": "Structure and Support"
+                        "indicators": [
+                            {
+                                "code": "1.4.4j",
+                                "title": "Is data disaggregated by disability status?"
+                            },
+                            {
+                                "code": "3.2.1j",
+                                "title": "Do national laws forbid discrimination in education by disability status?"
+                            },
+                            ...
+                        ]
                     }
                 ]
             },
@@ -720,30 +752,12 @@ def themes_as_json(output_dir=OUTPUT_DIR):
     '''
 
     out = []
-    themes = get_themes(only_with_values=True)
+    themes = get_themes(only_with_values=True, include_indicators=True)
     for theme in [i for i in themes if i['level'] == 1]:
         theme['children'] = get_nested_themes(theme, themes)
         out.append(theme)
 
     output_file = os.path.join(output_dir, 'themes.json')
-
-    with open(output_file, 'w') as f:
-        f.write(json.dumps(out))
-
-
-def themes_mappings_as_json(output_dir=OUTPUT_DIR):
-    '''
-    Write a JSON file with the themes mapping to indicators, in the form:
-
-        {
-            "1A": ["1.4.4j", "3.2.1j", "5.1.1", "5.1.2", "5.1.3"],
-            "2A": ["4.1.2a", "4.1.2b", "4.1.2c", "4.1.2d", "4.1.2e", ...],
-            ...
-        }
-    '''
-    out = get_themes_mappings()
-
-    output_file = os.path.join(output_dir, 'themes_mappings.json')
 
     with open(output_file, 'w') as f:
         f.write(json.dumps(out))
@@ -863,7 +877,6 @@ The available outputs are:
     * `indicators-json`
     * `indicators-csv `
     * `themes-json`
-    * `themes-mappings-json`
     * `scores-per-country-json`
     * `scores-per-country-csv`
     * `indicators-per-country`
@@ -896,14 +909,11 @@ The available outputs are:
     if args.type == 'all':
         indicators_as_json(output_dir)
         themes_as_json(output_dir)
-        themes_mappings_as_json(output_dir)
         indicators_per_country_as_json(one_file=False, output_dir=output_dir)
         scores_per_country_as_json(output_dir, random_values=args.random)
         c3_ready_json(output_dir=output_dir)
     elif args.type == 'indicators-json':
         indicators_as_json(output_dir)
-    elif args.type == 'themes-mappings-json':
-        themes_mappings_as_json(output_dir)
     elif args.type == 'themes-json':
         themes_as_json(output_dir)
     elif args.type == 'indicators-csv':

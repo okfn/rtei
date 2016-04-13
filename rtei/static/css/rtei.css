@@ -1501,6 +1501,38 @@ body.adaptability .indicator-switcher > ul > li.subcat {
 .template-rtei-by-country .export {
   float: right;
   background-color: #595a5b; }
+.template-rtei-by-country .theme-indicators {
+  overflow-x: hidden;
+  margin-top: 4em; }
+  .template-rtei-by-country .theme-indicators .indicator {
+    clear: both; }
+    .template-rtei-by-country .theme-indicators .indicator .indicator-title,
+    .template-rtei-by-country .theme-indicators .indicator .indicator-value {
+      display: block;
+      padding-top: 0.25em;
+      padding-bottom: 0.25em; }
+    .template-rtei-by-country .theme-indicators .indicator .indicator-title {
+      float: left;
+      width: 80%; }
+    .template-rtei-by-country .theme-indicators .indicator .indicator-value {
+      text-align: right;
+      padding-right: 1em; }
+  .template-rtei-by-country .theme-indicators li {
+    padding-left: 1em; }
+    .template-rtei-by-country .theme-indicators li::after {
+      clear: both;
+      content: "";
+      display: table; }
+    .template-rtei-by-country .theme-indicators li .indicator:before {
+      content: '';
+      width: 100em;
+      height: 1px;
+      display: block;
+      background-color: #bfbfbe;
+      position: relative;
+      left: -30em; }
+    .template-rtei-by-country .theme-indicators li .code:after {
+      content: ' - '; }
 .template-rtei-by-country .indicators-for-country {
   overflow-x: hidden;
   margin-top: 4em; }

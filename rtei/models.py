@@ -137,7 +137,6 @@ def get_country_context(context, country_code):
         context['chart_data'] = json.dumps([chart_data])
         context['indicators'] = data.get_indicators()
         context['themes'] = data.get_themes()
-        context['themes_mappings'] = json.dumps(data.get_themes_mappings())
 
     context['available_countries'] = OrderedDict(
         sorted({code: data.get_country_name(code) for code, c

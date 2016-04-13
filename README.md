@@ -124,16 +124,6 @@ The JSON data files are generated in `rtei/static/data` by default. These files 
 
     ```
 
-* `themes_mappings.json`: Mapping between every transversal theme code and the indicators used to calculate it:
-
-    ```json
-        {
-            "1A": ["1.4.4j", "3.2.1j", "5.1.1", "5.1.2", "5.1.3"],
-            "2A": ["4.1.2a", "4.1.2b", "4.1.2c", "4.1.2d", "4.1.2e", ...],
-            ...
-        }
-    ```
-
 * `scores_per_country.json`: Contains all level 1 and 2 scores for all countries, as well as the overall one:
 
 

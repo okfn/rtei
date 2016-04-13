@@ -1,32 +1,9 @@
 var RTEI = RTEI || {}
 RTEI.country = (function() {
 
-  var themesMappings = $('#theme_indicators').data('themes-mappings');
   return {
 
     currentIndex: null,
-
-    showThemeIndicators(code) {
-
-      var ul = document.getElementById('theme_indicator_' + code);
-      if (!ul) {
-        ul = $('<ul>')
-          .attr('id', 'theme_indicator_' + code)
-          .attr('class', 'theme_indicator');
-
-        var indicatorCodes = themesMappings[code.replace('t', '')];
-
-        $.each(indicatorCodes, function(index, indicatorCode) {
-          ul.append(
-            $(document.getElementById('indicator_container_' + indicatorCode)).clone()
-          );
-        });
-        $('#theme_indicators').append(ul);
-        ul.hide().slideToggle();
-      } else {
-        $(ul).slideToggle();
-      }
-    },
 
     showIndicators(code) {
       var isTheme = (code.substring(0, 1) == 't');
@@ -73,13 +50,14 @@ RTEI.country = (function() {
           if ($('#indicators').is(':visible')) {
             $('#indicators').hide();
           }
-
-          $.each($('.theme_indicator'), function(index, ol) {
-            if (ol.id.replace('theme_indicator_', '') != code) {
+          // Show the relevant theme indicators list
+          $.each($('.theme-indicators'), function(index, ol) {
+            if (ol.id.replace('theme_indicators_', '') != code.replace('t', '')) {
               $(ol).hide();
+            } else {
+              $(ol).slideToggle();
             }
           });
-          RTEI.country.showThemeIndicators(code);
         }
       }
     },

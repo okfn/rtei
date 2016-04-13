@@ -57,7 +57,16 @@
         {% indicators_list indicators country_indicators %}
       </ol>
 
-      <div id="theme_indicators"  class="indicators-for-country" data-themes-mappings="{{ themes_mappings }}">
+
+      <div id="theme_indicators">
+      {% for theme in themes %}
+        {% for subtheme in theme.children %}
+            <ul id="theme_indicators_{{ subtheme.code }}" class="theme-indicators" style="display: none">
+            {% indicators_list subtheme.indicators country_indicators %}
+            </ul>
+        {% endfor %}
+
+      {% endfor %}
       </div>
 
 
