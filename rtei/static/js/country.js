@@ -109,7 +109,7 @@ RTEI.country = (function() {
               }
           },
           bar: {
-              width: 16
+              width: 32
           },
           tooltip: {
             format: {
@@ -118,8 +118,11 @@ RTEI.country = (function() {
               }
             }
           },
+          size: {
+            height: 150
+          },
           padding: {
-            bottom: 20,
+            bottom: 10,
             left: 5
           }
       });
