@@ -55,7 +55,7 @@ RTEI.country = (function() {
             if (ol.id.replace('theme_indicators_', '') != code.replace('t', '')) {
               $(ol).hide();
             } else {
-              $(ol).slideToggle();
+              $(ol).slideDown();
             }
           });
         }
