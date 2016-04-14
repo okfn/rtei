@@ -1,7 +1,6 @@
 from django import template
-from django.template.defaulttags import register as default_register
 
-from rtei.models import Page
+from rtei.models import Page, RTEIAncillaryPage
 
 import logging
 log = logging.getLogger(__name__)
@@ -30,7 +29,11 @@ def top_menu(context, parent, calling_page=None):
     menuitems = parent.get_children().live().in_menu()
 
     for menuitem in menuitems:
-        menuitem.show_dropdown = has_menu_children(menuitem)
+        # Don't show dropdown of children for About item.
+        if menuitem.specific_class is RTEIAncillaryPage:
+            menuitem.show_dropdown = False
+        else:
+            menuitem.show_dropdown = has_menu_children(menuitem)
         # We don't directly check if calling_page is None since the template
         # engine can pass an empty string to calling_page
         # if the variable passed as calling_page does not exist.
@@ -103,4 +106,27 @@ def switcher(indicators, show_overall=True, show_second_level=True,
         'show_overall': show_overall,
         'show_second_level': show_second_level,
         'themes': themes,
+    }
+
+
+@register.inclusion_tag('rtei/tags/about_menu.html', takes_context=True)
+def about_menu(context, parent, calling_page=None):
+
+    # Get the root About page (either the parent or self of calling_page)
+    parent = calling_page.get_parent()
+    if parent.specific_class is calling_page.specific_class:
+        about_root = parent
+    else:
+        about_root = calling_page
+
+    menuitems = about_root.get_children().live().in_menu()
+
+    for menuitem in menuitems:
+        menuitem.active = (calling_page.url.startswith(menuitem.url)
+                           if calling_page else False)
+    return {
+        'calling_page': calling_page,
+        'menuitems': menuitems,
+        # required by the pageurl tag that we want to use within this template
+        'request': context['request'],
     }

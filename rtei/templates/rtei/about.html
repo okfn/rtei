@@ -1,25 +1,18 @@
 {% extends "base.html" %}
 
-{% load wagtailcore_tags %}
+{% load wagtailcore_tags rtei_tags %}
 
 {% block body_class %}template-rtei{% endblock %}
 
 {% block content %}
   <div class="main">
     <section class="navigation controls">
-      links here
+      {% about_menu parent=site_root calling_page=self %}
     </section>
 
     <section>
-      {% if self.body %}
-      {{ self.body|richtext }}
-      {% else %}
       <h2>{{ self.title }}</h2>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget nisl tempor, semper magna vel, faucibus lectus. Aliquam interdum pulvinar est quis dictum. Donec et mi sollicitudin, scelerisque nulla in, efficitur sem. Proin risus enim, finibus in metus scelerisque.
-      </p>
-      {% endif %}
+      {{ self.body|richtext }}
     </section>
   </div>
-
 {% endblock %}

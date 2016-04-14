@@ -87,31 +87,47 @@ body {
             z-index: 1;
           }
         }
-
-        &:hover {
-          background-color: $light-gray;
-
-          & > ul {
-            display: block;
-
-            li:hover {
-              background-color: $light-gray;
-            }
-          }
-        }
       }
     }
   }
 
   // sidebar layout
-  .indicator-switcher, .filter.controls form {
+  .indicator-switcher, .filter.controls form, .about-menu {
     & > ul > li {
       display: block;
       width: auto;
       padding-left: 0;
 
-      label {
+      a {
+        display: block;
+        margin: 0;
+        padding: $base-spacing*0.75 3em $base-spacing*0.75 $base-spacing;
+        font-size: em(14);
+        border-style: solid;
+        border-color: $body-background-color;
+        line-height: 1.2;
+        color: $base-font-color;
+      }
+
+      a.active {
+        background-color: $index-color;
+        color: $base-background-color;
+      }
+
+      label, a {
         border-width: 0 0 1px 0;
+      }
+
+      &:hover {
+        background-color: $light-gray;
+
+        & > ul {
+          display: block;
+
+          li:hover {
+            background-color: $light-gray;
+          }
+        }
       }
 
       h6 {

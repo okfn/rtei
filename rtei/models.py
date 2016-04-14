@@ -180,6 +180,18 @@ class RTEIPage(TranslationMixin, Page):
                                self.slug.replace('-', '_'))
 
 
+class RTEIAncillaryPage(TranslationMixin, Page):
+    '''About page and other static content pages.'''
+
+    body = RichTextField(blank=True)
+
+    template = "rtei/about.html"
+
+    content_panels = Page.content_panels + [
+        FieldPanel('body', classname="full")
+    ]
+
+
 class ResourceIndexPage(TranslationMixin, Page):
     template = 'rtei/resources.html'
 

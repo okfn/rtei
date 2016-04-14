@@ -1109,19 +1109,31 @@ body .indicator-switcher > ul > li {
       body .indicator-switcher > ul > li ul {
         position: absolute;
         z-index: 1; } }
-  body .indicator-switcher > ul > li:hover {
-    background-color: #bfbfbe; }
-    body .indicator-switcher > ul > li:hover > ul {
-      display: block; }
-      body .indicator-switcher > ul > li:hover > ul li:hover {
-        background-color: #bfbfbe; }
-body .indicator-switcher > ul > li, body .filter.controls form > ul > li {
+body .indicator-switcher > ul > li, body .filter.controls form > ul > li, body .about-menu > ul > li {
   display: block;
   width: auto;
   padding-left: 0; }
-  body .indicator-switcher > ul > li label, body .filter.controls form > ul > li label {
+  body .indicator-switcher > ul > li a, body .filter.controls form > ul > li a, body .about-menu > ul > li a {
+    display: block;
+    margin: 0;
+    padding: 1.125em 3em 1.125em 1.5em;
+    font-size: 0.875em;
+    border-style: solid;
+    border-color: #efefef;
+    line-height: 1.2;
+    color: #3b3b3b; }
+  body .indicator-switcher > ul > li a.active, body .filter.controls form > ul > li a.active, body .about-menu > ul > li a.active {
+    background-color: #4598c2;
+    color: #fff; }
+  body .indicator-switcher > ul > li label, body .indicator-switcher > ul > li a, body .filter.controls form > ul > li label, body .filter.controls form > ul > li a, body .about-menu > ul > li label, body .about-menu > ul > li a {
     border-width: 0 0 1px 0; }
-  body .indicator-switcher > ul > li h6, body .filter.controls form > ul > li h6 {
+  body .indicator-switcher > ul > li:hover, body .filter.controls form > ul > li:hover, body .about-menu > ul > li:hover {
+    background-color: #bfbfbe; }
+    body .indicator-switcher > ul > li:hover > ul, body .filter.controls form > ul > li:hover > ul, body .about-menu > ul > li:hover > ul {
+      display: block; }
+      body .indicator-switcher > ul > li:hover > ul li:hover, body .filter.controls form > ul > li:hover > ul li:hover, body .about-menu > ul > li:hover > ul li:hover {
+        background-color: #bfbfbe; }
+  body .indicator-switcher > ul > li h6, body .filter.controls form > ul > li h6, body .about-menu > ul > li h6 {
     cursor: pointer;
     border-radius: 50%;
     -webkit-transform: rotate(-90deg);
@@ -1129,17 +1141,17 @@ body .indicator-switcher > ul > li, body .filter.controls form > ul > li {
     -ms-transform: rotate(-90deg);
     -o-transform: rotate(-90deg);
     transform: rotate(-90deg); }
-    body .indicator-switcher > ul > li h6:hover, body .filter.controls form > ul > li h6:hover {
+    body .indicator-switcher > ul > li h6:hover, body .filter.controls form > ul > li h6:hover, body .about-menu > ul > li h6:hover {
       background-color: #333333; }
-      body .indicator-switcher > ul > li h6:hover:after, body .filter.controls form > ul > li h6:hover:after {
+      body .indicator-switcher > ul > li h6:hover:after, body .filter.controls form > ul > li h6:hover:after, body .about-menu > ul > li h6:hover:after {
         border-top-color: #fff; }
-    body .indicator-switcher > ul > li h6.expanded, body .filter.controls form > ul > li h6.expanded {
+    body .indicator-switcher > ul > li h6.expanded, body .filter.controls form > ul > li h6.expanded, body .about-menu > ul > li h6.expanded {
       -webkit-transform: rotate(0deg);
       -moz-transform: rotate(0deg);
       -ms-transform: rotate(0deg);
       -o-transform: rotate(0deg);
       transform: rotate(0deg); }
-  body .indicator-switcher > ul > li ul, body .filter.controls form > ul > li ul {
+  body .indicator-switcher > ul > li ul, body .filter.controls form > ul > li ul, body .about-menu > ul > li ul {
     position: static;
     display: block; }
 body.governance .indicator-switcher input[type="radio"]:checked + label {
