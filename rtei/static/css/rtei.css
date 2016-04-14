@@ -509,6 +509,10 @@ dl {
   dl dd {
     margin: 0; }
 
+.rich-text ul {
+  list-style-type: disc;
+  padding-left: 1.5em; }
+
 table {
   -webkit-font-feature-settings: "kern", "liga", "tnum";
   -moz-font-feature-settings: "kern", "liga", "tnum";

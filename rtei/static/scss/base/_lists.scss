@@ -29,3 +29,8 @@ dl {
     margin: 0;
   }
 }
+
+.rich-text ul {
+  list-style-type: disc;
+  padding-left: $base-spacing;
+}
