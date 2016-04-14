@@ -85,7 +85,6 @@ RTEI.country = (function() {
           4: '#357b9e',
           5: '#469a8f',
         },
-
         type: 'bar'
       },
       axis: {
@@ -109,7 +108,11 @@ RTEI.country = (function() {
       tooltip: {
         format: {
           value: function (value, ratio, id, index) {
-              return parseFloat((value * 5).toFixed(2));
+            if (RTEI.country.chart.groups().length) {
+              return parseFloat((value * RTEI.country.chart.groups()[0].length).toFixed(2));
+            } else {
+              return value;
+            }
           }
         }
       },
