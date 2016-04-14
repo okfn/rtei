@@ -78,6 +78,7 @@ RTEI.country = (function() {
             ['1', '2', '3', '4', '5']
         ],
         */
+
         colors: {
           1: '#c35727',
           2: '#bdb831',
@@ -135,6 +136,27 @@ RTEI.country = (function() {
         config.data.json= jsonData;
       }
       config.data.names = names;
+
+      var colors = {};
+      var indicator, subIndicator;
+      for (var key in names) {
+        if (names.hasOwnProperty(key)) {
+          if (key.substring(0, 1) == 't') {
+            // Theme, use the default
+            colors[key] = RTEI.colors.index[0];
+          } else if (key.indexOf('.') !== -1) {
+            // Indicator level 2
+            indicator = key.split('.')[0];
+            subIndicator = key.split('.')[1];
+            colors[key] = RTEI.colors[indicator][parseInt(subIndicator) - 1];
+          } else {
+            //Indicator level 1
+            colors[key] = RTEI.colors[key][0];
+          }
+        }
+      }
+      config.data.colors = colors;
+
       RTEI.country.updateChart('index');
     },
 

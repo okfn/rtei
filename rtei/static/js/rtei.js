@@ -1,4 +1,17 @@
+var RTEI = RTEI || {};
+
+
 $(document).ready(function() {
+
+  RTEI.colors = {
+    index: ['#4598c2', '#73b2d1', '#96c5dc', '#b8d8e8', '#dbebf3'],
+    1: ['#c35727', '#db784c', '#e39572', '#ebb299', '#f2cfbf'],  // governance
+    2: ['#bdb831', '#d4cf58', '#ddda7c', '#e7e4a1', '#f0eec5'],  // availability
+    3: ['#af1f2c', '#da3140', '#e15864', '#e87f88', '#efa6ac'],  // accessibility
+    4: ['#357b9e', '#4d9cc3', '#6fafcf', '#92c2da', '#b4d5e6'],  // acceptability
+    5: ['#469a8f', '#64b9ae', '#84c7be', '#a4d5cf', '#c3e4e0']  // adaptability
+  };
+
   // JS detection class
   document.documentElement.className = document.documentElement.className.replace("no-js","js");
 
