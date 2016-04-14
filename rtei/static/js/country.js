@@ -218,6 +218,13 @@ $(document).ready(function(){
 
     // Menu switcher
     $('.indicator-switcher input').on('click', function(){
+      var label = $('label[for="' + this.id + '"]').text();
+      $('#current-indicator-label').text(label);
+
+      var value = (this.value !== 'index' && this.value.substring(0, 1) != 't') ?
+        (chartData[0][this.value] * RTEI.country.chart.groups()[0].length).toFixed(2) :
+        chartData[0][this.value];
+      $('#current-indicator-value').text(value);
       RTEI.country.showIndicators(this.value);
       RTEI.country.updateChart(this.value);
     });

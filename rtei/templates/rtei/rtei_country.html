@@ -48,7 +48,9 @@
     <section>
       <h2>{{ country_name }} ({{ country_code }})</h2>
 
-      <div>{% trans "Overall Index" %}: {{ country_indicators.index }}</div>
+      <div class="current-indicator">
+        <span id="current-indicator-label">{% trans "Overall Index" %}</span>: <span id="current-indicator-value">{{ country_indicators.index }}</span>
+      </div>
       {% if chart_data %}
         <div id="chart" data-chart-data="{{ chart_data }}" data-chart-labels="{{ chart_labels }}"></div>
       {% endif %}

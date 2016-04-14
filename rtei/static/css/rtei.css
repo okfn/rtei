@@ -1498,6 +1498,8 @@ body.adaptability .indicator-switcher > ul > li.subcat {
 .template-explore-map.adaptability .map .key ul li:nth-child(5) {
   border-color: #469a8f; }
 
+.template-rtei-by-country .current-indicator {
+  font-weight: bold; }
 .template-rtei-by-country .export {
   float: right;
   background-color: #595a5b; }
