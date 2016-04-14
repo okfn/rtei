@@ -163,39 +163,3 @@
     }
   }
 }
-
-
-// sidebar layout
-.filter.controls form {
-  & > ul > li {
-    display: block;
-    width: auto;
-
-    label {
-      border-width: 0 0 1px 0;
-    }
-
-    h6 {
-      cursor: pointer;
-      border-radius: 50%;
-      @include transform(rotate(-90deg));
-
-      &:hover {
-        background-color: $dark-gray;
-
-        &:after {
-          border-top-color: $base-background-color;
-        }
-      }
-
-      &.expanded {
-        @include transform(rotate(0deg));
-      }
-    }
-
-    ul {
-      position: static;
-      display: block;
-    }
-  }
-}

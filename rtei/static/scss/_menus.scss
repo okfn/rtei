@@ -104,7 +104,7 @@ body {
   }
 
   // sidebar layout
-  .indicator-switcher {
+  .indicator-switcher, .filter.controls form {
     & > ul > li {
       display: block;
       width: auto;

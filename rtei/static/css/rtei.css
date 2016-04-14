@@ -1115,13 +1115,13 @@ body .indicator-switcher > ul > li {
       display: block; }
       body .indicator-switcher > ul > li:hover > ul li:hover {
         background-color: #bfbfbe; }
-body .indicator-switcher > ul > li {
+body .indicator-switcher > ul > li, body .filter.controls form > ul > li {
   display: block;
   width: auto;
   padding-left: 0; }
-  body .indicator-switcher > ul > li label {
+  body .indicator-switcher > ul > li label, body .filter.controls form > ul > li label {
     border-width: 0 0 1px 0; }
-  body .indicator-switcher > ul > li h6 {
+  body .indicator-switcher > ul > li h6, body .filter.controls form > ul > li h6 {
     cursor: pointer;
     border-radius: 50%;
     -webkit-transform: rotate(-90deg);
@@ -1129,17 +1129,17 @@ body .indicator-switcher > ul > li {
     -ms-transform: rotate(-90deg);
     -o-transform: rotate(-90deg);
     transform: rotate(-90deg); }
-    body .indicator-switcher > ul > li h6:hover {
+    body .indicator-switcher > ul > li h6:hover, body .filter.controls form > ul > li h6:hover {
       background-color: #333333; }
-      body .indicator-switcher > ul > li h6:hover:after {
+      body .indicator-switcher > ul > li h6:hover:after, body .filter.controls form > ul > li h6:hover:after {
         border-top-color: #fff; }
-    body .indicator-switcher > ul > li h6.expanded {
+    body .indicator-switcher > ul > li h6.expanded, body .filter.controls form > ul > li h6.expanded {
       -webkit-transform: rotate(0deg);
       -moz-transform: rotate(0deg);
       -ms-transform: rotate(0deg);
       -o-transform: rotate(0deg);
       transform: rotate(0deg); }
-  body .indicator-switcher > ul > li ul {
+  body .indicator-switcher > ul > li ul, body .filter.controls form > ul > li ul {
     position: static;
     display: block; }
 body.governance .indicator-switcher input[type="radio"]:checked + label {
@@ -1754,33 +1754,6 @@ body.adaptability .indicator-switcher > ul > li.subcat {
         display: block; }
         .filter.controls form > ul > li:hover > ul li:hover {
           background-color: #bfbfbe; }
-
-.filter.controls form > ul > li {
-  display: block;
-  width: auto; }
-  .filter.controls form > ul > li label {
-    border-width: 0 0 1px 0; }
-  .filter.controls form > ul > li h6 {
-    cursor: pointer;
-    border-radius: 50%;
-    -webkit-transform: rotate(-90deg);
-    -moz-transform: rotate(-90deg);
-    -ms-transform: rotate(-90deg);
-    -o-transform: rotate(-90deg);
-    transform: rotate(-90deg); }
-    .filter.controls form > ul > li h6:hover {
-      background-color: #333333; }
-      .filter.controls form > ul > li h6:hover:after {
-        border-top-color: #fff; }
-    .filter.controls form > ul > li h6.expanded {
-      -webkit-transform: rotate(0deg);
-      -moz-transform: rotate(0deg);
-      -ms-transform: rotate(0deg);
-      -o-transform: rotate(0deg);
-      transform: rotate(0deg); }
-  .filter.controls form > ul > li ul {
-    position: static;
-    display: block; }
 
 .template-blog-index .posts-list {
   background-color: inherit; }
