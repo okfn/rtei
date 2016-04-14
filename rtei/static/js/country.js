@@ -62,70 +62,114 @@ RTEI.country = (function() {
       }
     },
 
-    initChart: function(data) {
-      var chart;
-      var json_data;
-      var chart = c3.generate({
-          bindto: '#chart',
-          data: {
-              json: data,
-              order: null,
-              keys: {
-                  x: 'name',
-                  value: ['1', '3', '2', '5', '4']
-              },
-              groups: [
-                  ['1', '2', '3', '4', '5']
-              ],
-              names: {
-                  '1': 'Governance',
-                  '3': 'Accessibility',
-                  '2': 'Availability',
-                  '5': 'Adaptability',
-                  '4': 'Acceptability'
-              },
-              type: 'bar',
-              colors: {
-                1: '#c35727',
-                2: '#bdb831',
-                3: '#af1f2c',
-                4: '#357b9e',
-                5: '#469a8f',
-              },
-          },
-          axis: {
-              rotated: true,
-              x: {
-                  type: 'category',
-                  show: false,
-              },
-              y: {
-                  show: true,
-                  max: 100,
-                  padding: {
-                      top: 10,
-                      bottom: 10,
-                  }
-              }
-          },
-          bar: {
-              width: 32
-          },
-          tooltip: {
-            format: {
-              value: function (value, ratio, id, index) {
-                  return parseFloat((value * 5).toFixed(2));
-              }
+    baseChartConfig: {
+      bindto: '#chart',
+      data: {
+        json: null,
+        order: null,
+        /*
+         * You'll need to set up the following on each refresh:
+         *
+        keys: {
+            x: 'name',
+            value: ['1', '3', '2', '5', '4']
+        },
+        groups: [
+            ['1', '2', '3', '4', '5']
+        ],
+        */
+        colors: {
+          1: '#c35727',
+          2: '#bdb831',
+          3: '#af1f2c',
+          4: '#357b9e',
+          5: '#469a8f',
+        },
+
+        type: 'bar'
+      },
+      axis: {
+        rotated: true,
+        x: {
+            type: 'category',
+            show: false,
+        },
+        y: {
+            show: true,
+            max: 100,
+            padding: {
+                top: 10,
+                bottom: 10,
             }
-          },
-          size: {
-            height: 150
-          },
-          padding: {
-            bottom: 10,
-            left: 5
+        }
+      },
+      bar: {
+          width: 32
+      },
+      tooltip: {
+        format: {
+          value: function (value, ratio, id, index) {
+              return parseFloat((value * 5).toFixed(2));
           }
+        }
+      },
+      size: {
+        height: 150
+      },
+      padding: {
+        bottom: 10,
+        left: 5
+      },
+      transition: {
+        duration: 300
+      }
+    },
+
+    initChart: function(jsonData, names) {
+
+      var config = RTEI.country.baseChartConfig;
+      if (!config.data.json) {
+        config.data.json= jsonData;
+      }
+      config.data.names = names;
+      RTEI.country.updateChart('index');
+    },
+
+    updateChart: function(code) {
+      var chart = RTEI.country.chart;
+      var config = RTEI.country.baseChartConfig;
+      var values = [];
+
+      if (chart) {
+        chart = chart.destroy;
+      }
+
+      if (code == 'index') {
+        values = ['1', '2', '3', '4', '5'];
+      } else if (code.substring(0, 1) != 't') {
+        for (var key in config.data.names) {
+          if (config.data.names.hasOwnProperty(key) &&
+              key.substring(0, 1) == code &&
+              key.indexOf('.') !== -1) {
+            values.push(key);
+          }
+        }
+      } else {
+        values = [code]
+      }
+
+      var customConfig = $.extend(true, {}, config, {
+        data: {
+          keys : {
+            x: 'name',
+            value: values
+          },
+          groups: [
+            values
+          ]
+        }
       });
+      RTEI.country.chart = c3.generate(customConfig);
     }
   }
 
@@ -143,12 +187,14 @@ $(document).ready(function(){
     // If data available, build the chart
     var chartData = $("#chart").data("chart-data");
     if (chartData) {
-      RTEI.country.initChart(chartData);
+      var names = $("#chart").data("chart-labels");
+      RTEI.country.initChart(chartData, names);
     }
 
     // Menu switcher
     $('.indicator-switcher input').on('click', function(){
       RTEI.country.showIndicators(this.value);
+      RTEI.country.updateChart(this.value);
     });
 
 

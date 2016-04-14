@@ -138,6 +138,17 @@ def get_country_context(context, country_code):
         context['indicators'] = data.get_indicators()
         context['themes'] = data.get_themes()
 
+        chart_labels = {}
+        for indicator in context['indicators']:
+            chart_labels[indicator['code']] = indicator['title']
+            for subindicator in indicator['children']:
+                chart_labels[subindicator['code']] = subindicator['title']
+        for theme in context['themes']:
+            for subtheme in theme['children']:
+                chart_labels['t' + subtheme['code']] = subtheme['title']
+        context['chart_labels'] = json.dumps(chart_labels)
+
+
     context['available_countries'] = OrderedDict(
         sorted({code: data.get_country_name(code) for code, c
                 in data.get_scores_per_country().iteritems()}.items(),

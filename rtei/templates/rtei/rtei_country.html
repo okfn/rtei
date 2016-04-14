@@ -50,7 +50,7 @@
 
       <div>{% trans "Overall Index" %}: {{ country_indicators.index }}</div>
       {% if chart_data %}
-        <div id="chart" data-chart-data="{{ chart_data }}"></div>
+        <div id="chart" data-chart-data="{{ chart_data }}" data-chart-labels="{{ chart_labels }}"></div>
       {% endif %}
 
       <ol id="indicators" class="indicators-for-country">
