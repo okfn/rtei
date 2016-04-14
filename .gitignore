@@ -1,3 +1,4 @@
+*.pyc
 /media/
 /static/
 .sass-cache/
