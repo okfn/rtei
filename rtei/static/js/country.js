@@ -1,52 +1,21 @@
 var RTEI = RTEI || {}
 RTEI.country = (function() {
 
-  var baseChartConfig = {
-    bindto: '#chart',
-    data: {
-      json: null,
-      order: null,
-      /*
-       * You'll need to set up the following on each refresh:
-       *
-      keys: {
-          x: 'name',
-          value: ['1', '3', '2', '5', '4']
-      },
-      groups: [
-          ['1', '2', '3', '4', '5']
-      ],
-      */
-      type: 'bar'
-    },
+  var customChartConfig = {
     axis: {
-      rotated: true,
       x: {
-          type: 'category',
-          show: false,
+          show: false
       },
       y: {
           show: true,
-          max: 100,
           padding: {
               top: 10,
-              bottom: 10,
+              bottom: 10
           }
       }
     },
     bar: {
         width: 32
-    },
-    tooltip: {
-      format: {
-        value: function (value, ratio, id, index) {
-          if (RTEI.country.chart.groups().length) {
-            return parseFloat((value * RTEI.country.chart.groups()[0].length).toFixed(2));
-          } else {
-            return value;
-          }
-        }
-      }
     },
     size: {
       height: 150
@@ -54,17 +23,12 @@ RTEI.country = (function() {
     padding: {
       bottom: 10,
       left: 5
-    },
-    transition: {
-      duration: 300
     }
   }
 
   return {
 
-    chart: null,
-
-    currentIndex: null,
+    currentIndex: 'index',
 
     showIndicators(code) {
       var isTheme = (code.substring(0, 1) == 't');
@@ -124,73 +88,12 @@ RTEI.country = (function() {
     },
 
 
-    initChart: function(jsonData, names) {
+    initChart: function(data, names) {
 
-      var config = baseChartConfig;
-      if (!config.data.json) {
-        config.data.json= jsonData;
-      }
-      config.data.names = names;
+      RTEI.charts.initChartConfig('country', data, customChartConfig, names);
 
-      var colors = {};
-      var indicator, subIndicator;
-      for (var key in names) {
-        if (names.hasOwnProperty(key)) {
-          if (key.substring(0, 1) == 't') {
-            // Theme, use the default
-            colors[key] = RTEI.colors.index[0];
-          } else if (key.indexOf('.') !== -1) {
-            // Indicator level 2
-            indicator = key.split('.')[0];
-            subIndicator = key.split('.')[1];
-            colors[key] = RTEI.colors[indicator][parseInt(subIndicator) - 1];
-          } else {
-            //Indicator level 1
-            colors[key] = RTEI.colors[key][0];
-          }
-        }
-      }
-      config.data.colors = colors;
-
-      RTEI.country.updateChart('index');
+      RTEI.country.chart = RTEI.charts.updateChart('country', 'index');
     },
-
-    updateChart: function(code) {
-      var chart = RTEI.country.chart;
-      var config = baseChartConfig;
-      var values = [];
-
-      if (chart) {
-        chart = chart.destroy;
-      }
-
-      if (code == 'index') {
-        values = ['1', '2', '3', '4', '5'];
-      } else if (code.substring(0, 1) != 't') {
-        for (var key in config.data.names) {
-          if (config.data.names.hasOwnProperty(key) &&
-              key.substring(0, 1) == code &&
-              key.indexOf('.') !== -1) {
-            values.push(key);
-          }
-        }
-      } else {
-        values = [code]
-      }
-
-      var customConfig = $.extend(true, {}, config, {
-        data: {
-          keys : {
-            x: 'name',
-            value: values
-          },
-          groups: [
-            values
-          ]
-        }
-      });
-      RTEI.country.chart = c3.generate(customConfig);
-    }
   }
 
 })();
@@ -221,7 +124,7 @@ $(document).ready(function(){
         chartData[0][this.value];
       $('#current-indicator-value').text(value);
       RTEI.country.showIndicators(this.value);
-      RTEI.country.updateChart(this.value);
+      RTEI.charts.updateChart('country', this.value);
     });
 
 

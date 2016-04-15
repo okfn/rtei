@@ -4,6 +4,9 @@ RTEI.theme = (function() {
   var chart;
   var jsonData;
 
+  var customChartConfig = {
+  }
+
   function initSortButtons() {
     /*
     Initializes the sort buttons.
@@ -35,84 +38,37 @@ RTEI.theme = (function() {
     chart = buildChart(jsonData);
   };
 
-  function buildChart(data) {
+  function initChart(data, names) {
     // Chart height is the number of rows * 22, or 350, whichever is
     // largest. This ensures there is adequate room for double-lined
     // labels.
     var height = _.max([_.size(data) * 22, 200]);
-    var chart = c3.generate({
-      bindto: '#chart',
-      data: {
-        json: data,
-        order: null,
-        keys: {
-          x: 'name',
-          value: ['1', '3', '2', '5', '4'],
-        },
-        groups: [
-          ['1', '2', '3', '4', '5'],
-        ],
-        names: {
-          '1': 'Governance',
-          '3': 'Accessibility',
-          '2': 'Availability',
-          '5': 'Adaptability',
-          '4': 'Acceptability'
-        },
-        type: 'bar',
-        colors: {
-          1: '#c35727',
-          2: '#bdb831',
-          3: '#af1f2c',
-          4: '#357b9e',
-          5: '#469a8f',
-        },
-      },
-      axis: {
-        rotated: true,
-        x: {
-          type: 'category'
-        },
-        y: {
-          show: true,
-          max: 100,
-          padding: {
-            top: 10,
-          }
-        }
-      },
-      bar: {
-        width: 16
-      },
-      size: {
-        height: height
-      },
-      tooltip: {
-        format: {
-        value: function (value, ratio, id, index) {
-          return parseFloat((value * 5).toFixed(2));
-        }
-        }
-      },
-      padding: {
-        bottom: 20,
-      }
-    });
-    return chart;
-  };
+
+    customChartConfig.size = {
+      height: height
+    }
+
+    RTEI.charts.initChartConfig('theme', data, customChartConfig, names);
+
+    RTEI.charts.updateChart('theme', 'index');
+
+  }
 
   return {
+
+    currentIndex: null,
+
     init: function(jsonDataFileName) {
 
       initSortButtons();
 
       jsonData = $.getJSON(jsonDataFileName, function(data) {
-        jsonData = data;
-        chart = buildChart(jsonData);
+
+        var names = $("#chart").data("chart-labels");
+        chart = initChart(data, names);
       });
     }
   }
-
 })();
 
 
@@ -123,6 +79,23 @@ $(document).ready(function(){
   var random = Boolean((location.search.split('random=')[1]||'').split('&')[0]);
   var jsonDataFileName = (random) ? 'c3_scores_per_country_random.json': 'c3_scores_per_country.json';
   jsonDataFileName = "/static/data/" + jsonDataFileName;
+
+  // Menu switcher
+  $('.indicator-switcher input').on('click', function(){
+    /*
+    var label = $('label[for="' + this.id + '"]').text();
+    $('#current-indicator-label').text(label);
+
+    var value = (this.value !== 'index' && this.value.substring(0, 1) != 't') ?
+      (chartData[0][this.value] * RTEI.theme.chart.groups()[0].length).toFixed(2) :
+      chartData[0][this.value];
+    $('#current-indicator-value').text(value);
+    */
+    if (RTEI.theme.currentIndex != this.value) {
+      RTEI.theme.currentIndex = this.value;
+    }
+    RTEI.charts.updateChart('theme', this.value);
+  });
 
   RTEI.theme.init(jsonDataFileName);
 });
