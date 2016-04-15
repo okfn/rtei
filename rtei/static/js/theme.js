@@ -1,10 +1,10 @@
 var RTEI = RTEI || {}
-RTEI.by_theme = (function() {
+RTEI.theme = (function() {
 
     var chart;
-    var json_data;
+    var jsonData;
 
-    function init_sort_buttons() {
+    function initSortButtons() {
         /*
         Initializes the sort buttons.
 
@@ -29,13 +29,13 @@ RTEI.by_theme = (function() {
     };
 
     function sortByKey(key, desc) {
-        // Sort json_data by key and rebuild chart.
-        json_data = _.sortBy(json_data, key);
-        if (desc) json_data.reverse();
-        chart = build_chart(json_data);
+        // Sort jsonData by key and rebuild chart.
+        jsonData = _.sortBy(jsonData, key);
+        if (desc) jsonData.reverse();
+        chart = buildChart(jsonData);
     };
 
-    function build_chart(data) {
+    function buildChart(data) {
         // Chart height is the number of rows * 22, or 350, whichever is
         // largest. This ensures there is adequate room for double-lined
         // labels.
@@ -102,13 +102,13 @@ RTEI.by_theme = (function() {
     };
 
     return {
-        init: function(json_data_filename) {
+        init: function(jsonDataFileName) {
 
-            init_sort_buttons();
+            initSortButtons();
 
-            json_data = $.getJSON(json_data_filename, function(data) {
-                json_data = data;
-                chart = build_chart(json_data);
+            jsonData = $.getJSON(jsonDataFileName, function(data) {
+                jsonData = data;
+                chart = buildChart(jsonData);
             });
         }
     }
@@ -121,8 +121,8 @@ $(document).ready(function(){
     // Get the data and initialize the chart.
     // TODO: remove once we have the final data
     var random = Boolean((location.search.split('random=')[1]||'').split('&')[0]);
-    var json_data_filename = (random) ? 'c3_scores_per_country_random.json': 'c3_scores_per_country.json';
-    json_data_filename = "/static/data/" + json_data_filename;
+    var jsonDataFileName = (random) ? 'c3_scores_per_country_random.json': 'c3_scores_per_country.json';
+    jsonDataFileName = "/static/data/" + jsonDataFileName;
 
-    RTEI.by_theme.init(json_data_filename);
+    RTEI.theme.init(jsonDataFileName);
 });
