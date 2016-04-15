@@ -90,11 +90,11 @@ def get_country_name(country_code):
 
 def get_numeric_cell_value(cell):
     '''
-    Return a numeric value rounded to 4 places if it is a float, or the value
+    Return a numeric value rounded to 2 places if it is a float, or the value
     otherwise
     '''
     if isinstance(cell.value, float):
-        return round(cell.value, 4)
+        return round(cell.value, 2)
     else:
         return cell.value
 
@@ -414,7 +414,7 @@ def get_full_score(country_indicators):
     '''
     values = [country_indicators[str(code)] for code in xrange(1, 6)
               if str(code) in country_indicators]
-    return {'index': round(sum(values) / len(values), 4)}
+    return {'index': round(sum(values) / len(values), 2)}
 
 
 def add_full_score(country_indicators):
@@ -528,13 +528,13 @@ def indicators_per_country(max_level=4, derived=True, random_values=False,
                     out[country_code][indicator['code']] = value
 
                 # Show all level 2, non derived scores (eg 1.2, 3.4, 5.1)
-                # as percentages, rounded to 3 places
+                # as percentages, rounded to 2 places
                 if (indicator['code'].count('.') == 1 and
                         not indicator['code'][-1].isalpha() and
                         value is not None):
 
                     out[country_code][indicator['code']] = round(
-                        value * 100 if value <= 1 else value, 3)
+                        value * 100 if value <= 1 else value, 2)
         add_main_scores(out[country_code])
         add_full_score(out[country_code])
 
