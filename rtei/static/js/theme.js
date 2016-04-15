@@ -1,8 +1,6 @@
 var RTEI = RTEI || {}
 RTEI.theme = (function() {
 
-  var chart;
-  var jsonData;
 
   var customChartConfig = {
   }
@@ -32,13 +30,30 @@ RTEI.theme = (function() {
   };
 
   function sortByKey(key, desc) {
-    // Sort jsonData by key and rebuild chart.
-    jsonData = _.sortBy(jsonData, key);
-    if (desc) jsonData.reverse();
-    chart = buildChart(jsonData);
+    // Sort data by key and rebuild chart.
+    var data = RTEI.theme.data;
+    if (key != 'name') {
+      key = RTEI.theme.currentIndex;
+    }
+    data = _.sortBy(data, key);
+    if (desc) data.reverse();
+
+    RTEI.charts.updateChartConfig('theme', {data: {json: null}});
+    RTEI.charts.updateChartConfig('theme', {
+      data: {
+        json: data
+      }
+    });
+    RTEI.charts.updateChart('theme', RTEI.theme.currentIndex);
+    RTEI.theme.currentSort = key;
+    RTEI.theme.currentSortDesc = desc;
   };
 
   function initChart(data, names) {
+
+    // Save a reference for sorting
+    RTEI.theme.data = data;
+
     // Chart height is the number of rows * 22, or 350, whichever is
     // largest. This ensures there is adequate room for double-lined
     // labels.
@@ -56,18 +71,32 @@ RTEI.theme = (function() {
 
   return {
 
-    currentIndex: null,
+    data: null,
+
+    currentIndex: 'index',
+
+    currentSort: 'name',
 
     init: function(jsonDataFileName) {
 
       initSortButtons();
 
-      jsonData = $.getJSON(jsonDataFileName, function(data) {
-
+      $.getJSON(jsonDataFileName, function(data) {
         var names = $("#chart").data("chart-labels");
         chart = initChart(data, names);
       });
+    },
+
+    updateChart: function(code) {
+      // Persist the current index for sorting
+      // (this will rebuild the chart)
+      if (RTEI.theme.currentSort != 'name') {
+        sortByKey(RTEI.theme.currentIndex, RTEI.theme.currentSortDesc);
+      } else {
+        RTEI.charts.updateChart('theme', code);
+      }
     }
+
   }
 })();
 
@@ -94,7 +123,7 @@ $(document).ready(function(){
     if (RTEI.theme.currentIndex != this.value) {
       RTEI.theme.currentIndex = this.value;
     }
-    RTEI.charts.updateChart('theme', this.value);
+    RTEI.theme.updateChart(this.value);
   });
 
   RTEI.theme.init(jsonDataFileName);
