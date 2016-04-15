@@ -6,20 +6,18 @@
 
 {% block content %}
   <div class="main">
+    <section>
+      <h2>{% trans "Resources" %}</h2>
+      <p>
+        {% trans "Welcome to the resource library. For the most recent Right to Education Index resource see below or use the drop down menu to search filter resources by country, year, or subcategory." %}
+      </p>
+    </section>
 
     <section class="filter controls">
         {% include 'rtei/tags/resources_filter.html' %}
     </section>
 
     <section>
-      <h2>{{ self.title }}</h2>
-      {% if self.body %}
-      {{ self.body|richtext }}
-      {% else %}
-      <p>
-        {% trans "Welcome to the resource library. For the most recent Right to Education Index resource see below or use the drop down menu to search filter resources by country, year, or subcategory." %}
-      </p>
-      {% endif %}
       {% if not has_filter %}
           <h3>{% trans "All Resources" %}</h3>
       {% endif %}
