@@ -1,7 +1,68 @@
 var RTEI = RTEI || {}
 RTEI.country = (function() {
 
+  var baseChartConfig = {
+    bindto: '#chart',
+    data: {
+      json: null,
+      order: null,
+      /*
+       * You'll need to set up the following on each refresh:
+       *
+      keys: {
+          x: 'name',
+          value: ['1', '3', '2', '5', '4']
+      },
+      groups: [
+          ['1', '2', '3', '4', '5']
+      ],
+      */
+      type: 'bar'
+    },
+    axis: {
+      rotated: true,
+      x: {
+          type: 'category',
+          show: false,
+      },
+      y: {
+          show: true,
+          max: 100,
+          padding: {
+              top: 10,
+              bottom: 10,
+          }
+      }
+    },
+    bar: {
+        width: 32
+    },
+    tooltip: {
+      format: {
+        value: function (value, ratio, id, index) {
+          if (RTEI.country.chart.groups().length) {
+            return parseFloat((value * RTEI.country.chart.groups()[0].length).toFixed(2));
+          } else {
+            return value;
+          }
+        }
+      }
+    },
+    size: {
+      height: 150
+    },
+    padding: {
+      bottom: 10,
+      left: 5
+    },
+    transition: {
+      duration: 300
+    }
+  }
+
   return {
+
+    chart: null,
 
     currentIndex: null,
 
@@ -62,76 +123,10 @@ RTEI.country = (function() {
       }
     },
 
-    baseChartConfig: {
-      bindto: '#chart',
-      data: {
-        json: null,
-        order: null,
-        /*
-         * You'll need to set up the following on each refresh:
-         *
-        keys: {
-            x: 'name',
-            value: ['1', '3', '2', '5', '4']
-        },
-        groups: [
-            ['1', '2', '3', '4', '5']
-        ],
-        */
-
-        colors: {
-          1: '#c35727',
-          2: '#bdb831',
-          3: '#af1f2c',
-          4: '#357b9e',
-          5: '#469a8f',
-        },
-        type: 'bar'
-      },
-      axis: {
-        rotated: true,
-        x: {
-            type: 'category',
-            show: false,
-        },
-        y: {
-            show: true,
-            max: 100,
-            padding: {
-                top: 10,
-                bottom: 10,
-            }
-        }
-      },
-      bar: {
-          width: 32
-      },
-      tooltip: {
-        format: {
-          value: function (value, ratio, id, index) {
-            if (RTEI.country.chart.groups().length) {
-              return parseFloat((value * RTEI.country.chart.groups()[0].length).toFixed(2));
-            } else {
-              return value;
-            }
-          }
-        }
-      },
-      size: {
-        height: 150
-      },
-      padding: {
-        bottom: 10,
-        left: 5
-      },
-      transition: {
-        duration: 300
-      }
-    },
 
     initChart: function(jsonData, names) {
 
-      var config = RTEI.country.baseChartConfig;
+      var config = baseChartConfig;
       if (!config.data.json) {
         config.data.json= jsonData;
       }
@@ -162,7 +157,7 @@ RTEI.country = (function() {
 
     updateChart: function(code) {
       var chart = RTEI.country.chart;
-      var config = RTEI.country.baseChartConfig;
+      var config = baseChartConfig;
       var values = [];
 
       if (chart) {
