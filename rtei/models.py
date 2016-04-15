@@ -31,6 +31,18 @@ import logging
 log = logging.getLogger(__name__)
 
 
+def get_chart_labels(indicators, themes):
+    chart_labels = {}
+    for indicator in indicators:
+        chart_labels[indicator['code']] = indicator['title']
+        for subindicator in indicator['children']:
+            chart_labels[subindicator['code']] = subindicator['title']
+    for theme in themes:
+        for subtheme in theme['children']:
+            chart_labels['t' + subtheme['code']] = subtheme['title']
+    return chart_labels
+
+
 def get_map_context(context):
     '''
     In the map page we pass the level 1 and 2 indicators to the
@@ -138,21 +150,20 @@ def get_country_context(context, country_code):
         context['indicators'] = data.get_indicators()
         context['themes'] = data.get_themes()
 
-        chart_labels = {}
-        for indicator in context['indicators']:
-            chart_labels[indicator['code']] = indicator['title']
-            for subindicator in indicator['children']:
-                chart_labels[subindicator['code']] = subindicator['title']
-        for theme in context['themes']:
-            for subtheme in theme['children']:
-                chart_labels['t' + subtheme['code']] = subtheme['title']
-        context['chart_labels'] = json.dumps(chart_labels)
-
+        context['chart_labels'] = json.dumps(
+            get_chart_labels(context['indicators'], context['themes']))
 
     context['available_countries'] = OrderedDict(
         sorted({code: data.get_country_name(code) for code, c
                 in data.get_scores_per_country().iteritems()}.items(),
                key=lambda t: t[1]))
+
+
+def get_theme_context(context):
+    context['indicators'] = data.get_indicators()
+    context['themes'] = data.get_themes()
+    context['chart_labels'] = json.dumps(
+        get_chart_labels(context['indicators'], context['themes']))
 
 
 class RTEIPage(TranslationMixin, Page):
@@ -170,6 +181,8 @@ class RTEIPage(TranslationMixin, Page):
             get_map_context(context)
         elif self.slug == 'rtei-country':
             get_country_context(context, request.GET.get('id'))
+        elif self.slug == 'rtei-theme':
+            get_theme_context(context)
 
         return context
 
