@@ -42,13 +42,13 @@ $(document).ready(function() {
     } else {
       className = label;
     }
-    var templateClassName = '';
+    var templateClassNames = [];
     $.each($('body').attr('class').split(/\s+/), function(index, item) {
         if (item && item.substring(0, 8) == 'template') {
-            templateClassName = item;
+            templateClassNames.push(item);
         }
     });
-    $('body').attr('class', templateClassName + ' ' + className.toLowerCase().replace(' ', '_'));
+    $('body').attr('class', templateClassNames.join(' ') + ' ' + className.toLowerCase().replace(' ', '_'));
   });
 
   // slide
