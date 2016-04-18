@@ -286,7 +286,7 @@ If you haven't already done it, you need to create a `~/.transifexrc` file with 
     hostname = https://www.transifex.com
     username = YOUR_USERNAME
     password = YOUR_PASSWORD
-    token = 
+    token =
 
 To test that it's properly configured, run the following on the repo directory:
 
@@ -305,7 +305,12 @@ You should see something along these lines:
 
 New strings added to the source code that need to be translated must be regularly extracted and uploaded to Transifex.
 
+**Note**: This also includes strings in the original data! (eg Indicator titles or responses)
+
 To do so run the following:
+
+    # Extract translatable strings from data
+    ./build-data.py translation-strings
 
     # Extract strings from source code into po files (also keep the master pot file)
     ./manage.py makemessages --keep-pot
@@ -324,7 +329,7 @@ At this point the strings are available for translation on Transifex.
 Once the translators have finished workin on Transifex, update the source code translations with the following commands:
 
     # Pull strings from Transifex
-    tx pull 
+    tx pull
 
     # Compile strings catalogue, ie the locale/*.mo files (You need to restart the server after this)
     ./manage compilemessages
