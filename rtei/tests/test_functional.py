@@ -99,12 +99,6 @@ class SiteTestCase(WebTest):
         assert 'Partners' in page
 
     # TODO: check for something relevant once content is in place
-    def test_contact_us(self):
-        page = self.app.get('/en/contact-us/')
-
-        assert 'Contact Us' in page
-
-    # TODO: check for something relevant once content is in place
     def test_about_us(self):
         page = self.app.get('/en/about/')
 
