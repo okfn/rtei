@@ -16,10 +16,10 @@
     <a class="email" href="mailto:results@results.org">results@results.org</a>
   </div>
 
-  <p>To receive periodic updates and announcements on RTEI and its activies, please fill out and submit the following form:</p>
+  <p>{% trans "To receive periodic updates and announcements on RTEI and its activies, please fill out and submit the following form:" %}</p>
   <form method="post" accept-charset="utf-8" id="contact-form">
     {% csrf_token %}
     {{contact_form}}
-    <button type="submit">Submit</button>
+    <button type="submit">{% trans "Submit" %}</button>
   </form>
 {% endblock content_body %}

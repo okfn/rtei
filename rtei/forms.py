@@ -1,3 +1,4 @@
+from django.utils.translation import ugettext as _
 from django.core.mail import send_mail
 from django import forms
 
@@ -9,12 +10,12 @@ log = logging.getLogger(__name__)
 
 class ContactForm(forms.Form):
     contact_name = forms.CharField(
-        label='Name', max_length=100,
+        label=_('Name'), max_length=100,
         widget=forms.TextInput(attrs={'class': "short"}))
     contact_email = forms.EmailField(
-        label='Email', widget=forms.TextInput(attrs={'class': "short"}))
+        label=_('Email'), widget=forms.TextInput(attrs={'class': "short"}))
     contact_affiliation = forms.CharField(
-        label='Affiliation', max_length=256,
+        label=_('Affiliation'), max_length=256,
         widget=forms.TextInput(attrs={'class': "short"}))
 
     def save(self):
