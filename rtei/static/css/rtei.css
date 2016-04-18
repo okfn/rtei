@@ -598,6 +598,9 @@ picture {
   margin: 0;
   max-width: 100%; }
 
+.vcard {
+  margin: 0 0 0.75em; }
+
 html {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -1770,6 +1773,9 @@ body.adaptability .indicator-switcher > ul > li.subcat {
         display: block; }
         .filter.controls form > ul > li:hover > ul li:hover {
           background-color: #bfbfbe; }
+
+#contact-form .short {
+  width: 20em; }
 
 .template-blog-index .posts-list {
   background-color: inherit; }

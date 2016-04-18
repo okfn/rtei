@@ -8,9 +8,14 @@ log = logging.getLogger(__name__)
 
 
 class ContactForm(forms.Form):
-    contact_name = forms.CharField(label='Name', max_length=100)
-    contact_email = forms.EmailField(label='Email')
-    contact_affiliation = forms.CharField(label='Affiliation', max_length=256)
+    contact_name = forms.CharField(
+        label='Name', max_length=100,
+        widget=forms.TextInput(attrs={'class': "short"}))
+    contact_email = forms.EmailField(
+        label='Email', widget=forms.TextInput(attrs={'class': "short"}))
+    contact_affiliation = forms.CharField(
+        label='Affiliation', max_length=256,
+        widget=forms.TextInput(attrs={'class': "short"}))
 
     def save(self):
         message = '''A user has submitted the contact form with the following details:

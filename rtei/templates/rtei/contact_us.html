@@ -2,8 +2,22 @@
 
 {% block content_body %}
   <h2>{{ self.title }}</h2>
-  <p>To receive periodic updates and announcements on RTEI and its activies, please fill out and submit the following form.</p>
-  <form method="post" accept-charset="utf-8">
+
+  <div id="" class="vcard">
+    <div class="org">Right to Education Index</div>
+    <div>A Project of RESULTS Educational Fund</div>
+    <div class="adr">
+      <div class="street-address">1101 15th Street, NW</div>
+      <div class="extended-address">Suite 1200</div>
+      <div class="locality">Washington, DC <span class="postal-code">20005</span></div>
+    </div>
+    <br>
+    <div class="tel">+1 202-783-4800</div>
+    <a class="email" href="mailto:results@results.org">results@results.org</a>
+  </div>
+
+  <p>To receive periodic updates and announcements on RTEI and its activies, please fill out and submit the following form:</p>
+  <form method="post" accept-charset="utf-8" id="contact-form">
     {% csrf_token %}
     {{contact_form}}
     <button type="submit">Submit</button>
