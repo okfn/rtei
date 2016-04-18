@@ -1,4 +1,5 @@
 from django import template
+from django.utils.translation import ugettext as _
 
 from rtei.models import Page, RTEIAncillaryPage
 
@@ -78,7 +79,10 @@ def breadcrumbs(context):
 
 @register.filter
 def get_indicator_value(dictionary, code):
-    return dictionary.get(code, '')
+    value = dictionary.get(code, '')
+    if isinstance(value, basestring):
+        value = _(value)
+    return value
 
 
 @register.inclusion_tag('rtei/tags/indicators.html')
