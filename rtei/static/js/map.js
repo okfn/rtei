@@ -3,6 +3,8 @@ RTEI.map = (function() {
 
   var homepage = window.location.href.indexOf('explore/map') === -1;
 
+  var language = window.location.pathname.match(/^\/[a-zA-Z]{2}\//);
+
   // get color depending on the selected index
   function getColor(score) {
 
@@ -93,7 +95,7 @@ RTEI.map = (function() {
     }
     if (feature.properties.index) {
       content += ' <div class="country-name has-properties">' + feature.properties.name + '</div>';
-      content += ' <div class="more-details"><a href="/explore/rtei-country/?id=' + feature.properties.iso2 + '">Full country scores</a></div>';
+      content += ' <div class="more-details"><a href="' + language + 'explore/rtei-country/?id=' + feature.properties.iso2 + '">Full country scores</a></div>';
     } else {
       content += ' <div class="no country-score">No data available</div>';
       content += ' <div class="country-name">' + feature.properties.name + '</div>';
