@@ -3,6 +3,14 @@
 {% load i18n %}
 
 {% block content_body %}
+  {% if messages %}
+  <ul class="messages">
+      {% for message in messages %}
+      <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+      {% endfor %}
+  </ul>
+  {% endif %}
+
   <h2>{{ self.title }}</h2>
 
   <div id="" class="vcard">

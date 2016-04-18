@@ -3,12 +3,12 @@ import json
 from collections import OrderedDict
 
 from django.db import models
-
 from django.http import Http404
 from django.utils.translation import ugettext as _
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core.validators import RegexValidator
 from django.shortcuts import redirect
+from django.contrib import messages
 
 from wagtail.wagtailcore.models import Page, get_root_collection_id
 from wagtail.wagtailcore.fields import RichTextField
@@ -219,6 +219,8 @@ class RTEIAncillaryPage(TranslationMixin, Page):
             contact_form = ContactForm(request.POST)
             if contact_form.is_valid():
                 contact_form.save()
+                messages.success(
+                    request, _("Your contact details have been submitted."))
                 redirect(self.url)
 
         return super(RTEIAncillaryPage, self).serve(request)
