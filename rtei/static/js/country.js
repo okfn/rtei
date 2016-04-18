@@ -103,7 +103,10 @@ $(document).ready(function(){
     // Set up country selector
     $('#available-countries').on('change', function(){
       if (this.value) {
-        window.location = '/explore/rtei-country?id=' + this.value;
+        var language = window.location.pathname.match(/^\/[a-zA-Z]{2}\//);
+        var path = 'explore/rtei-country?id=' + this.value;
+        path = (language) ? language + path : '/' + path;
+        window.location = path;
       }
     });
 
