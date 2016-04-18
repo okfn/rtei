@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rtei\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-18 12:01+0000\n"
+"POT-Creation-Date: 2016-04-15 15:36+0000\n"
 "PO-Revision-Date: 2016-02-18 11:39+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Arabic (http://www.transifex.com/okfn/rtei/language/ar/)\n"
@@ -18,23 +18,23 @@ msgstr ""
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
-#: rtei/models.py:110
+#: rtei/models.py:136
 msgid "No data available for this country"
 msgstr ""
 
-#: rtei/settings/base.py:129 rtei/templates/base.html.py:68
+#: rtei/settings/base.py:128
 msgid "English"
 msgstr ""
 
-#: rtei/settings/base.py:130 rtei/templates/base.html.py:74
+#: rtei/settings/base.py:129
 msgid "French"
 msgstr ""
 
-#: rtei/settings/base.py:131 rtei/templates/base.html.py:71
+#: rtei/settings/base.py:130
 msgid "Spanish"
 msgstr ""
 
-#: rtei/settings/base.py:132 rtei/templates/base.html.py:77
+#: rtei/settings/base.py:131
 msgid "Arabic"
 msgstr ""
 
@@ -46,68 +46,585 @@ msgstr ""
 msgid "Glossary"
 msgstr ""
 
-#: rtei/templates/rtei/homepage.html:19
-msgid ""
-"A global index to catalyze reform across select indicators of the right to "
-"education."
+#: rtei/templates/rtei/blog_index_page.html:10
+msgid "Showing posts tagged as"
 msgstr ""
 
-#: rtei/templates/rtei/homepage.html:20
+#: rtei/templates/rtei/blog_index_page.html:10
+msgid "Show all"
+msgstr ""
+
+#: rtei/templates/rtei/blog_index_page.html:19
+msgid "No posts found"
+msgstr ""
+
+#: rtei/templates/rtei/blog_index_page.html:28
+#: rtei/templates/rtei/resources.html:77
+#: search/templates/search/search.html:36
+msgid "Previous"
+msgstr ""
+
+#: rtei/templates/rtei/blog_index_page.html:32
+#: rtei/templates/rtei/resources.html:81
+msgid "Page"
+msgstr ""
+
+#: rtei/templates/rtei/blog_index_page.html:36
+#: rtei/templates/rtei/resources.html:85
+#: search/templates/search/search.html:40
+msgid "Next"
+msgstr ""
+
+#: rtei/templates/rtei/homepage.html:18
+msgid "Education for Everyone. Everywhere"
+msgstr ""
+
+#: rtei/templates/rtei/homepage.html:19
+msgid ""
+"A global accountability initiative to ensure that all people, no matter "
+"where they live, can enjoy their right to a quality education."
+msgstr ""
+
+#: rtei/templates/rtei/homepage.html:32 rtei/templates/rtei/map.html.py:16
 msgid "Explore the Map"
 msgstr ""
 
-#: rtei/templates/rtei/homepage.html:33
-msgid "RTEI by Year"
-msgstr ""
-
-#: rtei/templates/rtei/homepage.html:35 rtei/templates/rtei/homepage.html:45
-#: rtei/templates/rtei/homepage.html:55 rtei/templates/rtei/homepage.html:65
+#: rtei/templates/rtei/homepage.html:34
 msgid ""
-"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur velit "
-"massa, tempor eget aliquam in."
+"View maps illustrating national progress on the right to education around "
+"the world."
 msgstr ""
 
-#: rtei/templates/rtei/homepage.html:43
+#: rtei/templates/rtei/homepage.html:42 rtei/templates/rtei/rtei_theme.html:15
+msgid "RTEI by Theme"
+msgstr ""
+
+#: rtei/templates/rtei/homepage.html:44
+msgid "Evaluate various themes and issues in the right to education."
+msgstr ""
+
+#: rtei/templates/rtei/homepage.html:52
+#: rtei/templates/rtei/rtei_country.html:19
 msgid "RTEI by Country"
 msgstr ""
 
-#: rtei/templates/rtei/homepage.html:53
-msgid "RTEI over Time"
+#: rtei/templates/rtei/homepage.html:54
+msgid "Explore progress on the right to education in individual countries."
 msgstr ""
 
-#: rtei/templates/rtei/homepage.html:63
+#: rtei/templates/rtei/homepage.html:62
 msgid "Download the Data"
 msgstr ""
 
-#: rtei/templates/rtei/rtei_country.html:63
-msgid "Select a country ..."
+#: rtei/templates/rtei/homepage.html:64
+msgid ""
+"Download the data that makes up the Right to Education Index. Available in "
+"Excel format"
 msgstr ""
 
-#: rtei/templates/rtei/rtei_country.html:76
+#: rtei/templates/rtei/map.html:18
+msgid ""
+"Compare countries around the world. Use the pull down menu to select the the "
+"subtheme under governance, accessibility, availability, acceptability, or "
+"adaptability or choose a targeted theme."
+msgstr ""
+
+#: rtei/templates/rtei/map.html:33 rtei/templates/rtei/rtei_country.html:52
+#: rtei/templates/rtei/tags/switcher.html:6
 msgid "Overall Index"
 msgstr ""
 
-#: rtei/templates/rtei/tags/map_switcher.html:10
+#: rtei/templates/rtei/map.html:35
+#: rtei/templates/rtei/tags/indicator_descriptions.html:31
+msgid ""
+"The overall index score is a general indication of progress towards the "
+"right to education in a country."
+msgstr ""
+
+#: rtei/templates/rtei/map.html:45
+msgid "RTEI Score"
+msgstr ""
+
+#: rtei/templates/rtei/map.html:65
+msgid "Toward the right to education being absent."
+msgstr ""
+
+#: rtei/templates/rtei/map.html:67
+msgid ""
+"Toward the right to education being respected, protected, and fullfilled."
+msgstr ""
+
+#: rtei/templates/rtei/resources.html:10
+msgid "Resources"
+msgstr ""
+
+#: rtei/templates/rtei/resources.html:12
+msgid ""
+"Welcome to the resource library. For the most recent Right to Education "
+"Index resource see below or use the drop down menu to search filter "
+"resources by country, year, or subcategory."
+msgstr ""
+
+#: rtei/templates/rtei/resources.html:22
+msgid "All Resources"
+msgstr ""
+
+#: rtei/templates/rtei/resources.html:25
+msgid "No resources found that match the selected filters"
+msgstr ""
+
+#: rtei/templates/rtei/rtei_country.html:21
+msgid ""
+"Explore progress on the right to education in individual countries. Use the "
+"pull down menu to select a country and download the completed country "
+"questionnaire."
+msgstr ""
+
+#: rtei/templates/rtei/rtei_country.html:27
+msgid "Export all"
+msgstr ""
+
+#: rtei/templates/rtei/rtei_country.html:33
+msgid "Select a country ..."
+msgstr ""
+
+#: rtei/templates/rtei/rtei_theme.html:17
+msgid ""
+"Evaluate various themes and issues in the right to education. Use the pull "
+"down menu to select a theme and sort results by country name or score."
+msgstr ""
+
+#: rtei/templates/rtei/rtei_theme.html:25
+msgid "Overall Score"
+msgstr ""
+
+#: rtei/templates/rtei/rtei_theme.html:28
+msgid "Sort by Name"
+msgstr ""
+
+#: rtei/templates/rtei/rtei_theme.html:28
+msgid "Sort by Total Score"
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:5
+msgid "Index Score"
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:6
+msgid "Governance"
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:7
+msgid "International Framework"
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:8
+msgid "Domestic Law"
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:9
+msgid "Plan of Action"
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:10
+msgid "Monitoring and Reporting"
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:11
+msgid "Data Availability"
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:12
+msgid "Availability"
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:13
+msgid "Classrooms"
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:14
+msgid "Sanitation"
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:15
+msgid "Teachers"
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:16
+msgid "Textbooks"
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:17
+msgid "Accessibility"
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:18
+msgid "Free Education"
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:19
+msgid "Discrimination"
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:20
+msgid "Participation"
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:21
+msgid "Acceptability"
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:22
+msgid "Aims of Education"
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:23
+msgid "Learning Environment"
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:24
+msgid "Learning Outcomes"
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:25
+msgid "Adaptability"
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:26
+msgid "Children with Disabilities"
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:27
+msgid "Children of Minorities"
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:28
+msgid "Out of School Education"
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:32
+msgid ""
+"The legal structure of education in a State. This includes State "
+"ratification of international declarations or treaties, education financing, "
+"and education standards and regulations."
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:33
+msgid ""
+"Indicates whether a country has ratified international and regional treaties "
+"associated with the right to education."
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:34
+msgid ""
+"Indicates whether the right to education at all levels in enshrined in "
+"national law and whether individuals have the liberty to direct the "
+"education of their children."
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:35
+msgid ""
+"Indicates whether a national education plan that aims for free and "
+"compulsory primary education is in place and whether their are targeted "
+"dates for its implementation."
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:36
+msgid "Indicates minimal education standards, monitoring, and data collection."
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:37
+msgid ""
+"Indicates the average percent of available data for each area examined by "
+"RTEI."
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:38
+msgid ""
+"The number of educational institutions available and the condition of such "
+"institutions. "
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:39
+msgid "Indicates the realtive availability of classroom in primary schools."
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:40
+msgid "Indicates whether primary schools have toilets and potable water."
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:41
+msgid ""
+"Indicates whether primary school teachers are appropriately trained and the "
+"pupil per trained teacher ratio."
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:42
+msgid "Indicates the relative availability of textbooks."
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:43
+msgid ""
+"Whether available institutions are accessible to all students regardless of "
+"their socio-economic, familial, or demographic status. "
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:44
+msgid "Indicates whether primary education is free in law and in practice."
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:45
+msgid ""
+"Indicates whether discrimination of vulnerable populations, such as pregnant "
+"girls and migrant students, are prohibited in law."
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:46
+msgid ""
+"Indicates whether students are enrolling and completing school and whether "
+"participation in equitible."
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:47
+msgid ""
+"The quality of education made available. This moves beyond learning outcomes "
+"to also capture the cultural relevance and security of the educational "
+"environment as well as the aims and content of education. "
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:48
+msgid ""
+"Indicates whether laws, curriculum, teacher training, and textbook "
+"monitoring align with the aims of education laid out in the international "
+"right to education framework."
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:49
+msgid ""
+"Indicates whether learning environments are free from violence and abuse, "
+"including corporal punishment."
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:50
+msgid ""
+"Indicates student passage rate on national assessments/exams and national "
+"literacy rates."
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:51
+msgid ""
+"The ability of education to be flexible in meeting the needs of a diverse "
+"range of students. "
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:52
+msgid ""
+"Indicates whether the right to education for children with disabilities is "
+"protected in law and accomodations for children with disabilities are made "
+"in practice."
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:53
+msgid ""
+"Indicates whether education has been adapted to meet the needs of children "
+"of minorities, including children of nomads and students with a different "
+"mother tongue."
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:54
+msgid ""
+"Indicates whether education is available in other circumstances outside of "
+"formal schooling, including in retention centers/camps and prisons."
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:56
+msgid "Overall State of Girls Education"
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:57
+#: rtei/templates/rtei/tags/indicator_descriptions.html:61
+msgid "Discriminatory Environment"
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:58
+msgid "Structure and Support for Children with Disabilities"
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:59
+msgid "Participation and Achievement for Children with Disabilities"
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:60
+msgid "Overall State of Education for Children with Disabilities"
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:62
+msgid "Private Education Legal Environment"
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:63
+msgid "Content of Teacher Training"
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:64
+msgid "Content of Curriculum"
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:65
+msgid "Stregnth of Monitoring and Accountability"
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:66
+msgid "National Normative Framework"
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:67
+msgid "Legal Restrictions in Opportunity and Indirect Costs"
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:68
+msgid "Opportunity and Indirect Costs in Practice"
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:70
+msgid "Indicates the general state of girls education in a country."
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:71
+msgid ""
+"Indicates the extent to which the legal environment prohibits the "
+"discrimination of girls in a country."
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:72
+msgid ""
+"Indicates the extent to which a country provides a legal structure and "
+"corresponding support for children with a disability. "
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:73
+msgid ""
+"Indicates the participation and achievement levels of children with "
+"disabilities."
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:74
+msgid ""
+"Indicates the general state of education for children with disabilities."
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:75
+msgid ""
+"Indicates the extent to which the legal environment prohibits the "
+"discrimination of indigenous and minority populations in a country."
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:76
+msgid ""
+"Indicates whether the legal environment allows the establishment of private "
+"schools and private choice."
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:77
+msgid ""
+"Indicates the extent to which the aims of education are incorporated into "
+"the required teacher training."
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:78
+msgid ""
+"Indicates whether the national curriculum includes subjects and themes "
+"outlined in the international right to education framework."
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:79
+msgid ""
+"Indicates an important, but not exhaustive, measure of government oversight "
+"for the educational system by providing a measure that captures the legal "
+"framework."
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:80
+msgid ""
+"Indicates whether the legal structure necessary to fulfill and facilitate "
+"the right to education in a country is present."
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:81
+msgid ""
+"Indicates whether the legal environment encourages children to attend school "
+"by reducing indirect or opportunity costs"
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:82
+msgid ""
+"Indicates whether opportunity and indirect costs are present in practice."
+msgstr ""
+
+#: rtei/templates/rtei/tags/resources_filter.html:6
+msgid "Years"
+msgstr ""
+
+#: rtei/templates/rtei/tags/resources_filter.html:7
+#: rtei/templates/rtei/tags/resources_filter.html:22
+#: rtei/templates/rtei/tags/resources_filter.html:37
+#: rtei/templates/rtei/tags/switcher.html:16
 msgid "Sub-categories"
+msgstr ""
+
+#: rtei/templates/rtei/tags/resources_filter.html:10
+msgid "All Years"
+msgstr ""
+
+#: rtei/templates/rtei/tags/resources_filter.html:21
+msgid "Countries"
+msgstr ""
+
+#: rtei/templates/rtei/tags/resources_filter.html:25
+msgid "All Countries"
+msgstr ""
+
+#: rtei/templates/rtei/tags/resources_filter.html:36
+msgid "Categories"
+msgstr ""
+
+#: rtei/templates/rtei/tags/resources_filter.html:40
+msgid "All Collections"
+msgstr ""
+
+#: rtei/templates/rtei/tags/resources_filter.html:51
+msgid "Apply Filters"
+msgstr ""
+
+#: rtei/templates/rtei/tags/top_menu.html:12
+msgid "Show navigation"
+msgstr ""
+
+#: rtei/templates/rtei/tags/top_menu.html:13
+msgid "Hide navigation"
+msgstr ""
+
+#: rtei/templates/rtei/tags/top_menu.html:17
+msgid "Show search"
+msgstr ""
+
+#: rtei/templates/rtei/tags/top_menu.html:18
+msgid "Hide search"
 msgstr ""
 
 #: rtei/templates/rtei/tags/top_menu.html:21
 msgid "Search…"
 msgstr ""
 
-#: search/templates/search/search.html:6 search/templates/search/search.html:9
-#: search/templates/search/search.html:13
+#: rtei/templates/rtei/tags/top_menu.html:24
+#: search/templates/search/search.html:6
 msgid "Search"
 msgstr ""
 
-#: search/templates/search/search.html:29
-msgid "Previous"
+#: search/templates/search/search.html:21
+msgid "Search Results"
 msgstr ""
 
-#: search/templates/search/search.html:33
-msgid "Next"
-msgstr ""
-
-#: search/templates/search/search.html:36
+#: search/templates/search/search.html:43
 msgid "No results found"
 msgstr ""
