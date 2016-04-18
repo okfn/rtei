@@ -38,6 +38,10 @@ SCHOOL_TYPES = {
     'b': 'Secondary schools',
     'c': 'TVET',
     'd': 'Tertiary schools',
+    'e': 'Private Primary schools',
+    'f': 'Private Secondary schools',
+    'g': 'Private TVET',
+    'h': 'Private Tertiary schools',
 }
 
 # Excel handler
