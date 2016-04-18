@@ -311,7 +311,7 @@ To do so run the following:
     ./manage.py makemessages --keep-pot
 
     # Upload to Transifex
-    tx push -s -t
+    tx push -s -t --skip
 
     #Commit new po files
     git commit -am "Update translation files with new strings"
