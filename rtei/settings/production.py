@@ -27,6 +27,8 @@ ALLOWED_HOSTS = [
     'rtei.herokuapp.com'
 ]
 
+RTEI_CONTACT_FORM_EMAIL = os.environ.get('RTEI_CONTACT_FORM_EMAIL')
+
 try:
     from .local import *
 except ImportError:

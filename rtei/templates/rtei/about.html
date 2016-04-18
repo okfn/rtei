@@ -11,8 +11,10 @@
     </section>
 
     <section>
+    {% block content_body %}
       <h2>{{ self.title }}</h2>
       {{ self.body|richtext }}
+    {% endblock content_body %}
     </section>
   </div>
 {% endblock %}

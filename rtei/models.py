@@ -8,6 +8,7 @@ from django.http import Http404
 from django.utils.translation import ugettext as _
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core.validators import RegexValidator
+from django.shortcuts import redirect
 
 from wagtail.wagtailcore.models import Page, get_root_collection_id
 from wagtail.wagtailcore.fields import RichTextField
@@ -26,6 +27,7 @@ from modelcluster.tags import ClusterTaggableManager
 from taggit.models import TaggedItemBase
 
 from rtei import data
+from rtei.forms import ContactForm
 
 import logging
 log = logging.getLogger(__name__)
@@ -198,11 +200,34 @@ class RTEIAncillaryPage(TranslationMixin, Page):
 
     body = RichTextField(blank=True)
 
-    template = "rtei/about.html"
-
     content_panels = Page.content_panels + [
         FieldPanel('body', classname="full")
     ]
+
+    def get_context(self, request):
+        context = super(RTEIAncillaryPage, self).get_context(request)
+        if self.slug == 'contact-us':
+            if request.method == 'POST':
+                contact_form = ContactForm(request.POST)
+            else:
+                contact_form = ContactForm()
+            context['contact_form'] = contact_form
+        return context
+
+    def serve(self, request):
+        if self.slug == 'contact-us' and request.method == 'POST':
+            contact_form = ContactForm(request.POST)
+            if contact_form.is_valid():
+                contact_form.save()
+                redirect(self.url)
+
+        return super(RTEIAncillaryPage, self).serve(request)
+
+    def get_template(self, request, *args, **kwargs):
+        if self.slug == 'contact-us':
+            return "rtei/contact_us.html"
+        else:
+            return "rtei/about.html"
 
 
 class ResourceIndexPage(TranslationMixin, Page):
