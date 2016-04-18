@@ -34,12 +34,12 @@ log = logging.getLogger(__name__)
 def get_chart_labels(indicators, themes):
     chart_labels = {}
     for indicator in indicators:
-        chart_labels[indicator['code']] = indicator['title']
+        chart_labels[indicator['code']] = _(indicator['title'])
         for subindicator in indicator['children']:
-            chart_labels[subindicator['code']] = subindicator['title']
+            chart_labels[subindicator['code']] = _(subindicator['title'])
     for theme in themes:
         for subtheme in theme['children']:
-            chart_labels['t' + subtheme['code']] = subtheme['title']
+            chart_labels['t' + subtheme['code']] = _(subtheme['title'])
     return chart_labels
 
 
