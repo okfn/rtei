@@ -39,7 +39,7 @@ RTEI requires the following values to be present in the settings file.
 
 ```python
 # Email to receive contact requests from the form on /about/contact-us/
-RTEI_CONTACT_FORM_EMAIL = contact_form@example.com
+RTEI_CONTACT_FORM_EMAIL = 'contact_form@example.com'
 ```
 
 # Notes for development
