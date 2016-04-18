@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-18 12:51+0000\n"
+"POT-Creation-Date: 2016-04-18 13:43+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -220,7 +220,8 @@ msgid "International Framework"
 msgstr ""
 
 #: rtei/templates/rtei/tags/indicator_descriptions.html:8
-msgid "Domestic Law"
+#: rtei/translation_strings.py:100
+msgid "National Law"
 msgstr ""
 
 #: rtei/templates/rtei/tags/indicator_descriptions.html:9
@@ -464,6 +465,7 @@ msgstr ""
 
 #: rtei/templates/rtei/tags/indicator_descriptions.html:57
 #: rtei/templates/rtei/tags/indicator_descriptions.html:61
+#: rtei/translation_strings.py:601 rtei/translation_strings.py:602
 msgid "Discriminatory Environment"
 msgstr ""
 
@@ -484,10 +486,12 @@ msgid "Private Education Legal Environment"
 msgstr ""
 
 #: rtei/templates/rtei/tags/indicator_descriptions.html:63
+#: rtei/translation_strings.py:608
 msgid "Content of Teacher Training"
 msgstr ""
 
 #: rtei/templates/rtei/tags/indicator_descriptions.html:64
+#: rtei/translation_strings.py:599
 msgid "Content of Curriculum"
 msgstr ""
 
@@ -505,6 +509,7 @@ msgid "Legal Restrictions in Opportunity and Indirect Costs"
 msgstr ""
 
 #: rtei/templates/rtei/tags/indicator_descriptions.html:68
+#: rtei/translation_strings.py:606
 msgid "Opportunity and Indirect Costs in Practice"
 msgstr ""
 
@@ -1064,10 +1069,6 @@ msgstr ""
 
 #: rtei/translation_strings.py:99 rtei/translation_strings.py:613
 msgid "Do national laws protect the right to higher education/university?"
-msgstr ""
-
-#: rtei/translation_strings.py:100
-msgid "National Law"
 msgstr ""
 
 #: rtei/translation_strings.py:102 rtei/translation_strings.py:125
@@ -2429,39 +2430,23 @@ msgid "Private Education"
 msgstr ""
 
 #: rtei/translation_strings.py:598
-msgid "Structure and support"
-msgstr ""
-
-#: rtei/translation_strings.py:599
-msgid "Content of curriculum"
+msgid "Structure and Support"
 msgstr ""
 
 #: rtei/translation_strings.py:600
-msgid "Overall state of girls' education"
-msgstr ""
-
-#: rtei/translation_strings.py:601 rtei/translation_strings.py:602
-msgid "Discriminatory environment"
+msgid "Overall State of Girls' Education"
 msgstr ""
 
 #: rtei/translation_strings.py:603
-msgid "Strength of monitoring and accountability"
+msgid "Strength of Monitoring and Accountability"
 msgstr ""
 
 #: rtei/translation_strings.py:605
-msgid "Legal restrictions in opportunity and indirect costs"
-msgstr ""
-
-#: rtei/translation_strings.py:606
-msgid "Opportunity and indirect costs in practice"
+msgid "Legal Restrictions in Opportunity and Indirect costs"
 msgstr ""
 
 #: rtei/translation_strings.py:607
-msgid "Private education legal environment"
-msgstr ""
-
-#: rtei/translation_strings.py:608
-msgid "Content of teacher training"
+msgid "Private education Legal Environment"
 msgstr ""
 
 #: rtei/translation_strings.py:612
