@@ -16,7 +16,6 @@ def get_site_root(context):
     return context['request'].site.root_page
 
 
-@register.assignment_tag()
 def has_menu_children(page):
 
     return page.get_children().live().in_menu().exists()
@@ -42,7 +41,7 @@ def top_menu(context, parent, calling_page=None):
         # engine can pass an empty string to calling_page
         # if the variable passed as calling_page does not exist.
         menu_item.active = (calling_page.url.startswith(menu_item.url)
-                            if calling_page else False)
+                           if calling_page else False)
         menu_items.append(menu_item)
 
     return {
@@ -138,7 +137,7 @@ def about_menu(context, parent, calling_page=None):
         menu_item = base_menu_item.specific
 
         menu_item.active = (calling_page.url.startswith(menu_item.url)
-                            if calling_page else False)
+                           if calling_page else False)
 
         menu_items.append(menu_item)
     return {
