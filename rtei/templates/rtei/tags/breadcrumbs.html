@@ -1,13 +1,13 @@
-{% load wagtailcore_tags %}
+{% load wagtailcore_tags rtei_tags %}
 
 {% if ancestors %}
 <div class="breadcrumb">
   <ol>
     {% for ancestor in ancestors %}
       {% if forloop.last %}
-        <li class="active"><h1>{{ ancestor }}</h1></li>
+        <li class="active"><h1>{% translated_field ancestor 'title' language %}</h1></li>
       {% else %}
-        <li><a href="{% pageurl ancestor %}">{{ ancestor }}</a></li>
+        <li><a href="{% pageurl ancestor %}">{% translated_field ancestor 'title' language %}</a></li>
       {% endif %}
     {% endfor %}
   </ol>
