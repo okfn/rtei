@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rtei\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-19 10:06+0000\n"
+"POT-Creation-Date: 2016-04-19 10:14+0000\n"
 "PO-Revision-Date: 2016-04-18 14:18+0000\n"
 "Last-Translator: Adrià Mercader <adria.mercader@okfn.org>\n"
 "Language-Team: Spanish (http://www.transifex.com/okfn/rtei/language/es/)\n"
@@ -257,6 +257,10 @@ msgstr "Ordenar por Nombre"
 #: rtei/templates/rtei/rtei_theme.html:28
 msgid "Sort by Total Score"
 msgstr "Ordenar por Puntuación"
+
+#: rtei/templates/rtei/tags/blog_list_item.html:29
+msgid "Read more"
+msgstr ""
 
 #: rtei/templates/rtei/tags/indicator_descriptions.html:5
 msgid "Index Score"
