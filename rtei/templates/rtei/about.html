@@ -6,9 +6,12 @@
 
 {% block content %}
   <div class="main">
+    {% has_menu_children self as children %}
+    {% if children %}
     <section class="navigation controls">
       {% about_menu parent=site_root calling_page=self %}
     </section>
+    {% endif %}
 
     <section>
     {% block content_body %}
