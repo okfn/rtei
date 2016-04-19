@@ -1,6 +1,8 @@
 from __future__ import unicode_literals
+import sys
 import json
 from collections import OrderedDict
+from smtplib import SMTPException
 
 from django.db import models
 from django.http import Http404
@@ -218,9 +220,22 @@ class RTEIAncillaryPage(TranslationMixin, Page):
         if self.slug == 'contact-us' and request.method == 'POST':
             contact_form = ContactForm(request.POST)
             if contact_form.is_valid():
-                contact_form.save()
-                messages.success(
-                    request, _("Your contact details have been submitted."))
+                try:
+                    contact_form.save()
+                except SMTPException as e:
+                    messages.error(
+                        request,
+                        _('There was a problem submitting your contact details.'))
+                    log.error('Internal Server Error: %s', request.path,
+                              exc_info=sys.exc_info(),
+                              extra={
+                                'status_code': 500,
+                                'request': request
+                              })
+                else:
+                    messages.success(
+                        request,
+                        _("Your contact details have been submitted."))
                 redirect(self.url)
 
         return super(RTEIAncillaryPage, self).serve(request)
