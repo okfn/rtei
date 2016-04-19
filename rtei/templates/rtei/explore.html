@@ -2,23 +2,10 @@
 
 {% load wagtailcore_tags %}
 
-{% block body_class %}template-rtei{% endblock %}
+{% block body_class %}template-home{% endblock %}
 
 {% block content %}
   <div class="main">
-    <h1>Hi!</h1>
-
-    <p>
-        You are now on: {{ self.title }}
-    </p>
-
-    <p>
-        If this page has a body, here it is:
-    </p>
-
-    <div>
-        {{ self.body|richtext }}
-    </div>
+    {% include 'rtei/tags/explore_list.html' %}
   </div>
-
 {% endblock %}
