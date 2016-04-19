@@ -9,6 +9,8 @@ from wagtail.wagtailcore import urls as wagtail_urls
 
 from search import views as search_views
 
+from rtei import views as rtei_views
+
 
 urlpatterns = [
     url(r'^django-admin/', include(admin.site.urls)),
@@ -27,6 +29,10 @@ urlpatterns += i18n_patterns('',
 
     url(r'', include(wagtail_urls)),
 )
+
+urlpatterns += [
+    url(r'^documents/data/latest/', rtei_views.latest_document, name="latest_document")
+]
 
 
 if settings.DEBUG:

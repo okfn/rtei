@@ -24,7 +24,7 @@
     {% endif %}
 
     {% if country_code %}
-      <button class="export">{% trans "Export all" %}</button>
+    <form action="{% url 'latest_document' %}" method="get" accept-charset="utf-8"><button class="export">{% trans "Export all" %}</button></form>
     {% endif %}
 
       <div class="select">

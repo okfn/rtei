@@ -354,6 +354,9 @@ class RteiDocument(AbstractDocument):
         'tags'
     )
 
+    class Meta:
+        get_latest_by = "created_at"
+
 
 class BlogIndexPage(TranslationMixin, Page):
 

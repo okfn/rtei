@@ -28,6 +28,7 @@ ALLOWED_HOSTS = [
     'rtei.herokuapp.com'
 ]
 
+# Email to receive contact requests from the form on /about/contact-us/
 RTEI_CONTACT_FORM_EMAIL = os.environ.get('RTEI_CONTACT_FORM_EMAIL')
 
 EMAIL_HOST = os.environ.get('EMAIL_HOST')
