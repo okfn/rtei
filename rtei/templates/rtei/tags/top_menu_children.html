@@ -1,6 +1,6 @@
 {% load rtei_tags wagtailcore_tags %}
 <ul class="dropdown-menu">
-    {% for child in menuitems_children %}
-        <li><a href="{% pageurl child %}">{{ child.title }}</a></li>
+    {% for child in menu_items_children %}
+      <li><a href="{% pageurl child %}">{% translated_field child 'title' language %}</a></li>
     {% endfor %}
 </ul>

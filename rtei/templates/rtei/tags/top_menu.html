@@ -29,13 +29,14 @@
             </div>
 
             <ul role="navigation">
-              {% for menuitem in menuitems %}
-              <li class="{% if menuitem.show_dropdown %}dropdown{% endif %}{% if menuitem.active %} active{% endif %}">
-                {% if menuitem.show_dropdown %}
-              <a data-toggle="dropdown" class="dropdown-toggle" href="#">{{ menuitem.title }} <b class="caret"></b></a>
-                {% top_menu_children parent=menuitem %}
+              {% for menu_item in menu_items %}
+              <li class="{% if menu_item.show_dropdown %}dropdown{% endif %}{% if menu_item.active %} active{% endif %}">
+                {% if menu_item.show_dropdown %}
+              <a data-toggle="dropdown" class="dropdown-toggle" href="#">{% translated_field menu_item 'title' language %} <b class="caret"></b></a>
+
+                {% top_menu_children parent=menu_item %}
                 {% else %}
-              <a href="{% pageurl menuitem %}">{{ menuitem.title }}</a>
+              <a href="{% pageurl menu_item %}">{% translated_field menu_item 'title' language %}</a>
                 {% endif %}
               </li>
               {% endfor %}

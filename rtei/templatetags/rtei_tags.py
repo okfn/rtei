@@ -1,5 +1,5 @@
 from django import template
-from django.utils.translation import ugettext as _
+from django.utils.translation import ugettext as _, get_language
 
 from rtei.models import Page, RTEIAncillaryPage
 
@@ -27,36 +27,41 @@ def has_menu_children(page):
 @register.inclusion_tag('rtei/tags/top_menu.html', takes_context=True)
 def top_menu(context, parent, calling_page=None):
 
-    menuitems = parent.get_children().live().in_menu()
+    base_menu_items = parent.get_children().live().in_menu()
+    menu_items = []
+    for base_menu_item in base_menu_items:
+        menu_item = base_menu_item.specific
 
-    for menuitem in menuitems:
         # Don't show dropdown of children for About item.
-        if menuitem.specific_class is RTEIAncillaryPage:
-            menuitem.show_dropdown = False
+        if menu_item.specific_class is RTEIAncillaryPage:
+            menu_item.show_dropdown = False
         else:
-            menuitem.show_dropdown = has_menu_children(menuitem)
+            menu_item.show_dropdown = has_menu_children(menu_item)
         # We don't directly check if calling_page is None since the template
         # engine can pass an empty string to calling_page
         # if the variable passed as calling_page does not exist.
-        menuitem.active = (calling_page.url.startswith(menuitem.url)
+        menu_item.active = (calling_page.url.startswith(menu_item.url)
                            if calling_page else False)
+        menu_items.append(menu_item)
+
     return {
         'calling_page': calling_page,
-        'menuitems': menuitems,
+        'menu_items': menu_items,
         # required by the pageurl tag that we want to use within this template
         'request': context['request'],
+        'language': get_language(),
     }
 
 
 # Retrieves the children of the top menu items for the drop downs
 @register.inclusion_tag('rtei/tags/top_menu_children.html', takes_context=True)
 def top_menu_children(context, parent):
-    menuitems_children = parent.get_children().specific()
+    menu_items_children = parent.get_children().specific()
 
-    menuitems_children = menuitems_children.live().in_menu()
+    menu_items_children = menu_items_children.live().in_menu()
     return {
         'parent': parent,
-        'menuitems_children': menuitems_children,
+        'menu_items_children': menu_items_children,
         # required by the pageurl tag that we want to use within this template
         'request': context['request'],
     }
@@ -123,14 +128,27 @@ def about_menu(context, parent, calling_page=None):
     else:
         about_root = calling_page
 
-    menuitems = about_root.get_children().live().in_menu()
+    base_menu_items = about_root.get_children().live().in_menu()
+    menu_items = []
+    for base_menu_item in base_menu_items:
+        menu_item = base_menu_item.specific
 
-    for menuitem in menuitems:
-        menuitem.active = (calling_page.url.startswith(menuitem.url)
+        menu_item.active = (calling_page.url.startswith(menu_item.url)
                            if calling_page else False)
+
+        menu_items.append(menu_item)
     return {
         'calling_page': calling_page,
-        'menuitems': menuitems,
+        'menu_items': menu_items,
         # required by the pageurl tag that we want to use within this template
         'request': context['request'],
     }
+
+
+@register.assignment_tag()
+def translated_field(obj, field, lang):
+    if lang != 'en':
+        field_name = '{0}_{1}'.format(field, lang)
+        if hasattr(obj, field_name) and getattr(obj, field_name):
+            return getattr(obj, field_name)
+    return getattr(obj, field, '')

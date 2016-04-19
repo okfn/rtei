@@ -1,9 +1,9 @@
-{% load wagtailcore_tags %}
+{% load rtei_tags wagtailcore_tags %}
 
 <div class="about-menu">
 <ul>
-{% for menuitem in menuitems %}
-    <li><a {% if menuitem.active %}class="active" {% endif %}href="{% pageurl menuitem %}">{{ menuitem.title }}</a></li>
+{% for menu_item in menu_items %}
+    <li><a {% if menu_item.active %}class="active" {% endif %}href="{% pageurl menu_item %}">{% translated_field menu_item 'title' language %}</a></li>
 {% endfor %}
 </ul>
 </div>
