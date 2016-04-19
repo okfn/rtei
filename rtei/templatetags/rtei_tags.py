@@ -45,8 +45,6 @@ def top_menu(context, parent, calling_page=None):
                             if calling_page else False)
         menu_items.append(menu_item)
 
-    menu_items.sort(key=lambda x: x.order_in_menu if
-                    hasattr(x, 'order_in_menu') else 1)
     return {
         'calling_page': calling_page,
         'menu_items': menu_items,
@@ -62,7 +60,6 @@ def top_menu_children(context, parent):
     menu_items_children = parent.get_children().specific()
 
     menu_items_children = menu_items_children.live().in_menu()
-
     return {
         'parent': parent,
         'menu_items_children': menu_items_children,
@@ -144,9 +141,6 @@ def about_menu(context, parent, calling_page=None):
                             if calling_page else False)
 
         menu_items.append(menu_item)
-
-    menu_items.sort(key=lambda x: x.order_in_menu if
-                    hasattr(x, 'order_in_menu') else 1)
     return {
         'calling_page': calling_page,
         'menu_items': menu_items,
