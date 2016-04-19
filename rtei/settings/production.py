@@ -1,5 +1,6 @@
-from .base import *
+import sys
 
+from .base import *
 
 DEBUG = False
 
@@ -28,6 +29,18 @@ ALLOWED_HOSTS = [
 ]
 
 RTEI_CONTACT_FORM_EMAIL = os.environ.get('RTEI_CONTACT_FORM_EMAIL')
+
+LOGGING = {
+    'version': 1,
+    'handlers': {
+        'console': {
+            'level': 'INFO',
+            'class': 'logging.StreamHandler',
+            'stream': sys.stdout
+        },
+
+    }
+}
 
 try:
     from .local import *
