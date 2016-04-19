@@ -14,7 +14,7 @@ from django.contrib import messages
 
 from wagtail.wagtailcore.models import Page, get_root_collection_id
 from wagtail.wagtailcore.fields import RichTextField
-from wagtail.wagtailadmin.edit_handlers import FieldPanel
+from wagtail.wagtailadmin.edit_handlers import MultiFieldPanel, FieldPanel
 from wagtail.wagtaildocs.models import AbstractDocument
 
 
@@ -174,9 +174,30 @@ class RTEIPage(TranslationMixin, Page):
 
     body = RichTextField(blank=True)
 
+    order_in_menu = models.IntegerField(blank=True, null=True)
+
     content_panels = Page.content_panels + [
         FieldPanel('body', classname="full")
     ]
+
+    promote_panels = [
+        MultiFieldPanel(
+            heading='Menus',
+            children=[
+                FieldPanel('show_in_menus'),
+                FieldPanel('order_in_menu')
+                ]
+        ),
+        MultiFieldPanel(
+            heading='SEO',
+            children=[
+                FieldPanel('slug'),
+                FieldPanel('seo_title'),
+                FieldPanel('search_description'),
+                ]
+            ),
+
+        ]
 
     def get_context(self, request):
         context = super(RTEIPage, self).get_context(request)
@@ -202,9 +223,30 @@ class RTEIAncillaryPage(TranslationMixin, Page):
 
     body = RichTextField(blank=True)
 
+    order_in_menu = models.IntegerField(blank=True, null=True)
+
     content_panels = Page.content_panels + [
         FieldPanel('body', classname="full")
     ]
+
+    promote_panels = [
+        MultiFieldPanel(
+            heading='Menus',
+            children=[
+                FieldPanel('show_in_menus'),
+                FieldPanel('order_in_menu')
+                ]
+        ),
+        MultiFieldPanel(
+            heading='SEO',
+            children=[
+                FieldPanel('slug'),
+                FieldPanel('seo_title'),
+                FieldPanel('search_description'),
+                ]
+            ),
+
+        ]
 
     def get_context(self, request):
         context = super(RTEIAncillaryPage, self).get_context(request)
@@ -249,6 +291,27 @@ class RTEIAncillaryPage(TranslationMixin, Page):
 
 class ResourceIndexPage(TranslationMixin, Page):
     template = 'rtei/resources.html'
+
+    order_in_menu = models.IntegerField(blank=True, null=True)
+
+    promote_panels = [
+        MultiFieldPanel(
+            heading='Menus',
+            children=[
+                FieldPanel('show_in_menus'),
+                FieldPanel('order_in_menu')
+                ]
+        ),
+        MultiFieldPanel(
+            heading='SEO',
+            children=[
+                FieldPanel('slug'),
+                FieldPanel('seo_title'),
+                FieldPanel('search_description'),
+                ]
+            ),
+
+        ]
 
     def resources(self):
         '''Return a queryset of resource documents, filtered based on query
@@ -357,6 +420,31 @@ class RteiDocument(AbstractDocument):
 
 class BlogIndexPage(TranslationMixin, Page):
 
+    order_in_menu = models.IntegerField(blank=True, null=True)
+
+    content_panels = [
+        FieldPanel('title', classname="full title"),
+    ]
+
+    promote_panels = [
+        MultiFieldPanel(
+            heading='Menus',
+            children=[
+                FieldPanel('show_in_menus'),
+                FieldPanel('order_in_menu')
+                ]
+        ),
+        MultiFieldPanel(
+            heading='SEO',
+            children=[
+                FieldPanel('slug'),
+                FieldPanel('seo_title'),
+                FieldPanel('search_description'),
+                ]
+            ),
+
+        ]
+
     @property
     def blogs(self):
         # Get list of live blog pages that are descendants of this page
@@ -390,12 +478,6 @@ class BlogIndexPage(TranslationMixin, Page):
         context = super(BlogIndexPage, self).get_context(request)
         context['blogs'] = blogs
         return context
-
-BlogIndexPage.content_panels = [
-    FieldPanel('title', classname="full title"),
-]
-
-BlogIndexPage.promote_panels = Page.promote_panels
 
 
 class BlogPageTag(TaggedItemBase):
