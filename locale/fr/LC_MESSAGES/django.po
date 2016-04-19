@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rtei\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-18 13:43+0000\n"
-"PO-Revision-Date: 2016-04-18 13:43+0000\n"
+"POT-Creation-Date: 2016-04-19 10:14+0000\n"
+"PO-Revision-Date: 2016-04-19 10:34+0000\n"
 "Last-Translator: Adrià Mercader <adria.mercader@okfn.org>\n"
 "Language-Team: French (http://www.transifex.com/okfn/rtei/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -17,8 +17,24 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: rtei/models.py:136
+#: rtei/forms.py:13
+msgid "Name"
+msgstr ""
+
+#: rtei/forms.py:16
+msgid "Email"
+msgstr ""
+
+#: rtei/forms.py:18
+msgid "Affiliation"
+msgstr ""
+
+#: rtei/models.py:138
 msgid "No data available for this country"
+msgstr ""
+
+#: rtei/models.py:223
+msgid "Your contact details have been submitted."
 msgstr ""
 
 #: rtei/settings/base.py:128
@@ -74,6 +90,16 @@ msgstr ""
 msgid "Next"
 msgstr ""
 
+#: rtei/templates/rtei/contact_us.html:29
+msgid ""
+"To receive periodic updates and announcements on RTEI and its activies, "
+"please fill out and submit the following form:"
+msgstr ""
+
+#: rtei/templates/rtei/contact_us.html:33
+msgid "Submit"
+msgstr ""
+
 #: rtei/templates/rtei/homepage.html:18
 msgid "Education for Everyone. Everywhere"
 msgstr ""
@@ -123,8 +149,8 @@ msgstr ""
 
 #: rtei/templates/rtei/map.html:18
 msgid ""
-"Compare countries around the world. Use the pull down menu to select the the"
-" subtheme under governance, accessibility, availability, acceptability, or "
+"Compare countries around the world. Use the pull down menu to select the "
+"subtheme under governance, accessibility, availability, acceptability, or "
 "adaptability or choose a targeted theme."
 msgstr ""
 
@@ -203,6 +229,10 @@ msgstr ""
 
 #: rtei/templates/rtei/rtei_theme.html:28
 msgid "Sort by Total Score"
+msgstr ""
+
+#: rtei/templates/rtei/tags/blog_list_item.html:29
+msgid "Read more"
 msgstr ""
 
 #: rtei/templates/rtei/tags/indicator_descriptions.html:5

@@ -72,10 +72,13 @@ def breadcrumbs(context):
     self = context.get('self')
     if self is None or self.depth <= 2:
         # When on the home page, displaying breadcrumbs is irrelevant.
-        ancestors = ()
+        base_ancestors = ()
     else:
-        ancestors = Page.objects.ancestor_of(
+        base_ancestors = Page.objects.ancestor_of(
             self, inclusive=True).filter(depth__gt=2)
+    ancestors = []
+    for base_ancestor in base_ancestors:
+        ancestors.append(base_ancestor.specific)
     return {
         'ancestors': ancestors,
         'request': context['request'],
