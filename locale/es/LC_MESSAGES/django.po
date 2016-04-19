@@ -1,21 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Adrià Mercader <adria.mercader@okfn.org>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: rtei\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-19 10:14+0000\n"
+"POT-Creation-Date: 2016-04-19 15:39+0000\n"
 "PO-Revision-Date: 2016-04-19 10:36+0000\n"
 "Last-Translator: Adrià Mercader <adria.mercader@okfn.org>\n"
 "Language-Team: Spanish (http://www.transifex.com/okfn/rtei/language/es/)\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: rtei/forms.py:13
@@ -30,11 +30,15 @@ msgstr "Email"
 msgid "Affiliation"
 msgstr "Afiliación"
 
-#: rtei/models.py:138
+#: rtei/models.py:140
 msgid "No data available for this country"
 msgstr "No hay datos disponibles para este país"
 
-#: rtei/models.py:223
+#: rtei/models.py:228
+msgid "There was a problem submitting your contact details."
+msgstr ""
+
+#: rtei/models.py:238
 msgid "Your contact details have been submitted."
 msgstr "Sus datos de contacto han sido enviados."
 
@@ -109,44 +113,15 @@ msgstr "Educación para Todos. En Todas Partes"
 msgid ""
 "A global accountability initiative to ensure that all people, no matter "
 "where they live, can enjoy their right to a quality education."
-msgstr "Una iniciativa global de rendición de cuentas para asegurar que todo el mundo puede disfrutar de su derecho a una educación de calidad, sin importar donde viva."
+msgstr ""
+"Una iniciativa global de rendición de cuentas para asegurar que todo el "
+"mundo puede disfrutar de su derecho a una educación de calidad, sin importar "
+"donde viva."
 
-#: rtei/templates/rtei/homepage.html:32 rtei/templates/rtei/map.html.py:16
+#: rtei/templates/rtei/map.html:16
+#: rtei/templates/rtei/tags/explore_list.html:6
 msgid "Explore the Map"
 msgstr "Explore el Mapa"
-
-#: rtei/templates/rtei/homepage.html:34
-msgid ""
-"View maps illustrating national progress on the right to education around "
-"the world."
-msgstr "Vea mapas ilustrando el progreso a nivel nacional del derecho a la educación en todo el mundo."
-
-#: rtei/templates/rtei/homepage.html:42 rtei/templates/rtei/rtei_theme.html:15
-msgid "RTEI by Theme"
-msgstr "RTEI por Tema"
-
-#: rtei/templates/rtei/homepage.html:44
-msgid "Evaluate various themes and issues in the right to education."
-msgstr "Evalúe diferentes temas y cuestiones sobre el derecho a la educación."
-
-#: rtei/templates/rtei/homepage.html:52
-#: rtei/templates/rtei/rtei_country.html:19
-msgid "RTEI by Country"
-msgstr "RTEI por país"
-
-#: rtei/templates/rtei/homepage.html:54
-msgid "Explore progress on the right to education in individual countries."
-msgstr "Explore el progreso en el derecho a la educación en diferentes países."
-
-#: rtei/templates/rtei/homepage.html:62
-msgid "Download the Data"
-msgstr "Descargue los datos"
-
-#: rtei/templates/rtei/homepage.html:64
-msgid ""
-"Download the data that makes up the Right to Education Index. Available in "
-"Excel format"
-msgstr "Descargue los datos en que se basa el Índice del Derecho a la Educación. Disponibles en formato Excel."
 
 #: rtei/templates/rtei/map.html:18
 msgid ""
@@ -165,7 +140,9 @@ msgstr "Índice Global"
 msgid ""
 "The overall index score is a general indication of progress towards the "
 "right to education in a country."
-msgstr "El índice global es un indicador general de progreso hacia el derecho a la educación en un país."
+msgstr ""
+"El índice global es un indicador general de progreso hacia el derecho a la "
+"educación en un país."
 
 #: rtei/templates/rtei/map.html:45
 msgid "RTEI Score"
@@ -178,7 +155,8 @@ msgstr "Hacia el derecho a la educación siendo inexistente."
 #: rtei/templates/rtei/map.html:67
 msgid ""
 "Toward the right to education being respected, protected, and fullfilled."
-msgstr "Hacia el derecho a la educación siendo respetado, protegido y cumplido."
+msgstr ""
+"Hacia el derecho a la educación siendo respetado, protegido y cumplido."
 
 #: rtei/templates/rtei/resources.html:10
 msgid "Resources"
@@ -189,7 +167,10 @@ msgid ""
 "Welcome to the resource library. For the most recent Right to Education "
 "Index resource see below or use the drop down menu to search filter "
 "resources by country, year, or subcategory."
-msgstr "Bienvenido a la biblioteca de recursos. Para consultar los recursos más recientes sobre el Derecho a la Educación vea el siguiente listado, o use el menú para filtrar recursos por país, año o subcategoría."
+msgstr ""
+"Bienvenido a la biblioteca de recursos. Para consultar los recursos más "
+"recientes sobre el Derecho a la Educación vea el siguiente listado, o use el "
+"menú para filtrar recursos por país, año o subcategoría."
 
 #: rtei/templates/rtei/resources.html:22
 msgid "All Resources"
@@ -199,12 +180,19 @@ msgstr "Todos los recursos"
 msgid "No resources found that match the selected filters"
 msgstr "No se han encontrado recursos para los filtros seleccionados"
 
+#: rtei/templates/rtei/rtei_country.html:19
+#: rtei/templates/rtei/tags/explore_list.html:26
+msgid "RTEI by Country"
+msgstr "RTEI por país"
+
 #: rtei/templates/rtei/rtei_country.html:21
 msgid ""
 "Explore progress on the right to education in individual countries. Use the "
 "pull down menu to select a country and download the completed country "
 "questionnaire."
-msgstr "Explore el progreso en el derecho a la educación en países individuales. Use el menú para seleccionar un país y descargar el formulario completado."
+msgstr ""
+"Explore el progreso en el derecho a la educación en países individuales. Use "
+"el menú para seleccionar un país y descargar el formulario completado."
 
 #: rtei/templates/rtei/rtei_country.html:27
 msgid "Export all"
@@ -214,11 +202,19 @@ msgstr "Exportar todos"
 msgid "Select a country ..."
 msgstr "Seleccione un país..."
 
+#: rtei/templates/rtei/rtei_theme.html:15
+#: rtei/templates/rtei/tags/explore_list.html:16
+msgid "RTEI by Theme"
+msgstr "RTEI por Tema"
+
 #: rtei/templates/rtei/rtei_theme.html:17
 msgid ""
 "Evaluate various themes and issues in the right to education. Use the pull "
 "down menu to select a theme and sort results by country name or score."
-msgstr "Evalúe diferentes temas y cuestiones en el derecho a la educación. Use el menú para seleccionar un tema y ordenar los resultados por nombre de país o puntuación."
+msgstr ""
+"Evalúe diferentes temas y cuestiones en el derecho a la educación. Use el "
+"menú para seleccionar un tema y ordenar los resultados por nombre de país o "
+"puntuación."
 
 #: rtei/templates/rtei/rtei_theme.html:25
 msgid "Overall Score"
@@ -235,6 +231,34 @@ msgstr "Ordenar por Puntuación"
 #: rtei/templates/rtei/tags/blog_list_item.html:29
 msgid "Read more"
 msgstr "Leer más"
+
+#: rtei/templates/rtei/tags/explore_list.html:8
+msgid ""
+"View maps illustrating national progress on the right to education around "
+"the world."
+msgstr ""
+"Vea mapas ilustrando el progreso a nivel nacional del derecho a la educación "
+"en todo el mundo."
+
+#: rtei/templates/rtei/tags/explore_list.html:18
+msgid "Evaluate various themes and issues in the right to education."
+msgstr "Evalúe diferentes temas y cuestiones sobre el derecho a la educación."
+
+#: rtei/templates/rtei/tags/explore_list.html:28
+msgid "Explore progress on the right to education in individual countries."
+msgstr "Explore el progreso en el derecho a la educación en diferentes países."
+
+#: rtei/templates/rtei/tags/explore_list.html:36
+msgid "Download the Data"
+msgstr "Descargue los datos"
+
+#: rtei/templates/rtei/tags/explore_list.html:38
+msgid ""
+"Download the data that makes up the Right to Education Index. Available in "
+"Excel format"
+msgstr ""
+"Descargue los datos en que se basa el Índice del Derecho a la Educación. "
+"Disponibles en formato Excel."
 
 #: rtei/templates/rtei/tags/indicator_descriptions.html:5
 msgid "Index Score"
@@ -358,15 +382,20 @@ msgstr "Educación Extra-escolar"
 #: rtei/templates/rtei/tags/indicator_descriptions.html:32
 msgid ""
 "The legal structure of education in a State. This includes State "
-"ratification of international declarations or treaties, education financing,"
-" and education standards and regulations."
-msgstr "La estructura legal de la educación en un estado. Esto incluye la ratificación por parte del Estado de declaraciones internacionales o tratados, financiamiento de la educación, y estándares y regulaciones."
+"ratification of international declarations or treaties, education financing, "
+"and education standards and regulations."
+msgstr ""
+"La estructura legal de la educación en un estado. Esto incluye la "
+"ratificación por parte del Estado de declaraciones internacionales o "
+"tratados, financiamiento de la educación, y estándares y regulaciones."
 
 #: rtei/templates/rtei/tags/indicator_descriptions.html:33
 msgid ""
-"Indicates whether a country has ratified international and regional treaties"
-" associated with the right to education."
-msgstr "Indica si un país ha ratificado tratados internacionales y regionales asociados con el derecho a la educación."
+"Indicates whether a country has ratified international and regional treaties "
+"associated with the right to education."
+msgstr ""
+"Indica si un país ha ratificado tratados internacionales y regionales "
+"asociados con el derecho a la educación."
 
 #: rtei/templates/rtei/tags/indicator_descriptions.html:34
 msgid ""
@@ -383,8 +412,7 @@ msgid ""
 msgstr ""
 
 #: rtei/templates/rtei/tags/indicator_descriptions.html:36
-msgid ""
-"Indicates minimal education standards, monitoring, and data collection."
+msgid "Indicates minimal education standards, monitoring, and data collection."
 msgstr ""
 
 #: rtei/templates/rtei/tags/indicator_descriptions.html:37
@@ -429,8 +457,8 @@ msgstr ""
 
 #: rtei/templates/rtei/tags/indicator_descriptions.html:45
 msgid ""
-"Indicates whether discrimination of vulnerable populations, such as pregnant"
-" girls and migrant students, are prohibited in law."
+"Indicates whether discrimination of vulnerable populations, such as pregnant "
+"girls and migrant students, are prohibited in law."
 msgstr ""
 
 #: rtei/templates/rtei/tags/indicator_descriptions.html:46
@@ -441,8 +469,8 @@ msgstr ""
 
 #: rtei/templates/rtei/tags/indicator_descriptions.html:47
 msgid ""
-"The quality of education made available. This moves beyond learning outcomes"
-" to also capture the cultural relevance and security of the educational "
+"The quality of education made available. This moves beyond learning outcomes "
+"to also capture the cultural relevance and security of the educational "
 "environment as well as the aims and content of education. "
 msgstr ""
 
@@ -547,7 +575,8 @@ msgstr "Oportunidades y Costes Indirectos a la Práctica"
 
 #: rtei/templates/rtei/tags/indicator_descriptions.html:70
 msgid "Indicates the general state of girls education in a country."
-msgstr "Indica el nivel general del estado de la educación para niñas en un país."
+msgstr ""
+"Indica el nivel general del estado de la educación para niñas en un país."
 
 #: rtei/templates/rtei/tags/indicator_descriptions.html:71
 msgid ""
@@ -611,14 +640,15 @@ msgstr ""
 
 #: rtei/templates/rtei/tags/indicator_descriptions.html:81
 msgid ""
-"Indicates whether the legal environment encourages children to attend school"
-" by reducing indirect or opportunity costs"
+"Indicates whether the legal environment encourages children to attend school "
+"by reducing indirect or opportunity costs"
 msgstr ""
 
 #: rtei/templates/rtei/tags/indicator_descriptions.html:82
 msgid ""
 "Indicates whether opportunity and indirect costs are present in practice."
-msgstr "Indica si las oportunidades y los costes indirectes existen a la práctica."
+msgstr ""
+"Indica si las oportunidades y los costes indirectes existen a la práctica."
 
 #: rtei/templates/rtei/tags/resources_filter.html:6
 msgid "Years"
@@ -728,8 +758,8 @@ msgstr ""
 #: rtei/translation_strings.py:675 rtei/translation_strings.py:718
 msgid ""
 "Do national laws expressly recognize the liberty of parents to choose the "
-"religious and moral education of their children in conformity with their own"
-" convictions?"
+"religious and moral education of their children in conformity with their own "
+"convictions?"
 msgstr ""
 
 #: rtei/translation_strings.py:23 rtei/translation_strings.py:617
@@ -747,8 +777,8 @@ msgstr ""
 #: rtei/translation_strings.py:25 rtei/translation_strings.py:619
 #: rtei/translation_strings.py:710
 msgid ""
-"Are there minimum educational standards applicable to all schools, including"
-" private schools?"
+"Are there minimum educational standards applicable to all schools, including "
+"private schools?"
 msgstr ""
 
 #: rtei/translation_strings.py:26 rtei/translation_strings.py:620
@@ -881,8 +911,8 @@ msgstr ""
 
 #: rtei/translation_strings.py:53
 msgid ""
-"What percent of students received a passing score on the national "
-"assessment/exam in 2014?"
+"What percent of students received a passing score on the national assessment/"
+"exam in 2014?"
 msgstr ""
 
 #: rtei/translation_strings.py:54
@@ -941,7 +971,8 @@ msgstr ""
 
 #: rtei/translation_strings.py:64
 msgid "The International Covenant of Economic, Social and Cultural Rights"
-msgstr "La Convención Internacional sobre Derechos Económicos, Sociales y Culturales"
+msgstr ""
+"La Convención Internacional sobre Derechos Económicos, Sociales y Culturales"
 
 #: rtei/translation_strings.py:65
 msgid "The Convention on the Rights of the Child"
@@ -973,8 +1004,7 @@ msgstr ""
 
 #: rtei/translation_strings.py:71
 msgid ""
-"The Convention on the Elimination of All Forms of Discrimination agains "
-"Women"
+"The Convention on the Elimination of All Forms of Discrimination agains Women"
 msgstr ""
 
 #: rtei/translation_strings.py:72
@@ -994,8 +1024,7 @@ msgid "The ILO Indigenous and Tribal Peoples Convention"
 msgstr ""
 
 #: rtei/translation_strings.py:76
-msgid ""
-"The Geneva Convention III relative to the Treatment of Prisoners of War"
+msgid "The Geneva Convention III relative to the Treatment of Prisoners of War"
 msgstr ""
 
 #: rtei/translation_strings.py:77
@@ -1012,8 +1041,8 @@ msgstr ""
 
 #: rtei/translation_strings.py:79
 msgid ""
-"Protocol II to the Geneva Conventions of 12 August 1949, and relating to the"
-" Protection of Victims of Non-International Armed Conflicts"
+"Protocol II to the Geneva Conventions of 12 August 1949, and relating to the "
+"Protection of Victims of Non-International Armed Conflicts"
 msgstr ""
 
 #: rtei/translation_strings.py:80
@@ -1046,8 +1075,8 @@ msgstr ""
 
 #: rtei/translation_strings.py:86
 msgid ""
-"In the Americas: The Additional Protocol to the American Convention on Human"
-" Rights, Protocol of San Salvador"
+"In the Americas: The Additional Protocol to the American Convention on Human "
+"Rights, Protocol of San Salvador"
 msgstr ""
 
 #: rtei/translation_strings.py:87
@@ -1056,8 +1085,8 @@ msgstr ""
 
 #: rtei/translation_strings.py:88
 msgid ""
-"In Europe: Protocol 1 to the European Convention for the Protection of Human"
-" Rights and Fundamental Freedoms"
+"In Europe: Protocol 1 to the European Convention for the Protection of Human "
+"Rights and Fundamental Freedoms"
 msgstr ""
 
 #: rtei/translation_strings.py:89
@@ -1070,8 +1099,7 @@ msgstr ""
 
 #: rtei/translation_strings.py:91
 msgid ""
-"In Europe: The Framework Convention for the Protection of National "
-"Minorities"
+"In Europe: The Framework Convention for the Protection of National Minorities"
 msgstr ""
 
 #: rtei/translation_strings.py:92
@@ -1260,8 +1288,7 @@ msgstr ""
 #: rtei/translation_strings.py:158 rtei/translation_strings.py:234
 #: rtei/translation_strings.py:272 rtei/translation_strings.py:446
 #: rtei/translation_strings.py:560
-msgid ""
-"Primary schools: Medium to Low Quartile Income Ratio - Advantaged Group"
+msgid "Primary schools: Medium to Low Quartile Income Ratio - Advantaged Group"
 msgstr ""
 
 #: rtei/translation_strings.py:159 rtei/translation_strings.py:235
@@ -1858,8 +1885,8 @@ msgstr ""
 
 #: rtei/translation_strings.py:366 rtei/translation_strings.py:540
 msgid ""
-"Private Secondary schools: High to Medium Quartile Income Ratio - Advantaged"
-" Group"
+"Private Secondary schools: High to Medium Quartile Income Ratio - Advantaged "
+"Group"
 msgstr ""
 
 #: rtei/translation_strings.py:367 rtei/translation_strings.py:541
@@ -2599,8 +2626,8 @@ msgstr ""
 #: rtei/translation_strings.py:641
 msgid ""
 "Do national laws or policies direct education towards the full development "
-"of respect for the child's parents, cultural identity, language, and values,"
-" as well as respect for the values of the child's country and other "
+"of respect for the child's parents, cultural identity, language, and values, "
+"as well as respect for the values of the child's country and other "
 "civilizations?"
 msgstr ""
 
@@ -2693,13 +2720,11 @@ msgid "What percent of women were married by the age of 18?"
 msgstr ""
 
 #: rtei/translation_strings.py:662
-msgid ""
-"What percent of children under the age of 15 worked in the labor force?"
+msgid "What percent of children under the age of 15 worked in the labor force?"
 msgstr ""
 
 #: rtei/translation_strings.py:663
-msgid ""
-"Are children under the age of 15 recruited by the military in practice?"
+msgid "Are children under the age of 15 recruited by the military in practice?"
 msgstr ""
 
 #: rtei/translation_strings.py:665
@@ -2724,8 +2749,8 @@ msgstr ""
 msgid ""
 "Does the required training for teachers include improving the skills "
 "necessary for teaching towards the full development of respect for the "
-"child's parents, cultural identity, language, and values, as well as respect"
-" for the values of the child's country and other civilizations?"
+"child's parents, cultural identity, language, and values, as well as respect "
+"for the values of the child's country and other civilizations?"
 msgstr ""
 
 #: rtei/translation_strings.py:671
@@ -2779,8 +2804,8 @@ msgstr ""
 #: rtei/translation_strings.py:683
 msgid ""
 "Does the national curriculum direct education towards the full development "
-"of respect for the child's parents, cultural identity, language, and values,"
-" as well as respect for the values of the child's country and other "
+"of respect for the child's parents, cultural identity, language, and values, "
+"as well as respect for the values of the child's country and other "
 "civilizations?"
 msgstr ""
 
@@ -2847,8 +2872,8 @@ msgstr ""
 
 #: rtei/translation_strings.py:707
 msgid ""
-"What percent of females received a passing score on the national mathematics"
-" assessment/exam?"
+"What percent of females received a passing score on the national mathematics "
+"assessment/exam?"
 msgstr ""
 
 #: rtei/translation_strings.py:708

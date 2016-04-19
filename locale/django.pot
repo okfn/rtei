@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-19 10:14+0000\n"
+"POT-Creation-Date: 2016-04-19 15:39+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,11 +29,15 @@ msgstr ""
 msgid "Affiliation"
 msgstr ""
 
-#: rtei/models.py:138
+#: rtei/models.py:140
 msgid "No data available for this country"
 msgstr ""
 
-#: rtei/models.py:223
+#: rtei/models.py:228
+msgid "There was a problem submitting your contact details."
+msgstr ""
+
+#: rtei/models.py:238
 msgid "Your contact details have been submitted."
 msgstr ""
 
@@ -110,41 +114,9 @@ msgid ""
 "where they live, can enjoy their right to a quality education."
 msgstr ""
 
-#: rtei/templates/rtei/homepage.html:32 rtei/templates/rtei/map.html.py:16
+#: rtei/templates/rtei/map.html:16
+#: rtei/templates/rtei/tags/explore_list.html:6
 msgid "Explore the Map"
-msgstr ""
-
-#: rtei/templates/rtei/homepage.html:34
-msgid ""
-"View maps illustrating national progress on the right to education around "
-"the world."
-msgstr ""
-
-#: rtei/templates/rtei/homepage.html:42 rtei/templates/rtei/rtei_theme.html:15
-msgid "RTEI by Theme"
-msgstr ""
-
-#: rtei/templates/rtei/homepage.html:44
-msgid "Evaluate various themes and issues in the right to education."
-msgstr ""
-
-#: rtei/templates/rtei/homepage.html:52
-#: rtei/templates/rtei/rtei_country.html:19
-msgid "RTEI by Country"
-msgstr ""
-
-#: rtei/templates/rtei/homepage.html:54
-msgid "Explore progress on the right to education in individual countries."
-msgstr ""
-
-#: rtei/templates/rtei/homepage.html:62
-msgid "Download the Data"
-msgstr ""
-
-#: rtei/templates/rtei/homepage.html:64
-msgid ""
-"Download the data that makes up the Right to Education Index. Available in "
-"Excel format"
 msgstr ""
 
 #: rtei/templates/rtei/map.html:18
@@ -198,6 +170,11 @@ msgstr ""
 msgid "No resources found that match the selected filters"
 msgstr ""
 
+#: rtei/templates/rtei/rtei_country.html:19
+#: rtei/templates/rtei/tags/explore_list.html:26
+msgid "RTEI by Country"
+msgstr ""
+
 #: rtei/templates/rtei/rtei_country.html:21
 msgid ""
 "Explore progress on the right to education in individual countries. Use the "
@@ -211,6 +188,11 @@ msgstr ""
 
 #: rtei/templates/rtei/rtei_country.html:33
 msgid "Select a country ..."
+msgstr ""
+
+#: rtei/templates/rtei/rtei_theme.html:15
+#: rtei/templates/rtei/tags/explore_list.html:16
+msgid "RTEI by Theme"
 msgstr ""
 
 #: rtei/templates/rtei/rtei_theme.html:17
@@ -233,6 +215,30 @@ msgstr ""
 
 #: rtei/templates/rtei/tags/blog_list_item.html:29
 msgid "Read more"
+msgstr ""
+
+#: rtei/templates/rtei/tags/explore_list.html:8
+msgid ""
+"View maps illustrating national progress on the right to education around "
+"the world."
+msgstr ""
+
+#: rtei/templates/rtei/tags/explore_list.html:18
+msgid "Evaluate various themes and issues in the right to education."
+msgstr ""
+
+#: rtei/templates/rtei/tags/explore_list.html:28
+msgid "Explore progress on the right to education in individual countries."
+msgstr ""
+
+#: rtei/templates/rtei/tags/explore_list.html:36
+msgid "Download the Data"
+msgstr ""
+
+#: rtei/templates/rtei/tags/explore_list.html:38
+msgid ""
+"Download the data that makes up the Right to Education Index. Available in "
+"Excel format"
 msgstr ""
 
 #: rtei/templates/rtei/tags/indicator_descriptions.html:5
