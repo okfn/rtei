@@ -598,9 +598,6 @@ picture {
   margin: 0;
   max-width: 100%; }
 
-.vcard {
-  margin: 0 0 0.75em; }
-
 html {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -1020,7 +1017,7 @@ body {
   .template-home .main > div a svg {
     width: 80px;
     height: 80px;
-    fill: #333333; }
+    fill: #af1f2c; }
   .template-home .main > div a h2 {
     font-weight: normal;
     text-transform: uppercase;
@@ -1776,6 +1773,9 @@ body.adaptability .indicator-switcher > ul > li.subcat {
 
 #contact-form .short {
   width: 20em; }
+
+.vcard {
+  margin: 0 0 0.75em; }
 
 .template-blog-index .posts-list {
   background-color: inherit; }
