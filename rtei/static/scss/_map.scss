@@ -104,6 +104,10 @@
         display: block;
         position: relative;
 
+        & > label {
+          font-weight: bold;
+        }
+
         &.subcat {
           background-color: rgba($index-color, 0.1);
         }

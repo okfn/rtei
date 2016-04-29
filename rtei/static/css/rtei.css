@@ -1079,6 +1079,8 @@ body .indicator-switcher > ul > li {
   display: block;
   position: relative;
   padding-left: 0; }
+  body .indicator-switcher > ul > li > label {
+    font-weight: bold; }
   body .indicator-switcher > ul > li.subcat {
     background-color: rgba(69, 152, 194, 0.1); }
   @media only screen and (min-width: 53.75em) {
@@ -1130,7 +1132,8 @@ body .indicator-switcher > ul > li, body .filter.controls form > ul > li, body .
     background-color: #4598c2;
     color: #fff; }
   body .indicator-switcher > ul > li label, body .indicator-switcher > ul > li a, body .filter.controls form > ul > li label, body .filter.controls form > ul > li a, body .about-menu > ul > li label, body .about-menu > ul > li a {
-    border-width: 0 0 1px 0; }
+    border-width: 0 0 1px 0;
+    font-weight: bold; }
   body .indicator-switcher > ul > li:hover, body .filter.controls form > ul > li:hover, body .about-menu > ul > li:hover {
     background-color: #bfbfbe; }
     body .indicator-switcher > ul > li:hover > ul, body .filter.controls form > ul > li:hover > ul, body .about-menu > ul > li:hover > ul {
@@ -1253,6 +1256,8 @@ body.adaptability .indicator-switcher > ul > li.subcat {
 .template-explore-map .indicator-switcher > ul > li {
   display: block;
   position: relative; }
+  .template-explore-map .indicator-switcher > ul > li > label {
+    font-weight: bold; }
   .template-explore-map .indicator-switcher > ul > li.subcat {
     background-color: rgba(69, 152, 194, 0.1); }
   @media only screen and (min-width: 53.75em) {
@@ -1730,6 +1735,8 @@ body.adaptability .indicator-switcher > ul > li.subcat {
   .filter.controls form > ul > li {
     display: block;
     position: relative; }
+    .filter.controls form > ul > li > label {
+      font-weight: bold; }
     .filter.controls form > ul > li.subcat {
       background-color: rgba(69, 152, 194, 0.1); }
     @media only screen and (min-width: 53.75em) {

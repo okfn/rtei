@@ -39,6 +39,10 @@ body {
         position: relative;
         padding-left: 0;
 
+        & > label {
+          font-weight: bold;
+        }
+
         &.subcat {
           background-color: rgba($index-color, 0.1);
         }
@@ -116,6 +120,7 @@ body {
 
       label, a {
         border-width: 0 0 1px 0;
+        font-weight: bold;
       }
 
       &:hover {
