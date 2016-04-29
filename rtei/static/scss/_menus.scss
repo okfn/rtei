@@ -24,6 +24,11 @@ body {
           border-top-color: $base-background-color;
         }
       }
+
+      .subindicators &:checked + label {
+        background-color: rgba($index-color, 0.1);
+        color: $base-font-color;
+      }
     }
 
     & > ul {
@@ -44,7 +49,11 @@ body {
         }
 
         &.subcat {
-          background-color: rgba($index-color, 0.1);
+          background-color: $index-color;
+
+          & > label {
+            color: $base-background-color;
+          }
         }
 
         @media only screen and ( min-width: $large-screen) {
@@ -164,9 +173,14 @@ body {
     .indicator-switcher {
       input[type="radio"]:checked + label {
         background-color: $colour;
+        color: $base-background-color;
+      }
+      .subindicators input[type="radio"]:checked + label {
+        background-color: rgba($colour, 0.1);
+        color: $base-font-color;
       }
       & > ul  > li.subcat {
-        background-color: rgba($colour, 0.1);
+        background-color: $colour;
       }
     }
   }

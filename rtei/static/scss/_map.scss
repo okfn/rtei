@@ -79,12 +79,12 @@
       line-height: 1.2;
     }
 
-    input[type="radio"] {
+    .subindicators input[type="radio"] {
       display: none;
 
       &:checked + label {
-        background-color: $index-color;
-        color: $base-background-color;
+        background-color: rgba($index-color, 0.1);
+        color: $base-font-color;
 
         & + h6:after {
           border-top-color: $base-background-color;
@@ -109,7 +109,7 @@
         }
 
         &.subcat {
-          background-color: rgba($index-color, 0.1);
+          background-color: $index-color;
         }
 
         @media only screen and ( min-width: $large-screen) {
@@ -375,9 +375,14 @@
     .indicator-switcher {
       input[type="radio"]:checked + label {
         background-color: $colour;
+        color: $base-background-color;
+      }
+      .subindicators input[type="radio"]:checked + label {
+        background-color: rgba($colour, 0.1);
+        color: $base-font-color;
       }
       & > ul  > li.subcat {
-        background-color: rgba($colour, 0.1);
+        background-color: colour;
       }
     }
     .map {

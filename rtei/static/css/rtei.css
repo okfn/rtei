@@ -1065,6 +1065,9 @@ body .indicator-switcher input[type="radio"] {
     color: #fff; }
     body .indicator-switcher input[type="radio"]:checked + label + h6:after {
       border-top-color: #fff; }
+  .subindicators body .indicator-switcher input[type="radio"]:checked + label {
+    background-color: rgba(69, 152, 194, 0.1);
+    color: #3b3b3b; }
 body .indicator-switcher > ul::after {
   clear: both;
   content: "";
@@ -1082,7 +1085,9 @@ body .indicator-switcher > ul > li {
   body .indicator-switcher > ul > li > label {
     font-weight: bold; }
   body .indicator-switcher > ul > li.subcat {
-    background-color: rgba(69, 152, 194, 0.1); }
+    background-color: #4598c2; }
+    body .indicator-switcher > ul > li.subcat > label {
+      color: #fff; }
   @media only screen and (min-width: 53.75em) {
     body .indicator-switcher > ul > li {
       display: table-cell;
@@ -1162,25 +1167,45 @@ body .indicator-switcher > ul > li, body .filter.controls form > ul > li, body .
     position: static;
     display: block; }
 body.governance .indicator-switcher input[type="radio"]:checked + label {
-  background-color: #c35727; }
+  background-color: #c35727;
+  color: #fff; }
+body.governance .indicator-switcher .subindicators input[type="radio"]:checked + label {
+  background-color: rgba(195, 87, 39, 0.1);
+  color: #3b3b3b; }
 body.governance .indicator-switcher > ul > li.subcat {
-  background-color: rgba(195, 87, 39, 0.1); }
+  background-color: #c35727; }
 body.availability .indicator-switcher input[type="radio"]:checked + label {
-  background-color: #bdb831; }
+  background-color: #bdb831;
+  color: #fff; }
+body.availability .indicator-switcher .subindicators input[type="radio"]:checked + label {
+  background-color: rgba(189, 184, 49, 0.1);
+  color: #3b3b3b; }
 body.availability .indicator-switcher > ul > li.subcat {
-  background-color: rgba(189, 184, 49, 0.1); }
+  background-color: #bdb831; }
 body.accessibility .indicator-switcher input[type="radio"]:checked + label {
-  background-color: #af1f2c; }
+  background-color: #af1f2c;
+  color: #fff; }
+body.accessibility .indicator-switcher .subindicators input[type="radio"]:checked + label {
+  background-color: rgba(175, 31, 44, 0.1);
+  color: #3b3b3b; }
 body.accessibility .indicator-switcher > ul > li.subcat {
-  background-color: rgba(175, 31, 44, 0.1); }
+  background-color: #af1f2c; }
 body.acceptability .indicator-switcher input[type="radio"]:checked + label {
-  background-color: #357b9e; }
+  background-color: #357b9e;
+  color: #fff; }
+body.acceptability .indicator-switcher .subindicators input[type="radio"]:checked + label {
+  background-color: rgba(53, 123, 158, 0.1);
+  color: #3b3b3b; }
 body.acceptability .indicator-switcher > ul > li.subcat {
-  background-color: rgba(53, 123, 158, 0.1); }
+  background-color: #357b9e; }
 body.adaptability .indicator-switcher input[type="radio"]:checked + label {
-  background-color: #469a8f; }
+  background-color: #469a8f;
+  color: #fff; }
+body.adaptability .indicator-switcher .subindicators input[type="radio"]:checked + label {
+  background-color: rgba(70, 154, 143, 0.1);
+  color: #3b3b3b; }
 body.adaptability .indicator-switcher > ul > li.subcat {
-  background-color: rgba(70, 154, 143, 0.1); }
+  background-color: #469a8f; }
 
 .rtei-map-popup .leaflet-popup-content-wrapper {
   color: #3b3b3b;
@@ -1236,12 +1261,12 @@ body.adaptability .indicator-switcher > ul > li.subcat {
   border-color: #efefef;
   border-width: 0 1px 0 0;
   line-height: 1.2; }
-.template-explore-map .indicator-switcher input[type="radio"] {
+.template-explore-map .indicator-switcher .subindicators input[type="radio"] {
   display: none; }
-  .template-explore-map .indicator-switcher input[type="radio"]:checked + label {
-    background-color: #4598c2;
-    color: #fff; }
-    .template-explore-map .indicator-switcher input[type="radio"]:checked + label + h6:after {
+  .template-explore-map .indicator-switcher .subindicators input[type="radio"]:checked + label {
+    background-color: rgba(69, 152, 194, 0.1);
+    color: #3b3b3b; }
+    .template-explore-map .indicator-switcher .subindicators input[type="radio"]:checked + label + h6:after {
       border-top-color: #fff; }
 .template-explore-map .indicator-switcher > ul::after {
   clear: both;
@@ -1259,7 +1284,7 @@ body.adaptability .indicator-switcher > ul > li.subcat {
   .template-explore-map .indicator-switcher > ul > li > label {
     font-weight: bold; }
   .template-explore-map .indicator-switcher > ul > li.subcat {
-    background-color: rgba(69, 152, 194, 0.1); }
+    background-color: #4598c2; }
   @media only screen and (min-width: 53.75em) {
     .template-explore-map .indicator-switcher > ul > li {
       display: table-cell;
@@ -1439,9 +1464,13 @@ body.adaptability .indicator-switcher > ul > li.subcat {
     position: static;
     display: block; }
 .template-explore-map.governance .indicator-switcher input[type="radio"]:checked + label {
-  background-color: #c35727; }
+  background-color: #c35727;
+  color: #fff; }
+.template-explore-map.governance .indicator-switcher .subindicators input[type="radio"]:checked + label {
+  background-color: rgba(195, 87, 39, 0.1);
+  color: #3b3b3b; }
 .template-explore-map.governance .indicator-switcher > ul > li.subcat {
-  background-color: rgba(195, 87, 39, 0.1); }
+  background-color: colour; }
 .template-explore-map.governance .map .description .icon {
   background-color: #c35727; }
 .template-explore-map.governance .map .key ul li:nth-child(1) {
@@ -1455,9 +1484,13 @@ body.adaptability .indicator-switcher > ul > li.subcat {
 .template-explore-map.governance .map .key ul li:nth-child(5) {
   border-color: #c35727; }
 .template-explore-map.availability .indicator-switcher input[type="radio"]:checked + label {
-  background-color: #bdb831; }
+  background-color: #bdb831;
+  color: #fff; }
+.template-explore-map.availability .indicator-switcher .subindicators input[type="radio"]:checked + label {
+  background-color: rgba(189, 184, 49, 0.1);
+  color: #3b3b3b; }
 .template-explore-map.availability .indicator-switcher > ul > li.subcat {
-  background-color: rgba(189, 184, 49, 0.1); }
+  background-color: colour; }
 .template-explore-map.availability .map .description .icon {
   background-color: #bdb831; }
 .template-explore-map.availability .map .key ul li:nth-child(1) {
@@ -1471,9 +1504,13 @@ body.adaptability .indicator-switcher > ul > li.subcat {
 .template-explore-map.availability .map .key ul li:nth-child(5) {
   border-color: #bdb831; }
 .template-explore-map.accessibility .indicator-switcher input[type="radio"]:checked + label {
-  background-color: #af1f2c; }
+  background-color: #af1f2c;
+  color: #fff; }
+.template-explore-map.accessibility .indicator-switcher .subindicators input[type="radio"]:checked + label {
+  background-color: rgba(175, 31, 44, 0.1);
+  color: #3b3b3b; }
 .template-explore-map.accessibility .indicator-switcher > ul > li.subcat {
-  background-color: rgba(175, 31, 44, 0.1); }
+  background-color: colour; }
 .template-explore-map.accessibility .map .description .icon {
   background-color: #af1f2c; }
 .template-explore-map.accessibility .map .key ul li:nth-child(1) {
@@ -1487,9 +1524,13 @@ body.adaptability .indicator-switcher > ul > li.subcat {
 .template-explore-map.accessibility .map .key ul li:nth-child(5) {
   border-color: #af1f2c; }
 .template-explore-map.acceptability .indicator-switcher input[type="radio"]:checked + label {
-  background-color: #357b9e; }
+  background-color: #357b9e;
+  color: #fff; }
+.template-explore-map.acceptability .indicator-switcher .subindicators input[type="radio"]:checked + label {
+  background-color: rgba(53, 123, 158, 0.1);
+  color: #3b3b3b; }
 .template-explore-map.acceptability .indicator-switcher > ul > li.subcat {
-  background-color: rgba(53, 123, 158, 0.1); }
+  background-color: colour; }
 .template-explore-map.acceptability .map .description .icon {
   background-color: #357b9e; }
 .template-explore-map.acceptability .map .key ul li:nth-child(1) {
@@ -1503,9 +1544,13 @@ body.adaptability .indicator-switcher > ul > li.subcat {
 .template-explore-map.acceptability .map .key ul li:nth-child(5) {
   border-color: #357b9e; }
 .template-explore-map.adaptability .indicator-switcher input[type="radio"]:checked + label {
-  background-color: #469a8f; }
+  background-color: #469a8f;
+  color: #fff; }
+.template-explore-map.adaptability .indicator-switcher .subindicators input[type="radio"]:checked + label {
+  background-color: rgba(70, 154, 143, 0.1);
+  color: #3b3b3b; }
 .template-explore-map.adaptability .indicator-switcher > ul > li.subcat {
-  background-color: rgba(70, 154, 143, 0.1); }
+  background-color: colour; }
 .template-explore-map.adaptability .map .description .icon {
   background-color: #469a8f; }
 .template-explore-map.adaptability .map .key ul li:nth-child(1) {
