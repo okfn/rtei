@@ -1131,7 +1131,7 @@ body .indicator-switcher > ul > li, body .filter.controls form > ul > li, body .
   body .indicator-switcher > ul > li a.active, body .filter.controls form > ul > li a.active, body .about-menu > ul > li a.active {
     background-color: #4598c2;
     color: #fff; }
-  body .indicator-switcher > ul > li label, body .indicator-switcher > ul > li a, body .filter.controls form > ul > li label, body .filter.controls form > ul > li a, body .about-menu > ul > li label, body .about-menu > ul > li a {
+  body .indicator-switcher > ul > li > label, body .indicator-switcher > ul > li > a, body .filter.controls form > ul > li > label, body .filter.controls form > ul > li > a, body .about-menu > ul > li > label, body .about-menu > ul > li > a {
     border-width: 0 0 1px 0;
     font-weight: bold; }
   body .indicator-switcher > ul > li:hover, body .filter.controls form > ul > li:hover, body .about-menu > ul > li:hover {

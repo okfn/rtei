@@ -118,7 +118,7 @@ body {
         color: $base-background-color;
       }
 
-      label, a {
+      & > label, & > a {
         border-width: 0 0 1px 0;
         font-weight: bold;
       }
