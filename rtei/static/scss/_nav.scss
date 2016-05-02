@@ -3,6 +3,7 @@
   $menu-height: 30px;
   $break-point: $large-screen;
   $active-colour: $medium-gray;
+  $active-text-colour: $red;
   $menu-colour: #fff;
   $link-colour: $dark-gray;
   $toggle-colour: $link-colour;
@@ -69,7 +70,7 @@
       display: block;
 
       &:active {
-        background-color: $active-colour !important;
+        // background-color: $active-colour !important;
       }
     }
   }
@@ -141,20 +142,20 @@
 
   & > div > ul > li:hover > a,
   & > div > ul:not( :hover ) > li.active > a {
-    background-color: $active-colour;
-    color: #fff;
+    // background-color: $active-colour;
+    color: $active-text-colour;
 
     &.dropdown-toggle:after {
-      border-top-color: #fff;
+      border-top-color: $active-text-colour;
     }
   }
 
   // second level
 
   li ul {
-    background-color: $active-colour;
+    background-color: #fff;
     display: none;
-    color: #fff;
+    color: $active-text-colour;
 
     a {
       color: inherit;
@@ -181,14 +182,14 @@
   }
 
   li ul a {
-    border-top: 1px solid darken( $active-colour, 10% );
+    border-top: 1px solid $light-gray;
     padding: $menu-height / 6 $menu-height / 2;
   }
 
   li ul li a:hover,
   li ul:not( :hover ) li.active a {
-   background-color: darken( $active-colour, 10% );
- }
+    background-color: $light-gray;
+  }
 
  // search
 

@@ -763,8 +763,6 @@ body {
     #smenu li a {
       color: #333333;
       display: block; }
-      #smenu li a:active {
-        background-color: #595a5b !important; }
   #smenu .dropdown-toggle:after {
     width: 0;
     height: 0;
@@ -806,14 +804,13 @@ body {
               height: 100%;
               text-align: center; } }
   #smenu > div > ul > li:hover > a, #smenu > div > ul:not(:hover) > li.active > a {
-    background-color: #595a5b;
-    color: #fff; }
+    color: #af202f; }
     #smenu > div > ul > li:hover > a.dropdown-toggle:after, #smenu > div > ul:not(:hover) > li.active > a.dropdown-toggle:after {
-      border-top-color: #fff; }
+      border-top-color: #af202f; }
   #smenu li ul {
-    background-color: #595a5b;
+    background-color: #fff;
     display: none;
-    color: #fff; }
+    color: #af202f; }
     #smenu li ul a {
       color: inherit; }
     @media only screen and (min-width: 53.75em) {
@@ -830,11 +827,11 @@ body {
   #smenu li:not(:first-child):hover ul {
     left: -1px; }
   #smenu li ul a {
-    border-top: 1px solid #404141;
+    border-top: 1px solid #bfbfbe;
     padding: 5px 15px; }
   #smenu li ul li a:hover,
   #smenu li ul:not(:hover) li.active a {
-    background-color: #404141; }
+    background-color: #bfbfbe; }
   #smenu #search > a {
     float: right;
     display: inline-block;
