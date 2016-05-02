@@ -134,6 +134,7 @@ RTEI.charts = (function() {
       } else {
         values = [code]
       }
+      values.sort()
 
       var customConfig = $.extend(true, {}, config, {
         data: {
