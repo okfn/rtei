@@ -1,6 +1,9 @@
-{% load rtei_tags wagtailcore_tags %}
+{% load rtei_tags wagtailcore_tags i18n %}
 <ul class="dropdown-menu">
     {% for child in menu_items_children %}
-      <li><a href="{% pageurl child %}">{% translated_field child 'title' language %}</a></li>
+        <li><a href="{% pageurl child %}">{% translated_field child 'title' language %}</a></li>
     {% endfor %}
+    {% if parent.slug == 'explore' %}
+        <li><a href="{% url 'latest_document' %}">{% trans "Download the Data" %}</a></li>
+    {% endif %}
 </ul>
