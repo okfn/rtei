@@ -1065,6 +1065,9 @@ body .indicator-switcher input[type="radio"] {
   .subindicators body .indicator-switcher input[type="radio"]:checked + label {
     background-color: rgba(69, 152, 194, 0.1);
     color: #3b3b3b; }
+body .indicator-switcher .subindicators input[type='radio']:checked + label {
+  background-color: rgba(69, 152, 194, 0.1);
+  color: #3b3b3b; }
 body .indicator-switcher > ul::after {
   clear: both;
   content: "";

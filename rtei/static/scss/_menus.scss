@@ -31,6 +31,13 @@ body {
       }
     }
 
+    .subindicators input[type='radio'] {
+      &:checked + label {
+        background-color: rgba($index-color, 0.1);
+        color: $base-font-color;
+      }
+    }
+
     & > ul {
       @include clearfix;
 
