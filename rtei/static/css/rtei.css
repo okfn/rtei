@@ -1747,8 +1747,12 @@ body.adaptability .indicator-switcher > ul > li.subcat {
 
 .filter.controls form {
   background-color: #fff; }
+  .filter.controls form::after {
+    clear: both;
+    content: "";
+    display: table; }
   .filter.controls form input[type="submit"] {
-    margin-top: 1.125em;
+    margin: 1.125em;
     float: right; }
   .filter.controls form label {
     display: block;
@@ -1763,8 +1767,8 @@ body.adaptability .indicator-switcher > ul > li.subcat {
   .filter.controls form input[type="radio"] {
     display: none; }
     .filter.controls form input[type="radio"]:checked + label {
-      background-color: #af202f;
-      color: #fff; }
+      background-color: rgba(175, 32, 47, 0.1);
+      color: #3b3b3b; }
       .filter.controls form input[type="radio"]:checked + label + h6:after {
         border-top-color: #fff; }
   .filter.controls form > ul::after {
@@ -1783,7 +1787,9 @@ body.adaptability .indicator-switcher > ul > li.subcat {
     .filter.controls form > ul > li > label {
       font-weight: bold; }
     .filter.controls form > ul > li.subcat {
-      background-color: rgba(175, 32, 47, 0.1); }
+      background-color: #af202f; }
+      .filter.controls form > ul > li.subcat > label {
+        color: #fff; }
     @media only screen and (min-width: 53.75em) {
       .filter.controls form > ul > li {
         display: table-cell;

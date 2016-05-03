@@ -57,9 +57,10 @@
 .filter.controls form {
 
   background-color: $base-background-color;
+  @include clearfix;
 
   & input[type="submit"] {
-    margin-top: $base-spacing*0.75;
+    margin: $base-spacing*0.75;
     float: right;
   }
 
@@ -79,8 +80,8 @@
     display: none;
 
     &:checked + label {
-      background-color: $index-color;
-      color: $base-background-color;
+      background-color: rgba($index-color, 0.1);
+      color: $base-font-color;
 
       & + h6:after {
         border-top-color: $base-background-color;
@@ -105,8 +106,12 @@
       }
 
       &.subcat {
-        background-color: rgba($index-color, 0.1);
-      }
+          background-color: $index-color;
+
+          & > label {
+            color: $base-background-color;
+          }
+        }
 
       @media only screen and ( min-width: $large-screen) {
         @include span-columns(2);
