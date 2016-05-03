@@ -1058,15 +1058,15 @@ body .indicator-switcher label {
 body .indicator-switcher input[type="radio"] {
   display: none; }
   body .indicator-switcher input[type="radio"]:checked + label {
-    background-color: #4598c2;
+    background-color: #af202f;
     color: #fff; }
     body .indicator-switcher input[type="radio"]:checked + label + h6:after {
       border-top-color: #fff; }
   .subindicators body .indicator-switcher input[type="radio"]:checked + label {
-    background-color: rgba(69, 152, 194, 0.1);
+    background-color: rgba(175, 32, 47, 0.1);
     color: #3b3b3b; }
 body .indicator-switcher .subindicators input[type='radio']:checked + label {
-  background-color: rgba(69, 152, 194, 0.1);
+  background-color: rgba(175, 32, 47, 0.1);
   color: #3b3b3b; }
 body .indicator-switcher > ul::after {
   clear: both;
@@ -1085,7 +1085,7 @@ body .indicator-switcher > ul > li {
   body .indicator-switcher > ul > li > label {
     font-weight: bold; }
   body .indicator-switcher > ul > li.subcat {
-    background-color: #4598c2; }
+    background-color: #af202f; }
     body .indicator-switcher > ul > li.subcat > label {
       color: #fff; }
   @media only screen and (min-width: 53.75em) {
@@ -1134,7 +1134,7 @@ body .indicator-switcher > ul > li, body .filter.controls form > ul > li, body .
     line-height: 1.2;
     color: #3b3b3b; }
   body .indicator-switcher > ul > li a.active, body .filter.controls form > ul > li a.active, body .about-menu > ul > li a.active {
-    background-color: #4598c2;
+    background-color: #af202f;
     color: #fff; }
   body .indicator-switcher > ul > li > label, body .indicator-switcher > ul > li > a, body .filter.controls form > ul > li > label, body .filter.controls form > ul > li > a, body .about-menu > ul > li > label, body .about-menu > ul > li > a {
     border-width: 0 0 1px 0;
@@ -1264,7 +1264,7 @@ body.adaptability .indicator-switcher > ul > li.subcat {
 .template-explore-map .indicator-switcher .subindicators input[type="radio"] {
   display: none; }
   .template-explore-map .indicator-switcher .subindicators input[type="radio"]:checked + label {
-    background-color: rgba(69, 152, 194, 0.1);
+    background-color: rgba(175, 32, 47, 0.1);
     color: #3b3b3b; }
     .template-explore-map .indicator-switcher .subindicators input[type="radio"]:checked + label + h6:after {
       border-top-color: #fff; }
@@ -1284,7 +1284,7 @@ body.adaptability .indicator-switcher > ul > li.subcat {
   .template-explore-map .indicator-switcher > ul > li > label {
     font-weight: bold; }
   .template-explore-map .indicator-switcher > ul > li.subcat {
-    background-color: #4598c2; }
+    background-color: #af202f; }
   @media only screen and (min-width: 53.75em) {
     .template-explore-map .indicator-switcher > ul > li {
       display: table-cell;
@@ -1343,7 +1343,7 @@ body.adaptability .indicator-switcher > ul > li.subcat {
       float: left;
       width: 36px;
       height: 36px;
-      background-color: #4598c2;
+      background-color: #af202f;
       color: #fff;
       text-align: center;
       padding: 0.1em; }
@@ -1390,16 +1390,16 @@ body.adaptability .indicator-switcher > ul > li.subcat {
         text-indent: -0.5em;
         font-size: 0.75em; }
         .template-explore-map .map .key ul li:nth-child(1) {
-          border-color: #dbebf3;
+          border-color: #efa7af;
           text-indent: 0; }
         .template-explore-map .map .key ul li:nth-child(2) {
-          border-color: #b8d8e8; }
+          border-color: #e8808b; }
         .template-explore-map .map .key ul li:nth-child(3) {
-          border-color: #96c5dc; }
+          border-color: #e15968; }
         .template-explore-map .map .key ul li:nth-child(4) {
-          border-color: #73b2d1; }
+          border-color: #da3344; }
         .template-explore-map .map .key ul li:nth-child(5) {
-          border-color: #4598c2; }
+          border-color: #af202f; }
           .template-explore-map .map .key ul li:nth-child(5):after {
             content: '100';
             float: right; }
@@ -1763,7 +1763,7 @@ body.adaptability .indicator-switcher > ul > li.subcat {
   .filter.controls form input[type="radio"] {
     display: none; }
     .filter.controls form input[type="radio"]:checked + label {
-      background-color: #4598c2;
+      background-color: #af202f;
       color: #fff; }
       .filter.controls form input[type="radio"]:checked + label + h6:after {
         border-top-color: #fff; }
@@ -1783,7 +1783,7 @@ body.adaptability .indicator-switcher > ul > li.subcat {
     .filter.controls form > ul > li > label {
       font-weight: bold; }
     .filter.controls form > ul > li.subcat {
-      background-color: rgba(69, 152, 194, 0.1); }
+      background-color: rgba(175, 32, 47, 0.1); }
     @media only screen and (min-width: 53.75em) {
       .filter.controls form > ul > li {
         display: table-cell;
