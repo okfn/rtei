@@ -144,6 +144,7 @@ RTEI.map = (function() {
       } else {
         RTEI.map.map = L.map('map', {
           attributionControl: false,
+          scrollWheelZoom: false,
           zoomControl: false
         }).setView([25, 10], 1.5);
         L.control.zoom({position: 'topright'}).addTo(RTEI.map.map);
