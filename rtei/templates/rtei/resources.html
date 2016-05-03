@@ -7,6 +7,7 @@
 {% block content %}
   <div class="main">
     <section>
+      <form action="{% url 'latest_document' %}" method="get" accept-charset="utf-8" class="download_data"><button class="export">{% trans "Download the Data" %}</button></form>
       <h2>{% trans "Resources" %}</h2>
       <p>
         {% trans "Welcome to the resource library. For the most recent Right to Education Index resource see below or use the drop down menu to search filter resources by country, year, or subcategory." %}

@@ -1829,6 +1829,9 @@ body.adaptability .indicator-switcher > ul > li.subcat {
         .filter.controls form > ul > li:hover > ul li:hover {
           background-color: #bfbfbe; }
 
+form.download_data {
+  float: right; }
+
 #contact-form .short {
   width: 20em; }
 
