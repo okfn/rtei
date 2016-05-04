@@ -1758,8 +1758,7 @@ body.adaptability .indicator-switcher > ul > li.subcat {
     content: "";
     display: table; }
   .filter.controls form input[type="submit"] {
-    margin: 1.125em;
-    float: right; }
+    margin: 1.125em; }
   .filter.controls form label {
     display: block;
     cursor: pointer;
