@@ -32,6 +32,14 @@
         <button type="button" id="chart-sort-by-name" class="sort asc" data-key="name">{% trans "Sort by Name" %}</button><button type="button" id="chart-sort-by-score" class="sort asc" data-key="index">{% trans "Sort by Total Score" %}</button>
       </div>
       <div id="chart" data-chart-labels="{{ chart_labels }}"></div>
+      <div class="key">
+        <dl>
+          <dt>0</dt>
+          <dd>{% trans "Towards the right to education being absent." %}</dd>
+          <dt>100</dt>
+          <dd>{% trans "Towards the right to education being respected, protected, and fullfilled." %}</dd>
+        </dl>
+      </div>
     </section>
 
   </div>

@@ -277,42 +277,6 @@
           }
         }
       }
-
-      dl {
-        font-size: em(13);
-
-        dt,
-        dd {
-          display: block;
-          margin: 0;
-        }
-
-        dt {
-          clear: left;
-          float: left;
-
-          &:after {
-            content: ':\00a0';
-          }
-        }
-
-        @media only screen and ( min-width: $medium-screen) {
-
-          dt {
-            display: none;
-          }
-
-          dd {
-            width: 25%;
-            float: left;
-
-            &:last-child {
-              float: right;
-              text-align: right;
-            }
-          }
-        }
-      }
     }
 
     .leaflet-control-zoom {
