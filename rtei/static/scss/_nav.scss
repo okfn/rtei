@@ -218,9 +218,10 @@
         }
       }
     }
+    $search-height: $menu-height + 6px;
     .search {
       position: relative;
-      height: $menu-height;
+      height: $search-height;
 
       @media only screen and ( min-width: $break-point ) {
         display: none;
@@ -246,7 +247,7 @@
 
     input,
     button {
-      height: $menu-height + 6px;
+      height: $search-height;
     }
 
     input[type="text"] {
@@ -261,7 +262,7 @@
       position: absolute;
       top: 50%;
       right: 0;
-      margin-top: - $menu-height / 2;
+      margin-top: - $search-height / 2;
       padding: 0;
       background-color: transparent;
       color: darken( $menu-colour, 10% );

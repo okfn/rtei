@@ -851,7 +851,7 @@ body {
         display: inline-block; } }
   #smenu #search .search {
     position: relative;
-    height: 30px; }
+    height: 36px; }
     @media only screen and (min-width: 53.75em) {
       #smenu #search .search {
         display: none;
@@ -879,7 +879,7 @@ body {
     position: absolute;
     top: 50%;
     right: 0;
-    margin-top: -15px;
+    margin-top: -18px;
     padding: 0;
     background-color: transparent;
     color: #e6e6e6; }
