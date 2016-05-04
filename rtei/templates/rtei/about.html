@@ -1,11 +1,15 @@
 {% extends "base.html" %}
 
-{% load wagtailcore_tags rtei_tags %}
+{% load wagtailcore_tags rtei_tags i18n %}
 
-{% block body_class %}template-rtei{% endblock %}
+{% block body_class %}template-rtei about{% endblock %}
 
 {% block content %}
   <div class="main">
+    <section class="small-screen-controls">
+      <button class="toggle-controls">{% trans "Sections" %}</button>
+    </section>
+
     <section class="navigation controls">
       {% about_menu parent=site_root calling_page=self %}
     </section>

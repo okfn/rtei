@@ -79,7 +79,7 @@ $(document).ready(function() {
 
   // hide controls on small screens
   var $body = $("body");
-  if ($body.hasClass("template-explore-map") || $body.hasClass("by-theme") || $body.hasClass("template-rtei-by-country")) {
+  if ($body.hasClass("template-explore-map") || $body.hasClass("by-theme") || $body.hasClass("template-rtei-by-country") || $body.hasClass("about") ) {
     if ($(".controls").css("float") == "none" ) {
       $( ".controls" ).hide();
     }
