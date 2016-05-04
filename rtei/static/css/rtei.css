@@ -912,7 +912,7 @@ body {
     position: relative;
     z-index: 2;
     text-transform: uppercase;
-    top: -56px; }
+    top: -50px; }
     @media only screen and (min-width: 40em) {
       .site-header #smenu {
         position: absolute;
