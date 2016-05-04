@@ -37,7 +37,8 @@
     }
 
     .map {
-      display: none;
+      background: transparent;
+      height: 500px;
     }
 
     @media only screen and ( min-width: $large-screen) {
@@ -61,7 +62,6 @@
       .map {
         @include span-columns(9);
         @include reset-display;
-        background: transparent;
 
         .leaflet-control-zoom {
           display: none;

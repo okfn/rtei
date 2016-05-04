@@ -971,7 +971,8 @@ body {
         background-color: #fff;
         color: #333333; }
   .template-home .banner .map {
-    display: none; }
+    background: transparent;
+    height: 500px; }
   @media only screen and (min-width: 53.75em) {
     .template-home .banner .container > div {
       width: 100%;
@@ -988,8 +989,7 @@ body {
         display: inline-block; }
     .template-home .banner .map {
       display: table-cell;
-      width: 75%;
-      background: transparent; }
+      width: 75%; }
       .template-home .banner .map .leaflet-control-zoom {
         display: none;
         box-shadow: none;
