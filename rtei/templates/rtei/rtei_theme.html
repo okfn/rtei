@@ -2,7 +2,7 @@
 
 {% load static wagtailcore_tags i18n %}
 
-{% block body_class %}template-rtei{% endblock %}
+{% block body_class %}template-rtei by-theme{% endblock %}
 
 {% block extra_css %}
     <link rel="stylesheet" type="text/css" href="{% static 'vendor/c3/c3.css' %}">
@@ -16,6 +16,10 @@
       <p>
       {% trans "Evaluate various themes and issues in the right to education. Use the pull down menu to select a theme and sort results by country name or score." %}
       </p>
+    </section>
+
+    <section class="small-screen-controls">
+      <button class="toggle-controls">{% trans "Filters" %}</button>
     </section>
 
     <section class="controls">

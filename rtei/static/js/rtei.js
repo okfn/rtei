@@ -77,6 +77,20 @@ $(document).ready(function() {
   });
 
 
+  // hide controls on small screens
+  var $body = $("body");
+  if ($body.hasClass("template-explore-map") || $body.hasClass("by-theme") || $body.hasClass("template-rtei-by-country")) {
+    if ($(".controls").css("float") == "none" ) {
+      $( ".controls" ).hide();
+    }
+    $( ".toggle-controls" ).click(function() {
+      $( ".controls" ).slideToggle( "slow", function() {
+        // Animation complete.
+      });
+    });
+  }
+
+
   // RESOURCE FILTER
   // add 'subcat' class if an active child input is present onload
   $('.filter input:checked').closest("ul").closest("li").addClass("subcat");
