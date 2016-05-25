@@ -159,7 +159,7 @@ RTEI.map = (function() {
     },
 
     // Refresh the countries layer symbology depending on the current index
-    refresh() {
+    refresh: function() {
       geoJSONLayer.setStyle(style);
       geoJSONLayer.eachLayer(function(layer){
         var subLayers = (!layer._layers) ? {'x': layer} : layer._layers;
