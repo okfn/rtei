@@ -99,10 +99,11 @@ def any_core_children(children):
 
 
 @register.inclusion_tag('rtei/tags/indicators.html')
-def indicators_list(indicators, country_indicators):
+def indicators_list(indicators, country_indicators, is_theme):
     return {
         'indicators': indicators,
-        'country_indicators': country_indicators
+        'country_indicators': country_indicators,
+        'is_theme': is_theme,
     }
 
 

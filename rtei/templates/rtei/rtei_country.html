@@ -60,7 +60,7 @@
       {% endif %}
 
       <ol id="indicators" class="indicators-for-country">
-        {% indicators_list indicators country_indicators %}
+        {% indicators_list indicators country_indicators False %}
       </ol>
 
 
@@ -68,7 +68,7 @@
       {% for theme in themes %}
         {% for subtheme in theme.children %}
             <ul id="theme_indicators_{{ subtheme.code }}" class="theme-indicators" style="display: none">
-            {% indicators_list subtheme.indicators country_indicators %}
+            {% indicators_list subtheme.indicators country_indicators True %}
             </ul>
         {% endfor %}
 
