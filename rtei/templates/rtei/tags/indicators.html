@@ -1,6 +1,7 @@
 {% load i18n rtei_tags %}
 
 {% for indicator in indicators %}
+  {% if indicator.core %}
   <li id="indicator_container_{{ indicator.code }}">
     <div id="indicator_item_{{ indicator.code }}" class="indicator">
       <span class="indicator-title">
@@ -10,11 +11,11 @@
         {{ country_indicators|get_indicator_value:indicator.code }}
       </span>
     </div>
-    {% if indicator.children %}
+    {% if indicator.children and indicator.children|any_core_children %}
       <ul>
       {% indicators_list indicator.children country_indicators %}
       </ul>
     {% endif %}
-
   </li>
+  {% endif %}
 {% endfor %}

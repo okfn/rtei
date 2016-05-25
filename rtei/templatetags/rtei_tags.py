@@ -93,6 +93,11 @@ def get_indicator_value(dictionary, code):
     return value
 
 
+@register.filter
+def any_core_children(children):
+    return any([child['core'] for child in children])
+
+
 @register.inclusion_tag('rtei/tags/indicators.html')
 def indicators_list(indicators, country_indicators):
     return {
