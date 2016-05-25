@@ -30,7 +30,7 @@ RTEI.country = (function() {
 
     currentIndex: 'index',
 
-    showIndicators(code) {
+    showIndicators: function(code) {
       var isTheme = (code.substring(0, 1) == 't');
       if (code != RTEI.country.currentIndex) {
         RTEI.country.currentIndex = code;
