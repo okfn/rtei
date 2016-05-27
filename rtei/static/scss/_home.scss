@@ -36,6 +36,25 @@
       }
     }
 
+    .summary {
+      width: 100%;
+
+      background-color: #FFF;
+      color: $medium-gray;
+      text-align: center;
+
+      div {
+        padding: $base-spacing;
+        max-width: 68em;
+        margin: 0 auto;
+
+        p {
+          font-size: rem(18);
+          line-height: 1.4;
+        }
+      }
+    }
+
     .map {
       background: transparent;
       height: 500px;
@@ -56,6 +75,12 @@
 
         & > a {
           display: inline-block;
+        }
+      }
+
+      .summary {
+        div {
+          padding: $base-spacing 6.5em;
         }
       }
 
@@ -94,6 +119,7 @@
   }
 
   .main {
+
     & > div {
       text-align: center;
       padding: $base-spacing;

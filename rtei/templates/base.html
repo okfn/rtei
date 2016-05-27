@@ -48,13 +48,13 @@
 
               <ul class="social">
                 <li>
-                  <a href="https://twitter.com/RESULTS_Tweets">{% include "icons/twitter.svg" %}</a>
+                  <a href="https://twitter.com/RESULTS_Tweets" target="_blank">{% include "icons/twitter.svg" %}</a>
                 </li>
                 <li>
-                  <a href="https://www.facebook.com/RESULTSEdFund">{% include "icons/facebook.svg" %}</a>
+                  <a href="https://www.facebook.com/RESULTSEdFund" target="_blank">{% include "icons/facebook.svg" %}</a>
                 </li>
                 <li>
-                  <a href="https://www.youtube.com/user/RESULTSorg">{% include "icons/youtube.svg" %}</a>
+                  <a href="https://www.youtube.com/user/RESULTSorg" target="_blank">{% include "icons/youtube.svg" %}</a>
                 </li>
               </ul>
 
@@ -62,17 +62,17 @@
 
           <div class="secondary">
             <div>
-              <ul class="language">
-              {% get_available_languages as languages %}
-              {% get_current_language as current_lang_code %}
-              {% for lang_code, lang_name in languages  %}
-                {% language lang_code %}
-                <li {% if lang_code == current_lang_code %}class="active"{% endif %}>
-                  <a href="{% slugurl page.slug %}">{{ lang_code|upper }}</a>
-                </li>
-                {% endlanguage %}
-              {% endfor %}
-              </ul>
+{#               <ul class="language"> #}
+{#               {% get_available_languages as languages %} #}
+{#               {% get_current_language as current_lang_code %} #}
+{#               {% for lang_code, lang_name in languages  %} #}
+{#                 {% language lang_code %} #}
+{#                 <li {% if lang_code == current_lang_code %}class="active"{% endif %}> #}
+{#                   <a href="{% slugurl page.slug %}">{{ lang_code|upper }}</a> #}
+{#                 </li> #}
+{#                 {% endlanguage %} #}
+{#               {% endfor %} #}
+{#               </ul> #}
 
               <a href="http://results.org/" class="results">
                 <img src="{% static 'img/results.svg' %}" onerror="this.src='{% static 'img/results.png' %}'" alt="RESULTS">
