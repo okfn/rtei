@@ -726,6 +726,41 @@ body {
       color: #fff; }
     .main .content .sort button.active:after {
       background-color: #af202f; }
+.main .content > .description {
+  padding: 0.75em;
+  margin: 0.75em;
+  background-color: rgba(255, 255, 255, 0.7); }
+  .main .content > .description::after {
+    clear: both;
+    content: "";
+    display: table; }
+  @media only screen and (min-width: 40em) {
+    .main .content > .description {
+      left: 0;
+      margin-right: 4.5em;
+      position: absolute;
+      z-index: 1; } }
+  .main .content > .description .icon {
+    float: left;
+    width: 50px;
+    height: 50px;
+    background-color: #af202f;
+    color: #fff;
+    text-align: center;
+    padding: 0.1em;
+    border-radius: 50%; }
+    .main .content > .description .icon svg {
+      fill: currentColor;
+      width: 60%;
+      height: 100%; }
+  .main .content > .description .text {
+    margin-left: 75px;
+    display: block;
+    font-size: 0.875em;
+    line-height: 1.2; }
+    .main .content > .description .text h2 {
+      font-size: 1.8em;
+      margin-bottom: 0.4em; }
 
 .key dl {
   font-size: 0.8125em; }
@@ -1366,41 +1401,6 @@ body.adaptability .indicator-switcher > ul > li.subcat {
         background-color: #bfbfbe; }
 .template-explore-map .map {
   position: relative; }
-  .template-explore-map .map .description {
-    padding: 0.75em;
-    margin: 0.75em;
-    background-color: rgba(255, 255, 255, 0.7); }
-    .template-explore-map .map .description::after {
-      clear: both;
-      content: "";
-      display: table; }
-    @media only screen and (min-width: 40em) {
-      .template-explore-map .map .description {
-        left: 0;
-        margin-right: 4.5em;
-        position: absolute;
-        z-index: 1; } }
-    .template-explore-map .map .description .icon {
-      float: left;
-      width: 50px;
-      height: 50px;
-      background-color: #af202f;
-      color: #fff;
-      text-align: center;
-      padding: 0.1em;
-      border-radius: 50%; }
-      .template-explore-map .map .description .icon svg {
-        fill: currentColor;
-        width: 60%;
-        height: 100%; }
-    .template-explore-map .map .description .text {
-      margin-left: 75px;
-      display: block;
-      font-size: 0.875em;
-      line-height: 1.2; }
-      .template-explore-map .map .description .text h2 {
-        font-size: 1.8em;
-        margin-bottom: 0.4em; }
   .template-explore-map .map .leaflet-container {
     height: 450px; }
     @media only screen and (min-width: 40em) {
