@@ -726,27 +726,29 @@ body {
       color: #fff; }
     .main .content .sort button.active:after {
       background-color: #af202f; }
-.main .content > .description .icon {
-  float: left;
-  width: 50px;
-  height: 50px;
-  background-color: #af202f;
-  color: #fff;
-  text-align: center;
-  padding: 0.1em;
-  border-radius: 50%; }
-  .main .content > .description .icon svg {
-    fill: currentColor;
-    width: 60%;
-    height: 100%; }
-.main .content > .description .text {
-  margin-left: 75px;
-  display: block;
-  font-size: 0.875em;
-  line-height: 1.2; }
-  .main .content > .description .text h2 {
-    font-size: 1.8em;
-    margin-bottom: 0.4em; }
+.main .content > .description {
+  margin-bottom: 1.5em; }
+  .main .content > .description .icon {
+    float: left;
+    width: 50px;
+    height: 50px;
+    background-color: #af202f;
+    color: #fff;
+    text-align: center;
+    padding: 0.1em;
+    border-radius: 50%; }
+    .main .content > .description .icon svg {
+      fill: currentColor;
+      width: 60%;
+      height: 100%; }
+  .main .content > .description .text {
+    margin-left: 75px;
+    display: block;
+    font-size: 0.875em;
+    line-height: 1.2; }
+    .main .content > .description .text h2 {
+      font-size: 1.8em;
+      margin-bottom: 0.4em; }
 
 .key dl {
   font-size: 0.8125em; }
