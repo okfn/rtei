@@ -1,0 +1,10 @@
+.rich-text {
+  .richtext-image.left {
+    float: left;
+    margin-right: $base-spacing;
+  }
+  .richtext-image.right {
+    float: right;
+    margin-left: $base-spacing;
+  }
+}
