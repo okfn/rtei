@@ -720,7 +720,7 @@ body {
       text-align: right; } }
   .main .content .sort button {
     padding-right: 3em;
-    background-color: inherit;
+    background-color: #fff;
     color: inherit; }
     .main .content .sort button:after {
       color: #fff; }
