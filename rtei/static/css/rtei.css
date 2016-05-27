@@ -1736,6 +1736,9 @@ body.adaptability .indicator-switcher > ul > li.subcat {
       width: 100%;
       height: auto;
       fill: #3b3b3b; }
+      @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+        .template-rtei.resources .resources-list li .icon svg {
+          height: 45px; } }
     .template-rtei.resources .resources-list li .icon:hover svg {
       fill: currentColor; }
     @media only screen and (min-width: 53.75em) {
