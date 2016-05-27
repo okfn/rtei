@@ -231,7 +231,7 @@
       }
     }
 
-    &:target {
+    &:target, &.target {
       & > a:first-of-type {
         display: none;
       }

@@ -127,4 +127,12 @@ $(document).ready(function() {
     $( this ).parent().children("h6").toggleClass( "expanded" );
   });
 
+  // SEARCH BOX
+  // prevent :target (which would jump the page to #search), instead add a
+  // .target class
+  $('#search a').on('click', function(e) {
+    e.preventDefault();
+    $(this).closest('#search').toggleClass('target');
+  });
+
 });
