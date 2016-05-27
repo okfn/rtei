@@ -2141,4 +2141,11 @@ html,
             content: "";
             display: table; } }
 
+.rich-text .richtext-image.left {
+  float: left;
+  margin-right: 1.5em; }
+.rich-text .richtext-image.right {
+  float: right;
+  margin-left: 1.5em; }
+
 /*# sourceMappingURL=rtei.css.map */
