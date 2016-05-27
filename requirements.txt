@@ -1,5 +1,5 @@
 Django>=1.9,<1.10
-wagtail==1.4.3
+wagtail==1.4.5
 psycopg2==2.6.1
 -e git+https://github.com/infoportugal/wagtail-modeltranslation.git@release/v0.5#egg=wagtail-modeltranslation
 django-debug-toolbar==1.4

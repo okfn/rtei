@@ -12,6 +12,14 @@ $(document).ready(function() {
     5: ['#469a8f', '#64b9ae', '#84c7be', '#a4d5cf', '#c3e4e0']  // adaptability
   };
 
+  RTEI.levelOneIndicators = {
+    1: 'governance',
+    2: 'availability',
+    3: 'accessibility',
+    4: 'acceptability',
+    5: 'adaptability',
+  }
+
   // JS detection class
   document.documentElement.className = document.documentElement.className.replace("no-js","js");
 
@@ -40,12 +48,12 @@ $(document).ready(function() {
     $('#current-indicator-label').text($('div[id="desc_label_' + this.value +'"]').text());
     $('#current-indicator-desc').text($('div[id="desc_' + this.value +'"]').text());
 
-    if (isTheme) {
+    if (isTheme || this.value == 'index') {
       className = 'overall_index';
     } else if (this.id.indexOf('.') !== -1) {
-      className = $('label[for="' + this.id.substring(0, this.id.indexOf('.')) + '"]').text();
+      className = RTEI.levelOneIndicators[this.value.substring(0, this.id.indexOf('.'))];
     } else {
-      className = label;
+      className = RTEI.levelOneIndicators[this.value];
     }
     var templateClassNames = [];
     $.each($('body').attr('class').split(/\s+/), function(index, item) {
