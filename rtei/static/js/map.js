@@ -183,10 +183,6 @@ $(document).ready(function(){
         RTEI.map.currentIndex = this.value;
         RTEI.map.currentIndexLabel = $('label[for="' + this.id + '"]').text();
 
-        // Update description over map
-        $('#current-indicator-icon').html($('span[id="desc_icon_' + RTEI.map.currentIndex +'"]').html());
-        $('#current-indicator-label').text($('div[id="desc_label_' + RTEI.map.currentIndex +'"]').text());
-        $('#current-indicator-desc').text($('div[id="desc_' + RTEI.map.currentIndex +'"]').text());
         RTEI.map.refresh();
       }
     });
