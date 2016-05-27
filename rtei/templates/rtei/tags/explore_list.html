@@ -1,7 +1,7 @@
-{% load i18n %}
+{% load i18n wagtailcore_tags %}
 
 <div>
-  <a href="explore/map/">
+  <a href="{% slugurl 'map' %}">
     {% include "icons/map.svg" %}
     <h2>{% trans "Explore the Map" %}</h2>
     <p>
@@ -11,7 +11,7 @@
 </div>
 
 <div>
-  <a href="explore/rtei-theme/">
+  <a href="{% slugurl 'rtei-theme' %}">
     {% include "icons/bars.svg" %}
     <h2>{% trans "RTEI by Theme" %}</h2>
     <p>
@@ -21,7 +21,7 @@
 </div>
 
 <div>
-  <a href="explore/rtei-country/">
+  <a href="{% slugurl 'rtei-country' %}">
     {% include "icons/earth.svg" %}
     <h2>{% trans "RTEI by Country" %}</h2>
     <p>
@@ -31,7 +31,7 @@
 </div>
 
 <div>
-  <a href="resources/">
+  <a href="{% slugurl 'resources' %}">
     {% include "icons/download.svg" %}
     <h2>{% trans "Download the Data" %}</h2>
     <p>
