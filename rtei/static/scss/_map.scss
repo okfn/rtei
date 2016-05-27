@@ -175,6 +175,20 @@
   .map {
     position: relative;
 
+    .description {
+      @include clearfix;
+      padding: $small-spacing;
+      margin: $small-spacing;
+      background-color: rgba($base-background-color, 0.7);
+
+      @media only screen and ( min-width: $medium-screen) {
+        left: 0;
+        margin-right: $base-spacing * 3;
+        position: absolute;
+        z-index: 1;
+      }
+    }
+
     .leaflet-container {
       height: 450px;
 
