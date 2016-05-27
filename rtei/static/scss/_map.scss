@@ -190,32 +190,29 @@
 
       .icon {
         float: left;
-        width: 36px;
-        height: 36px;
+        width: 50px;
+        height: 50px;
         background-color: $index-color;
         color: #fff;
         text-align: center;
         padding: 0.1em;
+        border-radius: 50%;
 
         svg {
           fill: currentColor;
-          width: 65%;
+          width: 60%;
           height: 100%;
         }
       }
       .text {
-        margin-left: 46px;
+        margin-left: 75px;
         display: block;
         font-size: em(14);
         line-height: 1.2;
 
         h2 {
-          display: inline;
-          font-size: 1em;
-
-          &:after {
-            content: ': ';
-          }
+          font-size: 1.8em;
+          margin-bottom: 0.4em;
         }
       }
     }
