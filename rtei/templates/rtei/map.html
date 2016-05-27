@@ -27,21 +27,9 @@
     {% left_menu indicators=indicators themes=themes for_map=True %}
   </section>
 
-  <section class="map">
+  <section class="map content">
 
-    <div class="description">
-      <span class="icon" id="current-indicator-icon">
-        {% include "icons/earth.svg" %}
-      </span>
-      <span class="text">
-        <h2 id="current-indicator-label">{% trans "Overall Index" %}</h2>
-        <span id="current-indicator-desc">
-            {% trans "The overall index score is a general indication of progress towards the right to education in a country." %}
-        </span>
-      </span>
-
-      {% include 'rtei/tags/indicator_descriptions.html' %}
-    </div>
+    {% include 'rtei/tags/description_header.html' %}
 
     <div id="map"></div>
 

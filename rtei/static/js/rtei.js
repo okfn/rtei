@@ -35,6 +35,11 @@ $(document).ready(function() {
     var isTheme = (this.value.substring(0, 1) == 't');
     var label = $('label[for="' + this.id + '"]').text();
 
+    // Update description over map
+    $('#current-indicator-icon').html($('span[id="desc_icon_' + this.value +'"]').html());
+    $('#current-indicator-label').text($('div[id="desc_label_' + this.value +'"]').text());
+    $('#current-indicator-desc').text($('div[id="desc_' + this.value +'"]').text());
+
     if (isTheme) {
       className = 'overall_index';
     } else if (this.id.indexOf('.') !== -1) {
