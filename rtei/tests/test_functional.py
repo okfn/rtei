@@ -25,13 +25,14 @@ class SiteTestCase(WebTest):
         assert 'Explore el Mapa' in page
         assert 'Explore the Map' not in page
 
-    def test_language_links(self):
-        page = self.app.get('/').follow()
+    # Language links commented out until translations are complete
+    # def test_language_links(self):
+    #     page = self.app.get('/').follow()
 
-        page_es = page.click(href='/es/')
+    #     page_es = page.click(href='/es/')
 
-        assert 'Explore el Mapa' in page_es
-        assert 'Explore the Map' not in page_es
+    #     assert 'Explore el Mapa' in page_es
+    #     assert 'Explore the Map' not in page_es
 
     def test_explore_map(self):
         page = self.app.get('/en/explore/map/')
