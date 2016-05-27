@@ -22,12 +22,15 @@
         </div>
       </div>
     </div>
+    <section class="summary">
+      <div>
+        <p>{% trans "The Right to Education Index monitors the right to education in a country based on an important, but non-exhaustive, list of indicators derived from the international right to education framework." %}</p>
+        <p>{% trans "Explore the data on a map, by theme, by country, or in a complete data set." %}</p>
+      </div>
+    </section>
   </div>
 
   <div class="main">
-    <section>
-      <p>{% trans "The Right to Education Index is a general measure of the right to education in a country based on an important, but non-exhaustive, list of indicators derived from the international right to education framework. Explore the data on a map, by theme, by country, or in a complete data set." %}</p>
-    </section>
     {% include 'rtei/tags/explore_list.html' %}
   </div>
 

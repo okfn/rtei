@@ -997,6 +997,18 @@ body {
       .template-home .banner .text > a:hover {
         background-color: #fff;
         color: #333333; }
+  .template-home .banner .summary {
+    width: 100%;
+    background-color: #FFF;
+    color: #595a5b;
+    text-align: center; }
+    .template-home .banner .summary div {
+      padding: 1.5em;
+      max-width: 68em;
+      margin: 0 auto; }
+      .template-home .banner .summary div p {
+        font-size: 1.125rem;
+        line-height: 1.4; }
   .template-home .banner .map {
     background: transparent;
     height: 500px; }
@@ -1014,6 +1026,8 @@ body {
       vertical-align: middle; }
       .template-home .banner .text > a {
         display: inline-block; }
+    .template-home .banner .summary div {
+      padding: 1.5em 6.5em; }
     .template-home .banner .map {
       display: table-cell;
       width: 75%; }
