@@ -62,17 +62,17 @@
 
           <div class="secondary">
             <div>
-              <ul class="language">
-              {% get_available_languages as languages %}
-              {% get_current_language as current_lang_code %}
-              {% for lang_code, lang_name in languages  %}
-                {% language lang_code %}
-                <li {% if lang_code == current_lang_code %}class="active"{% endif %}>
-                  <a href="{% slugurl page.slug %}">{{ lang_code|upper }}</a>
-                </li>
-                {% endlanguage %}
-              {% endfor %}
-              </ul>
+{#               <ul class="language"> #}
+{#               {% get_available_languages as languages %} #}
+{#               {% get_current_language as current_lang_code %} #}
+{#               {% for lang_code, lang_name in languages  %} #}
+{#                 {% language lang_code %} #}
+{#                 <li {% if lang_code == current_lang_code %}class="active"{% endif %}> #}
+{#                   <a href="{% slugurl page.slug %}">{{ lang_code|upper }}</a> #}
+{#                 </li> #}
+{#                 {% endlanguage %} #}
+{#               {% endfor %} #}
+{#               </ul> #}
 
               <a href="http://results.org/" class="results">
                 <img src="{% static 'img/results.svg' %}" onerror="this.src='{% static 'img/results.png' %}'" alt="RESULTS">
