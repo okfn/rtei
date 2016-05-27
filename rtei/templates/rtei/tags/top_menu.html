@@ -32,7 +32,7 @@
               {% for menu_item in menu_items %}
               <li class="{% if menu_item.show_dropdown %}dropdown{% endif %}{% if menu_item.active %} active{% endif %}">
                 {% if menu_item.show_dropdown %}
-              <a data-toggle="dropdown" class="dropdown-toggle" href="#">{% translated_field menu_item 'title' language %} <b class="caret"></b></a>
+                <a data-toggle="dropdown" class="dropdown-toggle" href="#">{% translated_field menu_item 'title' language %} <b class="caret"></b></a>
 
                 {% top_menu_children parent=menu_item %}
                 {% else %}
