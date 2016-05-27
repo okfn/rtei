@@ -737,6 +737,16 @@ body {
     text-align: center;
     padding: 0.1em;
     border-radius: 50%; }
+    .governance .main .content > .description .icon {
+      background-color: #c35727; }
+    .availability .main .content > .description .icon {
+      background-color: #bdb831; }
+    .accessibility .main .content > .description .icon {
+      background-color: #af1f2c; }
+    .acceptability .main .content > .description .icon {
+      background-color: #357b9e; }
+    .adaptability .main .content > .description .icon {
+      background-color: #469a8f; }
     .main .content > .description .icon svg {
       fill: currentColor;
       width: 60%;
@@ -1493,8 +1503,6 @@ body.adaptability .indicator-switcher > ul > li.subcat {
   color: #3b3b3b; }
 .template-explore-map.governance .indicator-switcher > ul > li.subcat {
   background-color: colour; }
-.template-explore-map.governance .map .description .icon {
-  background-color: #c35727; }
 .template-explore-map.governance .map .key ul li:nth-child(1) {
   border-color: #f2cfbf; }
 .template-explore-map.governance .map .key ul li:nth-child(2) {
@@ -1513,8 +1521,6 @@ body.adaptability .indicator-switcher > ul > li.subcat {
   color: #3b3b3b; }
 .template-explore-map.availability .indicator-switcher > ul > li.subcat {
   background-color: colour; }
-.template-explore-map.availability .map .description .icon {
-  background-color: #bdb831; }
 .template-explore-map.availability .map .key ul li:nth-child(1) {
   border-color: #f0eec5; }
 .template-explore-map.availability .map .key ul li:nth-child(2) {
@@ -1533,8 +1539,6 @@ body.adaptability .indicator-switcher > ul > li.subcat {
   color: #3b3b3b; }
 .template-explore-map.accessibility .indicator-switcher > ul > li.subcat {
   background-color: colour; }
-.template-explore-map.accessibility .map .description .icon {
-  background-color: #af1f2c; }
 .template-explore-map.accessibility .map .key ul li:nth-child(1) {
   border-color: #efa6ac; }
 .template-explore-map.accessibility .map .key ul li:nth-child(2) {
@@ -1553,8 +1557,6 @@ body.adaptability .indicator-switcher > ul > li.subcat {
   color: #3b3b3b; }
 .template-explore-map.acceptability .indicator-switcher > ul > li.subcat {
   background-color: colour; }
-.template-explore-map.acceptability .map .description .icon {
-  background-color: #357b9e; }
 .template-explore-map.acceptability .map .key ul li:nth-child(1) {
   border-color: #b4d5e6; }
 .template-explore-map.acceptability .map .key ul li:nth-child(2) {
@@ -1573,8 +1575,6 @@ body.adaptability .indicator-switcher > ul > li.subcat {
   color: #3b3b3b; }
 .template-explore-map.adaptability .indicator-switcher > ul > li.subcat {
   background-color: colour; }
-.template-explore-map.adaptability .map .description .icon {
-  background-color: #469a8f; }
 .template-explore-map.adaptability .map .key ul li:nth-child(1) {
   border-color: #c3e4e0; }
 .template-explore-map.adaptability .map .key ul li:nth-child(2) {

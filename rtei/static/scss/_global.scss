@@ -163,6 +163,22 @@ body {
         padding: 0.1em;
         border-radius: 50%;
 
+        .governance & {
+          background-color:$governance-color;
+        }
+        .availability & {
+          background-color:$availability-color;
+        }
+        .accessibility & {
+          background-color:$accessibility-color;
+        }
+        .acceptability & {
+          background-color:$acceptability-color;
+        }
+        .adaptability & {
+          background-color:$adaptability-color;
+        }
+
         svg {
           fill: currentColor;
           width: 60%;
