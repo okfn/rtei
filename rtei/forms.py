@@ -2,7 +2,7 @@ from django.utils.translation import ugettext as _
 from django.core.mail import send_mail
 from django import forms
 
-from rtei.settings import RTEI_CONTACT_FORM_EMAIL
+from django.conf import settings
 
 import logging
 log = logging.getLogger(__name__)
@@ -28,4 +28,4 @@ Affiliation: {2}'''.format(self.cleaned_data['contact_name'],
                            self.cleaned_data['contact_affiliation'])
 
         send_mail('[RTEI] New Contact', message, 'no-reply@results.org',
-                  [RTEI_CONTACT_FORM_EMAIL], fail_silently=False)
+                  [settings.RTEI_CONTACT_FORM_EMAIL], fail_silently=False)
