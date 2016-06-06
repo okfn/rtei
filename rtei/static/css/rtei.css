@@ -760,6 +760,10 @@ body {
       font-size: 1.8em;
       margin-bottom: 0.4em; }
 
+.key::after {
+  clear: both;
+  content: "";
+  display: table; }
 .key dl {
   font-size: 0.8125em; }
   .key dl dt,

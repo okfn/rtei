@@ -201,6 +201,7 @@ body {
 }
 
 .key {
+  @include clearfix;
   dl {
     font-size: em(13);
 
