@@ -1,4 +1,15 @@
 .rich-text {
+
+  body.partners & {
+    p {
+      margin-left: 165px;
+    }
+
+    h3 + p {
+      margin-left: 0;
+    }
+  }
+
   .richtext-image.left {
     float: left;
     margin-right: $base-spacing;

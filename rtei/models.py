@@ -222,7 +222,7 @@ class RTEIAncillaryPage(TranslationMixin, Page):
             if contact_form.is_valid():
                 try:
                     contact_form.save()
-                except SMTPException as e:
+                except SMTPException:
                     messages.error(
                         request,
                         _('There was a problem submitting your contact details.'))
@@ -243,6 +243,8 @@ class RTEIAncillaryPage(TranslationMixin, Page):
     def get_template(self, request, *args, **kwargs):
         if self.slug == 'contact-us':
             return "rtei/contact_us.html"
+        elif self.get_parent().slug == 'partners':
+            return "rtei/partners.html"
         else:
             return "rtei/about.html"
 
@@ -333,9 +335,9 @@ class RteiDocument(AbstractDocument):
         RegexValidator(regex='^\d{4}$',
                        message='Must be 4 numbers',
                        code='nomatch')],
-                       help_text='e.g. 1999',
-                       max_length=4,
-                       blank=True)
+        help_text='e.g. 1999',
+        max_length=4,
+        blank=True)
 
     country = models.CharField(max_length=256, blank=True)
     is_resource = models.BooleanField(default=True,
