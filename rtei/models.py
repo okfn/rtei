@@ -421,9 +421,9 @@ class BlogPage(TranslationMixin, Page):
         related_name='+'
     )
 
-    search_fields = Page.search_fields + (
+    search_fields = Page.search_fields + [
         index.SearchField('body'),
-    )
+    ]
 
     @property
     def blog_index(self):
