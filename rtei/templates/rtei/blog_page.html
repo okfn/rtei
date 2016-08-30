@@ -16,11 +16,6 @@
 
         {% if self.date %}<span class="post-date">{{ self.date }}</span>{% endif %}
 
-        {% if self.feed_image %}
-        {% image self.feed_image width-1000 as img %}
-        <div class="image" style="background-image:url('{{ img.url }}')"></div>
-        {% endif %}
-
         {% if self.intro %}<p class="intro">{{ self.intro }}</p>{% endif %}
 
       </div>
