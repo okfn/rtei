@@ -8,6 +8,6 @@ set -e
 sudo -u postgres psql -c "CREATE USER rtei WITH PASSWORD 'pass' CREATEDB;"
 
 # Install requirements
+pip install setuptools>=18.5    # Required by html5lib
 pip install -r requirements.txt
 pip install -r test-requirements.txt
-
