@@ -25,7 +25,9 @@ MEDIA_URL = "https://%s/" % (AWS_S3_CUSTOM_DOMAIN)
 
 ALLOWED_HOSTS = [
     'localhost',
-    'rtei.herokuapp.com'
+    'rtei.herokuapp.com',
+    'rtei-production.herokuapp.com',
+    'www.rtei.org',
 ]
 
 # Email to receive contact requests from the form on /about/contact-us/
