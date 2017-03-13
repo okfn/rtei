@@ -57,19 +57,16 @@ def get_map_context(context):
             'code': '1',
             'title': 'Governance',
             'level': 1,
-            'core': True,
             'indicators': [
                 {
                     'code': '1.1',
                     'title': 'International Framework',
                     'level': 2,
-                    'core': True,
                 },
                 {
                     'code': '1.2',
                     'title': 'National Law',
                     'level': 2,
-                    'core': True,
                 },
                 ...
             ]
@@ -78,7 +75,6 @@ def get_map_context(context):
             'code': '2',
             'title': 'Availability',
             'level': 1,
-            'core': True,
             'indicators': [
                 ...
             ]
@@ -225,7 +221,8 @@ class RTEIAncillaryPage(TranslationMixin, Page):
                 except SMTPException:
                     messages.error(
                         request,
-                        _('There was a problem submitting your contact details.'))
+                        _('There was a problem submitting your contact '
+                          'details.'))
                     log.error('Internal Server Error: %s', request.path,
                               exc_info=sys.exc_info(),
                               extra={

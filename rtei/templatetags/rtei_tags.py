@@ -40,8 +40,9 @@ def top_menu(context, parent, calling_page=None):
         # We don't directly check if calling_page is None since the template
         # engine can pass an empty string to calling_page
         # if the variable passed as calling_page does not exist.
-        menu_item.active = (calling_page.url.startswith(menu_item.url)
-                           if calling_page else False)
+        menu_item.active = (
+            calling_page.url.startswith(menu_item.url)
+            if calling_page else False)
         menu_items.append(menu_item)
 
     return {
@@ -93,11 +94,6 @@ def get_indicator_value(dictionary, code):
     return value
 
 
-@register.filter
-def any_core_children(children):
-    return any([child['core'] for child in children])
-
-
 @register.inclusion_tag('rtei/tags/indicators.html')
 def indicators_list(indicators, country_indicators, is_theme):
     return {
@@ -142,8 +138,9 @@ def about_menu(context, parent, calling_page=None):
     for base_menu_item in base_menu_items:
         menu_item = base_menu_item.specific
 
-        menu_item.active = (calling_page.url.startswith(menu_item.url)
-                           if calling_page else False)
+        menu_item.active = (
+            calling_page.url.startswith(menu_item.url)
+            if calling_page else False)
 
         menu_items.append(menu_item)
     return {

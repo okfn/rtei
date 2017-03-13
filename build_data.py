@@ -18,8 +18,8 @@ INPUT_FILE = 'data/rtei_data_2015.xlsx'
 COUNTRIES_FILE = 'data/countries.json'
 OUTPUT_DIR = 'rtei/static/data'
 
-CORE_SHEET = 'Core Questionnaire'
-COMPANION_SHEET = 'Companion Questionnaire'
+
+CORE_SHEET = 'All Questionnaires'
 THEMES_SHEET = 'Transversal Themes'
 THEMES_MAPPINGS_SHEET = 'Transversal Themes Mappings'
 
@@ -211,7 +211,7 @@ def get_themes_mappings():
             },
             {
                 "code": "3.2.1j",
-                "title": "Do national laws forbid discrimination in education by disability status?"
+                "title": "Do national laws forbid discrimination in [...]"
             },
         ],
 
@@ -291,7 +291,7 @@ def get_themes(include_columns=False, only_with_values=True,
     return out
 
 
-def get_indicators(core=True, include_columns=False):
+def get_indicators(include_columns=False):
     '''
     Returns a list of dicts describing the indicators. Each of the dicts
     contains the following keys:
@@ -312,11 +312,8 @@ def get_indicators(core=True, include_columns=False):
     '''
 
     out = []
-    if core:
-        sheet = CORE_SHEET
-    else:
-        sheet = COMPANION_SHEET
-    ws = wb[sheet]
+
+    ws = wb[CORE_SHEET]
 
     # First four rows
     # We skip row 2 as values are duplicated on row 4
@@ -326,6 +323,7 @@ def get_indicators(core=True, include_columns=False):
             indicator = None
             if cell.value:
                 code, title, level = parse_cell(cell.value)
+
                 if not code:
                     continue
                 if code in codes_done:
@@ -344,7 +342,6 @@ def get_indicators(core=True, include_columns=False):
                     indicator = {
                         'code': code,
                         'title': title,
-                        'core': core,
                         'level': level
                     }
                     out.append(indicator)
@@ -369,16 +366,6 @@ def get_all_indicators(include_columns=False):
 
     core_indicators = get_indicators(include_columns=include_columns)
 
-    core_codes = [q['code'] for q in core_indicators]
-
-    companion_indicators = get_indicators(core=False,
-                                          include_columns=include_columns)
-
-    # Remove duplicates
-    for indicator in companion_indicators:
-        if indicator['code'] not in core_codes:
-            core_indicators.append(indicator)
-
     indicators = sorted(core_indicators, key=lambda k: k['code'])
 
     return indicators
@@ -401,10 +388,17 @@ def get_main_scores(country_indicators):
         if code[:1] not in scores:
             scores[code[:1]] = []
 
-        if code.count('.') == 1 and not code[-1].isalpha() and value is not None:
-            scores[code[:1]].append(value * 100 if value <= 1 else value)
-
-    return {score: round(sum(values) / len(values), 2) for score, values in scores.iteritems() if values}
+        if (code.count('.') == 1 and not code[-1].isalpha()
+                and value is not None):
+            if isinstance(value, float) or isinstance(value, int):
+                scores[code[:1]].append(value * 100 if value <= 1 else value)
+    try:
+        return {score: round(sum(values) / len(values), 2)
+                for score, values in scores.iteritems() if values}
+    except TypeError:
+        # "No Data"
+        # TODO
+        pass
 
 
 def add_main_scores(country_indicators):
@@ -494,8 +488,8 @@ def indicators_per_country(max_level=4, derived=True, random_values=False,
     indicators = get_all_indicators(include_columns=True)
 
     ws_core = wb[CORE_SHEET]
-    ws_companion = wb[COMPANION_SHEET]
     country_codes = []
+
     for i in xrange(5, len(ws_core.rows) + 1):
         country_name = ws_core['A' + str(i)].value
         if not country_name:
@@ -516,16 +510,12 @@ def indicators_per_country(max_level=4, derived=True, random_values=False,
                     cell = indicator['column_response'] + str(i + 5)
                 else:
                     cell = indicator['column'] + str(i + 5)
-                if indicator['core']:
-                    worksheet = ws_core
-                else:
-                    worksheet = ws_companion
 
-                value = get_numeric_cell_value(worksheet[cell])
+                value = get_numeric_cell_value(ws_core[cell])
 
                 if responses and indicator.get('column_year'):
                     cell_year = indicator['column_year'] + str(i + 5)
-                    value = '{0} ({1})'.format(value, worksheet[cell_year].value)
+                    value = '{0} ({1})'.format(value, ws_core[cell_year].value)
 
                 out[country_code][indicator['code']] = value
 
@@ -541,9 +531,13 @@ def indicators_per_country(max_level=4, derived=True, random_values=False,
                 if (indicator['code'].count('.') == 1 and
                         not indicator['code'][-1].isalpha() and
                         value is not None):
+                    try:
+                        out[country_code][indicator['code']] = round(
+                            value * 100 if value <= 1 else value, 2)
+                    except TypeError:
+                        # "No Data"
+                        pass
 
-                    out[country_code][indicator['code']] = round(
-                        value * 100 if value <= 1 else value, 2)
         add_main_scores(out[country_code])
         add_full_score(out[country_code])
 
@@ -554,8 +548,8 @@ def indicators_per_country(max_level=4, derived=True, random_values=False,
                 for indicator in indicators:
                     if (indicator['level'] <= 2 and
                             not indicator['code'][-1].isalpha()):
-                        out[country['iso2']][indicator['code']] = random.randint(
-                            0, 100)
+                        out[country['iso2']][indicator['code']] = \
+                            random.randint(0, 100)
     return out
 
 
@@ -707,7 +701,7 @@ def indicators_as_json(output_dir=OUTPUT_DIR):
                                 "code": "1.1.1",
                                 "core": true,
                                 "level": 3,
-                                "title": "Is the State party to the United Nations treaties?"
+                                "title": "Is the State party to the [...]"
                             }
                         ]
                     }
@@ -747,11 +741,11 @@ def themes_as_json(output_dir=OUTPUT_DIR):
                         "indicators": [
                             {
                                 "code": "1.4.4j",
-                                "title": "Is data disaggregated by disability status?"
+                                "title": "Is data disaggregated by [...]"
                             },
                             {
                                 "code": "3.2.1j",
-                                "title": "Do national laws forbid discrimination in education by disability status?"
+                                "title": "Do national laws forbid [...]"
                             },
                             ...
                         ]
@@ -822,12 +816,12 @@ def scores_per_country_as_csv(output_dir=OUTPUT_DIR, random_values=False):
     '''
     out = indicators_per_country(max_level=2, derived=False,
                                  random_values=random_values)
-    themes = themes_per_country(prefix='t', random_values=random_values)
+    #    themes = themes_per_country(prefix='t', random_values=random_values)
 
     out_list = []
     for country in out.keys():
-        if country in themes:
-            out[country].update(themes[country])
+        # if country in themes:
+        #    out[country].update(themes[country])
         add_main_scores(out[country])
         add_full_score(out[country])
         out[country]['iso2'] = country
@@ -886,7 +880,7 @@ def c3_ready_json(output_dir=OUTPUT_DIR, random_values=False):
     indicators = indicators_per_country(max_level=2, derived=False,
                                         random_values=random_values)
 
-    themes = themes_per_country(prefix='t', random_values=random_values)
+    # themes = themes_per_country(prefix='t', random_values=random_values)
 
     out = []
     for country_code, values in indicators.iteritems():
@@ -904,7 +898,7 @@ def c3_ready_json(output_dir=OUTPUT_DIR, random_values=False):
                 scores[code[:1]].append(value)
 
         for code, value in values.iteritems():
-            if code == 'index':
+            if code == 'index' or isinstance(value, basestring):
                 continue
             if '.' not in code:
                 item[code] = round(value / len(scores['main']), 2)
@@ -912,7 +906,7 @@ def c3_ready_json(output_dir=OUTPUT_DIR, random_values=False):
                 item[code] = round(value / len(scores[code[:1]]), 2)
 
         # Add Transversal themes
-        item.update(themes[country_code])
+        # item.update(themes[country_code])
 
         # Add full score
         item.update(get_full_score(values))
@@ -1030,7 +1024,8 @@ The available outputs are:
                         help='Output directory for the files')
     parser.add_argument('-r', '--random',
                         action='store_true',
-                        help='Fill values for missing countries with random values')
+                        help='Fill values for missing countries with '
+                             'random values')
 
     args = parser.parse_args()
 
@@ -1043,7 +1038,7 @@ The available outputs are:
         countries = json.load(f)
     if args.type == 'all':
         indicators_as_json(output_dir)
-        themes_as_json(output_dir)
+#        themes_as_json(output_dir)
         indicators_per_country_as_json(one_file=False, output_dir=output_dir)
         scores_per_country_as_json(output_dir, random_values=args.random)
         c3_ready_json(output_dir=output_dir)
