@@ -192,7 +192,8 @@
     "CD": {
         "iso2": "CD",
         "iso3": "ZAR",
-        "name": "Congo (Kinshasa)"
+        "name": "Congo (Kinshasa)",
+        "other_names": ["DRC"]
     },
     "CF": {
         "iso2": "CF",
@@ -377,7 +378,8 @@
     "GB": {
         "iso2": "GB",
         "iso3": "GBR",
-        "name": "United Kingdom"
+        "name": "United Kingdom",
+        "other_names": ["UK"]
     },
     "GD": {
         "iso2": "GD",
@@ -597,7 +599,8 @@
     "KR": {
         "iso2": "KR",
         "iso3": "KOR",
-        "name": "South Korea"
+        "name": "South Korea",
+        "other_names": ["SouthKorea"]
     },
     "KW": {
         "iso2": "KW",
@@ -902,7 +905,9 @@
     "PS": {
         "iso2": "PS",
         "iso3": "PSE",
-        "name": "Palestinian Territories"
+        "name": "Palestinian Territories",
+        "other_names": ["Palestine"]
+
     },
     "PT": {
         "iso2": "PT",
@@ -1142,7 +1147,8 @@
     "US": {
         "iso2": "US",
         "iso3": "USA",
-        "name": "United States"
+        "name": "United States",
+        "other_names": ["US"]
     },
     "UY": {
         "iso2": "UY",

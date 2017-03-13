@@ -72,9 +72,9 @@ def get_country_code(country_name, code_type='iso2'):
         return None
     for code, country in countries.iteritems():
         if (country_name == country['name'] or
-            ('other_names' in country and
-             country_name == country.get('other_names'))):
+                country_name in country.get('other_names', [])):
             return country[code_type]
+
     return None
 
 
