@@ -388,13 +388,8 @@ def get_main_scores(country_indicators):
                 and value is not None):
             if isinstance(value, float) or isinstance(value, int):
                 scores[code[:1]].append(value * 100 if value <= 1 else value)
-    try:
-        return {score: round(sum(values) / len(values), 2)
+    return {score: round(sum(values) / len(values), 2)
                 for score, values in scores.iteritems() if values}
-    except TypeError:
-        # "No Data"
-        # TODO
-        pass
 
 
 def add_main_scores(country_indicators):
@@ -502,6 +497,7 @@ def indicators_per_country(max_level=4, derived=True, random_values=False,
     for i, country_code in enumerate(country_codes):
         for indicator in indicators:
             if indicator['level'] <= max_level and indicator.get('column'):
+
                 if not derived and indicator['code'][-1].isalpha():
                     # Avoid derived indicators (eg 1.2a or 3.2.1_ag)
                     continue
@@ -524,22 +520,13 @@ def indicators_per_country(max_level=4, derived=True, random_values=False,
 
                 # Custom stuff :|
 
-                # 2.4 is handled a bit differently
-                if indicator['code'] == '2.4':
-                    value = 1 if value >= 1 else value
-                    out[country_code][indicator['code']] = value
-
                 # Show all level 2, non derived scores (eg 1.2, 3.4, 5.1)
                 # as percentages, rounded to 2 places
                 if (indicator['code'].count('.') == 1 and
                         not indicator['code'][-1].isalpha() and
-                        value is not None):
-                    try:
-                        out[country_code][indicator['code']] = round(
-                            value * 100 if value <= 1 else value, 2)
-                    except TypeError:
-                        # "No Data"
-                        pass
+                        value is not None and value != 'No data'):
+                    out[country_code][indicator['code']] = round(
+                        value * 100 if value <= 1 else value, 2)
 
         add_main_scores(out[country_code])
         add_full_score(out[country_code])
@@ -794,6 +781,7 @@ def scores_per_country_as_json(output_dir=OUTPUT_DIR, random_values=False):
     out = indicators_per_country(max_level=2, derived=False,
                                  random_values=random_values)
     for country in out.keys():
+
         add_main_scores(out[country])
         add_full_score(out[country])
 
