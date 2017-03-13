@@ -264,7 +264,12 @@ The map visualizations are powered by a [TopoJSON](https://github.com/mbostock/t
 
     ./build_data.py -o data scores-per-country-csv
 
-After [installing](https://github.com/mbostock/topojson/wiki/Installation) the `topojson` command, this is the full command that needs to be done (note that the output file goes to the `rtei/static/data`):
+[Install](https://github.com/mbostock/topojson/wiki/Installation) the `topojson` command (use a version lower than 2.0):
+
+    npm install topojson@1.6.27
+
+
+This is the full command that needs to be done (note that the output file goes to the `rtei/static/data`):
 
     topojson -p -o rtei/static/data/countries.topojson --stitch-poles false --id-property iso2 -e data/scores_per_country.csv data/countries.geojson
 
