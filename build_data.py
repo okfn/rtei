@@ -481,6 +481,9 @@ def indicators_per_country(max_level=4, derived=True, random_values=False,
 
     If `random_values` is True, countries not present in the spreadsheet are
     returned with random values (only for levels 1 and 2).
+
+    Values with `999` are replaced with `No data`.
+
     '''
 
     out = OrderedDict()
@@ -513,7 +516,11 @@ def indicators_per_country(max_level=4, derived=True, random_values=False,
 
                 value = get_numeric_cell_value(ws_core[cell])
 
-                if responses and indicator.get('column_year'):
+                if value == 999:
+                    value = 'No data'
+
+                if (responses and indicator.get('column_year')
+                        and value != 'No data'):
                     cell_year = indicator['column_year'] + str(i + 5)
                     value = '{0} ({1})'.format(value, ws_core[cell_year].value)
 
