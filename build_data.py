@@ -14,7 +14,7 @@ from collections import OrderedDict
 
 from openpyxl import load_workbook
 
-INPUT_FILE = 'data/rtei_data_2015.xlsx'
+INPUT_FILE = 'data/rtei_data_2016.xlsx'
 COUNTRIES_FILE = 'data/countries.json'
 OUTPUT_DIR = 'rtei/static/data'
 
