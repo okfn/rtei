@@ -303,9 +303,6 @@ def get_indicators(include_columns=False):
             indicators into account this is straight forward: 1 -> 1, 1.1 -> 2,
             1.1.1 -> 3, 1.1.1a -> 4. Derived indicators can have the following
             levels: 1.2a -> 2 and 1.1.1a_resp_ad -> 4.
-        * `core`: Whether the indicator is part of the Core or the Companion
-            questionnaire. The ones to return are controlled with the `core`
-            parameter.
         * `column` (optional, only if `include_columns` is True): The column on
             the spreadsheet that holds the values for the indicator.
 
@@ -316,9 +313,8 @@ def get_indicators(include_columns=False):
     ws = wb[CORE_SHEET]
 
     # First four rows
-    # We skip row 2 as values are duplicated on row 4
     codes_done = []
-    for i in (0, 2, 3):
+    for i in (0, 1, 2, 3):
         for cell in ws.rows[i]:
             indicator = None
             if cell.value:
