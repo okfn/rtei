@@ -51,7 +51,7 @@ $(document).ready(function() {
     if (isTheme || this.value == 'index') {
       className = 'overall_index';
     } else if (this.id.indexOf('.') !== -1) {
-      className = RTEI.levelOneIndicators[this.value.substring(0, this.id.indexOf('.'))];
+      className = RTEI.levelOneIndicators[this.value.substring(0, this.value.indexOf('.'))];
     } else {
       className = RTEI.levelOneIndicators[this.value];
     }
