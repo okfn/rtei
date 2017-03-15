@@ -192,7 +192,7 @@
     "CD": {
         "iso2": "CD",
         "iso3": "ZAR",
-        "name": "Congo (Kinshasa)",
+        "name": "Democratic Republic of Congo",
         "other_names": ["DRC"]
     },
     "CF": {
@@ -203,7 +203,7 @@
     "CG": {
         "iso2": "CG",
         "iso3": "COG",
-        "name": "Congo (Brazzaville)"
+        "name": "Congo"
     },
     "CH": {
         "iso2": "CH",
