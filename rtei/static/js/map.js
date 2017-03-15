@@ -135,6 +135,7 @@ RTEI.map = (function() {
     init: function() {
       if (homepage) {
         RTEI.map.map = L.map('map', {
+          dragging: false,
           attributionControl: false,
           scrollWheelZoom: false,
           zoomControl: false
