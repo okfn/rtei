@@ -15,10 +15,11 @@ from collections import OrderedDict
 
 from openpyxl import load_workbook
 
+# Change as appropiate
 INPUT_FILE = 'data/rtei_data_2016.xlsx'
-COUNTRIES_FILE = 'data/countries.json'
-OUTPUT_DIR = 'rtei/static/data'
+OUTPUT_DIR = 'rtei/static/data/2016'
 
+COUNTRIES_FILE = 'data/countries.json'
 
 CORE_SHEET = 'All Questionnaires'
 THEMES_SHEET = 'Cross-cutting themes'

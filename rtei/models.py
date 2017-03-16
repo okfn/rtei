@@ -11,6 +11,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core.validators import RegexValidator
 from django.shortcuts import redirect
 from django.contrib import messages
+from django.conf import settings
 
 from wagtail.wagtailcore.models import Page, get_root_collection_id
 from wagtail.wagtailcore.fields import RichTextField
@@ -47,7 +48,7 @@ def get_chart_labels(indicators, themes):
     return chart_labels
 
 
-def get_map_context(context):
+def get_map_context(context, year):
     '''
     In the map page we pass the level 1 and 2 indicators to the
     template with the `indicators` variable. It has the following form:
@@ -86,11 +87,11 @@ def get_map_context(context):
     identical format.
 
     '''
-    context['indicators'] = data.get_indicators()
-    context['themes'] = data.get_themes()
+    context['indicators'] = data.get_indicators(year)
+    context['themes'] = data.get_themes(year)
 
 
-def get_country_context(context, country_code):
+def get_country_context(context, country_code, year):
     '''In the RTEI by Country page we pass the following variables:
 
     * `available_countries`: a dict with the countries where data is avaiable,
@@ -131,7 +132,7 @@ def get_country_context(context, country_code):
     '''
 
     if country_code:
-        country_data = data.get_indicators_for_country(country_code)
+        country_data = data.get_indicators_for_country(country_code, year)
         if not country_data:
             raise Http404(_('No data available for this country'))
 
@@ -141,27 +142,27 @@ def get_country_context(context, country_code):
 
         context['country_indicators'] = country_data
 
-        for country in data.get_c3_scores_per_country():
+        for country in data.get_c3_scores_per_country(year):
             if country['name'] == context['country_name']:
                 chart_data = country
                 break
 
         context['chart_data'] = json.dumps([chart_data])
-        context['indicators'] = data.get_indicators()
-        context['themes'] = data.get_themes()
+        context['indicators'] = data.get_indicators(year)
+        context['themes'] = data.get_themes(year)
 
         context['chart_labels'] = json.dumps(
             get_chart_labels(context['indicators'], context['themes']))
 
     context['available_countries'] = OrderedDict(
         sorted({code: data.get_country_name(code) for code, c
-                in data.get_scores_per_country().iteritems()}.items(),
+                in data.get_scores_per_country(year).iteritems()}.items(),
                key=lambda t: t[1]))
 
 
-def get_theme_context(context):
-    context['indicators'] = data.get_indicators()
-    context['themes'] = data.get_themes()
+def get_theme_context(context, year):
+    context['indicators'] = data.get_indicators(year)
+    context['themes'] = data.get_themes(year)
     context['chart_labels'] = json.dumps(
         get_chart_labels(context['indicators'], context['themes']))
 
@@ -177,12 +178,16 @@ class RTEIPage(TranslationMixin, Page):
     def get_context(self, request):
         context = super(RTEIPage, self).get_context(request)
 
+        year = request.GET.get('year', settings.YEARS[-1])
+
+        context['year'] = year
+
         if self.slug == 'map':
-            get_map_context(context)
+            get_map_context(context, year)
         elif self.slug == 'rtei-country':
-            get_country_context(context, request.GET.get('id'))
+            get_country_context(context, request.GET.get('id'), year)
         elif self.slug == 'rtei-theme':
-            get_theme_context(context)
+            get_theme_context(context, year)
 
         return context
 
