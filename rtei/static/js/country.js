@@ -104,7 +104,8 @@ $(document).ready(function(){
     $('#available-countries').on('change', function(){
       if (this.value) {
         var language = window.location.pathname.match(/^\/[a-zA-Z]{2}\//);
-        var path = 'explore/rtei-country?id=' + this.value;
+        var path = 'explore/rtei-country?id=' + this.value + '&year=' + RTEI.year;
+
         path = (language) ? language + path : '/' + path;
         window.location = path;
       }

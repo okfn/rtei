@@ -107,7 +107,7 @@ $(document).ready(function(){
   // TODO: remove once we have the final data
   var random = Boolean((location.search.split('random=')[1]||'').split('&')[0]);
   var jsonDataFileName = (random) ? 'c3_scores_per_country_random.json': 'c3_scores_per_country.json';
-  jsonDataFileName = "/static/data/" + jsonDataFileName;
+  jsonDataFileName = "/static/data/" + RTEI.year + '/' + jsonDataFileName;
 
   // Menu switcher
   $('.indicator-switcher input').on('click', function(){

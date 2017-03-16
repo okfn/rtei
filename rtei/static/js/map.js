@@ -153,7 +153,7 @@ RTEI.map = (function() {
       // TODO: remove once we have the final data
       var random = Boolean((location.search.split('random=')[1]||'').split('&')[0]);
       var fileName = (random) ? 'countries_random.topojson': 'countries.topojson';
-      geoJSONLayer = omnivore.topojson('/static/data/' + fileName, null , customGeoJSONLayer)
+      geoJSONLayer = omnivore.topojson('/static/data/' + RTEI.year + '/' + fileName, null , customGeoJSONLayer)
         .addTo(RTEI.map.map);
 
     },

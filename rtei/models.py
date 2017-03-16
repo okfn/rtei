@@ -178,7 +178,9 @@ class RTEIPage(TranslationMixin, Page):
     def get_context(self, request):
         context = super(RTEIPage, self).get_context(request)
 
-        year = request.GET.get('year', settings.YEARS[-1])
+        year = request.GET.get('year')
+        if not year or year not in settings.YEARS:
+            year = settings.YEARS[-1]
 
         context['year'] = year
 
