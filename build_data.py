@@ -10,6 +10,7 @@ import json
 import csv
 import argparse
 import random
+import string
 from collections import OrderedDict
 
 from openpyxl import load_workbook
@@ -20,7 +21,7 @@ OUTPUT_DIR = 'rtei/static/data'
 
 
 CORE_SHEET = 'All Questionnaires'
-THEMES_SHEET = 'Transversal Themes'
+THEMES_SHEET = 'Cross-cutting themes'
 THEMES_MAPPINGS_SHEET = 'Transversal Themes Mappings'
 
 MODIFIERS = {
@@ -162,6 +163,7 @@ def parse_cell(value, theme=False):
     level = None
 
     match = valid_code.match(value)
+
     if match:
         groups = match.groups()
         code = ''.join(g for g in groups if g and g != 'C ')
@@ -175,7 +177,7 @@ def parse_cell(value, theme=False):
         code = value.split()[0]
         title = 'Year'
         level = 4
-    elif any(modifier in value.split()[0] for modifier in MODIFIERS.keys()):
+    elif any(modifier.replace('-', '_') in value.split()[0] for modifier in MODIFIERS.keys()):
         # This is a derived indicator, we compute the title automatically
         # in the form:
         #   School type: Modifer - Modifier
@@ -197,51 +199,7 @@ def parse_cell(value, theme=False):
     return code, title, level
 
 
-def get_themes_mappings():
-    ''' Returns a dict with the Transversal Themes mappings
-
-    Keys are the TT code (eg "1A.A") and values are a list of dicts with
-    indicator ids and titles, eg:
-
-    {
-        "1A.A": [
-            {
-                "code": "1.4.4j",
-                "title": "Is data disaggregated by disability status?"
-            },
-            {
-                "code": "3.2.1j",
-                "title": "Do national laws forbid discrimination in [...]"
-            },
-        ],
-
-     }
-    '''
-
-    out = {}
-    sheet = THEMES_MAPPINGS_SHEET
-    ws = wb[sheet]
-
-    for i in xrange(2, len(ws.columns[1:])):
-        theme_cell = ws.columns[i][1]  # Row 2
-        if theme_cell.value:
-            theme_code, theme_title, theme_level = parse_cell(theme_cell.value,
-                                                              theme=True)
-            if theme_code:
-                out[theme_code] = []
-                indicators_column = ws.columns[i + 1]
-                for cell in indicators_column:
-                    if cell.value:
-                        code, title, level = parse_cell(cell.value)
-                        if code:
-                            out[theme_code].append({'code': code,
-                                                    'title': title})
-
-    return out
-
-
-def get_themes(include_columns=False, only_with_values=True,
-               include_indicators=False):
+def get_themes(include_rows=False, include_indicators=False):
     '''
     Returns a list of dicts describing the transversal themes. Each of the
     dicts contains the following keys:
@@ -250,7 +208,7 @@ def get_themes(include_columns=False, only_with_values=True,
             1, 1.A, 1.A.B
         * `title`: The string that describes the indicator.
         * `level`: The hierarchy of the indicator (level 1 or 2)
-        * `column` (optional, only if `include_columns` is True): The column on
+        * `row` (optional, only if `include_rows` is True): The row on
             the spreadsheet that holds the values for the indicator.
 
     '''
@@ -258,36 +216,48 @@ def get_themes(include_columns=False, only_with_values=True,
     out = []
     sheet = THEMES_SHEET
     ws = wb[sheet]
-    if include_indicators:
-        mappings = get_themes_mappings()
 
     codes_done = []
-    for i in (1, 2):
-        for cell in ws.rows[i]:
-            theme = None
-            if cell.value:
-                code, title, level = parse_cell(cell.value, theme=True)
-                if not code or code in codes_done:
-                    continue
-                codes_done.append(code)
+    theme = None
+    for i in xrange(2, len(ws.rows) + 1):
+        cell = ws.cell(row=i, column=1)
+        if not cell.value:
+            continue
 
-                if only_with_values:
-                    # Check if the theme actually has values on the spreadsheet
-                    value_cell = ws[cell.column + '4']
-                    if not type(value_cell.value) in (float, long, int):
-                        continue
+        code, title, level = parse_cell(cell.value, theme=True)
+        if not code:
+            # Assume it's a computed indicator
+            level = 4
+            title = cell.value
+        elif len(code.split('.')) == 3:
+            level = 4
 
-                theme = {
-                    'code': code,
-                    'title': title,
-                    'level': level
-                }
-                if include_indicators and code in mappings:
-                    theme['indicators'] = mappings[code]
+        if level in (1, 2) and code in codes_done:
+            if include_rows:
+                previous_theme = [t for t in out if t['code'] == code][0]
+                # This is the values row
+                previous_theme['row'] = i
+            continue
 
-                out.append(theme)
-                if i == 2 and include_columns:
-                    theme['column'] = cell.column
+        codes_done.append(code)
+
+        if level in (1, 2):
+            theme = {
+                'code': code,
+                'title': title,
+                'level': level
+            }
+
+            out.append(theme)
+        if include_indicators and level in (3, 4):
+            if 'indicators' not in theme:
+                theme['indicators'] = []
+
+            theme['indicators'].append({
+                'code': code,
+                'title': title
+            })
+
     return out
 
 
@@ -574,23 +544,25 @@ def themes_per_country(prefix=None, random_values=False):
 
     out = OrderedDict()
 
-    themes = get_themes(include_columns=True)
+    themes = get_themes(include_rows=True)
     ws = wb[THEMES_SHEET]
-    country_codes = []
-    for i in xrange(3, len(ws.rows) + 1):
-        country_name = ws['A' + str(i)].value
+    available_countries = []
+    for letter in string.ascii_uppercase[1:]:
+        country_name = ws[letter + '1'].value
         if not country_name:
-            continue
+            break
         country_code = get_country_code(country_name)
         if not country_code:
             print 'Warning: Could not get country code for {0}'.format(
                 country_name)
-        country_codes.append(country_code)
+        available_countries.append((country_code, letter))
         out[country_code] = OrderedDict()
-    for i, country_code in enumerate(country_codes):
+
+    for i, available_country in enumerate(available_countries):
+        country_code, letter = available_country
         for theme in themes:
-            if theme['level'] == 2 and theme.get('column'):
-                cell = theme['column'] + str(i + 4)
+            if theme['level'] in (1, 2) and theme.get('row'):
+                cell = letter + str(theme['row'])
 
                 value = get_numeric_cell_value(ws[cell])
 
@@ -600,11 +572,16 @@ def themes_per_country(prefix=None, random_values=False):
                 key = str(prefix) + theme['code'] if prefix else theme['code']
 
                 if isinstance(value, (long, float)):
-                    out[country_code][key] = round(value, 2)
-                else:
-                    out[country_code][key] = value
+                    value = round(value, 2)
+
+                # Output as percentages
+                if value:
+                    value = value * 100
+
+                out[country_code][key] = value
 
     if random_values:
+        country_codes = [c[0] for c in available_countries]
         for code, country in countries.iteritems():
             if country['iso2'] not in country_codes and country['iso2']:
                 out[country['iso2']] = OrderedDict()
@@ -614,6 +591,7 @@ def themes_per_country(prefix=None, random_values=False):
                                else theme['code'])
                         out[country['iso2']][key] = random.randint(
                             0, 100)
+
     return out
 
 
@@ -748,7 +726,8 @@ def themes_as_json(output_dir=OUTPUT_DIR):
     '''
 
     out = []
-    themes = get_themes(only_with_values=True, include_indicators=True)
+    themes = get_themes(include_indicators=True)
+
     for theme in [i for i in themes if i['level'] == 1]:
         theme['children'] = get_nested_themes(theme, themes)
         out.append(theme)
@@ -807,12 +786,12 @@ def scores_per_country_as_csv(output_dir=OUTPUT_DIR, random_values=False):
     '''
     out = indicators_per_country(max_level=2, derived=False,
                                  random_values=random_values)
-    #    themes = themes_per_country(prefix='t', random_values=random_values)
+    themes = themes_per_country(prefix='t', random_values=random_values)
 
     out_list = []
     for country in out.keys():
-        # if country in themes:
-        #    out[country].update(themes[country])
+        if country in themes:
+            out[country].update(themes[country])
         add_main_scores(out[country])
         add_full_score(out[country])
         out[country]['iso2'] = country
@@ -871,7 +850,7 @@ def c3_ready_json(output_dir=OUTPUT_DIR, random_values=False):
     indicators = indicators_per_country(max_level=2, derived=False,
                                         random_values=random_values)
 
-    # themes = themes_per_country(prefix='t', random_values=random_values)
+    themes = themes_per_country(prefix='t', random_values=random_values)
 
     out = []
     for country_code, values in indicators.iteritems():
@@ -897,7 +876,7 @@ def c3_ready_json(output_dir=OUTPUT_DIR, random_values=False):
                 item[code] = round(value / len(scores[code[:1]]), 2)
 
         # Add Transversal themes
-        # item.update(themes[country_code])
+        item.update(themes[country_code])
 
         # Add full score
         item.update(get_full_score(values))
@@ -931,8 +910,7 @@ def translation_strings():
     The output file is always `rtei/translation_strings.py`
     '''
     indicators = get_indicators()
-    themes = get_themes()
-    themes_mappings = get_themes_mappings()
+    themes = get_themes(include_inidicators=True)
     responses = indicators_per_country()
 
     output_file = os.path.join(os.path.dirname(__file__), 'rtei',
@@ -954,14 +932,12 @@ def translation_strings():
     for indicator in indicators:
         out.append(translatable_string(indicator['title']))
 
-    out.append('# Theme titles')
+    out.append('# Theme titles and custom mapping titles')
     for theme in themes:
         out.append(translatable_string(theme['title']))
-
-    out.append('# Theme mapping titles')
-    for code, indicators in themes_mappings.iteritems():
-        for indicator in indicators:
-            out.append(translatable_string(indicator['title']))
+        for indicator in theme.get('indicators', []):
+            if translatable_string(indicator['title']) not in out:
+                out.append(translatable_string(indicator['title']))
 
     out.append('# Responses')
     responses_done = []
@@ -1029,7 +1005,7 @@ The available outputs are:
         countries = json.load(f)
     if args.type == 'all':
         indicators_as_json(output_dir)
-#        themes_as_json(output_dir)
+        themes_as_json(output_dir)
         indicators_per_country_as_json(one_file=False, output_dir=output_dir)
         scores_per_country_as_json(output_dir, random_values=args.random)
         c3_ready_json(output_dir=output_dir)
