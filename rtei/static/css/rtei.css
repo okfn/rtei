@@ -1123,6 +1123,12 @@ body {
   font-size: 0.8em;
   margin-left: -5px; }
 
+body .years a {
+  font-size: 1.5em;
+  padding: 10px; }
+body .years .selected {
+  color: #fff;
+  background-color: #af202f; }
 body .indicator-switcher label {
   display: block;
   cursor: pointer;

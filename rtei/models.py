@@ -183,6 +183,7 @@ class RTEIPage(TranslationMixin, Page):
             year = settings.YEARS[-1]
 
         context['year'] = year
+        context['all_years'] = settings.YEARS
 
         if self.slug == 'map':
             get_map_context(context, year)

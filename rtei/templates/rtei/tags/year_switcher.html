@@ -1,0 +1,6 @@
+<div class="years">
+
+  {% for value in all_years %}
+  <a href="{{ request.path }}?year={{ value }}{% if country_code %}&id={{ country_code }}{% endif %}" class="{% if year == value %}selected{% endif %}">{{ value }}</a>
+  {% endfor %}
+</div>
