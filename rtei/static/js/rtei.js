@@ -5,7 +5,7 @@ $(document).ready(function() {
 
   RTEI.colors = {
     index: ['#af202f', '#da3344', '#e15968', '#e8808b', '#efa7af'],
-    1: ['#c35727', '#db784c', '#e39572', '#ebb299', '#f2cfbf'],  // governance
+    1: ['#c35727', '#db784c', '#e39572', '#ebb299', '#f2cfbf' , '#f6dfd5'],  // governance
     2: ['#bdb831', '#d4cf58', '#ddda7c', '#e7e4a1', '#f0eec5'],  // availability
     3: ['#af1f2c', '#da3140', '#e15864', '#e87f88', '#efa6ac'],  // accessibility
     4: ['#357b9e', '#4d9cc3', '#6fafcf', '#92c2da', '#b4d5e6'],  // acceptability
