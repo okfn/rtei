@@ -210,6 +210,10 @@ class RTEIAncillaryPage(TranslationMixin, Page):
         FieldPanel('body', classname="full")
     ]
 
+    search_fields = Page.search_fields + [
+        index.SearchField('body'),
+    ]
+
     def get_context(self, request):
         context = super(RTEIAncillaryPage, self).get_context(request)
         if self.slug == 'contact-us':
@@ -333,7 +337,7 @@ class ResourceIndexPage(TranslationMixin, Page):
         return context
 
 
-class RteiDocument(AbstractDocument):
+class RteiDocument(AbstractDocument, index.Indexed):
     '''A custom Document adding fields needed by RTEI Resource items.'''
 
     year = models.CharField(validators=[
@@ -360,6 +364,17 @@ class RteiDocument(AbstractDocument):
         'is_resource',
         'tags'
     )
+
+    search_fields = Page.search_fields + [
+        index.SearchField('title'),
+        index.SearchField('description'),
+        index.SearchField('country'),
+        index.SearchField('year'),
+        index.RelatedFields('tags', [
+            index.SearchField('name'),
+        ])
+
+    ]
 
     class Meta:
         get_latest_by = "created_at"
@@ -428,6 +443,9 @@ class BlogPage(TranslationMixin, Page):
 
     search_fields = Page.search_fields + [
         index.SearchField('body'),
+        index.RelatedFields('tags', [
+            index.SearchField('name'),
+        ])
     ]
 
     @property

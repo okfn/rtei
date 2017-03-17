@@ -4,6 +4,8 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from wagtail.wagtailcore.models import Page
 from wagtail.wagtailsearch.models import Query
 
+from rtei.models import RteiDocument
+
 
 def search(request):
     search_query = request.GET.get('query', None)
@@ -11,7 +13,13 @@ def search(request):
 
     # Search
     if search_query:
-        search_results = Page.objects.live().search(search_query)
+        search_results_pages = Page.objects.live().search(search_query)
+        search_results_resources = RteiDocument.objects.search(search_query)
+
+        from itertools import chain
+        search_results = list(chain(search_results_pages,
+                                    search_results_resources))
+
         query = Query.get(search_query)
 
         # Record hit
