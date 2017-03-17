@@ -67,6 +67,15 @@ LOGGING = {
     },
 }
 
+WAGTAILSEARCH_BACKENDS = {
+    'default': {
+        'BACKEND': 'wagtail.wagtailsearch.backends.elasticsearch',
+        'URLS': [os.environ.get('ELASTICSEARCH_URL')],
+        'INDEX': 'wagtail',
+        'TIMEOUT': 5,
+    }
+}
+
 try:
     from .local import *
 except ImportError:
