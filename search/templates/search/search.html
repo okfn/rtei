@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load static wagtailcore_tags i18n %}
+{% load static wagtailcore_tags i18n rtei_tags %}
 
 {% block body_class %}template-searchresults{% endblock %}
 
@@ -18,19 +18,24 @@
   </section>
 
   <section>
-    <h2>{% trans "Search Results" %}</h2>
+    {% if not search_results %}
+        {% if search_query %}
+          <h2>{% trans "No results found" %}</h2>
+        {% else %}
+            <p>{% trans "Enter your search term on the left field" %}</p>
+        {% endif %}
+    {% else %}
+        <h2>{% trans "Search Results" %}</h2>
 
-    {% if search_results %}
-        <ul class="results">
+        <div class="resources">
+        <ul class="results resources-list">
             {% for result in search_results %}
-                <li>
-                    <h4><a href="{% pageurl result %}">{{ result }}</a></h4>
-                    {% if result.search_description %}
-                        {{ result.search_description|safe }}
-                    {% endif %}
-                </li>
+
+                {% resource_list_item result %}
+
             {% endfor %}
         </ul>
+        </div>
 
         {% if search_results.has_previous %}
             <a href="{% url 'search' %}?query={{ search_query|urlencode }}&amp;page={{ search_results.previous_page_number }}">{% trans "Previous" %}</a>
@@ -39,8 +44,7 @@
         {% if search_results.has_next %}
             <a href="{% url 'search' %}?query={{ search_query|urlencode }}&amp;page={{ search_results.next_page_number }}">{% trans "Next" %}</a>
         {% endif %}
-    {% elif search_query %}
-        {% trans "No results found" %}
+
     {% endif %}
   </section>
 </div>

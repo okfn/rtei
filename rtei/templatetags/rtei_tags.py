@@ -158,3 +158,10 @@ def translated_field(obj, field, lang):
         if hasattr(obj, field_name) and getattr(obj, field_name):
             return getattr(obj, field_name)
     return getattr(obj, field, '')
+
+
+@register.inclusion_tag('rtei/tags/resource_list_item.html')
+def resource_list_item(result):
+    return {
+        'result': result,
+    }

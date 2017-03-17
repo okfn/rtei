@@ -1,0 +1,45 @@
+{% load wagtailcore_tags %}
+
+<li>
+  <a class="icon" href="{{result.url}}" title="{{result.title}}">
+    {% if result.file_extension == "pdf" %}
+    {% include "icons/file-pdf.svg" %}
+    {% elif not result.is_resource %}
+    {% include "icons/page.svg" %}
+    {% else %}
+    {% include "icons/file.svg" %}
+    {% endif %}
+  </a>
+
+  <span class="text {% if not result.is_resource %}single-line{% endif %}">
+    <h3><a href="{{result.url}}" title="{{result.title}}">{{result.title}}{% if result.country %} - {{result.country}}{% endif %}{% if result.year %} - {{result.year}}{% endif %}</a></h3>
+    {% if result.description %}
+       {{result.description|richtext}}
+    {% endif %}
+    {% if result.year or result.country or result.collection or result.file_extension %}
+    <ul class="meta">
+      {% if result.year %}
+      <li>
+        {{result.year}}
+      </li>
+      {% endif %}
+      {% if result.country %}
+      <li>
+        {{result.country}}
+      </li>
+      {% endif %}
+      {% if result.collection %}
+      <li>
+        {{result.collection}}
+      </li>
+      {% endif %}
+      {% if result.file_extension %}
+      <li class="extension">
+        {{result.file_extension}}
+      </li>
+      {% endif %}
+    </ul>
+    {% endif %}
+  </span>
+</li>
+

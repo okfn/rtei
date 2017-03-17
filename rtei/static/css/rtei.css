@@ -1732,51 +1732,53 @@ body.adaptability .indicator-switcher > ul > li.subcat {
     .template-rtei-by-country .indicators-for-country ul li .code:after {
       content: ' - '; }
 
-.template-rtei.resources .resources-list li {
+.resources .resources-list li {
   padding-top: 0.75em;
   padding-bottom: 0.75em;
   margin-bottom: 0.75em; }
-  .template-rtei.resources .resources-list li::after {
+  .resources .resources-list li::after {
     clear: both;
     content: "";
     display: table; }
-  .template-rtei.resources .resources-list li .icon {
+  .resources .resources-list li .icon {
     display: none; }
-    .template-rtei.resources .resources-list li .icon svg {
+    .resources .resources-list li .icon svg {
       width: 100%;
       height: auto;
       fill: #3b3b3b; }
       @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
-        .template-rtei.resources .resources-list li .icon svg {
+        .resources .resources-list li .icon svg {
           height: 45px; } }
-    .template-rtei.resources .resources-list li .icon:hover svg {
+    .resources .resources-list li .icon:hover svg {
       fill: currentColor; }
     @media only screen and (min-width: 53.75em) {
-      .template-rtei.resources .resources-list li .icon {
+      .resources .resources-list li .icon {
         float: left;
         display: block;
         margin-right: 2.35765%;
         width: 6.17215%;
         padding-top: 0.1em; }
-        .template-rtei.resources .resources-list li .icon:last-child {
+        .resources .resources-list li .icon:last-child {
           margin-right: 0; } }
-  .template-rtei.resources .resources-list li .text h3 {
+  .resources .resources-list li .single-line {
+    margin-top: 10px; }
+  .resources .resources-list li .text h3 {
     font-size: 1.4em;
     margin-bottom: 0.1em; }
   @media only screen and (min-width: 53.75em) {
-    .template-rtei.resources .resources-list li .text {
+    .resources .resources-list li .text {
       float: left;
       display: block;
       margin-right: 2.35765%;
       width: 91.4702%; }
-      .template-rtei.resources .resources-list li .text:last-child {
+      .resources .resources-list li .text:last-child {
         margin-right: 0; } }
-  .template-rtei.resources .resources-list li .text .meta li {
+  .resources .resources-list li .text .meta li {
     display: inline-block;
     background-color: #e5e5e5;
     font-size: 0.85em;
     padding: 0 0.4em; }
-    .template-rtei.resources .resources-list li .text .meta li.extension {
+    .resources .resources-list li .text .meta li.extension {
       text-transform: uppercase; }
 
 .filter.controls form {

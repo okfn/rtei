@@ -1,4 +1,4 @@
-.template-rtei.resources {
+.resources {
   .resources-list {
 
     li {
@@ -31,6 +31,10 @@
           @include span-columns(1);
           padding-top: 0.1em;
         }
+      }
+
+      .single-line {
+        margin-top: 10px;
       }
 
       .text {
