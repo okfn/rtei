@@ -1,4 +1,5 @@
 import sys
+import os
 
 from .base import *
 
@@ -69,7 +70,7 @@ LOGGING = {
 
 WAGTAILSEARCH_BACKENDS = {
     'default': {
-        'BACKEND': 'wagtail.wagtailsearch.backends.elasticsearch',
+        'BACKEND': 'wagtail.wagtailsearch.backends.elasticsearch2',
         'URLS': [os.environ.get('ELASTICSEARCH_URL')],
         'INDEX': 'wagtail',
         'TIMEOUT': 5,
