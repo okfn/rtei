@@ -19,12 +19,3 @@ try:
     from .local import *
 except ImportError:
     pass
-
-WAGTAILSEARCH_BACKENDS = {
-    'default': {
-        'BACKEND': 'wagtail.wagtailsearch.backends.elasticsearch',
-        'URLS': ['http://localhost:9200'],
-        'INDEX': 'wagtail',
-        'TIMEOUT': 5,
-    }
-}
