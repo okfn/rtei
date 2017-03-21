@@ -11,7 +11,7 @@ def create_new_resources_index_page(apps, schema_editor):
     instance of ResourceIndexPage. This deletes the old resources (RTEIPage) page.
     '''
     from rtei.translation import RTEIPageTR, ResourceIndexPageTR
-    from wagtail_modeltranslation.translator import translator
+    from modeltranslation.translator import translator
     from django.contrib.contenttypes.models import ContentType
 
     RTEIPage = apps.get_model("rtei", "RTEIPage")

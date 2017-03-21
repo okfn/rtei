@@ -22,9 +22,6 @@ from wagtail.wagtaildocs.models import AbstractDocument
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsearch import index
 
-
-from wagtail_modeltranslation.models import TranslationMixin
-
 from modelcluster.fields import ParentalKey
 from modelcluster.tags import ClusterTaggableManager
 from taggit.models import TaggedItemBase
@@ -167,7 +164,7 @@ def get_theme_context(context, year):
         get_chart_labels(context['indicators'], context['themes']))
 
 
-class RTEIPage(TranslationMixin, Page):
+class RTEIPage(Page):
 
     body = RichTextField(blank=True)
 
@@ -201,7 +198,7 @@ class RTEIPage(TranslationMixin, Page):
                                self.slug.replace('-', '_'))
 
 
-class RTEIAncillaryPage(TranslationMixin, Page):
+class RTEIAncillaryPage(Page):
     '''About page and other static content pages.'''
 
     body = RichTextField(blank=True)
@@ -258,7 +255,7 @@ class RTEIAncillaryPage(TranslationMixin, Page):
             return "rtei/about.html"
 
 
-class ResourceIndexPage(TranslationMixin, Page):
+class ResourceIndexPage(Page):
     template = 'rtei/resources.html'
 
     def resources(self):
@@ -380,7 +377,7 @@ class RteiDocument(AbstractDocument, index.Indexed):
         get_latest_by = "created_at"
 
 
-class BlogIndexPage(TranslationMixin, Page):
+class BlogIndexPage(Page):
 
     @property
     def blogs(self):
@@ -427,7 +424,7 @@ class BlogPageTag(TaggedItemBase):
     content_object = ParentalKey('BlogPage', related_name='tagged_items')
 
 
-class BlogPage(TranslationMixin, Page):
+class BlogPage(Page):
 
     intro = models.TextField(blank=True)
     body = RichTextField(blank=True)

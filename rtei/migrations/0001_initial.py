@@ -5,7 +5,7 @@ from __future__ import unicode_literals
 from django.db import migrations, models
 import django.db.models.deletion
 import wagtail.wagtailcore.fields
-import wagtail_modeltranslation.models
+
 
 
 class Migration(migrations.Migration):
@@ -50,6 +50,6 @@ class Migration(migrations.Migration):
             options={
                 'abstract': False,
             },
-            bases=(wagtail_modeltranslation.models.TranslationMixin, 'wagtailcore.page'),
+            bases=('wagtailcore.page', ),
         ),
     ]
