@@ -362,7 +362,7 @@ class RteiDocument(AbstractDocument, index.Indexed):
         'tags'
     )
 
-    search_fields = Page.search_fields + [
+    search_fields = AbstractDocument.search_fields + [
         index.SearchField('title'),
         index.SearchField('description'),
         index.SearchField('country'),
