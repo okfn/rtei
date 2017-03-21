@@ -8,18 +8,16 @@ from django.db import migrations
 def create_new_resources_index_page(apps, schema_editor):
     '''
     Transfer data from the resource page (an instance of RTEIPage) to a new
-    instance of ResourceIndexPage. This deletes the old resources (RTEIPage) page.
+    instance of ResourceIndexPage. This deletes the old resources (RTEIPage)
+    page.
     '''
-    from rtei.translation import RTEIPageTR, ResourceIndexPageTR
-    from modeltranslation.translator import translator
     from django.contrib.contenttypes.models import ContentType
 
     RTEIPage = apps.get_model("rtei", "RTEIPage")
-    translator.register(RTEIPage, RTEIPageTR)
     ResourceIndexPage = apps.get_model('rtei', 'ResourceIndexPage')
-    translator.register(ResourceIndexPage, ResourceIndexPageTR)
 
-    resource_index_page_content_type = ContentType.objects.get_for_model(ResourceIndexPage)
+    resource_index_page_content_type = ContentType.objects.get_for_model(
+        ResourceIndexPage)
 
     old_resources_page = RTEIPage.objects.get(slug='resources')
     old_resources_page.delete()
