@@ -2,6 +2,7 @@ import json
 import os
 
 from collections import OrderedDict
+from django.conf import settings
 
 _file_cache = {}
 
@@ -61,6 +62,12 @@ def get_indicators_for_country(country_code, year):
         return None
 
     return get_json_file(country_file)
+
+
+def get_countries_with_data():
+    year = settings.YEARS[-1]
+    scores_file = get_file_path('countries_with_data.json', year)
+    return get_json_file(scores_file)
 
 
 def get_country_name(country_code):

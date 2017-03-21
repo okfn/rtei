@@ -955,6 +955,20 @@ def translation_strings():
         f.write('\n'.join(out))
 
 
+def countries_with_data(output_dir=OUTPUT_DIR):
+
+    data_available = indicators_per_country(max_level=2, derived=False)
+
+    out = {}
+    for country_code in data_available.keys():
+        out[country_code] = get_country_name(country_code)
+
+    output_file = os.path.join(output_dir, 'countries_with_data.json')
+
+    with open(output_file, 'w') as f:
+        f.write(json.dumps(out))
+
+
 if __name__ == '__main__':
 
     description = '''
@@ -1010,6 +1024,7 @@ The available outputs are:
         indicators_per_country_as_json(one_file=False, output_dir=output_dir)
         scores_per_country_as_json(output_dir, random_values=args.random)
         c3_ready_json(output_dir=output_dir)
+        countries_with_data(output_dir=output_dir)
     elif args.type == 'indicators-json':
         indicators_as_json(output_dir)
     elif args.type == 'themes-json':
@@ -1024,6 +1039,8 @@ The available outputs are:
         indicators_per_country_as_json(one_file=False, output_dir=output_dir)
     elif args.type == 'c3-ready-json':
         c3_ready_json(output_dir=output_dir, random_values=args.random)
+    elif args.type == 'countries-with-data':
+        countries_with_data(output_dir=output_dir)
     elif args.type == 'translation-strings':
         translation_strings()
     else:
