@@ -15,7 +15,8 @@ django-nose==1.4.3
 django-storages==1.4
 django-taggit==0.22.0     # via wagtail
 django-treebeard==4.1.0   # via wagtail
-Django==1.9.12            # via django-debug-toolbar, django-treebeard, wagtail
+django-wagtail-feeds==0.0.6
+Django==1.9.12            # via django-debug-toolbar, django-treebeard, django-wagtail-feeds, wagtail
 djangorestframework==3.6.2  # via wagtail
 elasticsearch==2.3.0
 gunicorn==19.4.5

@@ -7,6 +7,8 @@ from wagtail.wagtailadmin import urls as wagtailadmin_urls
 from wagtail.wagtaildocs import urls as wagtaildocs_urls
 from wagtail.wagtailcore import urls as wagtail_urls
 
+from wagtail_feeds.feeds import ExtendedFeed
+
 from search import views as search_views
 
 from rtei import views as rtei_views
@@ -32,7 +34,9 @@ urlpatterns += i18n_patterns(
 urlpatterns += [
     url(r'^documents/data/latest/', rtei_views.latest_document, name="latest_document"),
     url(r'^documents/data/(?P<year>[0-9]{4})/', rtei_views.document_by_year,
-        name="document_by_year")
+        name="document_by_year"),
+
+    url(r'^blog/feed/rss$', ExtendedFeed(), name='blog_rss_feed'),
 ]
 
 
