@@ -12,7 +12,10 @@ RTEI.charts = (function() {
       rotated: true,
       x: {
           type: 'category',
-          show: true
+          show: true,
+          tick: {
+            multiline: false
+          }
       },
       y: {
           show: true,
