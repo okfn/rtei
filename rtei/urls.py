@@ -30,7 +30,9 @@ urlpatterns += i18n_patterns(
 )
 
 urlpatterns += [
-    url(r'^documents/data/latest/', rtei_views.latest_document, name="latest_document")
+    url(r'^documents/data/latest/', rtei_views.latest_document, name="latest_document"),
+    url(r'^documents/data/(?P<year>[0-9]{4})/', rtei_views.document_by_year,
+        name="document_by_year")
 ]
 
 

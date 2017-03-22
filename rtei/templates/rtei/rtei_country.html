@@ -24,7 +24,7 @@
 
     <section>
 
-      <form action="{% url 'latest_document' %}" method="get" accept-charset="utf-8"><button class="export">{% trans "Export all" %}</button></form>
+      <form action="{% url 'document_by_year' year %}" method="get" accept-charset="utf-8"><button class="export">{% trans "Export all" %}</button></form>
 
       <div class="select">
         <select id="available-countries">
