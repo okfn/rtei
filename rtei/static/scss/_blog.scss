@@ -1,4 +1,5 @@
 .template-blog-index {
+
   .posts-list {
     background-color: inherit;
     @include clearfix;
@@ -154,4 +155,23 @@
   .next {
     @include span-columns(4);
   }
+}
+
+.rss {
+  background-color: $body-background-color;
+  text-align: right;
+  margin-bottom: 1em;
+  svg {
+
+    fill: $action-color;
+    width: 1.5em;
+    height: 1.5em;
+  }
+
+  &:hover {
+    svg {
+      fill: darken($action-color, 15%);
+    }
+  }
+
 }

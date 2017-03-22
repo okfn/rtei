@@ -2017,6 +2017,17 @@ form.download_data {
     .pagination .next:last-child {
       margin-right: 0; }
 
+.rss {
+  background-color: #efefef;
+  text-align: right;
+  margin-bottom: 1em; }
+  .rss svg {
+    fill: #af202f;
+    width: 1.5em;
+    height: 1.5em; }
+  .rss:hover svg {
+    fill: #6e141e; }
+
 .template-searchresults .results li {
   margin-top: 0.75em; }
 
