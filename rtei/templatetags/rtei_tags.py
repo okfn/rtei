@@ -1,7 +1,10 @@
+import os
+
 from django import template
 from django.utils.translation import ugettext as _, get_language
 
 from rtei.models import Page, RTEIAncillaryPage
+from rtei.data import get_file_path
 
 import logging
 log = logging.getLogger(__name__)
@@ -165,3 +168,9 @@ def resource_list_item(result):
     return {
         'result': result,
     }
+
+
+@register.filter
+def country_available(country_code, year):
+    return os.path.exists(
+        get_file_path('{0}.json'.format(country_code), year))
