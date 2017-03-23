@@ -80,6 +80,11 @@ MIDDLEWARE_CLASSES = [
 
 ROOT_URLCONF = 'rtei.urls'
 
+
+def rtei_context_processor(request):
+    return {'google_analytics_code': os.environ.get('GOOGLE_ANALYTICS_CODE')}
+
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -93,6 +98,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'rtei.settings.base.rtei_context_processor',
             ],
         },
     },
