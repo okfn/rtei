@@ -118,7 +118,18 @@ $(document).ready(function(){
       RTEI.theme.currentIndex = this.value;
     }
     RTEI.theme.updateChart(this.value);
+
+    RTEI.showIndicators(this.value);
   });
 
   RTEI.theme.init(jsonDataFileName);
+
+  // indicator list
+  $("#indicators ul").slideUp().parent().addClass("has-children");
+  $('#indicators .indicator').click(function(e){
+    $(this).parent().children('ul').not(':animated').slideToggle().parent().toggleClass("open");
+  });
+
+
+
 });

@@ -1427,14 +1427,10 @@ body.adaptability .indicator-switcher > ul > li.subcat {
     height: 450px; }
     @media only screen and (min-width: 40em) {
       .template-explore-map .map .leaflet-container {
-        height: 715px; } }
+        height: 575px; } }
   .template-explore-map .map .key {
     padding: 0.75em 1.5em 1.5em 1.5em;
     background-color: rgba(255, 255, 255, 0.5); }
-    @media only screen and (min-width: 40em) {
-      .template-explore-map .map .key {
-        position: absolute;
-        bottom: 0; } }
     .template-explore-map .map .key h5 {
       font-size: 0.8125em;
       font-weight: normal;
@@ -1465,6 +1461,11 @@ body.adaptability .indicator-switcher > ul > li.subcat {
           .template-explore-map .map .key ul li:nth-child(5):after {
             content: '100';
             float: right; }
+  .template-explore-map .map .indicators-map {
+    padding: 0 24px;
+    margin-bottom: 24px; }
+    .template-explore-map .map .indicators-map .indicators-for-country {
+      margin-top: 0; }
   .template-explore-map .map .leaflet-control-zoom {
     box-shadow: none;
     border-radius: 2px;
@@ -1600,29 +1601,30 @@ body.adaptability .indicator-switcher > ul > li.subcat {
   font-weight: bold; }
 .template-rtei-by-country .export {
   float: right; }
-.template-rtei-by-country .theme-indicators {
+
+.indicators-list .theme-indicators {
   overflow-x: hidden;
   margin-top: 4em; }
-  .template-rtei-by-country .theme-indicators .indicator {
+  .indicators-list .theme-indicators .indicator {
     clear: both; }
-    .template-rtei-by-country .theme-indicators .indicator .indicator-title,
-    .template-rtei-by-country .theme-indicators .indicator .indicator-value {
+    .indicators-list .theme-indicators .indicator .indicator-title,
+    .indicators-list .theme-indicators .indicator .indicator-value {
       display: block;
       padding-top: 0.25em;
       padding-bottom: 0.25em; }
-    .template-rtei-by-country .theme-indicators .indicator .indicator-title {
+    .indicators-list .theme-indicators .indicator .indicator-title {
       float: left;
       width: 80%; }
-    .template-rtei-by-country .theme-indicators .indicator .indicator-value {
+    .indicators-list .theme-indicators .indicator .indicator-value {
       text-align: right;
       padding-right: 1em; }
-  .template-rtei-by-country .theme-indicators li {
+  .indicators-list .theme-indicators li {
     padding-left: 1em; }
-    .template-rtei-by-country .theme-indicators li::after {
+    .indicators-list .theme-indicators li::after {
       clear: both;
       content: "";
       display: table; }
-    .template-rtei-by-country .theme-indicators li .indicator:before {
+    .indicators-list .theme-indicators li .indicator:before {
       content: '';
       width: 100em;
       height: 1px;
@@ -1630,14 +1632,14 @@ body.adaptability .indicator-switcher > ul > li.subcat {
       background-color: #bfbfbe;
       position: relative;
       left: -30em; }
-    .template-rtei-by-country .theme-indicators li .code:after {
+    .indicators-list .theme-indicators li .code:after {
       content: ' - '; }
-.template-rtei-by-country .indicators-for-country {
+.indicators-list .indicators-for-country {
   overflow-x: hidden;
   margin-top: 4em; }
-  .template-rtei-by-country .indicators-for-country > li > .indicator > span {
+  .indicators-list .indicators-for-country > li > .indicator > span {
     font-weight: bold; }
-    .template-rtei-by-country .indicators-for-country > li > .indicator > span.indicator-title > .code {
+    .indicators-list .indicators-for-country > li > .indicator > span.indicator-title > .code {
       display: inline-block;
       background-color: #af202f;
       font-size: 0.9em;
@@ -1646,7 +1648,7 @@ body.adaptability .indicator-switcher > ul > li.subcat {
       text-align: center;
       margin-right: 0.5em;
       color: #fff; }
-  .template-rtei-by-country .indicators-for-country > li > ul:after {
+  .indicators-list .indicators-for-country > li > ul:after {
     content: '';
     width: 100em;
     height: 1px;
@@ -1654,30 +1656,30 @@ body.adaptability .indicator-switcher > ul > li.subcat {
     background-color: #bfbfbe;
     position: relative;
     left: -30em; }
-  .template-rtei-by-country .indicators-for-country > li:nth-child(1) > .indicator > .indicator-title .code {
+  .indicators-list .indicators-for-country > li:nth-child(1) > .indicator > .indicator-title .code {
     background-color: #c35727; }
-  .template-rtei-by-country .indicators-for-country > li:nth-child(1) ul li .indicator:before, .template-rtei-by-country .indicators-for-country > li:nth-child(1) > ul:after {
+  .indicators-list .indicators-for-country > li:nth-child(1) ul li .indicator:before, .indicators-list .indicators-for-country > li:nth-child(1) > ul:after {
     background-color: rgba(172, 96, 62, 0.15); }
-  .template-rtei-by-country .indicators-for-country > li:nth-child(2) > .indicator > .indicator-title .code {
+  .indicators-list .indicators-for-country > li:nth-child(2) > .indicator > .indicator-title .code {
     background-color: #bdb831; }
-  .template-rtei-by-country .indicators-for-country > li:nth-child(2) ul li .indicator:before, .template-rtei-by-country .indicators-for-country > li:nth-child(2) > ul:after {
+  .indicators-list .indicators-for-country > li:nth-child(2) ul li .indicator:before, .indicators-list .indicators-for-country > li:nth-child(2) > ul:after {
     background-color: rgba(165, 162, 73, 0.15); }
-  .template-rtei-by-country .indicators-for-country > li:nth-child(3) > .indicator > .indicator-title .code {
+  .indicators-list .indicators-for-country > li:nth-child(3) > .indicator > .indicator-title .code {
     background-color: #af1f2c; }
-  .template-rtei-by-country .indicators-for-country > li:nth-child(3) ul li .indicator:before, .template-rtei-by-country .indicators-for-country > li:nth-child(3) > ul:after {
+  .indicators-list .indicators-for-country > li:nth-child(3) ul li .indicator:before, .indicators-list .indicators-for-country > li:nth-child(3) > ul:after {
     background-color: rgba(154, 52, 61, 0.15); }
-  .template-rtei-by-country .indicators-for-country > li:nth-child(4) > .indicator > .indicator-title .code {
+  .indicators-list .indicators-for-country > li:nth-child(4) > .indicator > .indicator-title .code {
     background-color: #357b9e; }
-  .template-rtei-by-country .indicators-for-country > li:nth-child(4) ul li .indicator:before, .template-rtei-by-country .indicators-for-country > li:nth-child(4) > ul:after {
+  .indicators-list .indicators-for-country > li:nth-child(4) ul li .indicator:before, .indicators-list .indicators-for-country > li:nth-child(4) > ul:after {
     background-color: rgba(74, 116, 137, 0.15); }
-  .template-rtei-by-country .indicators-for-country > li:nth-child(5) > .indicator > .indicator-title .code {
+  .indicators-list .indicators-for-country > li:nth-child(5) > .indicator > .indicator-title .code {
     background-color: #469a8f; }
-  .template-rtei-by-country .indicators-for-country > li:nth-child(5) ul li .indicator:before, .template-rtei-by-country .indicators-for-country > li:nth-child(5) > ul:after {
+  .indicators-list .indicators-for-country > li:nth-child(5) ul li .indicator:before, .indicators-list .indicators-for-country > li:nth-child(5) > ul:after {
     background-color: rgba(92, 132, 126, 0.15); }
-  .template-rtei-by-country .indicators-for-country .has-children > .indicator {
+  .indicators-list .indicators-for-country .has-children > .indicator {
     cursor: pointer;
     position: relative; }
-    .template-rtei-by-country .indicators-for-country .has-children > .indicator:after {
+    .indicators-list .indicators-for-country .has-children > .indicator:after {
       content: '';
       display: block;
       width: 0;
@@ -1696,32 +1698,32 @@ body.adaptability .indicator-switcher > ul > li.subcat {
       -webkit-transition: all 0.2s ease-in-out;
       -moz-transition: all 0.2s ease-in-out;
       transition: all 0.2s ease-in-out; }
-  .template-rtei-by-country .indicators-for-country .has-children.open > .indicator:after {
+  .indicators-list .indicators-for-country .has-children.open > .indicator:after {
     -webkit-transform: rotate(0deg);
     -moz-transform: rotate(0deg);
     -ms-transform: rotate(0deg);
     -o-transform: rotate(0deg);
     transform: rotate(0deg); }
-  .template-rtei-by-country .indicators-for-country .indicator {
+  .indicators-list .indicators-for-country .indicator {
     clear: both; }
-    .template-rtei-by-country .indicators-for-country .indicator .indicator-title,
-    .template-rtei-by-country .indicators-for-country .indicator .indicator-value {
+    .indicators-list .indicators-for-country .indicator .indicator-title,
+    .indicators-list .indicators-for-country .indicator .indicator-value {
       display: block;
       padding-top: 0.25em;
       padding-bottom: 0.25em; }
-    .template-rtei-by-country .indicators-for-country .indicator .indicator-title {
+    .indicators-list .indicators-for-country .indicator .indicator-title {
       float: left;
       width: 80%; }
-    .template-rtei-by-country .indicators-for-country .indicator .indicator-value {
+    .indicators-list .indicators-for-country .indicator .indicator-value {
       text-align: right;
       padding-right: 1em; }
-  .template-rtei-by-country .indicators-for-country ul li {
+  .indicators-list .indicators-for-country ul li {
     padding-left: 1em; }
-    .template-rtei-by-country .indicators-for-country ul li::after {
+    .indicators-list .indicators-for-country ul li::after {
       clear: both;
       content: "";
       display: table; }
-    .template-rtei-by-country .indicators-for-country ul li .indicator:before {
+    .indicators-list .indicators-for-country ul li .indicator:before {
       content: '';
       width: 100em;
       height: 1px;
@@ -1729,7 +1731,7 @@ body.adaptability .indicator-switcher > ul > li.subcat {
       background-color: #bfbfbe;
       position: relative;
       left: -30em; }
-    .template-rtei-by-country .indicators-for-country ul li .code:after {
+    .indicators-list .indicators-for-country ul li .code:after {
       content: ' - '; }
 
 .resources .resources-list li {

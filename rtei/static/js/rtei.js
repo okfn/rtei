@@ -20,6 +20,9 @@ $(document).ready(function() {
     5: 'adaptability',
   }
 
+
+  RTEI.currentIndex ='index';
+
   // JS detection class
   document.documentElement.className = document.documentElement.className.replace("no-js","js");
 
@@ -57,7 +60,7 @@ $(document).ready(function() {
     }
     var templateClassNames = [];
     $.each($('body').attr('class').split(/\s+/), function(index, item) {
-        if (item && item.substring(0, 8) == 'template') {
+        if ((item && item.substring(0, 8) == 'template') || item == 'indicators-list') {
             templateClassNames.push(item);
         }
     });
@@ -134,5 +137,73 @@ $(document).ready(function() {
     e.preventDefault();
     $(this).closest('#search').toggleClass('target');
   });
+
+  // Expand indicators in the big list
+  RTEI.showIndicators = function(code) {
+    var isTheme = (code.substring(0, 1) == 't');
+    if (code != RTEI.currentIndex) {
+      var previousCode = RTEI.currentIndex;
+      RTEI.currentIndex = code;
+
+      if (!isTheme) {
+        if ($('#indicators').is(':hidden')) {
+          $('#indicators').show();
+        }
+        if ($('#theme_indicators').is(':visible')) {
+          $('#theme_indicators').hide();
+        }
+
+        if (code == 'index') {
+          // Show all sections, collapsed
+          for (var i = 1; i <= 5; i++) {
+            if ($('#indicator_container_' + i).is(':hidden')) {
+              $('#indicator_container_' + i).show();
+            }
+            if ($('#indicator_container_' + i).hasClass('open')) {
+              $('#indicator_item_' + i).click();
+            }
+          }
+        } else {
+          // Hide other sections
+          for (var i = 1; i <= 5; i++) {
+            if (String(i) !== code.split('.')[0]) {
+              $('#indicator_container_' + i).hide();
+            }
+          }
+          var codeSelector = code.replace('.', '\\.');
+          if (code.indexOf('.') !== -1 && previousCode.indexOf('.') !== -1) {
+            // Contract previous indicator in the same section
+            var previousCodeSelector = previousCode.replace('.', '\\.');
+            if ($('#indicator_container_' + previousCodeSelector).hasClass('open')) {
+              $('#indicator_item_' + previousCodeSelector).click();
+            }
+          }
+          // Expand relevant section
+          if ($('#indicator_container_' + codeSelector).is(':hidden')) {
+            $('#indicator_container_' + codeSelector).show();
+          }
+          if (!$('#indicator_container_' + codeSelector).hasClass('open')) {
+            $('#indicator_item_' + codeSelector).click();
+          }
+        }
+      } else {
+        if ($('#theme_indicators').is(':hidden')) {
+          $('#theme_indicators').show();
+        }
+        if ($('#indicators').is(':visible')) {
+          $('#indicators').hide();
+        }
+        // Show the relevant theme indicators list
+        $.each($('.theme-indicators'), function(index, ol) {
+          if (ol.id.replace('theme_indicators_', '') != code.replace('t', '')) {
+            $(ol).hide();
+          } else {
+            $(ol).slideDown();
+          }
+        });
+      }
+    }
+  }
+
 
 });

@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 
-{% load static wagtailcore_tags i18n %}
+{% load static wagtailcore_tags i18n rtei_tags %}
 
-{% block body_class %}template-rtei by-theme{% endblock %}
+{% block body_class %}template-rtei by-theme indicators-list{% endblock %}
 
 {% block extra_css %}
     <link rel="stylesheet" type="text/css" href="{% static 'vendor/c3/c3.css' %}">
@@ -45,6 +45,22 @@
           <dd>{% trans "Towards the right to education being respected, protected, and fulfilled." %}</dd>
         </dl>
       </div>
+
+      <ol id="indicators" class="indicators-for-country">
+        {% indicators_list indicators country_indicators False %}
+      </ol>
+
+      <div id="theme_indicators">
+      {% for theme in themes %}
+        {% for subtheme in theme.children %}
+            <ul id="theme_indicators_{{ subtheme.code }}" class="theme-indicators" style="display: none">
+            {% indicators_list subtheme.indicators country_indicators True %}
+            </ul>
+        {% endfor %}
+
+      {% endfor %}
+      </div>
+
     </section>
 
   </div>

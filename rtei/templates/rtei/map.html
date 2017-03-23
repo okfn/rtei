@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="{% static 'vendor/leaflet/leaflet.css' %}" />
 {% endblock %}
 
-{% block body_class %}template-explore-map{% endblock %}
+{% block body_class %}template-rtei template-explore-map indicators-list{% endblock %}
 
 {% block content %}
 <div class="main">
@@ -64,8 +64,28 @@
         <dd>{% trans "Towards the right to education being respected, protected, and fulfilled." %}</dd>
       </dl>
     </div>
+
+    <div class="indicators-map">
+      <ol id="indicators" class="indicators-for-country">
+        {% indicators_list indicators country_indicators False %}
+      </ol>
+
+      <div id="theme_indicators">
+      {% for theme in themes %}
+        {% for subtheme in theme.children %}
+            <ul id="theme_indicators_{{ subtheme.code }}" class="theme-indicators" style="display: none">
+            {% indicators_list subtheme.indicators country_indicators True %}
+            </ul>
+        {% endfor %}
+
+      {% endfor %}
+      </div>
+
+    </div>
+
   </section>
 
+ 
 </div>
 {% endblock %}
 

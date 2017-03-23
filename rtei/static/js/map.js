@@ -146,7 +146,7 @@ RTEI.map = (function() {
           attributionControl: false,
           scrollWheelZoom: false,
           zoomControl: false
-        }).setView([25, 10], 1.5);
+        }).setView([55, 10], 1.5);
         L.control.zoom({position: 'topright'}).addTo(RTEI.map.map);
       }
 
@@ -184,7 +184,16 @@ $(document).ready(function(){
         RTEI.map.currentIndexLabel = $('label[for="' + this.id + '"]').text();
 
         RTEI.map.refresh();
+
+        RTEI.showIndicators(this.value);
       }
     });
+
+    // indicator list
+    $("#indicators ul").slideUp().parent().addClass("has-children");
+    $('#indicators .indicator').click(function(e){
+      $(this).parent().children('ul').not(':animated').slideToggle().parent().toggleClass("open");
+    });
+
 
 });

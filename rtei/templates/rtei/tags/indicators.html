@@ -1,14 +1,17 @@
 {% load i18n rtei_tags %}
 
 {% for indicator in indicators %}
-  <li id="indicator_container_{{ indicator.code }}">
+  <li id="indicator_container_{{ indicator.code }}" class="indicator-container">
     <div id="indicator_item_{{ indicator.code }}" class="indicator">
       <span class="indicator-title">
         <span class="code">{{ indicator.code }}</span>{% trans indicator.title %}
       </span>
+
+      {% if country_indicators %}
       <span class="indicator-value">
         {{ country_indicators|get_indicator_value:indicator.code }}
       </span>
+      {% endif %}
     </div>
     {% if indicator.children %}
       <ul>
