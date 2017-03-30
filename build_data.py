@@ -25,6 +25,10 @@ CORE_SHEET = 'All Questionnaires'
 THEMES_SHEET = 'Cross-cutting themes'
 THEMES_MAPPINGS_SHEET = 'Transversal Themes Mappings'
 
+# Don't include this in the parsed data
+EXCLUDE_THEMES = ['10', '10A', '10B', '9B']
+
+
 MODIFIERS = {
     'gp': 'Gender Parity',
     'ad': 'Advantaged Group',
@@ -232,6 +236,9 @@ def get_themes(include_rows=False, include_indicators=False):
             title = cell.value
         elif len(code.split('.')) == 3:
             level = 4
+
+        if code in EXCLUDE_THEMES:
+            continue
 
         if level in (1, 2) and code in codes_done:
             if include_rows:
