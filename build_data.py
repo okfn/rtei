@@ -350,8 +350,7 @@ def get_main_scores(country_indicators):
     Return the values for the level 1 indicators (ie 1, 2, 3, 4 and 5)
 
     These are computed with the average of all level 2 indicators (eg 1.1,
-    1.2, etc). These are returned as a percentage rounded to 2 decimal
-    places.
+    1.2, etc). These are returned as a percentage.
     '''
 
     scores = {}
@@ -366,8 +365,9 @@ def get_main_scores(country_indicators):
                 and value is not None):
             if isinstance(value, float) or isinstance(value, int):
                 scores[code[:1]].append(value * 100 if value <= 1 else value)
-    return {score: round(sum(values) / len(values), 2)
-                for score, values in scores.iteritems() if values}
+
+    return {score: int(round(sum(values) / len(values)))
+            for score, values in scores.iteritems() if values}
 
 
 def add_main_scores(country_indicators):
@@ -381,12 +381,11 @@ def add_main_scores(country_indicators):
 def get_full_score(country_indicators):
     '''
     Return an object {'index':<num>}, where number is the computed average of
-    all level 1 indicators (ie 1, 2, 3, 4 and 5) returned as a percentage
-    rounded to 4 decimal places.
+    all level 1 indicators (ie 1, 2, 3, 4 and 5) returned as a percentage.
     '''
     values = [country_indicators[str(code)] for code in xrange(1, 6)
               if str(code) in country_indicators]
-    return {'index': round(sum(values) / len(values), 2)}
+    return {'index': int(round(sum(values) / len(values)))}
 
 
 def add_full_score(country_indicators):
@@ -503,8 +502,8 @@ def indicators_per_country(max_level=4, derived=True, random_values=False,
                 if (indicator['code'].count('.') == 1 and
                         not indicator['code'][-1].isalpha() and
                         value is not None and value != 'No data'):
-                    out[country_code][indicator['code']] = round(
-                        value * 100 if value <= 1 else value, 2)
+                    out[country_code][indicator['code']] = int(round(
+                        value * 100 if value <= 1 else value, 2))
 
         add_main_scores(out[country_code])
         add_full_score(out[country_code])
@@ -822,7 +821,7 @@ def c3_ready_json(output_dir=OUTPUT_DIR, random_values=False):
 
     Contains a list of objects, one for each country. First and second level
     indicators are normalized to fit the total percentage of each category.
-    Transversal themes are included rounded to two decimal places.
+    Transversal themes are included.
 
     [
       {
@@ -874,14 +873,13 @@ def c3_ready_json(output_dir=OUTPUT_DIR, random_values=False):
                 scores['main'].append(value)
             else:
                 scores[code[:1]].append(value)
-
         for code, value in values.iteritems():
             if code == 'index' or isinstance(value, basestring):
                 continue
             if '.' not in code:
-                item[code] = round(value / len(scores['main']), 2)
+                item[code] = value / float(len(scores['main']))
             else:
-                item[code] = round(value / len(scores[code[:1]]), 2)
+                item[code] = value / float(len(scores[code[:1]]))
 
         # Add Transversal themes
         item.update(themes[country_code])
