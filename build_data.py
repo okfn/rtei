@@ -37,6 +37,9 @@ MODIFIERS = {
     # These are underscores in the spreadsheet
     'inc-hmp': 'High to Medium Quartile Income Ratio',
     'inc-mlp': 'Medium to Low Quartile Income Ratio',
+    'Overage': 'Overage Learners',
+    'Out': 'Out of School Rate',
+
 }
 
 SCHOOL_TYPES = {
@@ -182,11 +185,10 @@ def parse_cell(value, theme=False):
         code = value.split()[0]
         title = 'Year'
         level = 4
-    elif any(modifier.replace('-', '_') in value.split()[0] for modifier in MODIFIERS.keys()):
+    elif any('_' + modifier.replace('-', '_') in value.split()[0] for modifier in MODIFIERS.keys()):
         # This is a derived indicator, we compute the title automatically
         # in the form:
         #   School type: Modifer - Modifier
-
         parts = value.replace('inc_', 'inc-').split('_')
         title_parts = []
         for part in parts[1:]:
