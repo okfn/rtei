@@ -42,15 +42,37 @@ MODIFIERS = {
 
 }
 
-SCHOOL_TYPES = {
-    'a': 'Primary schools',
-    'b': 'Secondary schools',
-    'c': 'TVET',
-    'd': 'Tertiary schools',
-    'e': 'Private Primary schools',
-    'f': 'Private Secondary schools',
-    'g': 'Private TVET',
-    'h': 'Private Tertiary schools',
+INDICATOR_TYPES = {
+    '3.3.1': {
+      'a': 'Primary Schools',
+      'b': 'Secondary Schools',
+      'c': 'TVET',
+      'd': 'Tertiary',
+    },
+    '3.3.2': {
+      'a': 'Primary Schools',
+      'b': 'Secondary Schools',
+      'c': 'TVET',
+      'd': 'Tertiary',
+    },
+    '3.3.3': {
+      'a': 'Primary Schools',
+      'b': 'Secondary Schools',
+      'c': 'TVET',
+      'd': 'Tertiary',
+    },
+    '4.3.3': {
+      'a': 'Overall Primary Schools',
+      'b': 'Reading Primary Schools',
+      'c': 'Math Primary Schools',
+      'd': 'Overall Secondary Schools',
+      'e': 'Reading Secondary Schools',
+      'f': 'Math Secondary Schools',
+    },
+    '4.3.4': {
+        'a': 'Youth',
+        'b': 'Adult',
+    }
 }
 
 # Excel handler
@@ -185,17 +207,24 @@ def parse_cell(value, theme=False):
         code = value.split()[0]
         title = 'Year'
         level = 4
-    elif any('_' + modifier.replace('-', '_') in value.split()[0] for modifier in MODIFIERS.keys()):
+    elif any('_' + modifier.replace('-', '_') in value.split()[0]
+             for modifier in MODIFIERS.keys()):
         # This is a derived indicator, we compute the title automatically
         # in the form:
-        #   School type: Modifer - Modifier
+        # Indicator type: Modifer - Modifier
+        # from a code like 4.3.3a_gp_disp
         parts = value.replace('inc_', 'inc-').split('_')
         title_parts = []
         for part in parts[1:]:
             title_parts.append(MODIFIERS[part])
-        school_type = SCHOOL_TYPES.get(parts[0][-1], '')
+        code = value[:5]
+        indicator_type = INDICATOR_TYPES.get(code, {}).get(parts[0][-1], '')
+        if indicator_type:
+            title = '{0}: {1}'.format(indicator_type, ' - '.join(title_parts))
+        else:
+            print 'Warning, could not get indicator type for {0}'.format(value)
+            title = ' - '.join(title_parts)
 
-        title = '{0}: {1}'.format(school_type, ' - '.join(title_parts))
         code = value.split()[0]
         level = 4
 
