@@ -340,9 +340,9 @@ def get_all_indicators(include_columns=False):
     Returns a list of all indicators. See get_indicators for details.
     '''
 
-    core_indicators = get_indicators(include_columns=include_columns)
+    indicators = get_indicators(include_columns=include_columns)
 
-    indicators = sorted(core_indicators, key=lambda k: k['code'])
+    # indicators = sorted(core_indicators, key=lambda k: k['code'])
 
     return indicators
 
