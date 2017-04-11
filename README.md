@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/okfn/rtei.svg?branch=master)](https://travis-ci.org/okfn/rtei)
 
-This site is powered by [Wagtail](https://wagtail.io)
+This site can be found at https://www.rtei.org and it is powered by [Wagtail](https://wagtail.io)
 
 
 # Setup
