@@ -3,32 +3,31 @@ from .models import (RTEIPage,
                      ResourceIndexPage,
                      BlogIndexPage,
                      BlogPage)
-
-from wagtail_modeltranslation.translation import TranslationOptions
-from wagtail_modeltranslation.decorators import register
+from wagtail_modeltranslation.translator import WagtailTranslationOptions
+from modeltranslation.decorators import register
 
 
 @register(RTEIPage)
-class RTEIPageTR(TranslationOptions):
+class RTEIPageTR(WagtailTranslationOptions):
     fields = ('title', )
 
 
 @register(ResourceIndexPage)
-class ResourceIndexPageTR(TranslationOptions):
+class ResourceIndexPageTR(WagtailTranslationOptions):
     fields = ('title', )
 
 
 @register(RTEIAncillaryPage)
-class RTEIAncillaryPageTR(TranslationOptions):
+class RTEIAncillaryPageTR(WagtailTranslationOptions):
     fields = ('body', )
 
 
 @register(BlogIndexPage)
-class BlogIndexPageTR(TranslationOptions):
+class BlogIndexPageTR(WagtailTranslationOptions):
     fields = ('title', )
 
 
 @register(BlogPage)
-class BlogPageTR(TranslationOptions):
+class BlogPageTR(WagtailTranslationOptions):
     fields = ('title', )
     fields = ('body', )

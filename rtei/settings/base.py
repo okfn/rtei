@@ -44,6 +44,9 @@ INSTALLED_APPS = [
     'wagtail.wagtailadmin',
     'wagtail.wagtailcore',
 
+    'wagtail.contrib.settings',
+    'wagtail_feeds',
+
     'modelcluster',
     'taggit',
     'storages',
@@ -77,6 +80,11 @@ MIDDLEWARE_CLASSES = [
 
 ROOT_URLCONF = 'rtei.urls'
 
+
+def rtei_context_processor(request):
+    return {'google_analytics_code': os.environ.get('GOOGLE_ANALYTICS_CODE')}
+
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -90,6 +98,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'rtei.settings.base.rtei_context_processor',
             ],
         },
     },
@@ -104,6 +113,7 @@ WSGI_APPLICATION = 'rtei.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'HOST': 'localhost',
         'NAME': 'rtei',
         'USER': 'rtei',
         'PASSWORD': 'pass',
@@ -144,6 +154,10 @@ STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.AppDirectoriesFinder'
 ]
 
+# RTEI settings
+# There needs to be a matching folder with data files on `rtei/static/data`
+YEARS = ['2015', '2016']
+
 STATICFILES_DIRS = [
     os.path.join(PROJECT_DIR, 'static'),
 ]
@@ -161,6 +175,15 @@ MEDIA_URL = '/media/'
 WAGTAIL_SITE_NAME = "rtei"
 
 WAGTAILDOCS_DOCUMENT_MODEL = 'rtei.RteiDocument'
+
+WAGTAILSEARCH_BACKENDS = {
+    'default': {
+        'BACKEND': 'wagtail.wagtailsearch.backends.elasticsearch2',
+        'URLS': ['http://localhost:9200'],
+        'INDEX': 'wagtail',
+        'TIMEOUT': 5,
+    }
+}
 
 # Tests
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'

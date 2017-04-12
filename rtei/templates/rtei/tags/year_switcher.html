@@ -1,0 +1,11 @@
+{% load rtei_tags %}
+
+<div class="years">
+  {% for value in all_years %}
+    {% if country_code and country_code|country_available:value %}
+      <a href="{{ request.path }}?year={{ value }}&id={{ country_code }}" class="{% if year == value %}selected{% endif %}">{{ value }}</a>
+    {% elif not country_code %}
+      <a href="{{ request.path }}?year={{ value }}" class="{% if year == value %}selected{% endif %}">{{ value }}</a>
+    {% endif %}
+  {% endfor %}
+</div>

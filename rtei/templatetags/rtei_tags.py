@@ -1,7 +1,10 @@
+import os
+
 from django import template
 from django.utils.translation import ugettext as _, get_language
 
 from rtei.models import Page, RTEIAncillaryPage
+from rtei.data import get_file_path
 
 import logging
 log = logging.getLogger(__name__)
@@ -40,8 +43,9 @@ def top_menu(context, parent, calling_page=None):
         # We don't directly check if calling_page is None since the template
         # engine can pass an empty string to calling_page
         # if the variable passed as calling_page does not exist.
-        menu_item.active = (calling_page.url.startswith(menu_item.url)
-                           if calling_page else False)
+        menu_item.active = (
+            calling_page.url.startswith(menu_item.url)
+            if calling_page else False)
         menu_items.append(menu_item)
 
     return {
@@ -93,11 +97,6 @@ def get_indicator_value(dictionary, code):
     return value
 
 
-@register.filter
-def any_core_children(children):
-    return any([child['core'] for child in children])
-
-
 @register.inclusion_tag('rtei/tags/indicators.html')
 def indicators_list(indicators, country_indicators, is_theme):
     return {
@@ -142,8 +141,9 @@ def about_menu(context, parent, calling_page=None):
     for base_menu_item in base_menu_items:
         menu_item = base_menu_item.specific
 
-        menu_item.active = (calling_page.url.startswith(menu_item.url)
-                           if calling_page else False)
+        menu_item.active = (
+            calling_page.url.startswith(menu_item.url)
+            if calling_page else False)
 
         menu_items.append(menu_item)
     return {
@@ -161,3 +161,16 @@ def translated_field(obj, field, lang):
         if hasattr(obj, field_name) and getattr(obj, field_name):
             return getattr(obj, field_name)
     return getattr(obj, field, '')
+
+
+@register.inclusion_tag('rtei/tags/resource_list_item.html')
+def resource_list_item(result):
+    return {
+        'result': result,
+    }
+
+
+@register.filter
+def country_available(country_code, year):
+    return os.path.exists(
+        get_file_path('{0}.json'.format(country_code), year))

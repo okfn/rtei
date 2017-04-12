@@ -11,6 +11,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core.validators import RegexValidator
 from django.shortcuts import redirect
 from django.contrib import messages
+from django.conf import settings
 
 from wagtail.wagtailcore.models import Page, get_root_collection_id
 from wagtail.wagtailcore.fields import RichTextField
@@ -20,9 +21,6 @@ from wagtail.wagtaildocs.models import AbstractDocument
 
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsearch import index
-
-
-from wagtail_modeltranslation.models import TranslationMixin
 
 from modelcluster.fields import ParentalKey
 from modelcluster.tags import ClusterTaggableManager
@@ -47,7 +45,7 @@ def get_chart_labels(indicators, themes):
     return chart_labels
 
 
-def get_map_context(context):
+def get_map_context(context, year):
     '''
     In the map page we pass the level 1 and 2 indicators to the
     template with the `indicators` variable. It has the following form:
@@ -57,19 +55,16 @@ def get_map_context(context):
             'code': '1',
             'title': 'Governance',
             'level': 1,
-            'core': True,
             'indicators': [
                 {
                     'code': '1.1',
                     'title': 'International Framework',
                     'level': 2,
-                    'core': True,
                 },
                 {
                     'code': '1.2',
                     'title': 'National Law',
                     'level': 2,
-                    'core': True,
                 },
                 ...
             ]
@@ -78,7 +73,6 @@ def get_map_context(context):
             'code': '2',
             'title': 'Availability',
             'level': 1,
-            'core': True,
             'indicators': [
                 ...
             ]
@@ -90,11 +84,11 @@ def get_map_context(context):
     identical format.
 
     '''
-    context['indicators'] = data.get_indicators()
-    context['themes'] = data.get_themes()
+    context['indicators'] = data.get_indicators(year)
+    context['themes'] = data.get_themes(year)
 
 
-def get_country_context(context, country_code):
+def get_country_context(context, country_code, year):
     '''In the RTEI by Country page we pass the following variables:
 
     * `available_countries`: a dict with the countries where data is avaiable,
@@ -135,7 +129,7 @@ def get_country_context(context, country_code):
     '''
 
     if country_code:
-        country_data = data.get_indicators_for_country(country_code)
+        country_data = data.get_indicators_for_country(country_code, year)
         if not country_data:
             raise Http404(_('No data available for this country'))
 
@@ -145,32 +139,32 @@ def get_country_context(context, country_code):
 
         context['country_indicators'] = country_data
 
-        for country in data.get_c3_scores_per_country():
+        for country in data.get_c3_scores_per_country(year):
             if country['name'] == context['country_name']:
                 chart_data = country
                 break
 
         context['chart_data'] = json.dumps([chart_data])
-        context['indicators'] = data.get_indicators()
-        context['themes'] = data.get_themes()
+        context['indicators'] = data.get_indicators(year)
+        context['themes'] = data.get_themes(year)
 
         context['chart_labels'] = json.dumps(
             get_chart_labels(context['indicators'], context['themes']))
 
     context['available_countries'] = OrderedDict(
         sorted({code: data.get_country_name(code) for code, c
-                in data.get_scores_per_country().iteritems()}.items(),
+                in data.get_scores_per_country(year).iteritems()}.items(),
                key=lambda t: t[1]))
 
 
-def get_theme_context(context):
-    context['indicators'] = data.get_indicators()
-    context['themes'] = data.get_themes()
+def get_theme_context(context, year):
+    context['indicators'] = data.get_indicators(year)
+    context['themes'] = data.get_themes(year)
     context['chart_labels'] = json.dumps(
         get_chart_labels(context['indicators'], context['themes']))
 
 
-class RTEIPage(TranslationMixin, Page):
+class RTEIPage(Page):
 
     body = RichTextField(blank=True)
 
@@ -181,12 +175,19 @@ class RTEIPage(TranslationMixin, Page):
     def get_context(self, request):
         context = super(RTEIPage, self).get_context(request)
 
+        year = request.GET.get('year')
+        if not year or year not in settings.YEARS:
+            year = settings.YEARS[-1]
+
+        context['year'] = year
+        context['all_years'] = settings.YEARS
+
         if self.slug == 'map':
-            get_map_context(context)
+            get_map_context(context, year)
         elif self.slug == 'rtei-country':
-            get_country_context(context, request.GET.get('id'))
+            get_country_context(context, request.GET.get('id'), year)
         elif self.slug == 'rtei-theme':
-            get_theme_context(context)
+            get_theme_context(context, year)
 
         return context
 
@@ -197,13 +198,17 @@ class RTEIPage(TranslationMixin, Page):
                                self.slug.replace('-', '_'))
 
 
-class RTEIAncillaryPage(TranslationMixin, Page):
+class RTEIAncillaryPage(Page):
     '''About page and other static content pages.'''
 
     body = RichTextField(blank=True)
 
     content_panels = Page.content_panels + [
         FieldPanel('body', classname="full")
+    ]
+
+    search_fields = Page.search_fields + [
+        index.SearchField('body'),
     ]
 
     def get_context(self, request):
@@ -225,7 +230,8 @@ class RTEIAncillaryPage(TranslationMixin, Page):
                 except SMTPException:
                     messages.error(
                         request,
-                        _('There was a problem submitting your contact details.'))
+                        _('There was a problem submitting your contact '
+                          'details.'))
                     log.error('Internal Server Error: %s', request.path,
                               exc_info=sys.exc_info(),
                               extra={
@@ -249,7 +255,7 @@ class RTEIAncillaryPage(TranslationMixin, Page):
             return "rtei/about.html"
 
 
-class ResourceIndexPage(TranslationMixin, Page):
+class ResourceIndexPage(Page):
     template = 'rtei/resources.html'
 
     def resources(self):
@@ -328,7 +334,7 @@ class ResourceIndexPage(TranslationMixin, Page):
         return context
 
 
-class RteiDocument(AbstractDocument):
+class RteiDocument(AbstractDocument, index.Indexed):
     '''A custom Document adding fields needed by RTEI Resource items.'''
 
     year = models.CharField(validators=[
@@ -356,11 +362,22 @@ class RteiDocument(AbstractDocument):
         'tags'
     )
 
+    search_fields = AbstractDocument.search_fields + [
+        index.SearchField('title'),
+        index.SearchField('description'),
+        index.SearchField('country'),
+        index.SearchField('year'),
+        index.RelatedFields('tags', [
+            index.SearchField('name'),
+        ])
+
+    ]
+
     class Meta:
         get_latest_by = "created_at"
 
 
-class BlogIndexPage(TranslationMixin, Page):
+class BlogIndexPage(Page):
 
     @property
     def blogs(self):
@@ -407,7 +424,7 @@ class BlogPageTag(TaggedItemBase):
     content_object = ParentalKey('BlogPage', related_name='tagged_items')
 
 
-class BlogPage(TranslationMixin, Page):
+class BlogPage(Page):
 
     intro = models.TextField(blank=True)
     body = RichTextField(blank=True)
@@ -423,6 +440,9 @@ class BlogPage(TranslationMixin, Page):
 
     search_fields = Page.search_fields + [
         index.SearchField('body'),
+        index.RelatedFields('tags', [
+            index.SearchField('name'),
+        ])
     ]
 
     @property

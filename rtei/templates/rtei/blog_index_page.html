@@ -6,8 +6,14 @@
 
 {% block content %}
   <div class="main">
+
+    {% include "rtei/tags/rss.html" %}
+
     {% if request.GET.tag|length %}
+
+    <section>
         <h4>{% trans "Showing posts tagged as" %} {{ request.GET.tag|safe }} <a href=" {% pageurl self %} ">{% trans "Show all" %}</a></h4>
+    </section>
     {% endif %}
 
     <div class="posts-list">

@@ -1,0 +1,9 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+ <g>
+  <path id="svg_1" d="m458.903,114.538c-11.106,-15.146 -26.587,-32.85 -43.589,-49.852s-34.706,-32.482 -49.852,-43.589c-25.787,-18.91 -38.296,-21.097 -45.462,-21.097l-248,0c-22.056,0 -40,17.944 -40,40l0,432c0,22.056 17.944,40 40,40l368,0c22.056,0 40,-17.944 40,-40l0,-312c0,-7.166 -2.186,-19.675 -21.097,-45.462zm-66.216,-27.225c15.35,15.35 27.4,29.199 36.29,40.687l-76.977,0l0,-76.973c11.492,8.89 25.339,20.939 40.687,36.286zm55.313,384.687c0,4.336 -3.664,8 -8,8l-368,0c-4.336,0 -8,-3.664 -8,-8l0,-432c0,-4.336 3.664,-8 8,-8c0,0 247.978,-0.001 248,0l0,112c0,8.836 7.163,16 16,16l112,0l0,312z"/>
+  <line stroke="#3b3b3b" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_2" y2="241.5" x2="416.014427" y1="241.5" x1="95" stroke-width="28"/>
+  <line stroke="#3b3b3b" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_3" y2="319.5" x2="416.014427" y1="319.5" x1="95" stroke-width="28"/>
+  <line stroke="#3b3b3b" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_4" y2="397.5" x2="416.014427" y1="397.5" x1="95" stroke-width="28"/>
+  <line stroke="#3b3b3b" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_5" y2="132.5" x2="290.014433" y1="132.5" x1="95" stroke-width="28"/>
+ </g>
+</svg>

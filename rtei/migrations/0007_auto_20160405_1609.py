@@ -7,7 +7,7 @@ import django.core.validators
 from django.db import migrations, models
 import django.db.models.deletion
 import taggit.managers
-import wagtail.wagtailadmin.taggable
+import wagtail.wagtailsearch.index
 import wagtail.wagtailcore.models
 
 
@@ -39,7 +39,7 @@ class Migration(migrations.Migration):
                 'abstract': False,
                 'verbose_name': 'document',
             },
-            bases=(models.Model, wagtail.wagtailadmin.taggable.TagSearchable),
+            bases=(models.Model, wagtail.wagtailsearch.index.Indexed),
         ),
         migrations.RemoveField(
             model_name='resourcedocument',

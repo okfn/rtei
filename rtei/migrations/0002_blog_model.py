@@ -7,7 +7,7 @@ import django.db.models.deletion
 import modelcluster.contrib.taggit
 import modelcluster.fields
 import wagtail.wagtailcore.fields
-import wagtail_modeltranslation.models
+
 
 
 class Migration(migrations.Migration):
@@ -48,7 +48,7 @@ class Migration(migrations.Migration):
             options={
                 'abstract': False,
             },
-            bases=(wagtail_modeltranslation.models.TranslationMixin, 'wagtailcore.page'),
+            bases=('wagtailcore.page', ),
         ),
         migrations.CreateModel(
             name='BlogPage',

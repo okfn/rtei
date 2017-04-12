@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% load wagtailcore_tags i18n %}
+{% load wagtailcore_tags i18n rtei_tags %}
 
 {% block body_class %}template-rtei resources{% endblock %}
 
@@ -27,46 +27,7 @@
       {% else %}
           <ul class="resources-list">
             {% for doc in documents %}
-            <li>
-              <a class="icon" href="{{doc.url}}" title="{{doc.title}}">
-                {% if doc.file_extension == "pdf" %}
-                {% include "icons/file-pdf.svg" %}
-                {% else %}
-                {% include "icons/file.svg" %}
-                {% endif %}
-              </a>
-
-              <span class="text">
-                <h3><a href="{{doc.url}}" title="{{doc.title}}">{{doc.title}}{% if doc.country %} - {{doc.country}}{% endif %}{% if doc.year %} - {{doc.year}}{% endif %}</a></h3>
-                {% if doc.description %}
-                   {{doc.description|richtext}}
-                {% endif %}
-                {% if doc.year or doc.country or doc.collection or doc.file_extension %}
-                <ul class="meta">
-                  {% if doc.year %}
-                  <li>
-                    {{doc.year}}
-                  </li>
-                  {% endif %}
-                  {% if doc.country %}
-                  <li>
-                    {{doc.country}}
-                  </li>
-                  {% endif %}
-                  {% if doc.collection %}
-                  <li>
-                    {{doc.collection}}
-                  </li>
-                  {% endif %}
-                  {% if doc.file_extension %}
-                  <li class="extension">
-                    {{doc.file_extension}}
-                  </li>
-                  {% endif %}
-                </ul>
-                {% endif %}
-              </span>
-            </li>
+              {% resource_list_item doc %}
             {% endfor %}
           </ul>
 

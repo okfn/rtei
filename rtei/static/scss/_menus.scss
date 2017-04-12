@@ -1,4 +1,18 @@
 body {
+
+  .years {
+
+      a {
+        font-size: 1.5em;
+        padding: 10px;
+      }
+
+      .selected {
+        color: $base-background-color;
+        background-color: $index-color;
+      }
+  }
+
   .indicator-switcher {
 
     label {

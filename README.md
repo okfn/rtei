@@ -350,3 +350,13 @@ Once the translators have finished workin on Transifex, update the source code t
 
     # Commit the changes
     git commit -am "Updated strings from Transifex"
+
+### Rebuilding CSS
+
+The project uses SASS. To install it run:
+
+    sudo gem install sass
+
+To rebuild the CSS, watching for changes in the scss files, run:
+
+    sass rtei/static/scss/rtei.scss:rtei/static/css/rtei.css --watch

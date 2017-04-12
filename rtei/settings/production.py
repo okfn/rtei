@@ -1,4 +1,5 @@
 import sys
+import os
 
 from .base import *
 
@@ -65,6 +66,15 @@ LOGGING = {
             'level': os.getenv('DJANGO_LOG_LEVEL', 'INFO'),
         },
     },
+}
+
+WAGTAILSEARCH_BACKENDS = {
+    'default': {
+        'BACKEND': 'wagtail.wagtailsearch.backends.elasticsearch2',
+        'URLS': [os.environ.get('ELASTICSEARCH_URL')],
+        'INDEX': 'wagtail',
+        'TIMEOUT': 5,
+    }
 }
 
 try:

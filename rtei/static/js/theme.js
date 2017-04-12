@@ -107,7 +107,7 @@ $(document).ready(function(){
   // TODO: remove once we have the final data
   var random = Boolean((location.search.split('random=')[1]||'').split('&')[0]);
   var jsonDataFileName = (random) ? 'c3_scores_per_country_random.json': 'c3_scores_per_country.json';
-  jsonDataFileName = "/static/data/" + jsonDataFileName;
+  jsonDataFileName = "/static/data/" + RTEI.year + '/' + jsonDataFileName;
 
   // Menu switcher
   $('.indicator-switcher input').on('click', function(){
@@ -118,7 +118,18 @@ $(document).ready(function(){
       RTEI.theme.currentIndex = this.value;
     }
     RTEI.theme.updateChart(this.value);
+
+    RTEI.showIndicators(this.value);
   });
 
   RTEI.theme.init(jsonDataFileName);
+
+  // indicator list
+  $("#indicators ul").slideUp().parent().addClass("has-children");
+  $('#indicators .indicator').click(function(e){
+    $(this).parent().children('ul').not(':animated').slideToggle().parent().toggleClass("open");
+  });
+
+
+
 });

@@ -28,66 +28,6 @@ RTEI.country = (function() {
 
   return {
 
-    currentIndex: 'index',
-
-    showIndicators: function(code) {
-      var isTheme = (code.substring(0, 1) == 't');
-      if (code != RTEI.country.currentIndex) {
-        RTEI.country.currentIndex = code;
-
-        if (!isTheme) {
-          if ($('#indicators').is(':hidden')) {
-            $('#indicators').show();
-          }
-          if ($('#theme_indicators').is(':visible')) {
-            $('#theme_indicators').hide();
-          }
-
-          if (code == 'index') {
-            // Show all sections, collapsed
-            for (var i = 1; i <= 5; i++) {
-              if ($('#indicator_container_' + i).is(':hidden')) {
-                $('#indicator_container_' + i).show();
-              }
-              if ($('#indicator_container_' + i).hasClass('open')) {
-                $('#indicator_item_' + i).click();
-              }
-            }
-          } else {
-            // Hide other sections
-            for (var i = 1; i <= 5; i++) {
-              if (String(i) !== code) {
-                $('#indicator_container_' + i).hide();
-              }
-            }
-            // Expand relevant section
-            if ($('#indicator_container_' + code).is(':hidden')) {
-              $('#indicator_container_' + code).show();
-            }
-            if (!$('#indicator_container_' + code).hasClass('open')) {
-              $('#indicator_item_' + code).click();
-            }
-          }
-        } else {
-          if ($('#theme_indicators').is(':hidden')) {
-            $('#theme_indicators').show();
-          }
-          if ($('#indicators').is(':visible')) {
-            $('#indicators').hide();
-          }
-          // Show the relevant theme indicators list
-          $.each($('.theme-indicators'), function(index, ol) {
-            if (ol.id.replace('theme_indicators_', '') != code.replace('t', '')) {
-              $(ol).hide();
-            } else {
-              $(ol).slideDown();
-            }
-          });
-        }
-      }
-    },
-
-
     initChart: function(data, names) {
 
       RTEI.charts.initChartConfig('country', data, customChartConfig, names);
@@ -104,7 +44,8 @@ $(document).ready(function(){
     $('#available-countries').on('change', function(){
       if (this.value) {
         var language = window.location.pathname.match(/^\/[a-zA-Z]{2}\//);
-        var path = 'explore/rtei-country?id=' + this.value;
+        var path = 'explore/rtei-country?id=' + this.value + '&year=' + RTEI.year;
+
         path = (language) ? language + path : '/' + path;
         window.location = path;
       }
@@ -126,7 +67,7 @@ $(document).ready(function(){
         (chartData[0][this.value] * RTEI.country.chart.groups()[0].length).toFixed(2) :
         chartData[0][this.value];
       $('#current-indicator-value').text(value);
-      RTEI.country.showIndicators(this.value);
+      RTEI.showIndicators(this.value);
       RTEI.charts.updateChart('country', this.value);
     });
 

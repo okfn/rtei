@@ -2,7 +2,7 @@
 
 {% load i18n static wagtailcore_tags rtei_tags %}
 
-{% block body_class %}template-rtei template-rtei-by-country{% endblock %}
+{% block body_class %}template-rtei template-rtei-by-country indicators-list{% endblock %}
 
 {% block extra_css %}
     <link rel="stylesheet" type="text/css" href="{% static 'vendor/c3/c3.css' %}">
@@ -12,20 +12,19 @@
   <div class="main">
 
     <section>
-    {% if not country_code %}
-      {% if self.body %}
-      {{ self.body|richtext }}
-      {% else %}
       <h2>{% trans "RTEI by Country" %}</h2>
       <p>
         {% trans "Explore progress on the right to education in individual countries. Use the pull down menu to select a country and download the completed country questionnaire." %}
       </p>
-      {% endif %}
-    {% endif %}
+    </section>
 
-    {% if country_code %}
-    <form action="{% url 'latest_document' %}" method="get" accept-charset="utf-8"><button class="export">{% trans "Export all" %}</button></form>
-    {% endif %}
+    <section>
+      {% include 'rtei/tags/year_switcher.html' %}
+    </section>
+
+    <section>
+
+      <form action="{% url 'document_by_year' year %}" method="get" accept-charset="utf-8"><button class="export">{% trans "Export all" %}</button></form>
 
       <div class="select">
         <select id="available-countries">
@@ -37,6 +36,8 @@
          {% endfor %}
         </select>
       </div>
+
+
     </section>
 
     {% if country_code %}
