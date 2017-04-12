@@ -947,7 +947,7 @@ def translation_strings():
     The output file is always `rtei/translation_strings.py`
     '''
     indicators = get_indicators()
-    themes = get_themes(include_inidicators=True)
+    themes = get_themes()
     responses = indicators_per_country()
 
     output_file = os.path.join(os.path.dirname(__file__), 'rtei',

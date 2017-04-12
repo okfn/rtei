@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rtei\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-19 15:39+0000\n"
+"POT-Creation-Date: 2017-04-12 08:52+0000\n"
 "PO-Revision-Date: 2016-04-19 10:34+0000\n"
 "Last-Translator: Adrià Mercader <adria.mercader@okfn.org>\n"
 "Language-Team: Arabic (http://www.transifex.com/okfn/rtei/language/ar/)\n"
@@ -30,31 +30,31 @@ msgstr ""
 msgid "Affiliation"
 msgstr ""
 
-#: rtei/models.py:140
+#: rtei/models.py:134
 msgid "No data available for this country"
 msgstr ""
 
-#: rtei/models.py:228
+#: rtei/models.py:233
 msgid "There was a problem submitting your contact details."
 msgstr ""
 
-#: rtei/models.py:238
+#: rtei/models.py:244
 msgid "Your contact details have been submitted."
 msgstr ""
 
-#: rtei/settings/base.py:128
+#: rtei/settings/base.py:138
 msgid "English"
 msgstr ""
 
-#: rtei/settings/base.py:129
+#: rtei/settings/base.py:139
 msgid "French"
 msgstr ""
 
-#: rtei/settings/base.py:130
+#: rtei/settings/base.py:140
 msgid "Spanish"
 msgstr ""
 
-#: rtei/settings/base.py:131
+#: rtei/settings/base.py:141
 msgid "Arabic"
 msgstr ""
 
@@ -66,32 +66,34 @@ msgstr ""
 msgid "Glossary"
 msgstr ""
 
-#: rtei/templates/rtei/blog_index_page.html:10
+#: rtei/templates/rtei/about.html:10
+msgid "Sections"
+msgstr ""
+
+#: rtei/templates/rtei/blog_index_page.html:15
 msgid "Showing posts tagged as"
 msgstr ""
 
-#: rtei/templates/rtei/blog_index_page.html:10
+#: rtei/templates/rtei/blog_index_page.html:15
 msgid "Show all"
 msgstr ""
 
-#: rtei/templates/rtei/blog_index_page.html:19
+#: rtei/templates/rtei/blog_index_page.html:25
 msgid "No posts found"
 msgstr ""
 
-#: rtei/templates/rtei/blog_index_page.html:28
-#: rtei/templates/rtei/resources.html:77
-#: search/templates/search/search.html:36
+#: rtei/templates/rtei/blog_index_page.html:34
+#: rtei/templates/rtei/resources.html:39 search/templates/search/search.html:41
 msgid "Previous"
 msgstr ""
 
-#: rtei/templates/rtei/blog_index_page.html:32
-#: rtei/templates/rtei/resources.html:81
+#: rtei/templates/rtei/blog_index_page.html:38
+#: rtei/templates/rtei/resources.html:43
 msgid "Page"
 msgstr ""
 
-#: rtei/templates/rtei/blog_index_page.html:36
-#: rtei/templates/rtei/resources.html:85
-#: search/templates/search/search.html:40
+#: rtei/templates/rtei/blog_index_page.html:42
+#: rtei/templates/rtei/resources.html:47 search/templates/search/search.html:45
 msgid "Next"
 msgstr ""
 
@@ -106,17 +108,29 @@ msgid "Submit"
 msgstr ""
 
 #: rtei/templates/rtei/homepage.html:18
-msgid "Education for Everyone. Everywhere"
+msgid "Education for Everyone. Everywhere."
 msgstr ""
 
 #: rtei/templates/rtei/homepage.html:19
 msgid ""
-"A global accountability initiative to ensure that all people, no matter "
-"where they live, can enjoy their right to a quality education."
+"Right to Education Index is a global accountability initiative designed to "
+"ensure that all people, no matter where they live, can enjoy their right to "
+"a quality education."
 msgstr ""
 
-#: rtei/templates/rtei/map.html:16
-#: rtei/templates/rtei/tags/explore_list.html:6
+#: rtei/templates/rtei/homepage.html:27
+msgid ""
+"The Right to Education Index monitors the right to education in a country "
+"based on an important, but non-exhaustive, list of indicators derived from "
+"the international right to education framework."
+msgstr ""
+
+#: rtei/templates/rtei/homepage.html:28
+msgid ""
+"Explore the data on a map, by theme, by country, or in a complete data set."
+msgstr ""
+
+#: rtei/templates/rtei/map.html:16 rtei/templates/rtei/tags/explore_list.html:6
 msgid "Explore the Map"
 msgstr ""
 
@@ -127,56 +141,57 @@ msgid ""
 "adaptability or choose a targeted theme."
 msgstr ""
 
-#: rtei/templates/rtei/map.html:33 rtei/templates/rtei/rtei_country.html:52
-#: rtei/templates/rtei/tags/switcher.html:6
-msgid "Overall Index"
+#: rtei/templates/rtei/map.html:28 rtei/templates/rtei/rtei_country.html:46
+#: rtei/templates/rtei/rtei_theme.html:26
+msgid "Filters"
 msgstr ""
 
-#: rtei/templates/rtei/map.html:35
-#: rtei/templates/rtei/tags/indicator_descriptions.html:31
-msgid ""
-"The overall index score is a general indication of progress towards the "
-"right to education in a country."
-msgstr ""
-
-#: rtei/templates/rtei/map.html:45
+#: rtei/templates/rtei/map.html:42
 msgid "RTEI Score"
 msgstr ""
 
-#: rtei/templates/rtei/map.html:65
-msgid "Toward the right to education being absent."
+#: rtei/templates/rtei/map.html:62 rtei/templates/rtei/rtei_country.html:64
+#: rtei/templates/rtei/rtei_theme.html:43
+msgid "Towards the right to education being absent."
 msgstr ""
 
-#: rtei/templates/rtei/map.html:67
+#: rtei/templates/rtei/map.html:64 rtei/templates/rtei/rtei_country.html:66
+#: rtei/templates/rtei/rtei_theme.html:45
 msgid ""
-"Toward the right to education being respected, protected, and fullfilled."
+"Towards the right to education being respected, protected, and fulfilled."
 msgstr ""
 
 #: rtei/templates/rtei/resources.html:10
+#: rtei/templates/rtei/tags/explore_list.html:36
+#: rtei/templates/rtei/tags/top_menu_children.html:7
+msgid "Download the Data"
+msgstr ""
+
+#: rtei/templates/rtei/resources.html:11
 msgid "Resources"
 msgstr ""
 
-#: rtei/templates/rtei/resources.html:12
+#: rtei/templates/rtei/resources.html:13
 msgid ""
 "Welcome to the resource library. For the most recent Right to Education "
 "Index resource see below or use the drop down menu to search filter "
 "resources by country, year, or subcategory."
 msgstr ""
 
-#: rtei/templates/rtei/resources.html:22
+#: rtei/templates/rtei/resources.html:23
 msgid "All Resources"
 msgstr ""
 
-#: rtei/templates/rtei/resources.html:25
+#: rtei/templates/rtei/resources.html:26
 msgid "No resources found that match the selected filters"
 msgstr ""
 
-#: rtei/templates/rtei/rtei_country.html:19
-#: rtei/templates/rtei/tags/explore_list.html:26
+#: rtei/templates/rtei/rtei_country.html:15
+#: rtei/templates/rtei/tags/explore_list.html:26 search/views.py:23
 msgid "RTEI by Country"
 msgstr ""
 
-#: rtei/templates/rtei/rtei_country.html:21
+#: rtei/templates/rtei/rtei_country.html:17
 msgid ""
 "Explore progress on the right to education in individual countries. Use the "
 "pull down menu to select a country and download the completed country "
@@ -187,8 +202,12 @@ msgstr ""
 msgid "Export all"
 msgstr ""
 
-#: rtei/templates/rtei/rtei_country.html:33
+#: rtei/templates/rtei/rtei_country.html:32
 msgid "Select a country ..."
+msgstr ""
+
+#: rtei/templates/rtei/rtei_country.html:57
+msgid "Score"
 msgstr ""
 
 #: rtei/templates/rtei/rtei_theme.html:15
@@ -202,20 +221,28 @@ msgid ""
 "down menu to select a theme and sort results by country name or score."
 msgstr ""
 
-#: rtei/templates/rtei/rtei_theme.html:25
-msgid "Overall Score"
-msgstr ""
-
-#: rtei/templates/rtei/rtei_theme.html:28
+#: rtei/templates/rtei/rtei_theme.html:37
 msgid "Sort by Name"
 msgstr ""
 
-#: rtei/templates/rtei/rtei_theme.html:28
+#: rtei/templates/rtei/rtei_theme.html:37
 msgid "Sort by Total Score"
 msgstr ""
 
 #: rtei/templates/rtei/tags/blog_list_item.html:29
 msgid "Read more"
+msgstr ""
+
+#: rtei/templates/rtei/tags/description_header.html:7
+#: rtei/templates/rtei/tags/switcher.html:6
+msgid "Overall Index"
+msgstr ""
+
+#: rtei/templates/rtei/tags/description_header.html:9
+#: rtei/templates/rtei/tags/indicator_descriptions.html:79
+msgid ""
+"The overall index score is a general indication of progress towards the "
+"right to education in a country."
 msgstr ""
 
 #: rtei/templates/rtei/tags/explore_list.html:8
@@ -225,404 +252,600 @@ msgid ""
 msgstr ""
 
 #: rtei/templates/rtei/tags/explore_list.html:18
-msgid "Evaluate various themes and issues in the right to education."
+msgid "Evaluate various themes and issues in the right to education index."
 msgstr ""
 
 #: rtei/templates/rtei/tags/explore_list.html:28
 msgid "Explore progress on the right to education in individual countries."
 msgstr ""
 
-#: rtei/templates/rtei/tags/explore_list.html:36
-msgid "Download the Data"
-msgstr ""
-
 #: rtei/templates/rtei/tags/explore_list.html:38
 msgid ""
 "Download the data that makes up the Right to Education Index. Available in "
-"Excel format"
+"Excel format."
 msgstr ""
 
-#: rtei/templates/rtei/tags/indicator_descriptions.html:5
+#: rtei/templates/rtei/tags/indicator_descriptions.html:51
 msgid "Index Score"
 msgstr ""
 
-#: rtei/templates/rtei/tags/indicator_descriptions.html:6
+#: rtei/templates/rtei/tags/indicator_descriptions.html:52
 #: rtei/translation_strings.py:8
 msgid "Governance"
 msgstr ""
 
-#: rtei/templates/rtei/tags/indicator_descriptions.html:7
-#: rtei/translation_strings.py:95
+#: rtei/templates/rtei/tags/indicator_descriptions.html:53
+#: rtei/translation_strings.py:13
 msgid "International Framework"
 msgstr ""
 
-#: rtei/templates/rtei/tags/indicator_descriptions.html:8
-#: rtei/translation_strings.py:100
+#: rtei/templates/rtei/tags/indicator_descriptions.html:54
+#: rtei/translation_strings.py:14
 msgid "National Law"
 msgstr ""
 
-#: rtei/templates/rtei/tags/indicator_descriptions.html:9
-#: rtei/translation_strings.py:101
+#: rtei/templates/rtei/tags/indicator_descriptions.html:55
+#: rtei/translation_strings.py:15
 msgid "Plan of Action"
 msgstr ""
 
-#: rtei/templates/rtei/tags/indicator_descriptions.html:10
-#: rtei/translation_strings.py:118
+#: rtei/templates/rtei/tags/indicator_descriptions.html:56
+#: rtei/translation_strings.py:16
 msgid "Monitoring and Reporting"
 msgstr ""
 
-#: rtei/templates/rtei/tags/indicator_descriptions.html:11
-#: rtei/translation_strings.py:119
+#: rtei/templates/rtei/tags/indicator_descriptions.html:57
+msgid "Finance"
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:58
 msgid "Data Availability"
 msgstr ""
 
-#: rtei/templates/rtei/tags/indicator_descriptions.html:12
+#: rtei/templates/rtei/tags/indicator_descriptions.html:59
 #: rtei/translation_strings.py:9
 msgid "Availability"
 msgstr ""
 
-#: rtei/templates/rtei/tags/indicator_descriptions.html:13
-#: rtei/translation_strings.py:120
+#: rtei/templates/rtei/tags/indicator_descriptions.html:60
+#: rtei/translation_strings.py:18
 msgid "Classrooms"
 msgstr ""
 
-#: rtei/templates/rtei/tags/indicator_descriptions.html:14
-#: rtei/translation_strings.py:121
+#: rtei/templates/rtei/tags/indicator_descriptions.html:61
+#: rtei/translation_strings.py:19
 msgid "Sanitation"
 msgstr ""
 
-#: rtei/templates/rtei/tags/indicator_descriptions.html:15
-#: rtei/translation_strings.py:122 rtei/translation_strings.py:597
+#: rtei/templates/rtei/tags/indicator_descriptions.html:62
+#: rtei/translation_strings.py:20 rtei/translation_strings.py:644
 msgid "Teachers"
 msgstr ""
 
-#: rtei/templates/rtei/tags/indicator_descriptions.html:16
-#: rtei/translation_strings.py:123
+#: rtei/templates/rtei/tags/indicator_descriptions.html:63
+#: rtei/translation_strings.py:21
 msgid "Textbooks"
 msgstr ""
 
-#: rtei/templates/rtei/tags/indicator_descriptions.html:17
+#: rtei/templates/rtei/tags/indicator_descriptions.html:64
 #: rtei/translation_strings.py:10
 msgid "Accessibility"
 msgstr ""
 
-#: rtei/templates/rtei/tags/indicator_descriptions.html:18
-#: rtei/translation_strings.py:124
+#: rtei/templates/rtei/tags/indicator_descriptions.html:65
+#: rtei/translation_strings.py:22
 msgid "Free Education"
 msgstr ""
 
-#: rtei/templates/rtei/tags/indicator_descriptions.html:19
-#: rtei/translation_strings.py:141
+#: rtei/templates/rtei/tags/indicator_descriptions.html:66
+#: rtei/translation_strings.py:23
 msgid "Discrimination"
 msgstr ""
 
-#: rtei/templates/rtei/tags/indicator_descriptions.html:20
-#: rtei/translation_strings.py:408
+#: rtei/templates/rtei/tags/indicator_descriptions.html:67
+#: rtei/translation_strings.py:24
 msgid "Participation"
 msgstr ""
 
-#: rtei/templates/rtei/tags/indicator_descriptions.html:21
+#: rtei/templates/rtei/tags/indicator_descriptions.html:68
 #: rtei/translation_strings.py:11
 msgid "Acceptability"
 msgstr ""
 
-#: rtei/templates/rtei/tags/indicator_descriptions.html:22
-#: rtei/translation_strings.py:427
+#: rtei/templates/rtei/tags/indicator_descriptions.html:69
+#: rtei/translation_strings.py:25
 msgid "Aims of Education"
 msgstr ""
 
-#: rtei/templates/rtei/tags/indicator_descriptions.html:23
-#: rtei/translation_strings.py:428
+#: rtei/templates/rtei/tags/indicator_descriptions.html:70
+#: rtei/translation_strings.py:26
 msgid "Learning Environment"
 msgstr ""
 
-#: rtei/templates/rtei/tags/indicator_descriptions.html:24
-#: rtei/translation_strings.py:582
+#: rtei/templates/rtei/tags/indicator_descriptions.html:71
+#: rtei/translation_strings.py:27
 msgid "Learning Outcomes"
 msgstr ""
 
-#: rtei/templates/rtei/tags/indicator_descriptions.html:25
+#: rtei/templates/rtei/tags/indicator_descriptions.html:72
 #: rtei/translation_strings.py:12
 msgid "Adaptability"
 msgstr ""
 
-#: rtei/templates/rtei/tags/indicator_descriptions.html:26
-#: rtei/translation_strings.py:583 rtei/translation_strings.py:589
+#: rtei/templates/rtei/tags/indicator_descriptions.html:73
+#: rtei/translation_strings.py:28 rtei/translation_strings.py:612
 msgid "Children with Disabilities"
 msgstr ""
 
-#: rtei/templates/rtei/tags/indicator_descriptions.html:27
-#: rtei/translation_strings.py:586
+#: rtei/templates/rtei/tags/indicator_descriptions.html:74
+#: rtei/translation_strings.py:29
 msgid "Children of Minorities"
 msgstr ""
 
-#: rtei/templates/rtei/tags/indicator_descriptions.html:28
-#: rtei/translation_strings.py:587
+#: rtei/templates/rtei/tags/indicator_descriptions.html:75
+#: rtei/translation_strings.py:30
 msgid "Out of School Education"
 msgstr ""
 
-#: rtei/templates/rtei/tags/indicator_descriptions.html:32
+#: rtei/templates/rtei/tags/indicator_descriptions.html:76
+#: rtei/translation_strings.py:31
+msgid "Out of School Children"
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:80
 msgid ""
 "The legal structure of education in a State. This includes State "
 "ratification of international declarations or treaties, education financing, "
 "and education standards and regulations."
 msgstr ""
 
-#: rtei/templates/rtei/tags/indicator_descriptions.html:33
+#: rtei/templates/rtei/tags/indicator_descriptions.html:81
 msgid ""
 "Indicates whether a country has ratified international and regional treaties "
 "associated with the right to education."
 msgstr ""
 
-#: rtei/templates/rtei/tags/indicator_descriptions.html:34
+#: rtei/templates/rtei/tags/indicator_descriptions.html:82
 msgid ""
-"Indicates whether the right to education at all levels in enshrined in "
+"Indicates whether the right to education at all levels is enshrined in "
 "national law and whether individuals have the liberty to direct the "
 "education of their children."
 msgstr ""
 
-#: rtei/templates/rtei/tags/indicator_descriptions.html:35
+#: rtei/templates/rtei/tags/indicator_descriptions.html:83
 msgid ""
 "Indicates whether a national education plan that aims for free and "
-"compulsory primary education is in place and whether their are targeted "
+"compulsory primary education is in place and whether there are targeted "
 "dates for its implementation."
 msgstr ""
 
-#: rtei/templates/rtei/tags/indicator_descriptions.html:36
+#: rtei/templates/rtei/tags/indicator_descriptions.html:84
 msgid "Indicates minimal education standards, monitoring, and data collection."
 msgstr ""
 
-#: rtei/templates/rtei/tags/indicator_descriptions.html:37
+#: rtei/templates/rtei/tags/indicator_descriptions.html:85
+msgid ""
+"National education financing. This includes budget expenditures, "
+"allocations, and sources"
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:86
 msgid ""
 "Indicates the average percent of available data for each area examined by "
 "RTEI."
 msgstr ""
 
-#: rtei/templates/rtei/tags/indicator_descriptions.html:38
+#: rtei/templates/rtei/tags/indicator_descriptions.html:87
 msgid ""
 "The number of educational institutions available and the condition of such "
 "institutions. "
 msgstr ""
 
-#: rtei/templates/rtei/tags/indicator_descriptions.html:39
-msgid "Indicates the realtive availability of classroom in primary schools."
+#: rtei/templates/rtei/tags/indicator_descriptions.html:88
+msgid "Indicates the relative availability of classrooms in schools."
 msgstr ""
 
-#: rtei/templates/rtei/tags/indicator_descriptions.html:40
+#: rtei/templates/rtei/tags/indicator_descriptions.html:89
 msgid "Indicates whether primary schools have toilets and potable water."
 msgstr ""
 
-#: rtei/templates/rtei/tags/indicator_descriptions.html:41
+#: rtei/templates/rtei/tags/indicator_descriptions.html:90
 msgid ""
 "Indicates whether primary school teachers are appropriately trained and the "
 "pupil per trained teacher ratio."
 msgstr ""
 
-#: rtei/templates/rtei/tags/indicator_descriptions.html:42
+#: rtei/templates/rtei/tags/indicator_descriptions.html:91
 msgid "Indicates the relative availability of textbooks."
 msgstr ""
 
-#: rtei/templates/rtei/tags/indicator_descriptions.html:43
+#: rtei/templates/rtei/tags/indicator_descriptions.html:92
 msgid ""
-"Whether available institutions are accessible to all students regardless of "
-"their socio-economic, familial, or demographic status. "
+"The availability of accessible learning environments to all students "
+"regardless of their socio-economic, familial, or demographic status."
 msgstr ""
 
-#: rtei/templates/rtei/tags/indicator_descriptions.html:44
+#: rtei/templates/rtei/tags/indicator_descriptions.html:93
 msgid "Indicates whether primary education is free in law and in practice."
 msgstr ""
 
-#: rtei/templates/rtei/tags/indicator_descriptions.html:45
+#: rtei/templates/rtei/tags/indicator_descriptions.html:94
 msgid ""
 "Indicates whether discrimination of vulnerable populations, such as pregnant "
 "girls and migrant students, are prohibited in law."
 msgstr ""
 
-#: rtei/templates/rtei/tags/indicator_descriptions.html:46
+#: rtei/templates/rtei/tags/indicator_descriptions.html:95
 msgid ""
 "Indicates whether students are enrolling and completing school and whether "
-"participation in equitible."
+"participation is equitable."
 msgstr ""
 
-#: rtei/templates/rtei/tags/indicator_descriptions.html:47
+#: rtei/templates/rtei/tags/indicator_descriptions.html:96
 msgid ""
 "The quality of education made available. This moves beyond learning outcomes "
 "to also capture the cultural relevance and security of the educational "
 "environment as well as the aims and content of education. "
 msgstr ""
 
-#: rtei/templates/rtei/tags/indicator_descriptions.html:48
+#: rtei/templates/rtei/tags/indicator_descriptions.html:97
 msgid ""
 "Indicates whether laws, curriculum, teacher training, and textbook "
 "monitoring align with the aims of education laid out in the international "
 "right to education framework."
 msgstr ""
 
-#: rtei/templates/rtei/tags/indicator_descriptions.html:49
+#: rtei/templates/rtei/tags/indicator_descriptions.html:98
 msgid ""
 "Indicates whether learning environments are free from violence and abuse, "
 "including corporal punishment."
 msgstr ""
 
-#: rtei/templates/rtei/tags/indicator_descriptions.html:50
+#: rtei/templates/rtei/tags/indicator_descriptions.html:99
 msgid ""
 "Indicates student passage rate on national assessments/exams and national "
 "literacy rates."
 msgstr ""
 
-#: rtei/templates/rtei/tags/indicator_descriptions.html:51
+#: rtei/templates/rtei/tags/indicator_descriptions.html:100
 msgid ""
 "The ability of education to be flexible in meeting the needs of a diverse "
 "range of students. "
 msgstr ""
 
-#: rtei/templates/rtei/tags/indicator_descriptions.html:52
+#: rtei/templates/rtei/tags/indicator_descriptions.html:101
 msgid ""
 "Indicates whether the right to education for children with disabilities is "
 "protected in law and accomodations for children with disabilities are made "
 "in practice."
 msgstr ""
 
-#: rtei/templates/rtei/tags/indicator_descriptions.html:53
+#: rtei/templates/rtei/tags/indicator_descriptions.html:102
 msgid ""
 "Indicates whether education has been adapted to meet the needs of children "
 "of minorities, including children of nomads and students with a different "
 "mother tongue."
 msgstr ""
 
-#: rtei/templates/rtei/tags/indicator_descriptions.html:54
+#: rtei/templates/rtei/tags/indicator_descriptions.html:103
 msgid ""
 "Indicates whether education is available in other circumstances outside of "
 "formal schooling, including in retention centers/camps and prisons."
 msgstr ""
 
-#: rtei/templates/rtei/tags/indicator_descriptions.html:56
-msgid "Overall State of Girls Education"
+#: rtei/templates/rtei/tags/indicator_descriptions.html:104
+msgid ""
+"The potential obstacles to children accessing and completing education. This "
+"includes early marriage, child labor and employment under the age fifteen, "
+"and military recruitment under the age sixteen."
 msgstr ""
 
-#: rtei/templates/rtei/tags/indicator_descriptions.html:57
-#: rtei/templates/rtei/tags/indicator_descriptions.html:61
-#: rtei/translation_strings.py:601 rtei/translation_strings.py:602
-msgid "Discriminatory Environment"
-msgstr ""
-
-#: rtei/templates/rtei/tags/indicator_descriptions.html:58
+#: rtei/templates/rtei/tags/indicator_descriptions.html:106
 msgid "Structure and Support for Children with Disabilities"
 msgstr ""
 
-#: rtei/templates/rtei/tags/indicator_descriptions.html:59
+#: rtei/templates/rtei/tags/indicator_descriptions.html:107
 msgid "Participation and Achievement for Children with Disabilities"
 msgstr ""
 
-#: rtei/templates/rtei/tags/indicator_descriptions.html:60
-msgid "Overall State of Education for Children with Disabilities"
-msgstr ""
-
-#: rtei/templates/rtei/tags/indicator_descriptions.html:62
-msgid "Private Education Legal Environment"
-msgstr ""
-
-#: rtei/templates/rtei/tags/indicator_descriptions.html:63
-#: rtei/translation_strings.py:608
-msgid "Content of Teacher Training"
-msgstr ""
-
-#: rtei/templates/rtei/tags/indicator_descriptions.html:64
-#: rtei/translation_strings.py:599
+#: rtei/templates/rtei/tags/indicator_descriptions.html:108
 msgid "Content of Curriculum"
 msgstr ""
 
-#: rtei/templates/rtei/tags/indicator_descriptions.html:65
+#: rtei/templates/rtei/tags/indicator_descriptions.html:109
+msgid "Overall State of Girls Education"
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:110
+msgid "Structure and Support for Girls Education"
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:111
+msgid "Participation and Achievement in Girls Education"
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:112
+#: rtei/templates/rtei/tags/indicator_descriptions.html:114
+#: rtei/translation_strings.py:621 rtei/translation_strings.py:624
+msgid "Discriminatory Environment"
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:113
+msgid "Relative State of Girls' Education"
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:115
 msgid "Stregnth of Monitoring and Accountability"
 msgstr ""
 
-#: rtei/templates/rtei/tags/indicator_descriptions.html:66
-#: rtei/translation_strings.py:594 rtei/translation_strings.py:604
+#: rtei/templates/rtei/tags/indicator_descriptions.html:116
+#: rtei/translation_strings.py:627 rtei/translation_strings.py:628
 msgid "National Normative Framework"
 msgstr ""
 
-#: rtei/templates/rtei/tags/indicator_descriptions.html:67
-msgid "Legal Restrictions in Opportunity and Indirect Costs"
+#: rtei/templates/rtei/tags/indicator_descriptions.html:117
+msgid "Legal Restrictions in Direct and Indirect Costs"
 msgstr ""
 
-#: rtei/templates/rtei/tags/indicator_descriptions.html:68
-#: rtei/translation_strings.py:606
-msgid "Opportunity and Indirect Costs in Practice"
+#: rtei/templates/rtei/tags/indicator_descriptions.html:118
+msgid "Direct and Indirect Costs in Practice"
 msgstr ""
 
-#: rtei/templates/rtei/tags/indicator_descriptions.html:70
-msgid "Indicates the general state of girls education in a country."
+#: rtei/templates/rtei/tags/indicator_descriptions.html:119
+msgid "Private Education Legal Environment"
 msgstr ""
 
-#: rtei/templates/rtei/tags/indicator_descriptions.html:71
-msgid ""
-"Indicates the extent to which the legal environment prohibits the "
-"discrimination of girls in a country."
+#: rtei/templates/rtei/tags/indicator_descriptions.html:120
+#: rtei/translation_strings.py:645
+msgid "Content of Teacher Training"
 msgstr ""
 
-#: rtei/templates/rtei/tags/indicator_descriptions.html:72
+#: rtei/templates/rtei/tags/indicator_descriptions.html:121
+msgid "Effect of Teacher Training"
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:122
+#: rtei/translation_strings.py:646
+msgid "Overall teaching framework"
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:123
+msgid "Income Inequality"
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:124
+msgid "Relative Enrollment and Completion Rates"
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:125
+msgid "Achievement across Income Quintiles"
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:126
+#: rtei/translation_strings.py:634
+msgid "Regional Disparities"
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:127
+#: rtei/translation_strings.py:635
+msgid "Relative State of Children in Rural Settings"
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:128
+msgid "Alignement of Education Aims"
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:129
+#: rtei/translation_strings.py:637
+msgid "SDG 4.1 Free and equitable"
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:130
+#: rtei/translation_strings.py:638
+msgid "SDG 4.3 Beyond K - 12"
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:131
+#: rtei/translation_strings.py:639
+msgid "SDG 4.5 Inequality and inaccessibility"
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:132
+#: rtei/translation_strings.py:640
+msgid "SDG 4.6 Adult literacy and lifelong learning"
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:133
+#: rtei/translation_strings.py:641
+msgid "SDG 4.7 Sustainability"
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:134
+#: rtei/translation_strings.py:642
+msgid "SDG 4.a Safe learning environment"
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:135
+msgid "SDG 4.c Qualified teachers"
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:138
 msgid ""
 "Indicates the extent to which a country provides a legal structure and "
 "corresponding support for children with a disability. "
 msgstr ""
 
-#: rtei/templates/rtei/tags/indicator_descriptions.html:73
+#: rtei/templates/rtei/tags/indicator_descriptions.html:139
 msgid ""
 "Indicates the participation and achievement levels of children with "
 "disabilities."
 msgstr ""
 
-#: rtei/templates/rtei/tags/indicator_descriptions.html:74
-msgid ""
-"Indicates the general state of education for children with disabilities."
-msgstr ""
-
-#: rtei/templates/rtei/tags/indicator_descriptions.html:75
-msgid ""
-"Indicates the extent to which the legal environment prohibits the "
-"discrimination of indigenous and minority populations in a country."
-msgstr ""
-
-#: rtei/templates/rtei/tags/indicator_descriptions.html:76
-msgid ""
-"Indicates whether the legal environment allows the establishment of private "
-"schools and private choice."
-msgstr ""
-
-#: rtei/templates/rtei/tags/indicator_descriptions.html:77
-msgid ""
-"Indicates the extent to which the aims of education are incorporated into "
-"the required teacher training."
-msgstr ""
-
-#: rtei/templates/rtei/tags/indicator_descriptions.html:78
+#: rtei/templates/rtei/tags/indicator_descriptions.html:140
 msgid ""
 "Indicates whether the national curriculum includes subjects and themes "
 "outlined in the international right to education framework."
 msgstr ""
 
-#: rtei/templates/rtei/tags/indicator_descriptions.html:79
+#: rtei/templates/rtei/tags/indicator_descriptions.html:141
+msgid "Indicates the general state of girls education in a country."
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:142
+msgid "Captures laws that specifically target girls’ education"
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:143
+msgid "Captures processes that specifically target girls’ education"
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:144
+msgid ""
+"Indicates the extent to which the legal environment prohibits the "
+"discrimination of girls in a country."
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:145
+msgid "Evaluates education equality between female and male learners"
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:146
+msgid ""
+"Indicates the extent to which the legal environment prohibits the "
+"discrimination of indigenous and minority populations in a country."
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:147
 msgid ""
 "Indicates an important, but not exhaustive, measure of government oversight "
 "for the educational system by providing a measure that captures the legal "
 "framework."
 msgstr ""
 
-#: rtei/templates/rtei/tags/indicator_descriptions.html:80
+#: rtei/templates/rtei/tags/indicator_descriptions.html:148
 msgid ""
 "Indicates whether the legal structure necessary to fulfill and facilitate "
 "the right to education in a country is present."
 msgstr ""
 
-#: rtei/templates/rtei/tags/indicator_descriptions.html:81
+#: rtei/templates/rtei/tags/indicator_descriptions.html:149
 msgid ""
 "Indicates whether the legal environment encourages children to attend school "
-"by reducing indirect or opportunity costs"
+"by reducing indirect or direct costs"
 msgstr ""
 
-#: rtei/templates/rtei/tags/indicator_descriptions.html:82
+#: rtei/templates/rtei/tags/indicator_descriptions.html:150
 msgid ""
-"Indicates whether opportunity and indirect costs are present in practice."
+"Direct and Indirect Costs capture costs that price children out of education "
+"or opportunities that provide children with an alternative to education."
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:151
+msgid ""
+"Indicates whether the legal environment allows the establishment of private "
+"schools and private choice."
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:152
+msgid ""
+"Indicates the extent to which the aims of education are incorporated into "
+"the required teacher training."
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:153
+msgid ""
+"Provides a visual representation of the effect of teacher training and the "
+"pupil-teacher ratio in a country."
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:154
+msgid ""
+"Includes all indicators related to teaching to provide an overall view of "
+"teaching quality, support, and accessibility in the country."
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:155
+msgid ""
+"Measures the relative income inequality compares results for the highest "
+"income quintile to students in the lowest income quintile."
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:156
+msgid ""
+"Graphs academic achievement across income quintiles helps to show gaps in "
+"student achievement."
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:157
+msgid ""
+"Provides a snapshot of the state of girls' education, relative to boys in a "
+"country."
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:158
+msgid ""
+"Captures how well the aims of education, outlined in the international right "
+"to education framework, are included in the legal structure of a country and "
+"incorporated into the national curriculum and teacher training."
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:159
+msgid ""
+"By 2030, ensure that all girls and boys complete free, equitable, and "
+"quality primary and secondary education leading to relevant and Goal-4 "
+"effective learning outcomes (<a href='https://sustainabledevelopment.un.org/"
+"sdg4'>More information</a>)"
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:160
+msgid ""
+"12 – By 2030, ensure equal access for all women and men to affordable and "
+"quality technical, vocational and tertiary education, including university "
+"(<a href='https://sustainabledevelopment.un.org/sdg4'>More information</a>)"
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:161
+msgid ""
+"By 2030, eliminate gender disparities in education and ensure equal access "
+"to all levels of education and vocational training for the vulnerable, "
+"including persons with disabilities, indigenous peoples and children in "
+"vulnerable situations (<a href='https://sustainabledevelopment.un.org/"
+"sdg4'>More information</a>)"
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:162
+msgid ""
+"By 2030, ensure that all youth and a substantial proportion of adults, both "
+"men and women, achieve literacy and numeracy (<a href='https://"
+"sustainabledevelopment.un.org/sdg4'>More information</a>)"
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:163
+msgid ""
+"By 2030, ensure that all learners acquire the knowledge and skills needed to "
+"promote sustainable development, including, among others, through education "
+"for sustainable development and sustainable lifestyles, human rights, gender "
+"equality, promotion of a culture of peace and non-violence, global "
+"citizenship and appreciation of cultural diversity and of culture’s "
+"contribution to sustainable development. (<a href='https://"
+"sustainabledevelopment.un.org/sdg4'>More information</a>)"
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:164
+msgid ""
+"Build and upgrade education facilities that are child, disability and gender "
+"sensitive and provide safe, nonviolent, inclusive and effective learning "
+"environments for all (<a href='https://sustainabledevelopment.un.org/"
+"sdg4'>More information</a>)"
+msgstr ""
+
+#: rtei/templates/rtei/tags/indicator_descriptions.html:165
+msgid ""
+"By 2030, substantially increase the supply of qualified teachers, including "
+"through international cooperation for teacher training in developing "
+"countries, especially least developed countries and small island developing "
+"states (<a href='https://sustainabledevelopment.un.org/sdg4'>More "
+"information</a>)"
 msgstr ""
 
 #: rtei/templates/rtei/tags/resources_filter.html:6
@@ -660,6 +883,10 @@ msgstr ""
 msgid "Apply Filters"
 msgstr ""
 
+#: rtei/templates/rtei/tags/rss.html:2
+msgid "Subscribe"
+msgstr ""
+
 #: rtei/templates/rtei/tags/top_menu.html:12
 msgid "Show navigation"
 msgstr ""
@@ -685,2379 +912,2394 @@ msgstr ""
 msgid "Search"
 msgstr ""
 
-#: rtei/translation_strings.py:13
+#: rtei/translation_strings.py:17
+msgid "Financing"
+msgstr ""
+
+#: rtei/translation_strings.py:32
 msgid "Is the State party to the following United Nations treaties?"
 msgstr ""
 
-#: rtei/translation_strings.py:14
+#: rtei/translation_strings.py:33
 msgid "Is the State party to the following UNESCO treaty?"
 msgstr ""
 
-#: rtei/translation_strings.py:15
+#: rtei/translation_strings.py:34
 msgid "Is the State party to the following ILO conventions?"
 msgstr ""
 
-#: rtei/translation_strings.py:16
+#: rtei/translation_strings.py:35
 msgid "Is the State party to the following Geneva conventions?"
 msgstr ""
 
-#: rtei/translation_strings.py:17
+#: rtei/translation_strings.py:36
 msgid "Is the State party to the following regional treaties?"
 msgstr ""
 
-#: rtei/translation_strings.py:18
+#: rtei/translation_strings.py:37
 msgid "Do national laws protect the right to education?"
 msgstr ""
 
-#: rtei/translation_strings.py:19
-msgid ""
-"Does the occupying power guarantee all children in their occupied territory "
-"the right to education?"
-msgstr ""
-
-#: rtei/translation_strings.py:20 rtei/translation_strings.py:614
-#: rtei/translation_strings.py:673
+#: rtei/translation_strings.py:38
 msgid ""
 "Do national laws protect the liberty of individuals to establish private "
 "schools?"
 msgstr ""
 
-#: rtei/translation_strings.py:21 rtei/translation_strings.py:615
-#: rtei/translation_strings.py:674
+#: rtei/translation_strings.py:39
 msgid ""
 "Do national laws protect the right of minorities to establish their own "
 "schools?"
 msgstr ""
 
-#: rtei/translation_strings.py:22 rtei/translation_strings.py:616
-#: rtei/translation_strings.py:675 rtei/translation_strings.py:718
+#: rtei/translation_strings.py:40
 msgid ""
 "Do national laws expressly recognize the liberty of parents to choose the "
 "religious and moral education of their children in conformity with their own "
 "convictions?"
 msgstr ""
 
-#: rtei/translation_strings.py:23 rtei/translation_strings.py:617
+#: rtei/translation_strings.py:41
 msgid ""
 "Is there a national education plan that aims to achieve free and compulsory "
 "primary education?"
 msgstr ""
 
-#: rtei/translation_strings.py:24
+#: rtei/translation_strings.py:42
 msgid ""
-"Are there targeted imiplmentation dates for each stage of the progressive "
-"implmentation of the plan?"
+"Are there targeted implementation dates for each stage of the progressive "
+"implementation of the plan?"
 msgstr ""
 
-#: rtei/translation_strings.py:25 rtei/translation_strings.py:619
-#: rtei/translation_strings.py:710
+#: rtei/translation_strings.py:43
+msgid ""
+"Does the national education plan include measures to encourage regular "
+"attendance at schools and reduce drop-out rates?"
+msgstr ""
+
+#: rtei/translation_strings.py:44
 msgid ""
 "Are there minimum educational standards applicable to all schools, including "
 "private schools?"
 msgstr ""
 
-#: rtei/translation_strings.py:26 rtei/translation_strings.py:620
-#: rtei/translation_strings.py:711
+#: rtei/translation_strings.py:45
 msgid "Is there a State body responsible for monitoring the education system?"
 msgstr ""
 
-#: rtei/translation_strings.py:27
+#: rtei/translation_strings.py:46
 msgid ""
-"How often is data on education collected nationally and made publicly "
-"available?"
+"How often is data on primary school net enrollment collected nationally?"
 msgstr ""
 
-#: rtei/translation_strings.py:28
-msgid "Is education data disaggregated on the following basis?"
+#: rtei/translation_strings.py:47
+msgid "Is the data on primary school net enrollment rate publically available?"
 msgstr ""
 
-#: rtei/translation_strings.py:29
+#: rtei/translation_strings.py:48
+msgid ""
+"What is the current public expenditure per pupil as a percentage of GDP per "
+"capita?"
+msgstr ""
+
+#: rtei/translation_strings.py:49
+msgid ""
+"What is the government expenditure on education as reported as the "
+"percentage of GDP allocated to education?"
+msgstr ""
+
+#: rtei/translation_strings.py:50
+msgid ""
+"What percentage of the national education budget comes from foreign aid "
+"sources (bilateral and multilateral)?"
+msgstr ""
+
+#: rtei/translation_strings.py:51
+msgid ""
+"What is the percentage of GDP allocated to foreign aid in relation to "
+"education? [donor countries]"
+msgstr ""
+
+#: rtei/translation_strings.py:52
+msgid ""
+"What is the percentage of total national education budget allocated to each "
+"level of education?"
+msgstr ""
+
+#: rtei/translation_strings.py:53
+msgid ""
+"What is the percentage of the total national education budget allocated to "
+"the following components?"
+msgstr ""
+
+#: rtei/translation_strings.py:54
+msgid ""
+"What percentage of the approved budget for education was actually executed?"
+msgstr ""
+
+#: rtei/translation_strings.py:55
+msgid ""
+"Is there a minimum standard in place setting the numbers of pupils per "
+"classroom?"
+msgstr ""
+
+#: rtei/translation_strings.py:56
 msgid "What is the pupil-classroom ratio?"
 msgstr ""
 
-#: rtei/translation_strings.py:30
+#: rtei/translation_strings.py:57
 msgid "What is the percentage of schools with toilets?"
 msgstr ""
 
-#: rtei/translation_strings.py:31
+#: rtei/translation_strings.py:58
 msgid "What is the percentage of schools with potable water?"
 msgstr ""
 
-#: rtei/translation_strings.py:32
+#: rtei/translation_strings.py:59
 msgid "What is the percentage of teachers that are appropriately trained?"
 msgstr ""
 
-#: rtei/translation_strings.py:33
+#: rtei/translation_strings.py:60
 msgid "What is the pupil-trained teacher ratio?"
 msgstr ""
 
-#: rtei/translation_strings.py:34
+#: rtei/translation_strings.py:61
+msgid "What is the mean teacher salary relative to the national mean salary?"
+msgstr ""
+
+#: rtei/translation_strings.py:62
+msgid ""
+"Is there a minimum standard in place setting the number of pupils per "
+"available textbook?"
+msgstr ""
+
+#: rtei/translation_strings.py:63
 msgid "What is the pupil-textbook ratio?"
 msgstr ""
 
-#: rtei/translation_strings.py:35 rtei/translation_strings.py:664
+#: rtei/translation_strings.py:64
 msgid "Do national laws provide free and compulsory primary education?"
 msgstr ""
 
-#: rtei/translation_strings.py:36 rtei/translation_strings.py:659
-msgid ""
-"What percent of household spending was spent on primary education in 2013?"
+#: rtei/translation_strings.py:65
+msgid "Is primary education free in practice?"
 msgstr ""
 
-#: rtei/translation_strings.py:37
+#: rtei/translation_strings.py:66
+msgid "What percent of household spending was spent on primary education?"
+msgstr ""
+
+#: rtei/translation_strings.py:67
+msgid "What percent of household spending was spent on secondary education?"
+msgstr ""
+
+#: rtei/translation_strings.py:68 rtei/translation_strings.py:181
+msgid "Are tuition fees charged for public university/higher education?"
+msgstr ""
+
+#: rtei/translation_strings.py:69
+msgid ""
+"Is basic education publicly provided for adults who have not completed "
+"primary education?"
+msgstr ""
+
+#: rtei/translation_strings.py:70
 msgid "Do national laws forbid discrimination on the following grounds?"
 msgstr ""
 
-#: rtei/translation_strings.py:38
+#: rtei/translation_strings.py:71
 msgid ""
 "Is the expulsion of girls from school because of pregnancy or for having a "
 "baby explicitly forbidden in national legislation?"
 msgstr ""
 
-#: rtei/translation_strings.py:39 rtei/translation_strings.py:694
-#: rtei/translation_strings.py:704
+#: rtei/translation_strings.py:72
 msgid ""
 "In practice, are girls expelled from school because of pregnancy or for "
 "having a baby?"
 msgstr ""
 
-#: rtei/translation_strings.py:40 rtei/translation_strings.py:731
+#: rtei/translation_strings.py:73
 msgid ""
 "Do migrant, refugee, or internally displaced children have to present "
 "documents stating their legal status to enroll in school?"
 msgstr ""
 
-#: rtei/translation_strings.py:41
+#: rtei/translation_strings.py:74
 msgid "What is the gross enrollment rate?"
 msgstr ""
 
-#: rtei/translation_strings.py:42
+#: rtei/translation_strings.py:75
 msgid "What is the net enrollment rate?"
 msgstr ""
 
-#: rtei/translation_strings.py:43
-msgid "What is the share of private school enrollment?"
-msgstr ""
-
-#: rtei/translation_strings.py:44
+#: rtei/translation_strings.py:76
 msgid "What is the completion rate?"
 msgstr ""
 
-#: rtei/translation_strings.py:45
+#: rtei/translation_strings.py:77
 msgid ""
 "Do national laws or policies direct education towards the following aims?"
 msgstr ""
 
-#: rtei/translation_strings.py:46
+#: rtei/translation_strings.py:78
 msgid ""
 "Does the national curriculum direct education towards the following aims"
 msgstr ""
 
-#: rtei/translation_strings.py:47
+#: rtei/translation_strings.py:79
 msgid ""
 "Does the required training for teachers include improving the skills "
 "necessary for teaching towards the full development of the following aims?"
 msgstr ""
 
-#: rtei/translation_strings.py:48 rtei/translation_strings.py:712
+#: rtei/translation_strings.py:80
 msgid ""
 "Are there established mechanisms to ensure that textbooks used in both "
 "public and private schools are aligned with the curriculum guidelines "
 "provided by the Ministry of Education?"
 msgstr ""
 
-#: rtei/translation_strings.py:49
+#: rtei/translation_strings.py:81
 msgid "Does national curriculum include the following topics?"
 msgstr ""
 
-#: rtei/translation_strings.py:50
+#: rtei/translation_strings.py:82
+msgid ""
+"Do national laws include children in the decision making process of school "
+"curricula, school policies, and codes of behavior?"
+msgstr ""
+
+#: rtei/translation_strings.py:83
 msgid ""
 "Has the national government adopted specific measure to protect children "
 "from violence and abuse in school?"
 msgstr ""
 
-#: rtei/translation_strings.py:51 rtei/translation_strings.py:646
+#: rtei/translation_strings.py:84
+msgid "In practice, are children in schools free from violence and abuse?"
+msgstr ""
+
+#: rtei/translation_strings.py:85
 msgid "Do national laws prohibit corporal punishment?"
 msgstr ""
 
-#: rtei/translation_strings.py:52
+#: rtei/translation_strings.py:86
 msgid "Does corporal punishment occur in practice?"
 msgstr ""
 
-#: rtei/translation_strings.py:53
+#: rtei/translation_strings.py:87
 msgid ""
-"What percent of students received a passing score on the national assessment/"
-"exam in 2014?"
+"Do national assessments or exams attempt to evaluate pupils progress towards "
+"the following aims?"
 msgstr ""
 
-#: rtei/translation_strings.py:54
+#: rtei/translation_strings.py:88
+msgid ""
+"Do national assessments or exams evaluate pupils understanding of the "
+"following topics?"
+msgstr ""
+
+#: rtei/translation_strings.py:89
+msgid ""
+"What percent of students received a passing score on the national assessment/"
+"exam?"
+msgstr ""
+
+#: rtei/translation_strings.py:90
 msgid "What is the literacy rate?"
 msgstr ""
 
-#: rtei/translation_strings.py:55
+#: rtei/translation_strings.py:91
 msgid ""
 "Do national laws recognize the right to education for children with "
 "disabilities?"
 msgstr ""
 
-#: rtei/translation_strings.py:56 rtei/translation_strings.py:657
-#: rtei/translation_strings.py:679 rtei/translation_strings.py:716
+#: rtei/translation_strings.py:92
 msgid ""
 "Are reasonable accommodation measures available for children with "
 "disabilities in mainstream schools?"
 msgstr ""
 
-#: rtei/translation_strings.py:57
+#: rtei/translation_strings.py:93
+msgid ""
+"What is the percentage of teachers trained to teach children with "
+"disabilities?"
+msgstr ""
+
+#: rtei/translation_strings.py:94
 msgid "Are there mobile schools for children of nomads?"
 msgstr ""
 
-#: rtei/translation_strings.py:58 rtei/translation_strings.py:648
-#: rtei/translation_strings.py:733
+#: rtei/translation_strings.py:95
 msgid ""
 "Do national laws provide for language of instruction to be in the child's "
 "mother tongue?"
 msgstr ""
 
-#: rtei/translation_strings.py:59
+#: rtei/translation_strings.py:96
 msgid "What percent of students are not taught in their mother tongue?"
 msgstr ""
 
-#: rtei/translation_strings.py:60
+#: rtei/translation_strings.py:97
 msgid ""
 "Is primary education available in retention center/camps for migrant, "
 "refugee, and internally displaced children?"
 msgstr ""
 
-#: rtei/translation_strings.py:61
+#: rtei/translation_strings.py:98
+msgid ""
+"Do refugee children receive education integrated with the general education "
+"system?"
+msgstr ""
+
+#: rtei/translation_strings.py:99
 msgid "Is education available in prison?"
 msgstr ""
 
-#: rtei/translation_strings.py:62
+#: rtei/translation_strings.py:100
 msgid ""
 "Do imprisoned children receive education integrated with the general "
 "education system (i.e., same curricula)?"
 msgstr ""
 
-#: rtei/translation_strings.py:63
-msgid ""
-"Are children prisoners-of-war given the means to pursue their educational "
-"activities?"
+#: rtei/translation_strings.py:101
+msgid "Does national law prohibit early marriage (below the age of 18)?"
 msgstr ""
 
-#: rtei/translation_strings.py:64
+#: rtei/translation_strings.py:102
+msgid "What percent of women are married by the age of 18?"
+msgstr ""
+
+#: rtei/translation_strings.py:103
+msgid "Is the legal minimum age of employment 15 or above?"
+msgstr ""
+
+#: rtei/translation_strings.py:104
+msgid "Has the government adopted specific measures to combat child labor?"
+msgstr ""
+
+#: rtei/translation_strings.py:105
+msgid "What percent of children under the age of 15 work in the labor force?"
+msgstr ""
+
+#: rtei/translation_strings.py:106
+msgid "Is the legal minimum age of military recruitment 16 or above?"
+msgstr ""
+
+#: rtei/translation_strings.py:107
+msgid "Are children under the age of 15 recruited by the military in practice?"
+msgstr ""
+
+#: rtei/translation_strings.py:108
 msgid "The International Covenant of Economic, Social and Cultural Rights"
 msgstr ""
 
-#: rtei/translation_strings.py:65
+#: rtei/translation_strings.py:109
 msgid "The Convention on the Rights of the Child"
 msgstr ""
 
-#: rtei/translation_strings.py:66
+#: rtei/translation_strings.py:110
 msgid ""
 "The International Convention on the Elimination of All Forms of Racial "
 "Discrimination"
 msgstr ""
 
-#: rtei/translation_strings.py:67
+#: rtei/translation_strings.py:111
 msgid "The Convention on the Rights of Persons with Disabilities"
 msgstr ""
 
-#: rtei/translation_strings.py:68
+#: rtei/translation_strings.py:112
 msgid ""
-"The International Covention on the Protection of the Rights of All Migrants "
-"Workser and the Members of Their Families"
+"The International Convention on the Protection of the Rights of All Migrants "
+"Workers and the Members of Their Families"
 msgstr ""
 
-#: rtei/translation_strings.py:69
+#: rtei/translation_strings.py:113
 msgid "The Convention relating to the Status of Refugees"
 msgstr ""
 
-#: rtei/translation_strings.py:70
+#: rtei/translation_strings.py:114
 msgid "The International Covenant on Civil and Political Rights"
 msgstr ""
 
-#: rtei/translation_strings.py:71
+#: rtei/translation_strings.py:115
 msgid ""
-"The Convention on the Elimination of All Forms of Discrimination agains Women"
+"The Convention on the Elimination of All Forms of Discrimination against "
+"Women"
 msgstr ""
 
-#: rtei/translation_strings.py:72
+#: rtei/translation_strings.py:116
 msgid "The UNESCO Convention against Discrimination in Education"
 msgstr ""
 
-#: rtei/translation_strings.py:73
+#: rtei/translation_strings.py:117
 msgid "The ILO Minimum Age Convention"
 msgstr ""
 
-#: rtei/translation_strings.py:74
+#: rtei/translation_strings.py:118
 msgid "The ILO Worst Forms of Child Labour Convention"
 msgstr ""
 
-#: rtei/translation_strings.py:75
+#: rtei/translation_strings.py:119
 msgid "The ILO Indigenous and Tribal Peoples Convention"
 msgstr ""
 
-#: rtei/translation_strings.py:76
+#: rtei/translation_strings.py:120
 msgid "The Geneva Convention III relative to the Treatment of Prisoners of War"
 msgstr ""
 
-#: rtei/translation_strings.py:77
+#: rtei/translation_strings.py:121
 msgid ""
 "The Geneva Convention IV relative to the Protection of Civilian Persons in "
 "Time of War"
 msgstr ""
 
-#: rtei/translation_strings.py:78
+#: rtei/translation_strings.py:122
 msgid ""
 "Protocol I to the Geneva Conventions of 12 August 1949, and relating to the "
 "Protection of Victims of International Armed Conflicts"
 msgstr ""
 
-#: rtei/translation_strings.py:79
+#: rtei/translation_strings.py:123
 msgid ""
 "Protocol II to the Geneva Conventions of 12 August 1949, and relating to the "
 "Protection of Victims of Non-International Armed Conflicts"
 msgstr ""
 
-#: rtei/translation_strings.py:80
+#: rtei/translation_strings.py:124
 msgid "In Africa: The African Charter on Human and Peoples' Rights"
 msgstr ""
 
-#: rtei/translation_strings.py:81
+#: rtei/translation_strings.py:125
 msgid ""
-"In Africa: The Protocal to the African Charter on Human and Peoples' Rights "
+"In Africa: The Protocol to the African Charter on Human and Peoples' Rights "
 "on the Rights of Women in Africa"
 msgstr ""
 
-#: rtei/translation_strings.py:82
+#: rtei/translation_strings.py:126
 msgid "In Africa: The African Charter on the Rights and Welfare of the Child"
 msgstr ""
 
-#: rtei/translation_strings.py:83
+#: rtei/translation_strings.py:127
 msgid "In Africa: African Youth Charter"
 msgstr ""
 
-#: rtei/translation_strings.py:84
+#: rtei/translation_strings.py:128
 msgid ""
 "In Africa: African Union Convention for the Protection and Assistance of "
 "Internally Displaced Persons in Africa"
 msgstr ""
 
-#: rtei/translation_strings.py:85
+#: rtei/translation_strings.py:129
 msgid "In the Americas: The Charter of the Organization of American States"
 msgstr ""
 
-#: rtei/translation_strings.py:86
+#: rtei/translation_strings.py:130
 msgid ""
 "In the Americas: The Additional Protocol to the American Convention on Human "
 "Rights, Protocol of San Salvador"
 msgstr ""
 
-#: rtei/translation_strings.py:87
+#: rtei/translation_strings.py:131
+msgid "In the Americas: The Inter-American Democratic Chater"
+msgstr ""
+
+#: rtei/translation_strings.py:132
 msgid "In Arab States: The Arab Charter on Human Rights"
 msgstr ""
 
-#: rtei/translation_strings.py:88
+#: rtei/translation_strings.py:133
 msgid ""
 "In Europe: Protocol 1 to the European Convention for the Protection of Human "
 "Rights and Fundamental Freedoms"
 msgstr ""
 
-#: rtei/translation_strings.py:89
+#: rtei/translation_strings.py:134
 msgid "In Europe: The Revised European Social Charter"
 msgstr ""
 
-#: rtei/translation_strings.py:90
+#: rtei/translation_strings.py:135
 msgid "In Europe: The European Charter for Regional or Minority Languages"
 msgstr ""
 
-#: rtei/translation_strings.py:91
+#: rtei/translation_strings.py:136
 msgid ""
 "In Europe: The Framework Convention for the Protection of National Minorities"
 msgstr ""
 
-#: rtei/translation_strings.py:92
+#: rtei/translation_strings.py:137
 msgid ""
-"In Europe: The European Convetnion on the Legal Status of Migrant Workers"
+"In Europe: The European Convention on the Legal Status of Migrant Workers"
 msgstr ""
 
-#: rtei/translation_strings.py:93
+#: rtei/translation_strings.py:138
 msgid ""
 "In Europe: The Convention on the Recognition of Qualifications concerning "
 "Higher Education in the European Region"
 msgstr ""
 
-#: rtei/translation_strings.py:94
+#: rtei/translation_strings.py:139
 msgid "In Europe: The European Union Charter of Fundamental Rights"
 msgstr ""
 
-#: rtei/translation_strings.py:96 rtei/translation_strings.py:610
+#: rtei/translation_strings.py:140
 msgid "Do national laws protect the right to primary education?"
 msgstr ""
 
-#: rtei/translation_strings.py:97 rtei/translation_strings.py:611
+#: rtei/translation_strings.py:141
 msgid "Do national laws protect the right to secondary education?"
 msgstr ""
 
-#: rtei/translation_strings.py:98
+#: rtei/translation_strings.py:142
 msgid ""
 "Do national laws protect the right to technical and vocational education?"
 msgstr ""
 
-#: rtei/translation_strings.py:99 rtei/translation_strings.py:613
+#: rtei/translation_strings.py:143
 msgid "Do national laws protect the right to higher education/university?"
 msgstr ""
 
-#: rtei/translation_strings.py:102 rtei/translation_strings.py:125
-msgid "Race and color (ethnicity)"
+#: rtei/translation_strings.py:144
+msgid "Primary"
 msgstr ""
 
-#: rtei/translation_strings.py:103 rtei/translation_strings.py:126
-msgid "Sex"
+#: rtei/translation_strings.py:145
+msgid "Secondary"
 msgstr ""
 
-#: rtei/translation_strings.py:104 rtei/translation_strings.py:127
-msgid "Language"
+#: rtei/translation_strings.py:146
+msgid "TVET"
 msgstr ""
 
-#: rtei/translation_strings.py:105 rtei/translation_strings.py:128
-msgid "Religion"
+#: rtei/translation_strings.py:147
+msgid "Tertiary"
 msgstr ""
 
-#: rtei/translation_strings.py:106 rtei/translation_strings.py:129
-msgid "Political or other opinion"
+#: rtei/translation_strings.py:148
+msgid "Teacher salaries"
 msgstr ""
 
-#: rtei/translation_strings.py:107
-msgid "National or social origin"
+#: rtei/translation_strings.py:149
+msgid "Teaching and learning materials (including teacher training)"
 msgstr ""
 
-#: rtei/translation_strings.py:108 rtei/translation_strings.py:131
-msgid "Property"
+#: rtei/translation_strings.py:150
+msgid "Capital development (i.e., infrastructure)"
 msgstr ""
 
-#: rtei/translation_strings.py:109 rtei/translation_strings.py:132
-msgid "Birth"
+#: rtei/translation_strings.py:151
+msgid "Data availability"
 msgstr ""
 
-#: rtei/translation_strings.py:110 rtei/translation_strings.py:133
-msgid "Sexual orientation and gender identity"
-msgstr ""
-
-#: rtei/translation_strings.py:111 rtei/translation_strings.py:134
-msgid "Disability"
-msgstr ""
-
-#: rtei/translation_strings.py:112 rtei/translation_strings.py:135
-msgid "Age"
-msgstr ""
-
-#: rtei/translation_strings.py:113 rtei/translation_strings.py:136
-msgid "Nationality"
-msgstr ""
-
-#: rtei/translation_strings.py:114 rtei/translation_strings.py:137
-msgid "Marital and family status"
-msgstr ""
-
-#: rtei/translation_strings.py:115
-msgid "Health Status"
-msgstr ""
-
-#: rtei/translation_strings.py:116
-msgid "Place of residence"
-msgstr ""
-
-#: rtei/translation_strings.py:117 rtei/translation_strings.py:140
-msgid "Economic and social situation"
-msgstr ""
-
-#: rtei/translation_strings.py:130
-msgid "National or social origin?"
-msgstr ""
-
-#: rtei/translation_strings.py:138
-msgid "Health status"
-msgstr ""
-
-#: rtei/translation_strings.py:139
-msgid "Place of Residence"
-msgstr ""
-
-#: rtei/translation_strings.py:142 rtei/translation_strings.py:218
-msgid "Primary schools - overall"
-msgstr ""
-
-#: rtei/translation_strings.py:143 rtei/translation_strings.py:219
-msgid "Primary schools - males"
-msgstr ""
-
-#: rtei/translation_strings.py:144 rtei/translation_strings.py:220
-msgid "Primary schools - females"
-msgstr ""
-
-#: rtei/translation_strings.py:145 rtei/translation_strings.py:221
-msgid "Primary schools - urban"
-msgstr ""
-
-#: rtei/translation_strings.py:146 rtei/translation_strings.py:222
-msgid "Primary schools - rural"
-msgstr ""
-
-#: rtei/translation_strings.py:147 rtei/translation_strings.py:223
-msgid "Primary schools - Q1"
-msgstr ""
-
-#: rtei/translation_strings.py:148 rtei/translation_strings.py:224
-msgid "Primary schools - Q2"
-msgstr ""
-
-#: rtei/translation_strings.py:149 rtei/translation_strings.py:225
-msgid "Primary schools - Q3"
-msgstr ""
-
-#: rtei/translation_strings.py:150 rtei/translation_strings.py:226
-msgid "Primary schools - Q4"
-msgstr ""
-
-#: rtei/translation_strings.py:151 rtei/translation_strings.py:227
-msgid "Primary schools - Q5"
-msgstr ""
-
-#: rtei/translation_strings.py:152 rtei/translation_strings.py:228
-msgid "Primary schools - disability"
-msgstr ""
-
-#: rtei/translation_strings.py:153 rtei/translation_strings.py:229
-#: rtei/translation_strings.py:267 rtei/translation_strings.py:441
-#: rtei/translation_strings.py:555
-msgid "Primary schools: Gender Parity"
-msgstr ""
-
-#: rtei/translation_strings.py:154 rtei/translation_strings.py:230
-#: rtei/translation_strings.py:268 rtei/translation_strings.py:442
-#: rtei/translation_strings.py:556
-msgid "Primary schools: Gender Parity - Advantaged Group"
-msgstr ""
-
-#: rtei/translation_strings.py:155 rtei/translation_strings.py:231
-#: rtei/translation_strings.py:269 rtei/translation_strings.py:443
-#: rtei/translation_strings.py:557
-msgid "Primary schools: Residential Parity"
-msgstr ""
-
-#: rtei/translation_strings.py:156 rtei/translation_strings.py:232
-#: rtei/translation_strings.py:270 rtei/translation_strings.py:444
-#: rtei/translation_strings.py:558
-msgid "Primary schools: Residential Parity - Advantaged Group"
-msgstr ""
-
-#: rtei/translation_strings.py:157 rtei/translation_strings.py:233
-#: rtei/translation_strings.py:271 rtei/translation_strings.py:445
-#: rtei/translation_strings.py:559
+#: rtei/translation_strings.py:152
 msgid ""
-"Primary schools: High to Medium Quartile Income Ratio - Advantaged Group"
+"Is there a minimum standard in place setting the numbers of pupils per "
+"classroom (primary school)?"
 msgstr ""
 
-#: rtei/translation_strings.py:158 rtei/translation_strings.py:234
-#: rtei/translation_strings.py:272 rtei/translation_strings.py:446
-#: rtei/translation_strings.py:560
-msgid "Primary schools: Medium to Low Quartile Income Ratio - Advantaged Group"
-msgstr ""
-
-#: rtei/translation_strings.py:159 rtei/translation_strings.py:235
-#: rtei/translation_strings.py:273 rtei/translation_strings.py:447
-#: rtei/translation_strings.py:561
-msgid "Primary schools: Disability Parity"
-msgstr ""
-
-#: rtei/translation_strings.py:160 rtei/translation_strings.py:236
-#: rtei/translation_strings.py:274 rtei/translation_strings.py:448
-#: rtei/translation_strings.py:562
-msgid "Primary schools: Disability Parity - Advantaged Group"
-msgstr ""
-
-#: rtei/translation_strings.py:161 rtei/translation_strings.py:237
-msgid "Secondary schools - overall"
-msgstr ""
-
-#: rtei/translation_strings.py:162 rtei/translation_strings.py:238
-msgid "Secondary schools - males"
-msgstr ""
-
-#: rtei/translation_strings.py:163 rtei/translation_strings.py:239
-msgid "Secondary schools - females"
-msgstr ""
-
-#: rtei/translation_strings.py:164 rtei/translation_strings.py:240
-msgid "Secondary schools - urban"
-msgstr ""
-
-#: rtei/translation_strings.py:165 rtei/translation_strings.py:241
-msgid "Secondary schools - rural"
-msgstr ""
-
-#: rtei/translation_strings.py:166 rtei/translation_strings.py:242
-msgid "Secondary schools - Q1"
-msgstr ""
-
-#: rtei/translation_strings.py:167 rtei/translation_strings.py:243
-msgid "Secondary schools - Q2"
-msgstr ""
-
-#: rtei/translation_strings.py:168 rtei/translation_strings.py:244
-msgid "Secondary schools - Q3"
-msgstr ""
-
-#: rtei/translation_strings.py:169 rtei/translation_strings.py:245
-msgid "Secondary schools - Q4"
-msgstr ""
-
-#: rtei/translation_strings.py:170 rtei/translation_strings.py:246
-msgid "Secondary schools - Q5"
-msgstr ""
-
-#: rtei/translation_strings.py:171 rtei/translation_strings.py:247
-msgid "Secondary schools - disability"
-msgstr ""
-
-#: rtei/translation_strings.py:172 rtei/translation_strings.py:248
-#: rtei/translation_strings.py:286 rtei/translation_strings.py:460
-#: rtei/translation_strings.py:574
-msgid "Secondary schools: Gender Parity"
-msgstr ""
-
-#: rtei/translation_strings.py:173 rtei/translation_strings.py:249
-#: rtei/translation_strings.py:287 rtei/translation_strings.py:461
-#: rtei/translation_strings.py:575
-msgid "Secondary schools: Gender Parity - Advantaged Group"
-msgstr ""
-
-#: rtei/translation_strings.py:174 rtei/translation_strings.py:250
-#: rtei/translation_strings.py:288 rtei/translation_strings.py:462
-#: rtei/translation_strings.py:576
-msgid "Secondary schools: Residential Parity"
-msgstr ""
-
-#: rtei/translation_strings.py:175 rtei/translation_strings.py:251
-#: rtei/translation_strings.py:289 rtei/translation_strings.py:463
-#: rtei/translation_strings.py:577
-msgid "Secondary schools: Residential Parity - Advantaged Group"
-msgstr ""
-
-#: rtei/translation_strings.py:176 rtei/translation_strings.py:252
-#: rtei/translation_strings.py:290 rtei/translation_strings.py:464
-#: rtei/translation_strings.py:578
+#: rtei/translation_strings.py:153
 msgid ""
-"Secondary schools: High to Medium Quartile Income Ratio - Advantaged Group"
+"If yes, what is the minimum standard pupil-classroom ratio (primary school)?"
 msgstr ""
 
-#: rtei/translation_strings.py:177 rtei/translation_strings.py:253
-#: rtei/translation_strings.py:291 rtei/translation_strings.py:465
-#: rtei/translation_strings.py:579
+#: rtei/translation_strings.py:154
 msgid ""
-"Secondary schools: Medium to Low Quartile Income Ratio - Advantaged Group"
+"Is there a minimum standard in place setting the numbers of pupils per "
+"classroom (secondary school)?"
 msgstr ""
 
-#: rtei/translation_strings.py:178 rtei/translation_strings.py:254
-#: rtei/translation_strings.py:292 rtei/translation_strings.py:466
-#: rtei/translation_strings.py:580
-msgid "Secondary schools: Disability Parity"
+#: rtei/translation_strings.py:155
+msgid ""
+"If yes, what is the minimum standard pupil-classroom ration (secondary "
+"school)?"
 msgstr ""
 
-#: rtei/translation_strings.py:179 rtei/translation_strings.py:255
-#: rtei/translation_strings.py:293 rtei/translation_strings.py:467
-#: rtei/translation_strings.py:581
-msgid "Secondary schools: Disability Parity - Advantaged Group"
+#: rtei/translation_strings.py:156 rtei/translation_strings.py:162
+msgid "For primary schools"
 msgstr ""
 
+#: rtei/translation_strings.py:157 rtei/translation_strings.py:163
+msgid "For secondary schools"
+msgstr ""
+
+#: rtei/translation_strings.py:158
+msgid ""
+"Is there a minimum standard in place setting the number of pupils per toilet "
+"(primary school)?"
+msgstr ""
+
+#: rtei/translation_strings.py:159
+msgid ""
+"If yes, what is the minimum standard pupil per toilet ratio (primary school)?"
+msgstr ""
+
+#: rtei/translation_strings.py:160
+msgid ""
+"Is there a minimum standard in place setting the number of pupils per toilet "
+"(secondary school)?"
+msgstr ""
+
+#: rtei/translation_strings.py:161
+msgid ""
+"If yes, what is the minimum standard pupil per toilet ratio (secondary "
+"school)?"
+msgstr ""
+
+#: rtei/translation_strings.py:164 rtei/translation_strings.py:166
+#: rtei/translation_strings.py:168 rtei/translation_strings.py:173
+#: rtei/translation_strings.py:179
+msgid "For primary schools?"
+msgstr ""
+
+#: rtei/translation_strings.py:165 rtei/translation_strings.py:167
+#: rtei/translation_strings.py:169 rtei/translation_strings.py:174
 #: rtei/translation_strings.py:180
-msgid "TVET - overall"
+msgid "For secondary schools?"
 msgstr ""
 
-#: rtei/translation_strings.py:181
-msgid "TVET - males"
+#: rtei/translation_strings.py:170
+msgid ""
+"If yes, what is the minimum standard pupil-trained teacher ratio (primary "
+"school)?"
+msgstr ""
+
+#: rtei/translation_strings.py:171
+msgid ""
+"Is there a minimum standard in place setting the number of pupils per "
+"trained teacher (secondary school)?"
+msgstr ""
+
+#: rtei/translation_strings.py:172
+msgid ""
+"If yes, what is the minimum standard pupil-trained teacher ratio (secondary "
+"school)?"
+msgstr ""
+
+#: rtei/translation_strings.py:175
+msgid ""
+"Is there a minimum standard in place setting the number of pupils per "
+"available textbook (primary)?"
+msgstr ""
+
+#: rtei/translation_strings.py:176
+msgid ""
+"If yes, what is the minimum standard pupil-textbook ratio (primary school)?"
+msgstr ""
+
+#: rtei/translation_strings.py:177
+msgid ""
+"Is there a minimum standard in place setting the number of pupils per "
+"available textbook (secondary)?"
+msgstr ""
+
+#: rtei/translation_strings.py:178
+msgid ""
+"If yes, what is the minimum standard pupil-textbook ratio (secondary school)?"
 msgstr ""
 
 #: rtei/translation_strings.py:182
-msgid "TVET - females"
+msgid ""
+"If yes, what is the average tuition fee for public university / higher "
+"education?"
 msgstr ""
 
 #: rtei/translation_strings.py:183
-msgid "TVET - urban"
+msgid "Race and color (ethnicity)"
 msgstr ""
 
 #: rtei/translation_strings.py:184
-msgid "TVET - rural"
+msgid "Sex"
 msgstr ""
 
 #: rtei/translation_strings.py:185
-msgid "TVET - Q1"
+msgid "Language"
 msgstr ""
 
 #: rtei/translation_strings.py:186
-msgid "TVET - Q2"
+msgid "Religion"
 msgstr ""
 
 #: rtei/translation_strings.py:187
-msgid "TVET - Q3"
+msgid "Political or other opinion"
 msgstr ""
 
 #: rtei/translation_strings.py:188
-msgid "TVET - Q4"
+msgid "National or social origin?"
 msgstr ""
 
 #: rtei/translation_strings.py:189
-msgid "TVET - Q5"
+msgid "Property"
 msgstr ""
 
 #: rtei/translation_strings.py:190
-msgid "TVET - disability"
+msgid "Birth"
 msgstr ""
 
-#: rtei/translation_strings.py:191 rtei/translation_strings.py:305
-#: rtei/translation_strings.py:479
-msgid "TVET: Gender Parity"
+#: rtei/translation_strings.py:191
+msgid "Sexual orientation and gender identity"
 msgstr ""
 
-#: rtei/translation_strings.py:192 rtei/translation_strings.py:306
-#: rtei/translation_strings.py:480
-msgid "TVET: Gender Parity - Advantaged Group"
+#: rtei/translation_strings.py:192
+msgid "Disability"
 msgstr ""
 
-#: rtei/translation_strings.py:193 rtei/translation_strings.py:307
-#: rtei/translation_strings.py:481
-msgid "TVET: Residential Parity"
+#: rtei/translation_strings.py:193
+msgid "Age"
 msgstr ""
 
-#: rtei/translation_strings.py:194 rtei/translation_strings.py:308
-#: rtei/translation_strings.py:482
-msgid "TVET: Residential Parity - Advantaged Group"
+#: rtei/translation_strings.py:194
+msgid "Nationality"
 msgstr ""
 
-#: rtei/translation_strings.py:195 rtei/translation_strings.py:309
-#: rtei/translation_strings.py:483
-msgid "TVET: High to Medium Quartile Income Ratio - Advantaged Group"
+#: rtei/translation_strings.py:195
+msgid "Marital and family status"
 msgstr ""
 
-#: rtei/translation_strings.py:196 rtei/translation_strings.py:310
-#: rtei/translation_strings.py:484
-msgid "TVET: Medium to Low Quartile Income Ratio - Advantaged Group"
+#: rtei/translation_strings.py:196
+msgid "Health status"
 msgstr ""
 
-#: rtei/translation_strings.py:197 rtei/translation_strings.py:311
-#: rtei/translation_strings.py:485
-msgid "TVET: Disability Parity"
+#: rtei/translation_strings.py:197
+msgid "Place of Residence"
 msgstr ""
 
-#: rtei/translation_strings.py:198 rtei/translation_strings.py:312
-#: rtei/translation_strings.py:486
-msgid "TVET: Disability Parity - Advantaged Group"
+#: rtei/translation_strings.py:198
+msgid "Economic and social situation"
 msgstr ""
 
-#: rtei/translation_strings.py:199
-msgid "Tertiary - overall"
+#: rtei/translation_strings.py:199 rtei/translation_strings.py:283
+msgid "Primary schools - overall"
 msgstr ""
 
 #: rtei/translation_strings.py:200
-msgid "Tertiary - males"
+msgid "Primary Schools: Overage Learners"
 msgstr ""
 
-#: rtei/translation_strings.py:201
-msgid "Tertiary - females"
+#: rtei/translation_strings.py:201 rtei/translation_strings.py:285
+msgid "Primary schools - males"
 msgstr ""
 
-#: rtei/translation_strings.py:202
-msgid "Tertiary - urban"
+#: rtei/translation_strings.py:202 rtei/translation_strings.py:286
+msgid "Primary schools - females"
 msgstr ""
 
-#: rtei/translation_strings.py:203
-msgid "Tertiary - rural"
+#: rtei/translation_strings.py:203 rtei/translation_strings.py:287
+#: rtei/translation_strings.py:330
+msgid "Primary Schools: Gender Parity"
 msgstr ""
 
-#: rtei/translation_strings.py:204
-msgid "Tertiary - Q1"
+#: rtei/translation_strings.py:204 rtei/translation_strings.py:288
+#: rtei/translation_strings.py:331
+msgid "Primary Schools: Gender Parity - Advantaged Group"
 msgstr ""
 
-#: rtei/translation_strings.py:205
-msgid "Tertiary - Q2"
+#: rtei/translation_strings.py:205 rtei/translation_strings.py:289
+msgid "Primary schools - urban"
 msgstr ""
 
-#: rtei/translation_strings.py:206
-msgid "Tertiary - Q3"
+#: rtei/translation_strings.py:206 rtei/translation_strings.py:290
+msgid "Primary schools - rural"
 msgstr ""
 
-#: rtei/translation_strings.py:207
-msgid "Tertiary - Q4"
+#: rtei/translation_strings.py:207 rtei/translation_strings.py:291
+#: rtei/translation_strings.py:334
+msgid "Primary Schools: Residential Parity"
 msgstr ""
 
-#: rtei/translation_strings.py:208
-msgid "Tertiary - Q5"
+#: rtei/translation_strings.py:208 rtei/translation_strings.py:292
+#: rtei/translation_strings.py:335
+msgid "Primary Schools: Residential Parity - Advantaged Group"
 msgstr ""
 
-#: rtei/translation_strings.py:209
-msgid "Tertiary - disability"
+#: rtei/translation_strings.py:209 rtei/translation_strings.py:293
+msgid "Primary schools - Q1"
 msgstr ""
 
-#: rtei/translation_strings.py:210 rtei/translation_strings.py:324
-#: rtei/translation_strings.py:498
-msgid "Tertiary schools: Gender Parity"
+#: rtei/translation_strings.py:210 rtei/translation_strings.py:294
+msgid "Primary schools - Q2"
 msgstr ""
 
-#: rtei/translation_strings.py:211 rtei/translation_strings.py:325
-#: rtei/translation_strings.py:499
-msgid "Tertiary schools: Gender Parity - Advantaged Group"
+#: rtei/translation_strings.py:211 rtei/translation_strings.py:295
+msgid "Primary schools - Q3"
 msgstr ""
 
-#: rtei/translation_strings.py:212 rtei/translation_strings.py:326
-#: rtei/translation_strings.py:500
-msgid "Tertiary schools: Residential Parity"
+#: rtei/translation_strings.py:212 rtei/translation_strings.py:296
+#: rtei/translation_strings.py:339
+msgid "Primary Schools: Medium to Low Quartile Income Ratio"
 msgstr ""
 
-#: rtei/translation_strings.py:213 rtei/translation_strings.py:327
-#: rtei/translation_strings.py:501
-msgid "Tertiary schools: Residential Parity - Advantaged Group"
+#: rtei/translation_strings.py:213 rtei/translation_strings.py:297
+#: rtei/translation_strings.py:340
+msgid "Primary Schools: Medium to Low Quartile Income Ratio - Advantaged Group"
 msgstr ""
 
-#: rtei/translation_strings.py:214 rtei/translation_strings.py:328
-#: rtei/translation_strings.py:502
+#: rtei/translation_strings.py:214 rtei/translation_strings.py:298
+msgid "Primary schools - Q4"
+msgstr ""
+
+#: rtei/translation_strings.py:215 rtei/translation_strings.py:299
+msgid "Primary schools - Q5"
+msgstr ""
+
+#: rtei/translation_strings.py:216 rtei/translation_strings.py:302
+msgid "Primary schools - disability"
+msgstr ""
+
+#: rtei/translation_strings.py:217 rtei/translation_strings.py:303
+#: rtei/translation_strings.py:346
+msgid "Primary Schools: Disability Parity"
+msgstr ""
+
+#: rtei/translation_strings.py:218 rtei/translation_strings.py:304
+#: rtei/translation_strings.py:347
+msgid "Primary Schools: Disability Parity - Advantaged Group"
+msgstr ""
+
+#: rtei/translation_strings.py:219 rtei/translation_strings.py:305
+msgid "Secondary schools - overall"
+msgstr ""
+
+#: rtei/translation_strings.py:220
+msgid "Secondary Schools: Overage Learners"
+msgstr ""
+
+#: rtei/translation_strings.py:221 rtei/translation_strings.py:307
+msgid "Secondary schools - males"
+msgstr ""
+
+#: rtei/translation_strings.py:222 rtei/translation_strings.py:308
+msgid "Secondary schools - females"
+msgstr ""
+
+#: rtei/translation_strings.py:223 rtei/translation_strings.py:309
+#: rtei/translation_strings.py:351
+msgid "Secondary Schools: Gender Parity"
+msgstr ""
+
+#: rtei/translation_strings.py:224 rtei/translation_strings.py:310
+#: rtei/translation_strings.py:352
+msgid "Secondary Schools: Gender Parity - Advantaged Group"
+msgstr ""
+
+#: rtei/translation_strings.py:225 rtei/translation_strings.py:311
+msgid "Secondary schools - urban"
+msgstr ""
+
+#: rtei/translation_strings.py:226 rtei/translation_strings.py:312
+msgid "Secondary schools - rural"
+msgstr ""
+
+#: rtei/translation_strings.py:227 rtei/translation_strings.py:313
+#: rtei/translation_strings.py:355
+msgid "Secondary Schools: Residential Parity"
+msgstr ""
+
+#: rtei/translation_strings.py:228 rtei/translation_strings.py:314
+#: rtei/translation_strings.py:356
+msgid "Secondary Schools: Residential Parity - Advantaged Group"
+msgstr ""
+
+#: rtei/translation_strings.py:229 rtei/translation_strings.py:315
+msgid "Secondary schools - Q1"
+msgstr ""
+
+#: rtei/translation_strings.py:230 rtei/translation_strings.py:316
+msgid "Secondary schools - Q2"
+msgstr ""
+
+#: rtei/translation_strings.py:231 rtei/translation_strings.py:317
+msgid "Secondary schools - Q3"
+msgstr ""
+
+#: rtei/translation_strings.py:232 rtei/translation_strings.py:318
+#: rtei/translation_strings.py:360
+msgid "Secondary Schools: Medium to Low Quartile Income Ratio"
+msgstr ""
+
+#: rtei/translation_strings.py:233 rtei/translation_strings.py:319
+#: rtei/translation_strings.py:361
 msgid ""
-"Tertiary schools: High to Medium Quartile Income Ratio - Advantaged Group"
+"Secondary Schools: Medium to Low Quartile Income Ratio - Advantaged Group"
 msgstr ""
 
-#: rtei/translation_strings.py:215 rtei/translation_strings.py:329
-#: rtei/translation_strings.py:503
+#: rtei/translation_strings.py:234 rtei/translation_strings.py:320
+msgid "Secondary schools - Q4"
+msgstr ""
+
+#: rtei/translation_strings.py:235 rtei/translation_strings.py:321
+msgid "Secondary schools - Q5"
+msgstr ""
+
+#: rtei/translation_strings.py:236 rtei/translation_strings.py:322
+#: rtei/translation_strings.py:364
+msgid "Secondary Schools: High to Medium Quartile Income Ratio"
+msgstr ""
+
+#: rtei/translation_strings.py:237 rtei/translation_strings.py:323
+#: rtei/translation_strings.py:365
 msgid ""
-"Tertiary schools: Medium to Low Quartile Income Ratio - Advantaged Group"
+"Secondary Schools: High to Medium Quartile Income Ratio - Advantaged Group"
 msgstr ""
 
-#: rtei/translation_strings.py:216 rtei/translation_strings.py:330
-#: rtei/translation_strings.py:504
-msgid "Tertiary schools: Disability Parity"
+#: rtei/translation_strings.py:238 rtei/translation_strings.py:324
+msgid "Secondary schools - disability"
 msgstr ""
 
-#: rtei/translation_strings.py:217 rtei/translation_strings.py:331
-#: rtei/translation_strings.py:505
-msgid "Tertiary schools: Disability Parity - Advantaged Group"
+#: rtei/translation_strings.py:239 rtei/translation_strings.py:325
+#: rtei/translation_strings.py:367
+msgid "Secondary Schools: Disability Parity"
+msgstr ""
+
+#: rtei/translation_strings.py:240 rtei/translation_strings.py:326
+#: rtei/translation_strings.py:368
+msgid "Secondary Schools: Disability Parity - Advantaged Group"
+msgstr ""
+
+#: rtei/translation_strings.py:241
+msgid "TVET - overall"
+msgstr ""
+
+#: rtei/translation_strings.py:242
+msgid "TVET - males"
+msgstr ""
+
+#: rtei/translation_strings.py:243
+msgid "TVET - females"
+msgstr ""
+
+#: rtei/translation_strings.py:244 rtei/translation_strings.py:372
+msgid "TVET: Gender Parity"
+msgstr ""
+
+#: rtei/translation_strings.py:245 rtei/translation_strings.py:373
+msgid "TVET: Gender Parity - Advantaged Group"
+msgstr ""
+
+#: rtei/translation_strings.py:246
+msgid "TVET - urban"
+msgstr ""
+
+#: rtei/translation_strings.py:247
+msgid "TVET - rural"
+msgstr ""
+
+#: rtei/translation_strings.py:248 rtei/translation_strings.py:376
+msgid "TVET: Residential Parity"
+msgstr ""
+
+#: rtei/translation_strings.py:249 rtei/translation_strings.py:377
+msgid "TVET: Residential Parity - Advantaged Group"
+msgstr ""
+
+#: rtei/translation_strings.py:250
+msgid "TVET - Q1"
+msgstr ""
+
+#: rtei/translation_strings.py:251
+msgid "TVET - Q2"
+msgstr ""
+
+#: rtei/translation_strings.py:252
+msgid "TVET - Q3"
+msgstr ""
+
+#: rtei/translation_strings.py:253 rtei/translation_strings.py:381
+msgid "TVET: Medium to Low Quartile Income Ratio"
+msgstr ""
+
+#: rtei/translation_strings.py:254 rtei/translation_strings.py:382
+msgid "TVET: Medium to Low Quartile Income Ratio - Advantaged Group"
+msgstr ""
+
+#: rtei/translation_strings.py:255
+msgid "TVET - Q4"
 msgstr ""
 
 #: rtei/translation_strings.py:256
-msgid "Public primary schools - overall"
+msgid "TVET - Q5"
 msgstr ""
 
-#: rtei/translation_strings.py:257
-msgid "Public primary schools - males"
+#: rtei/translation_strings.py:257 rtei/translation_strings.py:385
+msgid "TVET: High to Medium Quartile Income Ratio"
 msgstr ""
 
-#: rtei/translation_strings.py:258
-msgid "Public primary schools - females"
+#: rtei/translation_strings.py:258 rtei/translation_strings.py:386
+msgid "TVET: High to Medium Quartile Income Ratio - Advantaged Group"
 msgstr ""
 
 #: rtei/translation_strings.py:259
-msgid "Public primary schools - urban"
+msgid "TVET - disability"
 msgstr ""
 
-#: rtei/translation_strings.py:260
-msgid "Public primary schools - rural"
+#: rtei/translation_strings.py:260 rtei/translation_strings.py:388
+msgid "TVET: Disability Parity"
 msgstr ""
 
-#: rtei/translation_strings.py:261
-msgid "Public primary schools - Q1"
+#: rtei/translation_strings.py:261 rtei/translation_strings.py:389
+msgid "TVET: Disability Parity - Advantaged Group"
 msgstr ""
 
 #: rtei/translation_strings.py:262
-msgid "Public primary schools - Q2"
+msgid "Tertiary - overall"
 msgstr ""
 
 #: rtei/translation_strings.py:263
-msgid "Public primary schools - Q3"
+msgid "Tertiary - males"
 msgstr ""
 
 #: rtei/translation_strings.py:264
-msgid "Public primary schools - Q4"
+msgid "Tertiary - females"
 msgstr ""
 
-#: rtei/translation_strings.py:265
-msgid "Public primary schools - Q5"
+#: rtei/translation_strings.py:265 rtei/translation_strings.py:392
+msgid "Tertiary: Gender Parity"
 msgstr ""
 
-#: rtei/translation_strings.py:266
-msgid "Public primary schools - disability"
+#: rtei/translation_strings.py:266 rtei/translation_strings.py:393
+msgid "Tertiary: Gender Parity - Advantaged Group"
 msgstr ""
 
-#: rtei/translation_strings.py:275
-msgid "Public secondary schools - overall"
+#: rtei/translation_strings.py:267
+msgid "Tertiary - urban"
+msgstr ""
+
+#: rtei/translation_strings.py:268
+msgid "Tertiary - rural"
+msgstr ""
+
+#: rtei/translation_strings.py:269 rtei/translation_strings.py:396
+msgid "Tertiary: Residential Parity"
+msgstr ""
+
+#: rtei/translation_strings.py:270 rtei/translation_strings.py:397
+msgid "Tertiary: Residential Parity - Advantaged Group"
+msgstr ""
+
+#: rtei/translation_strings.py:271
+msgid "Tertiary - Q1"
+msgstr ""
+
+#: rtei/translation_strings.py:272
+msgid "Tertiary - Q2"
+msgstr ""
+
+#: rtei/translation_strings.py:273
+msgid "Tertiary - Q3"
+msgstr ""
+
+#: rtei/translation_strings.py:274 rtei/translation_strings.py:401
+msgid "Tertiary: Medium to Low Quartile Income Ratio"
+msgstr ""
+
+#: rtei/translation_strings.py:275 rtei/translation_strings.py:402
+msgid "Tertiary: Medium to Low Quartile Income Ratio - Advantaged Group"
 msgstr ""
 
 #: rtei/translation_strings.py:276
-msgid "Public secondary schools - males"
+msgid "Tertiary - Q4"
 msgstr ""
 
 #: rtei/translation_strings.py:277
-msgid "Public secondary schools - females"
+msgid "Tertiary - Q5"
 msgstr ""
 
-#: rtei/translation_strings.py:278
-msgid "Public secondary schools - urban"
+#: rtei/translation_strings.py:278 rtei/translation_strings.py:405
+msgid "Tertiary: High to Medium Quartile Income Ratio"
 msgstr ""
 
-#: rtei/translation_strings.py:279
-msgid "Public secondary schools - rural"
+#: rtei/translation_strings.py:279 rtei/translation_strings.py:406
+msgid "Tertiary: High to Medium Quartile Income Ratio - Advantaged Group"
 msgstr ""
 
 #: rtei/translation_strings.py:280
-msgid "Public secondary schools - Q1"
+msgid "Tertiary - disability"
 msgstr ""
 
-#: rtei/translation_strings.py:281
-msgid "Public secondary schools - Q2"
+#: rtei/translation_strings.py:281 rtei/translation_strings.py:408
+msgid "Tertiary: Disability Parity"
 msgstr ""
 
-#: rtei/translation_strings.py:282
-msgid "Public secondary schools - Q3"
-msgstr ""
-
-#: rtei/translation_strings.py:283
-msgid "Public secondary schools - Q4"
+#: rtei/translation_strings.py:282 rtei/translation_strings.py:409
+msgid "Tertiary: Disability Parity - Advantaged Group"
 msgstr ""
 
 #: rtei/translation_strings.py:284
-msgid "Public secondary schools - Q5"
+msgid "Primary Schools: Out of School Rate"
 msgstr ""
 
-#: rtei/translation_strings.py:285
-msgid "Public secondary schools - disability"
+#: rtei/translation_strings.py:300 rtei/translation_strings.py:343
+msgid "Primary Schools: High to Medium Quartile Income Ratio"
 msgstr ""
 
-#: rtei/translation_strings.py:294
-msgid "Public TVET - overall"
+#: rtei/translation_strings.py:301 rtei/translation_strings.py:344
+msgid ""
+"Primary Schools: High to Medium Quartile Income Ratio - Advantaged Group"
 msgstr ""
 
-#: rtei/translation_strings.py:295
-msgid "Public TVET - males"
+#: rtei/translation_strings.py:306
+msgid "Secondary Schools: Out of School Rate"
 msgstr ""
 
-#: rtei/translation_strings.py:296
-msgid "Public TVET - females"
+#: rtei/translation_strings.py:327
+msgid "Public primary schools - overall"
 msgstr ""
 
-#: rtei/translation_strings.py:297
-msgid "Public TVET - urban"
+#: rtei/translation_strings.py:328
+msgid "Public primary schools - males"
 msgstr ""
 
-#: rtei/translation_strings.py:298
-msgid "Public TVET - rural"
-msgstr ""
-
-#: rtei/translation_strings.py:299
-msgid "Public TVET - Q1"
-msgstr ""
-
-#: rtei/translation_strings.py:300
-msgid "Public TVET - Q2"
-msgstr ""
-
-#: rtei/translation_strings.py:301
-msgid "Public TVET - Q3"
-msgstr ""
-
-#: rtei/translation_strings.py:302
-msgid "Public TVET - Q4"
-msgstr ""
-
-#: rtei/translation_strings.py:303
-msgid "Public TVET - Q5"
-msgstr ""
-
-#: rtei/translation_strings.py:304
-msgid "Public TVET - disability"
-msgstr ""
-
-#: rtei/translation_strings.py:313
-msgid "Public Tertiary - overall"
-msgstr ""
-
-#: rtei/translation_strings.py:314
-msgid "Public Tertiary - males"
-msgstr ""
-
-#: rtei/translation_strings.py:315
-msgid "Public Tertiary - females"
-msgstr ""
-
-#: rtei/translation_strings.py:316
-msgid "Public Tertiary - urban"
-msgstr ""
-
-#: rtei/translation_strings.py:317
-msgid "Public Tertiary - rural"
-msgstr ""
-
-#: rtei/translation_strings.py:318
-msgid "Public Tertiary - Q1"
-msgstr ""
-
-#: rtei/translation_strings.py:319
-msgid "Public Tertiary - Q2"
-msgstr ""
-
-#: rtei/translation_strings.py:320
-msgid "Public Tertiary - Q3"
-msgstr ""
-
-#: rtei/translation_strings.py:321
-msgid "Public Tertiary - Q4"
-msgstr ""
-
-#: rtei/translation_strings.py:322
-msgid "Public Tertiary - Q5"
-msgstr ""
-
-#: rtei/translation_strings.py:323
-msgid "Public Tertiary - disability"
+#: rtei/translation_strings.py:329
+msgid "Public primary schools - females"
 msgstr ""
 
 #: rtei/translation_strings.py:332
-msgid "Private primary schools - overall"
+msgid "Public primary schools - urban"
 msgstr ""
 
 #: rtei/translation_strings.py:333
-msgid "Private primary schools - males"
-msgstr ""
-
-#: rtei/translation_strings.py:334
-msgid "Private primary schools - females"
-msgstr ""
-
-#: rtei/translation_strings.py:335
-msgid "Private primary schools - urban"
+msgid "Public primary schools - rural"
 msgstr ""
 
 #: rtei/translation_strings.py:336
-msgid "Private primary schools - rural"
+msgid "Public primary schools - Q1"
 msgstr ""
 
 #: rtei/translation_strings.py:337
-msgid "Private primary schools - Q1"
+msgid "Public primary schools - Q2"
 msgstr ""
 
 #: rtei/translation_strings.py:338
-msgid "Private primary schools - Q2"
-msgstr ""
-
-#: rtei/translation_strings.py:339
-msgid "Private primary schools - Q3"
-msgstr ""
-
-#: rtei/translation_strings.py:340
-msgid "Private primary schools - Q4"
+msgid "Public primary schools - Q3"
 msgstr ""
 
 #: rtei/translation_strings.py:341
-msgid "Private primary schools - Q5"
+msgid "Public primary schools - Q4"
 msgstr ""
 
 #: rtei/translation_strings.py:342
-msgid "Private primary schools - disability"
+msgid "Public primary schools - Q5"
 msgstr ""
 
-#: rtei/translation_strings.py:343 rtei/translation_strings.py:517
-msgid "Private Primary schools: Gender Parity"
+#: rtei/translation_strings.py:345
+msgid "Public primary schools - disability"
 msgstr ""
 
-#: rtei/translation_strings.py:344 rtei/translation_strings.py:518
-msgid "Private Primary schools: Gender Parity - Advantaged Group"
+#: rtei/translation_strings.py:348
+msgid "Public secondary schools - overall"
 msgstr ""
 
-#: rtei/translation_strings.py:345 rtei/translation_strings.py:519
-msgid "Private Primary schools: Residential Parity"
+#: rtei/translation_strings.py:349
+msgid "Public secondary schools - males"
 msgstr ""
 
-#: rtei/translation_strings.py:346 rtei/translation_strings.py:520
-msgid "Private Primary schools: Residential Parity - Advantaged Group"
-msgstr ""
-
-#: rtei/translation_strings.py:347 rtei/translation_strings.py:521
-msgid ""
-"Private Primary schools: High to Medium Quartile Income Ratio - Advantaged "
-"Group"
-msgstr ""
-
-#: rtei/translation_strings.py:348 rtei/translation_strings.py:522
-msgid ""
-"Private Primary schools: Medium to Low Quartile Income Ratio - Advantaged "
-"Group"
-msgstr ""
-
-#: rtei/translation_strings.py:349 rtei/translation_strings.py:523
-msgid "Private Primary schools: Disability Parity"
-msgstr ""
-
-#: rtei/translation_strings.py:350 rtei/translation_strings.py:524
-msgid "Private Primary schools: Disability Parity - Advantaged Group"
-msgstr ""
-
-#: rtei/translation_strings.py:351
-msgid "Private secondary schools - overall"
-msgstr ""
-
-#: rtei/translation_strings.py:352
-msgid "Private secondary schools - males"
+#: rtei/translation_strings.py:350
+msgid "Public secondary schools - females"
 msgstr ""
 
 #: rtei/translation_strings.py:353
-msgid "Private secondary schools - females"
+msgid "Public secondary schools - urban"
 msgstr ""
 
 #: rtei/translation_strings.py:354
-msgid "Private secondary schools - urban"
-msgstr ""
-
-#: rtei/translation_strings.py:355
-msgid "Private secondary schools - rural"
-msgstr ""
-
-#: rtei/translation_strings.py:356
-msgid "Private secondary schools - Q1"
+msgid "Public secondary schools - rural"
 msgstr ""
 
 #: rtei/translation_strings.py:357
-msgid "Private secondary schools - Q2"
+msgid "Public secondary schools - Q1"
 msgstr ""
 
 #: rtei/translation_strings.py:358
-msgid "Private secondary schools - Q3"
+msgid "Public secondary schools - Q2"
 msgstr ""
 
 #: rtei/translation_strings.py:359
-msgid "Private secondary schools - Q4"
+msgid "Public secondary schools - Q3"
 msgstr ""
 
-#: rtei/translation_strings.py:360
-msgid "Private secondary schools - Q5"
+#: rtei/translation_strings.py:362
+msgid "Public secondary schools - Q4"
 msgstr ""
 
-#: rtei/translation_strings.py:361
-msgid "Private secondary schools - disability"
+#: rtei/translation_strings.py:363
+msgid "Public secondary schools - Q5"
 msgstr ""
 
-#: rtei/translation_strings.py:362 rtei/translation_strings.py:536
-msgid "Private Secondary schools: Gender Parity"
+#: rtei/translation_strings.py:366
+msgid "Public secondary schools - disability"
 msgstr ""
 
-#: rtei/translation_strings.py:363 rtei/translation_strings.py:537
-msgid "Private Secondary schools: Gender Parity - Advantaged Group"
-msgstr ""
-
-#: rtei/translation_strings.py:364 rtei/translation_strings.py:538
-msgid "Private Secondary schools: Residential Parity"
-msgstr ""
-
-#: rtei/translation_strings.py:365 rtei/translation_strings.py:539
-msgid "Private Secondary schools: Residential Parity - Advantaged Group"
-msgstr ""
-
-#: rtei/translation_strings.py:366 rtei/translation_strings.py:540
-msgid ""
-"Private Secondary schools: High to Medium Quartile Income Ratio - Advantaged "
-"Group"
-msgstr ""
-
-#: rtei/translation_strings.py:367 rtei/translation_strings.py:541
-msgid ""
-"Private Secondary schools: Medium to Low Quartile Income Ratio - Advantaged "
-"Group"
-msgstr ""
-
-#: rtei/translation_strings.py:368 rtei/translation_strings.py:542
-msgid "Private Secondary schools: Disability Parity"
-msgstr ""
-
-#: rtei/translation_strings.py:369 rtei/translation_strings.py:543
-msgid "Private Secondary schools: Disability Parity - Advantaged Group"
+#: rtei/translation_strings.py:369
+msgid "Public TVET - overall"
 msgstr ""
 
 #: rtei/translation_strings.py:370
-msgid "Private TVET - overall"
+msgid "Public TVET - males"
 msgstr ""
 
 #: rtei/translation_strings.py:371
-msgid "Private TVET - males"
-msgstr ""
-
-#: rtei/translation_strings.py:372
-msgid "Private TVET - females"
-msgstr ""
-
-#: rtei/translation_strings.py:373
-msgid "Private TVET - urban"
+msgid "Public TVET - females"
 msgstr ""
 
 #: rtei/translation_strings.py:374
-msgid "Private TVET - rural"
+msgid "Public TVET - urban"
 msgstr ""
 
 #: rtei/translation_strings.py:375
-msgid "Private TVET - Q1"
-msgstr ""
-
-#: rtei/translation_strings.py:376
-msgid "Private TVET - Q2"
-msgstr ""
-
-#: rtei/translation_strings.py:377
-msgid "Private TVET - Q3"
+msgid "Public TVET - rural"
 msgstr ""
 
 #: rtei/translation_strings.py:378
-msgid "Private TVET - Q4"
+msgid "Public TVET - Q1"
 msgstr ""
 
 #: rtei/translation_strings.py:379
-msgid "Private TVET - Q5"
+msgid "Public TVET - Q2"
 msgstr ""
 
 #: rtei/translation_strings.py:380
-msgid "Private TVET - disability"
-msgstr ""
-
-#: rtei/translation_strings.py:381
-msgid "Private TVET: Gender Parity"
-msgstr ""
-
-#: rtei/translation_strings.py:382
-msgid "Private TVET: Gender Parity - Advantaged Group"
+msgid "Public TVET - Q3"
 msgstr ""
 
 #: rtei/translation_strings.py:383
-msgid "Private TVET: Residential Parity"
+msgid "Public TVET - Q4"
 msgstr ""
 
 #: rtei/translation_strings.py:384
-msgid "Private TVET: Residential Parity - Advantaged Group"
-msgstr ""
-
-#: rtei/translation_strings.py:385
-msgid "Private TVET: High to Medium Quartile Income Ratio - Advantaged Group"
-msgstr ""
-
-#: rtei/translation_strings.py:386
-msgid "Private TVET: Medium to Low Quartile Income Ratio - Advantaged Group"
+msgid "Public TVET - Q5"
 msgstr ""
 
 #: rtei/translation_strings.py:387
-msgid "Private TVET: Disability Parity"
-msgstr ""
-
-#: rtei/translation_strings.py:388
-msgid "Private TVET: Disability Parity - Advantaged Group"
-msgstr ""
-
-#: rtei/translation_strings.py:389
-msgid "Private Tertiary - overall"
+msgid "Public TVET - disability"
 msgstr ""
 
 #: rtei/translation_strings.py:390
-msgid "Private Tertiary - males"
+msgid "Public Tertiary - overall"
 msgstr ""
 
 #: rtei/translation_strings.py:391
-msgid "Private Tertiary - females"
-msgstr ""
-
-#: rtei/translation_strings.py:392
-msgid "Private Tertiary - urban"
-msgstr ""
-
-#: rtei/translation_strings.py:393
-msgid "Private Tertiary - rural"
+msgid "Public Tertiary - females"
 msgstr ""
 
 #: rtei/translation_strings.py:394
-msgid "Private Tertiary - Q1"
+msgid "Public Tertiary - urban"
 msgstr ""
 
 #: rtei/translation_strings.py:395
-msgid "Private Tertiary - Q2"
-msgstr ""
-
-#: rtei/translation_strings.py:396
-msgid "Private Tertiary - Q3"
-msgstr ""
-
-#: rtei/translation_strings.py:397
-msgid "Private Tertiary - Q4"
+msgid "Public Tertiary - rural"
 msgstr ""
 
 #: rtei/translation_strings.py:398
-msgid "Private Tertiary - Q5"
+msgid "Public Tertiary - Q1"
 msgstr ""
 
 #: rtei/translation_strings.py:399
-msgid "Private Tertiary - disability"
+msgid "Public Tertiary - Q2"
 msgstr ""
 
 #: rtei/translation_strings.py:400
-msgid "Private Tertiary schools: Gender Parity"
-msgstr ""
-
-#: rtei/translation_strings.py:401
-msgid "Private Tertiary schools: Gender Parity - Advantaged Group"
-msgstr ""
-
-#: rtei/translation_strings.py:402
-msgid "Private Tertiary schools: Residential Parity"
+msgid "Public Tertiary - Q3"
 msgstr ""
 
 #: rtei/translation_strings.py:403
-msgid "Private Tertiary schools: Residential Parity - Advantaged Group"
+msgid "Public Tertiary - Q4"
 msgstr ""
 
 #: rtei/translation_strings.py:404
-msgid ""
-"Private Tertiary schools: High to Medium Quartile Income Ratio - Advantaged "
-"Group"
-msgstr ""
-
-#: rtei/translation_strings.py:405
-msgid ""
-"Private Tertiary schools: Medium to Low Quartile Income Ratio - Advantaged "
-"Group"
-msgstr ""
-
-#: rtei/translation_strings.py:406
-msgid "Private Tertiary schools: Disability Parity"
+msgid "Public Tertiary - Q5"
 msgstr ""
 
 #: rtei/translation_strings.py:407
-msgid "Private Tertiary schools: Disability Parity - Advantaged Group"
+msgid "Public Tertiary - disability"
 msgstr ""
 
-#: rtei/translation_strings.py:409 rtei/translation_strings.py:414
-#: rtei/translation_strings.py:419
+#: rtei/translation_strings.py:410 rtei/translation_strings.py:415
+#: rtei/translation_strings.py:420
 msgid ""
 "The full development of the child's personality, talents, and mental and "
 "physical abilities"
 msgstr ""
 
-#: rtei/translation_strings.py:410 rtei/translation_strings.py:415
-#: rtei/translation_strings.py:420
+#: rtei/translation_strings.py:411 rtei/translation_strings.py:416
+#: rtei/translation_strings.py:421
 msgid "The development of respect for human rights and fundamental freedoms"
 msgstr ""
 
-#: rtei/translation_strings.py:411 rtei/translation_strings.py:416
-#: rtei/translation_strings.py:421
+#: rtei/translation_strings.py:412 rtei/translation_strings.py:417
+#: rtei/translation_strings.py:422
 msgid ""
 "The development of respect for the child's parents, cultural identity, "
 "language, and values, as well as respect for the values of the child's "
 "country and other civilizations"
 msgstr ""
 
-#: rtei/translation_strings.py:412 rtei/translation_strings.py:417
-#: rtei/translation_strings.py:422
+#: rtei/translation_strings.py:413 rtei/translation_strings.py:418
+#: rtei/translation_strings.py:423
 msgid ""
 "The development of the child's responsiblities in a free society, including "
 "understanding, peace, tolerance, equality, and friendship among all persons "
 "and groups"
 msgstr ""
 
-#: rtei/translation_strings.py:413 rtei/translation_strings.py:418
-#: rtei/translation_strings.py:423
+#: rtei/translation_strings.py:414 rtei/translation_strings.py:419
+#: rtei/translation_strings.py:424
 msgid "The development of respect for the natural environment"
 msgstr ""
 
-#: rtei/translation_strings.py:424
+#: rtei/translation_strings.py:425 rtei/translation_strings.py:433
 msgid "Health and well-being"
 msgstr ""
 
-#: rtei/translation_strings.py:425
+#: rtei/translation_strings.py:426 rtei/translation_strings.py:434
 msgid "Human rights"
 msgstr ""
 
-#: rtei/translation_strings.py:426
+#: rtei/translation_strings.py:427 rtei/translation_strings.py:435
 msgid "The arts"
 msgstr ""
 
+#: rtei/translation_strings.py:428
+msgid ""
+"The full development of the child's personality, talents, and mental and "
+"physical abilities?"
+msgstr ""
+
 #: rtei/translation_strings.py:429
-msgid "Overall primary - overall"
+msgid "The development of respect for human rights and fundamental freedoms?"
 msgstr ""
 
 #: rtei/translation_strings.py:430
-msgid "Overall primary - males"
+msgid ""
+"The development of respect for the child's parents, cultural identity, "
+"language, and values, as well as respect for the values of the child's "
+"country and other civilizations?"
 msgstr ""
 
 #: rtei/translation_strings.py:431
-msgid "Overall primary - females"
+msgid ""
+"The development of the child's responsibilities in a free society, including "
+"understanding, peace, tolerance, equality, and friendship among all persons "
+"and groups?"
 msgstr ""
 
 #: rtei/translation_strings.py:432
-msgid "Response"
-msgstr ""
-
-#: rtei/translation_strings.py:433
-msgid "Overall primary - urban"
-msgstr ""
-
-#: rtei/translation_strings.py:434
-msgid "Overall primary - rural"
-msgstr ""
-
-#: rtei/translation_strings.py:435
-msgid "Overall primary - Q1"
+msgid "The development of respect for the natural environment?"
 msgstr ""
 
 #: rtei/translation_strings.py:436
-msgid "Overall primary - Q2"
+msgid "Overall primary - overall"
 msgstr ""
 
 #: rtei/translation_strings.py:437
-msgid "Overall primary - Q3"
+msgid "Overall primary - males"
 msgstr ""
 
 #: rtei/translation_strings.py:438
-msgid "Overall primary - Q4"
+msgid "Overall primary - females"
 msgstr ""
 
 #: rtei/translation_strings.py:439
-msgid "Overall primary - Q5"
+msgid "Overall Primary Schools: Gender Parity"
 msgstr ""
 
 #: rtei/translation_strings.py:440
-msgid "Overall primary - disability"
+msgid "Overall Primary Schools: Gender Parity - Advantaged Group"
+msgstr ""
+
+#: rtei/translation_strings.py:441
+msgid "Overall primary - urban"
+msgstr ""
+
+#: rtei/translation_strings.py:442
+msgid "Overall primary - rural"
+msgstr ""
+
+#: rtei/translation_strings.py:443
+msgid "Overall Primary Schools: Residential Parity"
+msgstr ""
+
+#: rtei/translation_strings.py:444
+msgid "Overall Primary Schools: Residential Parity - Advantaged Group"
+msgstr ""
+
+#: rtei/translation_strings.py:445
+msgid "Overall primary - Q1"
+msgstr ""
+
+#: rtei/translation_strings.py:446
+msgid "Overall primary - Q2"
+msgstr ""
+
+#: rtei/translation_strings.py:447
+msgid "Overall primary - Q3"
+msgstr ""
+
+#: rtei/translation_strings.py:448
+msgid "Overall Primary Schools: Medium to Low Quartile Income Ratio"
 msgstr ""
 
 #: rtei/translation_strings.py:449
-msgid "Reading primary - overall"
+msgid ""
+"Overall Primary Schools: Medium to Low Quartile Income Ratio - Advantaged "
+"Group"
 msgstr ""
 
 #: rtei/translation_strings.py:450
-msgid "Reading primary - males"
+msgid "Overall primary - Q4"
 msgstr ""
 
 #: rtei/translation_strings.py:451
-msgid "Reading primary - females"
+msgid "Overall primary - Q5"
 msgstr ""
 
 #: rtei/translation_strings.py:452
-msgid "Reading primary - urban"
+msgid "Overall Primary Schools: High to Medium Quartile Income Ratio"
 msgstr ""
 
 #: rtei/translation_strings.py:453
-msgid "Reading primary - rural"
+msgid ""
+"Overall Primary Schools: High to Medium Quartile Income Ratio - Advantaged "
+"Group"
 msgstr ""
 
 #: rtei/translation_strings.py:454
-msgid "Reading primary - Q1"
+msgid "Overall primary - disability"
 msgstr ""
 
 #: rtei/translation_strings.py:455
-msgid "Reading primary - Q2"
+msgid "Overall Primary Schools: Disability Parity"
 msgstr ""
 
 #: rtei/translation_strings.py:456
-msgid "Reading primary - Q3"
+msgid "Overall Primary Schools: Disability Parity - Advantaged Group"
 msgstr ""
 
 #: rtei/translation_strings.py:457
-msgid "Reading primary - Q4"
+msgid "Reading primary - overall"
 msgstr ""
 
 #: rtei/translation_strings.py:458
-msgid "Reading primary - Q5"
+msgid "Reading primary - males"
 msgstr ""
 
 #: rtei/translation_strings.py:459
-msgid "Reading primary - disability"
+msgid "Reading primary - females"
+msgstr ""
+
+#: rtei/translation_strings.py:460
+msgid "Reading Primary Schools: Gender Parity"
+msgstr ""
+
+#: rtei/translation_strings.py:461
+msgid "Reading Primary Schools: Gender Parity - Advantaged Group"
+msgstr ""
+
+#: rtei/translation_strings.py:462
+msgid "Reading primary - urban"
+msgstr ""
+
+#: rtei/translation_strings.py:463
+msgid "Reading primary - rural"
+msgstr ""
+
+#: rtei/translation_strings.py:464
+msgid "Reading Primary Schools: Residential Parity"
+msgstr ""
+
+#: rtei/translation_strings.py:465
+msgid "Reading Primary Schools: Residential Parity - Advantaged Group"
+msgstr ""
+
+#: rtei/translation_strings.py:466
+msgid "Reading primary - Q1"
+msgstr ""
+
+#: rtei/translation_strings.py:467
+msgid "Reading primary - Q2"
 msgstr ""
 
 #: rtei/translation_strings.py:468
-msgid "Math primary - overall"
+msgid "Reading primary - Q3"
 msgstr ""
 
 #: rtei/translation_strings.py:469
-msgid "Math primary - males"
+msgid "Reading Primary Schools: Medium to Low Quartile Income Ratio"
 msgstr ""
 
 #: rtei/translation_strings.py:470
-msgid "Math primary - females"
+msgid ""
+"Reading Primary Schools: Medium to Low Quartile Income Ratio - Advantaged "
+"Group"
 msgstr ""
 
 #: rtei/translation_strings.py:471
-msgid "Math primary - urban"
+msgid "Reading primary - Q4"
 msgstr ""
 
 #: rtei/translation_strings.py:472
-msgid "Math primary - rural"
+msgid "Reading primary - Q5"
 msgstr ""
 
 #: rtei/translation_strings.py:473
-msgid "Math primary - Q1"
+msgid "Reading Primary Schools: High to Medium Quartile Income Ratio"
 msgstr ""
 
 #: rtei/translation_strings.py:474
-msgid "Math primary - Q2"
+msgid ""
+"Reading Primary Schools: High to Medium Quartile Income Ratio - Advantaged "
+"Group"
 msgstr ""
 
 #: rtei/translation_strings.py:475
-msgid "Math primary - Q3"
+msgid "Reading primary - disability"
 msgstr ""
 
 #: rtei/translation_strings.py:476
-msgid "Math primary - Q4"
+msgid "Reading Primary Schools: Disability Parity"
 msgstr ""
 
 #: rtei/translation_strings.py:477
-msgid "Math primary - Q5"
+msgid "Reading Primary Schools: Disability Parity - Advantaged Group"
 msgstr ""
 
 #: rtei/translation_strings.py:478
-msgid "Math primary - disability"
+msgid "Math primary - overall"
+msgstr ""
+
+#: rtei/translation_strings.py:479
+msgid "Math primary - males"
+msgstr ""
+
+#: rtei/translation_strings.py:480
+msgid "Math primary - females"
+msgstr ""
+
+#: rtei/translation_strings.py:481
+msgid "Math Primary Schools: Gender Parity"
+msgstr ""
+
+#: rtei/translation_strings.py:482
+msgid "Math Primary Schools: Gender Parity - Advantaged Group"
+msgstr ""
+
+#: rtei/translation_strings.py:483
+msgid "Math primary - urban"
+msgstr ""
+
+#: rtei/translation_strings.py:484
+msgid "Math primary - rural"
+msgstr ""
+
+#: rtei/translation_strings.py:485
+msgid "Math Primary Schools: Residential Parity"
+msgstr ""
+
+#: rtei/translation_strings.py:486
+msgid "Math Primary Schools: Residential Parity - Advantaged Group"
 msgstr ""
 
 #: rtei/translation_strings.py:487
-msgid "Overall secondary - overall"
+msgid "Math primary - Q1"
 msgstr ""
 
 #: rtei/translation_strings.py:488
-msgid "Overall secondary - males"
+msgid "Math primary - Q2"
 msgstr ""
 
 #: rtei/translation_strings.py:489
-msgid "Overall secondary - females"
+msgid "Math primary - Q3"
 msgstr ""
 
 #: rtei/translation_strings.py:490
-msgid "Overall secondary - urban"
+msgid "Math Primary Schools: Medium to Low Quartile Income Ratio"
 msgstr ""
 
 #: rtei/translation_strings.py:491
-msgid "Overall secondary - rural"
+msgid ""
+"Math Primary Schools: Medium to Low Quartile Income Ratio - Advantaged Group"
 msgstr ""
 
 #: rtei/translation_strings.py:492
-msgid "Overall secondary - Q1"
+msgid "Math primary - Q4"
 msgstr ""
 
 #: rtei/translation_strings.py:493
-msgid "Overall secondary - Q2"
+msgid "Math primary - Q5"
 msgstr ""
 
 #: rtei/translation_strings.py:494
-msgid "Overall secondary - Q3"
+msgid "Math Primary Schools: High to Medium Quartile Income Ratio"
 msgstr ""
 
 #: rtei/translation_strings.py:495
-msgid "Overall secondary - Q4"
+msgid ""
+"Math Primary Schools: High to Medium Quartile Income Ratio - Advantaged Group"
 msgstr ""
 
 #: rtei/translation_strings.py:496
-msgid "Overall secondary - Q5"
+msgid "Math primary - disability"
 msgstr ""
 
 #: rtei/translation_strings.py:497
-msgid "Overall secondary - disability"
+msgid "Math Primary Schools: Disability Parity"
+msgstr ""
+
+#: rtei/translation_strings.py:498
+msgid "Math Primary Schools: Disability Parity - Advantaged Group"
+msgstr ""
+
+#: rtei/translation_strings.py:499
+msgid "Overall secondary - overall"
+msgstr ""
+
+#: rtei/translation_strings.py:500
+msgid "Overall secondary - males"
+msgstr ""
+
+#: rtei/translation_strings.py:501
+msgid "Overall secondary - females"
+msgstr ""
+
+#: rtei/translation_strings.py:502
+msgid "Overall Secondary Schools: Gender Parity"
+msgstr ""
+
+#: rtei/translation_strings.py:503
+msgid "Overall Secondary Schools: Gender Parity - Advantaged Group"
+msgstr ""
+
+#: rtei/translation_strings.py:504
+msgid "Overall secondary - urban"
+msgstr ""
+
+#: rtei/translation_strings.py:505
+msgid "Overall secondary - rural"
 msgstr ""
 
 #: rtei/translation_strings.py:506
-msgid "Reading secondary - overall"
+msgid "Overall Secondary Schools: Residential Parity"
 msgstr ""
 
 #: rtei/translation_strings.py:507
-msgid "Reading secondary - males"
+msgid "Overall Secondary Schools: Residential Parity - Advantaged Group"
 msgstr ""
 
 #: rtei/translation_strings.py:508
-msgid "Reading secondary - females"
+msgid "Overall secondary - Q1"
 msgstr ""
 
 #: rtei/translation_strings.py:509
-msgid "Reading secondary - urban"
+msgid "Overall secondary - Q2"
 msgstr ""
 
 #: rtei/translation_strings.py:510
-msgid "Reading secondary - rural"
+msgid "Overall secondary - Q3"
 msgstr ""
 
 #: rtei/translation_strings.py:511
-msgid "Reading secondary - Q1"
+msgid "Overall Secondary Schools: Medium to Low Quartile Income Ratio"
 msgstr ""
 
 #: rtei/translation_strings.py:512
-msgid "Reading secondary - Q2"
+msgid ""
+"Overall Secondary Schools: Medium to Low Quartile Income Ratio - Advantaged "
+"Group"
 msgstr ""
 
 #: rtei/translation_strings.py:513
-msgid "Reading secondary - Q3"
+msgid "Overall secondary - Q4"
 msgstr ""
 
 #: rtei/translation_strings.py:514
-msgid "Reading secondary - Q4"
+msgid "Overall secondary - Q5"
 msgstr ""
 
 #: rtei/translation_strings.py:515
-msgid "Reading secondary - Q5"
+msgid "Overall Secondary Schools: High to Medium Quartile Income Ratio"
 msgstr ""
 
 #: rtei/translation_strings.py:516
-msgid "Reading secondary - disability"
+msgid ""
+"Overall Secondary Schools: High to Medium Quartile Income Ratio - Advantaged "
+"Group"
+msgstr ""
+
+#: rtei/translation_strings.py:517
+msgid "Overall secondary - disability"
+msgstr ""
+
+#: rtei/translation_strings.py:518
+msgid "Overall Secondary Schools: Disability Parity"
+msgstr ""
+
+#: rtei/translation_strings.py:519
+msgid "Overall Secondary Schools: Disability Parity - Advantaged Group"
+msgstr ""
+
+#: rtei/translation_strings.py:520
+msgid "Reading secondary - overall"
+msgstr ""
+
+#: rtei/translation_strings.py:521
+msgid "Reading secondary - males"
+msgstr ""
+
+#: rtei/translation_strings.py:522
+msgid "Reading secondary - females"
+msgstr ""
+
+#: rtei/translation_strings.py:523
+msgid "Reading Secondary Schools: Gender Parity"
+msgstr ""
+
+#: rtei/translation_strings.py:524
+msgid "Reading Secondary Schools: Gender Parity - Advantaged Group"
 msgstr ""
 
 #: rtei/translation_strings.py:525
-msgid "Math secondary - overall"
+msgid "Reading secondary - urban"
 msgstr ""
 
 #: rtei/translation_strings.py:526
-msgid "Math secondary - males"
+msgid "Reading secondary - rural"
 msgstr ""
 
 #: rtei/translation_strings.py:527
-msgid "Math secondary - females"
+msgid "Reading Secondary Schools: Residential Parity"
 msgstr ""
 
 #: rtei/translation_strings.py:528
-msgid "Math secondary - urban"
+msgid "Reading Secondary Schools: Residential Parity - Advantaged Group"
 msgstr ""
 
 #: rtei/translation_strings.py:529
-msgid "Math secondary - rural"
+msgid "Reading secondary - Q1"
 msgstr ""
 
 #: rtei/translation_strings.py:530
-msgid "Math secondary - Q1"
+msgid "Reading secondary - Q2"
 msgstr ""
 
 #: rtei/translation_strings.py:531
-msgid "Math secondary - Q2"
+msgid "Reading secondary - Q3"
 msgstr ""
 
 #: rtei/translation_strings.py:532
-msgid "Math secondary - Q3"
+msgid "Reading Secondary Schools: Medium to Low Quartile Income Ratio"
 msgstr ""
 
 #: rtei/translation_strings.py:533
-msgid "Math secondary - Q4"
+msgid ""
+"Reading Secondary Schools: Medium to Low Quartile Income Ratio - Advantaged "
+"Group"
 msgstr ""
 
 #: rtei/translation_strings.py:534
-msgid "Math secondary - Q5"
+msgid "Reading secondary - Q4"
 msgstr ""
 
 #: rtei/translation_strings.py:535
-msgid "Math secondary - disability"
+msgid "Reading secondary - Q5"
+msgstr ""
+
+#: rtei/translation_strings.py:536
+msgid "Reading Secondary Schools: High to Medium Quartile Income Ratio"
+msgstr ""
+
+#: rtei/translation_strings.py:537
+msgid ""
+"Reading Secondary Schools: High to Medium Quartile Income Ratio - Advantaged "
+"Group"
+msgstr ""
+
+#: rtei/translation_strings.py:538
+msgid "Reading secondary - disability"
+msgstr ""
+
+#: rtei/translation_strings.py:539
+msgid "Reading Secondary Schools: Disability Parity"
+msgstr ""
+
+#: rtei/translation_strings.py:540
+msgid "Reading Secondary Schools: Disability Parity - Advantaged Group"
+msgstr ""
+
+#: rtei/translation_strings.py:541
+msgid "Math secondary - overall"
+msgstr ""
+
+#: rtei/translation_strings.py:542
+msgid "Math secondary - males"
+msgstr ""
+
+#: rtei/translation_strings.py:543
+msgid "Math secondary - females"
 msgstr ""
 
 #: rtei/translation_strings.py:544
-msgid "Youth - overall"
+msgid "Math Secondary Schools: Gender Parity"
 msgstr ""
 
 #: rtei/translation_strings.py:545
-msgid "Youth - males"
+msgid "Math Secondary Schools: Gender Parity - Advantaged Group"
 msgstr ""
 
 #: rtei/translation_strings.py:546
-msgid "Youth - females"
+msgid "Math secondary - urban"
 msgstr ""
 
 #: rtei/translation_strings.py:547
-msgid "Youth - urban"
+msgid "Math secondary - rural"
 msgstr ""
 
 #: rtei/translation_strings.py:548
-msgid "Youth - rural"
+msgid "Math Secondary Schools: Residential Parity"
 msgstr ""
 
 #: rtei/translation_strings.py:549
-msgid "Youth - Q1"
+msgid "Math Secondary Schools: Residential Parity - Advantaged Group"
 msgstr ""
 
 #: rtei/translation_strings.py:550
-msgid "Youth - Q2"
+msgid "Math secondary - Q1"
 msgstr ""
 
 #: rtei/translation_strings.py:551
-msgid "Youth - Q3"
+msgid "Math secondary - Q2"
 msgstr ""
 
 #: rtei/translation_strings.py:552
-msgid "Youth - Q4"
+msgid "Math secondary - Q3"
 msgstr ""
 
 #: rtei/translation_strings.py:553
-msgid "Youth - Q5"
+msgid "Math Secondary Schools: Medium to Low Quartile Income Ratio"
 msgstr ""
 
 #: rtei/translation_strings.py:554
-msgid "Youth - disability"
+msgid ""
+"Math Secondary Schools: Medium to Low Quartile Income Ratio - Advantaged "
+"Group"
+msgstr ""
+
+#: rtei/translation_strings.py:555
+msgid "Math secondary - Q4"
+msgstr ""
+
+#: rtei/translation_strings.py:556
+msgid "Math secondary - Q5"
+msgstr ""
+
+#: rtei/translation_strings.py:557
+msgid "Math Secondary Schools: High to Medium Quartile Income Ratio"
+msgstr ""
+
+#: rtei/translation_strings.py:558
+msgid ""
+"Math Secondary Schools: High to Medium Quartile Income Ratio - Advantaged "
+"Group"
+msgstr ""
+
+#: rtei/translation_strings.py:559
+msgid "Math secondary - disability"
+msgstr ""
+
+#: rtei/translation_strings.py:560
+msgid "Math Secondary Schools: Disability Parity"
+msgstr ""
+
+#: rtei/translation_strings.py:561
+msgid "Math Secondary Schools: Disability Parity - Advantaged Group"
+msgstr ""
+
+#: rtei/translation_strings.py:562
+msgid "Youth - overall"
 msgstr ""
 
 #: rtei/translation_strings.py:563
-msgid "Adult - overall"
+msgid "Youth - males"
 msgstr ""
 
 #: rtei/translation_strings.py:564
-msgid "Adult - males"
+msgid "Youth - females"
 msgstr ""
 
 #: rtei/translation_strings.py:565
-msgid "Adult - females"
+msgid "Youth: Gender Parity"
 msgstr ""
 
 #: rtei/translation_strings.py:566
-msgid "Adult - urban"
+msgid "Youth: Gender Parity - Advantaged Group"
 msgstr ""
 
 #: rtei/translation_strings.py:567
-msgid "Adult - rural"
+msgid "Youth - urban"
 msgstr ""
 
 #: rtei/translation_strings.py:568
-msgid "Adult - Q1"
+msgid "Youth - rural"
 msgstr ""
 
 #: rtei/translation_strings.py:569
-msgid "Adult - Q2"
+msgid "Youth: Residential Parity"
 msgstr ""
 
 #: rtei/translation_strings.py:570
-msgid "Adult - Q3"
+msgid "Youth: Residential Parity - Advantaged Group"
 msgstr ""
 
 #: rtei/translation_strings.py:571
-msgid "Adult - Q4"
+msgid "Youth - Q1"
 msgstr ""
 
 #: rtei/translation_strings.py:572
-msgid "Adult - Q5"
+msgid "Youth - Q2"
 msgstr ""
 
 #: rtei/translation_strings.py:573
-msgid "Adult - disability"
+msgid "Youth - Q3"
+msgstr ""
+
+#: rtei/translation_strings.py:574
+msgid "Youth: Medium to Low Quartile Income Ratio"
+msgstr ""
+
+#: rtei/translation_strings.py:575
+msgid "Youth: Medium to Low Quartile Income Ratio - Advantaged Group"
+msgstr ""
+
+#: rtei/translation_strings.py:576
+msgid "Youth - Q4"
+msgstr ""
+
+#: rtei/translation_strings.py:577
+msgid "Youth - Q5"
+msgstr ""
+
+#: rtei/translation_strings.py:578
+msgid "Youth: High to Medium Quartile Income Ratio"
+msgstr ""
+
+#: rtei/translation_strings.py:579
+msgid "Youth: High to Medium Quartile Income Ratio - Advantaged Group"
+msgstr ""
+
+#: rtei/translation_strings.py:580
+msgid "Youth - disability"
+msgstr ""
+
+#: rtei/translation_strings.py:581
+msgid "Youth: Disability Parity"
+msgstr ""
+
+#: rtei/translation_strings.py:582
+msgid "Youth: Disability Parity - Advantaged Group"
+msgstr ""
+
+#: rtei/translation_strings.py:583
+msgid "Adult - overall"
 msgstr ""
 
 #: rtei/translation_strings.py:584
-msgid "Primary schools"
+msgid "Adult - males"
 msgstr ""
 
 #: rtei/translation_strings.py:585
-msgid "Secondary schools"
+msgid "Adult - females"
+msgstr ""
+
+#: rtei/translation_strings.py:586
+msgid "Adult: Gender Parity"
+msgstr ""
+
+#: rtei/translation_strings.py:587
+msgid "Adult: Gender Parity - Advantaged Group"
+msgstr ""
+
+#: rtei/translation_strings.py:588
+msgid "Adult - urban"
+msgstr ""
+
+#: rtei/translation_strings.py:589
+msgid "Adult - rural"
 msgstr ""
 
 #: rtei/translation_strings.py:590
-msgid "Content of Education"
+msgid "Adult: Residential Parity"
 msgstr ""
 
 #: rtei/translation_strings.py:591
-msgid "Girls' Education"
+msgid "Adult: Residential Parity - Advantaged Group"
 msgstr ""
 
 #: rtei/translation_strings.py:592
-msgid "Indigenous and Minority Populations"
+msgid "Adult - Q1"
 msgstr ""
 
 #: rtei/translation_strings.py:593
-msgid "Monitoring and Accountability"
+msgid "Adult - Q2"
+msgstr ""
+
+#: rtei/translation_strings.py:594
+msgid "Adult - Q3"
 msgstr ""
 
 #: rtei/translation_strings.py:595
-msgid "Opportunity and Indirect Costs"
+msgid "Adult: Medium to Low Quartile Income Ratio"
 msgstr ""
 
 #: rtei/translation_strings.py:596
-msgid "Private Education"
+msgid "Adult: Medium to Low Quartile Income Ratio - Advantaged Group"
+msgstr ""
+
+#: rtei/translation_strings.py:597
+msgid "Adult - Q4"
 msgstr ""
 
 #: rtei/translation_strings.py:598
-msgid "Structure and Support"
+msgid "Adult - Q5"
+msgstr ""
+
+#: rtei/translation_strings.py:599
+msgid "Adult: High to Medium Quartile Income Ratio"
 msgstr ""
 
 #: rtei/translation_strings.py:600
-msgid "Overall State of Girls' Education"
+msgid "Adult: High to Medium Quartile Income Ratio - Advantaged Group"
+msgstr ""
+
+#: rtei/translation_strings.py:601
+msgid "Adult - disability"
+msgstr ""
+
+#: rtei/translation_strings.py:602
+msgid "Adult: Disability Parity"
 msgstr ""
 
 #: rtei/translation_strings.py:603
-msgid "Strength of Monitoring and Accountability"
+msgid "Adult: Disability Parity - Advantaged Group"
+msgstr ""
+
+#: rtei/translation_strings.py:604 rtei/translation_strings.py:669
+msgid "Overall"
 msgstr ""
 
 #: rtei/translation_strings.py:605
-msgid "Legal Restrictions in Opportunity and Indirect costs"
+msgid "In primary schools"
+msgstr ""
+
+#: rtei/translation_strings.py:606
+msgid "In secondary schools"
 msgstr ""
 
 #: rtei/translation_strings.py:607
-msgid "Private education Legal Environment"
+msgid "Primary schools"
 msgstr ""
 
-#: rtei/translation_strings.py:612
-msgid ""
-"Do national laws protect the right to technical and vocational training?"
+#: rtei/translation_strings.py:608
+msgid "Secondary schools"
+msgstr ""
+
+#: rtei/translation_strings.py:610 rtei/translation_strings.py:611
+msgid "Alignment of education aims"
+msgstr ""
+
+#: rtei/translation_strings.py:613 rtei/translation_strings.py:619
+msgid "Structure and support"
+msgstr ""
+
+#: rtei/translation_strings.py:614 rtei/translation_strings.py:620
+msgid "Participation and achievement"
+msgstr ""
+
+#: rtei/translation_strings.py:615 rtei/translation_strings.py:616
+msgid "Content of Education"
+msgstr ""
+
+#: rtei/translation_strings.py:617
+msgid "Girls' Education"
 msgstr ""
 
 #: rtei/translation_strings.py:618
-msgid ""
-"Are there targeted implementation dates for each stage in the progressive "
-"realization of the plan?"
-msgstr ""
-
-#: rtei/translation_strings.py:621
-msgid "Do national laws provide for free and compulsory education?"
+msgid "Overall State of Girls' Education"
 msgstr ""
 
 #: rtei/translation_strings.py:622
-msgid ""
-"Do national laws forbid discrimination in education on race and color "
-"(ethnicity)?"
+msgid "Relative state of girls' education"
 msgstr ""
 
 #: rtei/translation_strings.py:623
-msgid "Do national laws forbid discrimination in education on sex?"
-msgstr ""
-
-#: rtei/translation_strings.py:624
-msgid "Do national laws forbid discrimination in education on language?"
+msgid "Indigenous and Minority Populations"
 msgstr ""
 
 #: rtei/translation_strings.py:625
-msgid "Do national laws forbid discrimination in education on religion?"
+msgid "Monitoring and Accountability"
 msgstr ""
 
 #: rtei/translation_strings.py:626
-msgid ""
-"Do national laws forbid discrimination in education on political and other "
-"opinion?"
-msgstr ""
-
-#: rtei/translation_strings.py:627
-msgid ""
-"Do national laws forbid discrimination in education on national or social "
-"origin?"
-msgstr ""
-
-#: rtei/translation_strings.py:628
-msgid "Do national laws forbid discrimination in education on property?"
+msgid "Strength of Monitoring and Accountability"
 msgstr ""
 
 #: rtei/translation_strings.py:629
-msgid "Do national laws forbid discrimination in education on birth?"
+msgid "Direct and Indirect Costs"
 msgstr ""
 
 #: rtei/translation_strings.py:630
-msgid ""
-"Do national laws forbid discrimination in education on sexual orientation "
-"and gender identity?"
+msgid "Legal Regulations"
 msgstr ""
 
 #: rtei/translation_strings.py:631
-msgid "Do national laws forbid discrimination in education on disability?"
+msgid "Practice Environment"
 msgstr ""
 
 #: rtei/translation_strings.py:632
-msgid "Do national laws forbid discrimination in education on age?"
+msgid "Private Education"
 msgstr ""
 
 #: rtei/translation_strings.py:633
-msgid "Do national laws forbid discrimination in education on nationality?"
-msgstr ""
-
-#: rtei/translation_strings.py:634
-msgid ""
-"Do national laws forbid discrimination in education on marital and family "
-"status?"
-msgstr ""
-
-#: rtei/translation_strings.py:635
-msgid "Do national laws forbid discrimination in education on health status?"
+msgid "Private education Legal Environment"
 msgstr ""
 
 #: rtei/translation_strings.py:636
-msgid ""
-"Do national laws forbid discrimination in education on place of residence?"
-msgstr ""
-
-#: rtei/translation_strings.py:637
-msgid ""
-"Do national laws forbid discrimination in education on economic and social "
-"situation?"
-msgstr ""
-
-#: rtei/translation_strings.py:638 rtei/translation_strings.py:692
-#: rtei/translation_strings.py:697
-msgid ""
-"Is the expulsion of girls from school because of pregnancy or for having a "
-"baby explicitly forbidden in legislation?"
-msgstr ""
-
-#: rtei/translation_strings.py:639
-msgid ""
-"Do national laws or policies direct education towards the full development "
-"of the child's personality, talents, and mental and physical abilities?"
-msgstr ""
-
-#: rtei/translation_strings.py:640
-msgid ""
-"Do national laws or policies direct education towards the full development "
-"of respect for human rights and fundamental freedoms?"
-msgstr ""
-
-#: rtei/translation_strings.py:641
-msgid ""
-"Do national laws or policies direct education towards the full development "
-"of respect for the child's parents, cultural identity, language, and values, "
-"as well as respect for the values of the child's country and other "
-"civilizations?"
-msgstr ""
-
-#: rtei/translation_strings.py:642
-msgid ""
-"Do national laws or policies direct education towards the full development "
-"of the child's responsibilities in a free society, including understanding "
-"peace, tolerance, equality, and friendship among all persons and groups?"
+msgid "SDG 4"
 msgstr ""
 
 #: rtei/translation_strings.py:643
-msgid ""
-"Do national laws or policies direct education towards the full development "
-"of respect for the natural environment?"
+msgid "4.c Qualified teachers"
 msgstr ""
 
-#: rtei/translation_strings.py:644
-msgid ""
-"Are there established mechanisms to ensure that textbooks used in both the "
-"public and private schools are aligned with the curriculum guidelines "
-"provided by the Ministry of Education?"
-msgstr ""
-
-#: rtei/translation_strings.py:645 rtei/translation_strings.py:713
-msgid ""
-"Has the national government adopted specific measures to protect children "
-"from violence and abuse in school?"
-msgstr ""
-
-#: rtei/translation_strings.py:647
-msgid ""
-"Do national laws recognize the right to education for children with "
-"minorities?"
-msgstr ""
-
-#: rtei/translation_strings.py:649
-msgid ""
-"Does the national education plan include measures to encourage regular "
-"attendance and reduce drop-out rates?"
-msgstr ""
-
-#: rtei/translation_strings.py:650
-msgid ""
-"Is basic education publicly provided for adults who have not completed "
-"primary education?"
-msgstr ""
-
-#: rtei/translation_strings.py:651
-msgid ""
-"Do national laws include children in the decision making process of school "
-"curricula, school policies, and codes of behavior?"
-msgstr ""
-
-#: rtei/translation_strings.py:652 rtei/translation_strings.py:691
-#: rtei/translation_strings.py:698
-msgid "Do national laws prohibit early marriage (before the age of 18)?"
-msgstr ""
-
-#: rtei/translation_strings.py:653 rtei/translation_strings.py:666
-msgid "Is the legal minimum age of employment 15 or above?"
-msgstr ""
-
-#: rtei/translation_strings.py:654 rtei/translation_strings.py:714
-msgid "Has the government adopted specific measures to combat child labor?"
-msgstr ""
-
-#: rtei/translation_strings.py:655 rtei/translation_strings.py:667
-msgid "Is the legal minimum age of military recruitment 15 or above?"
-msgstr ""
-
-#: rtei/translation_strings.py:656 rtei/translation_strings.py:715
-msgid ""
-"How often is data on education regularly collected and made publicly "
-"available?"
-msgstr ""
-
-#: rtei/translation_strings.py:658
-msgid ""
-"Are tuition fees charged for public university/higher education in 2014?"
-msgstr ""
-
-#: rtei/translation_strings.py:660
-msgid ""
-"What percent of household spending was spent on secondary education in 2013?"
-msgstr ""
-
-#: rtei/translation_strings.py:661 rtei/translation_strings.py:693
-#: rtei/translation_strings.py:703
-msgid "What percent of women were married by the age of 18?"
-msgstr ""
-
-#: rtei/translation_strings.py:662
-msgid "What percent of children under the age of 15 worked in the labor force?"
-msgstr ""
-
-#: rtei/translation_strings.py:663
-msgid "Are children under the age of 15 recruited by the military in practice?"
-msgstr ""
-
-#: rtei/translation_strings.py:665
-msgid "Does national law prohibit early marriage (below the age of 18)?"
-msgstr ""
-
-#: rtei/translation_strings.py:668
-msgid ""
-"Does the required training for teachers include improving the skills "
-"necessary for teaching towards the full development of the child's "
-"personality, talents, and mental and physical abilities?"
-msgstr ""
-
-#: rtei/translation_strings.py:669
-msgid ""
-"Does the required training for teachers include improving the skills "
-"necessary for teaching towards the full development of respect for human "
-"rights and fundamental freedoms?"
-msgstr ""
-
-#: rtei/translation_strings.py:670
-msgid ""
-"Does the required training for teachers include improving the skills "
-"necessary for teaching towards the full development of respect for the "
-"child's parents, cultural identity, language, and values, as well as respect "
-"for the values of the child's country and other civilizations?"
-msgstr ""
-
-#: rtei/translation_strings.py:671
-msgid ""
-"Does the required training for teachers include improving the skills "
-"necessary for teaching towards the full development of the child's "
-"responsibilities in a free society, including understanding peace, "
-"tolerance, equality, and friendship among all persons and groups?"
-msgstr ""
-
-#: rtei/translation_strings.py:672
-msgid ""
-"Does the required training for teachers include improving the skills "
-"necessary for teaching towards the full development of respect for the "
-"natural environment?"
-msgstr ""
-
-#: rtei/translation_strings.py:676
-msgid "Is data disaggregated by disability status?"
-msgstr ""
-
-#: rtei/translation_strings.py:677
-msgid ""
-"Do national laws forbid discrimination in education by disability status?"
-msgstr ""
-
-#: rtei/translation_strings.py:678
-msgid ""
-"Do national laws recognize the right to education for children with "
-"disabilities"
-msgstr ""
-
-#: rtei/translation_strings.py:680
-msgid ""
-"What is the percentage of teachers trained to teach children with "
-"disabilities?"
-msgstr ""
-
-#: rtei/translation_strings.py:681
-msgid ""
-"Does the national curriculum direct education towards the full development "
-"of the child's personality, talents, and mental and physical abilities?"
-msgstr ""
-
-#: rtei/translation_strings.py:682
-msgid ""
-"Does the national curriculum direct education towards the full development "
-"of respect for human rights and fundamental freedoms?"
-msgstr ""
-
-#: rtei/translation_strings.py:683
-msgid ""
-"Does the national curriculum direct education towards the full development "
-"of respect for the child's parents, cultural identity, language, and values, "
-"as well as respect for the values of the child's country and other "
-"civilizations?"
-msgstr ""
-
-#: rtei/translation_strings.py:684
-msgid ""
-"Does the national curriculum direct education towards the full development "
-"of the child's responsibilities in a free society, including understanding "
-"peace, tolerance, equality, and friendship among all persons and groups?"
-msgstr ""
-
-#: rtei/translation_strings.py:685
-msgid ""
-"Does the national curriculum direct education towards the full development "
-"of respect for the natural environment?"
-msgstr ""
-
-#: rtei/translation_strings.py:686
-msgid "Does the national curriculum include health and well-being?"
-msgstr ""
-
-#: rtei/translation_strings.py:687
-msgid "Does the national curriculum include human rights?"
-msgstr ""
-
-#: rtei/translation_strings.py:688
-msgid "Does the national curriculum include the arts?"
-msgstr ""
-
-#: rtei/translation_strings.py:689 rtei/translation_strings.py:695
-msgid "Is data disaggregated by sex?"
-msgstr ""
-
-#: rtei/translation_strings.py:690 rtei/translation_strings.py:696
-msgid "Do national laws forbid discrimination in education by sex?"
-msgstr ""
-
-#: rtei/translation_strings.py:699
-msgid "What is the gross primary school enrollment rate for females?"
-msgstr ""
-
-#: rtei/translation_strings.py:700
-msgid "What is the net primary school enrollment rate for females?"
-msgstr ""
-
-#: rtei/translation_strings.py:701
-msgid "What is the public primary school completion rate for females?"
-msgstr ""
-
-#: rtei/translation_strings.py:702
-msgid "What is the private primary school completion rate for females?"
-msgstr ""
-
-#: rtei/translation_strings.py:705
-msgid ""
-"What percent of females received an overall passing score on the national "
-"assessment/exam?"
-msgstr ""
-
-#: rtei/translation_strings.py:706
-msgid ""
-"What percent of females received a passing score on the national reading "
-"assessment/exam?"
-msgstr ""
-
-#: rtei/translation_strings.py:707
-msgid ""
-"What percent of females received a passing score on the national mathematics "
-"assessment/exam?"
-msgstr ""
-
-#: rtei/translation_strings.py:708
-msgid "What if the youth literacy rate (ages 15-24) for females?"
-msgstr ""
-
-#: rtei/translation_strings.py:709
-msgid "What is the adult literacy rate (age 15+) for females?"
-msgstr ""
-
-#: rtei/translation_strings.py:717
-msgid ""
-"Do national laws protect the rights of minorities to establish private "
-"schools?"
-msgstr ""
-
-#: rtei/translation_strings.py:719
-msgid "Is data disaggregated by race and color (ethnicity)?"
-msgstr ""
-
-#: rtei/translation_strings.py:720
-msgid "Is data disaggregated by language?"
-msgstr ""
-
-#: rtei/translation_strings.py:721
-msgid "Is data disaggregated by religion?"
-msgstr ""
-
-#: rtei/translation_strings.py:722
-msgid "Is data disaggregated by national or social origin?"
-msgstr ""
-
-#: rtei/translation_strings.py:723
-msgid "Is data disaggregated by sexual orientation and gender identity?"
-msgstr ""
-
-#: rtei/translation_strings.py:724
-msgid "Is data disaggregated by nationality?"
-msgstr ""
-
-#: rtei/translation_strings.py:725
-msgid ""
-"Do national laws forbid discrimination in education by race and color "
-"(ethnicity)?"
-msgstr ""
-
-#: rtei/translation_strings.py:726
-msgid "Do national laws forbid discrimination in education by language?"
-msgstr ""
-
-#: rtei/translation_strings.py:727
-msgid "Do national laws forbid discrimination in education by religion?"
-msgstr ""
-
-#: rtei/translation_strings.py:728
-msgid ""
-"Do national laws forbid discrimination in education by national or social "
-"origin?"
-msgstr ""
-
-#: rtei/translation_strings.py:729
-msgid ""
-"Do national laws forbid discrimination in education by sexual orientation "
-"and gender identity?"
-msgstr ""
-
-#: rtei/translation_strings.py:730
-msgid "Do national laws forbid discrimination in education by nationality?"
-msgstr ""
-
-#: rtei/translation_strings.py:732
-msgid "Are there mobile schools for children of nomads"
-msgstr ""
-
-#: rtei/translation_strings.py:734
-msgid "What percentage of students are not taught in their mother tongue?"
-msgstr ""
-
-#: rtei/translation_strings.py:736
+#: rtei/translation_strings.py:648
 msgid "Yes"
 msgstr ""
 
-#: rtei/translation_strings.py:737
-msgid "Not Applicable"
+#: rtei/translation_strings.py:649
+msgid "NA"
 msgstr ""
 
-#: rtei/translation_strings.py:738
-msgid "Yes, but it is not justiciable"
+#: rtei/translation_strings.py:650
+msgid "Every Other Year"
 msgstr ""
 
-#: rtei/translation_strings.py:739
+#: rtei/translation_strings.py:651
+msgid "No data"
+msgstr ""
+
+#: rtei/translation_strings.py:652
+msgid ""
+"Yes, national law provides for both free and compulsory primary education."
+msgstr ""
+
+#: rtei/translation_strings.py:653
+msgid "Yes, primary education is free for all children."
+msgstr ""
+
+#: rtei/translation_strings.py:654
 msgid "No"
 msgstr ""
 
-#: rtei/translation_strings.py:740
-msgid "Missing"
+#: rtei/translation_strings.py:655
+msgid "Yes, violence and abuse is regularly practiced."
 msgstr ""
 
-#: rtei/translation_strings.py:741
-msgid "Annually or more"
+#: rtei/translation_strings.py:656
+msgid "Yes, it is generally available"
 msgstr ""
 
-#: rtei/translation_strings.py:742
-msgid "Yes, both free and compulsory"
+#: rtei/translation_strings.py:657
+msgid "Yes "
 msgstr ""
 
-#: rtei/translation_strings.py:743
-msgid "1598682 Chilean Pesos"
-msgstr ""
-
-#: rtei/translation_strings.py:744
-msgid "Yes, it is rarely practiced"
-msgstr ""
-
-#: rtei/translation_strings.py:745
-msgid "M"
-msgstr ""
-
-#: rtei/translation_strings.py:746
-msgid "F"
-msgstr ""
-
-#: rtei/translation_strings.py:747
-msgid "Yes, regularly practiced"
-msgstr ""
-
-#: rtei/translation_strings.py:748
-msgid "Mean"
-msgstr ""
-
-#: rtei/translation_strings.py:749
-msgid "High"
-msgstr ""
-
-#: rtei/translation_strings.py:750
-msgid "Middle"
-msgstr ""
-
-#: rtei/translation_strings.py:751
-msgid "Urban"
-msgstr ""
-
-#: rtei/translation_strings.py:752
-msgid "Yes, but availability is rare or uncommon"
-msgstr ""
-
-#: rtei/translation_strings.py:753
-msgid "Yes, generally available"
-msgstr ""
-
-#: rtei/translation_strings.py:754
-msgid "Yes, and it is justiciable"
-msgstr ""
-
-#: rtei/translation_strings.py:755
-msgid "Missing (None)"
-msgstr ""
-
-#: rtei/translation_strings.py:756
-msgid "P440.17"
-msgstr ""
-
-#: rtei/translation_strings.py:757
-msgid "Yes, it is regularly practiced"
-msgstr ""
-
-#: rtei/translation_strings.py:758
-msgid "Yes, they are generally available"
-msgstr ""
-
-#: rtei/translation_strings.py:759
-msgid "Yes, but it is rarely practiced"
-msgstr ""
-
-#: rtei/translation_strings.py:760
-msgid "1200000 Tsh"
-msgstr ""
-
-#: rtei/translation_strings.py:761
-msgid "Yes, it is nearly universally practiced"
-msgstr ""
-
-#: rtei/translation_strings.py:762
-msgid "Yes, very common in practice"
-msgstr ""
-
-#: rtei/translation_strings.py:763
-msgid "Yes, universally available"
-msgstr ""
-
-#: rtei/translation_strings.py:764
+#: rtei/translation_strings.py:658
 msgid "Yes with Reservations"
 msgstr ""
 
-#: rtei/translation_strings.py:765
-msgid "There is no regular collection pattern"
+#: rtei/translation_strings.py:659
+msgid "Yes, and it is justiciable"
 msgstr ""
 
-#: rtei/translation_strings.py:766
-msgid "No, provides either free or compulsory but not both"
+#: rtei/translation_strings.py:660
+msgid "AU$24,081"
 msgstr ""
 
-#: rtei/translation_strings.py:767
-msgid "400 USD"
+#: rtei/translation_strings.py:661
+msgid "Yes`"
 msgstr ""
 
-#: search/templates/search/search.html:21
-msgid "Search Results"
+#: rtei/translation_strings.py:662
+msgid "Male"
 msgstr ""
 
-#: search/templates/search/search.html:43
+#: rtei/translation_strings.py:663
+msgid "Rural"
+msgstr ""
+
+#: rtei/translation_strings.py:664
+msgid "Low"
+msgstr ""
+
+#: rtei/translation_strings.py:665
+msgid "Mid"
+msgstr ""
+
+#: rtei/translation_strings.py:666
+msgid "Female"
+msgstr ""
+
+#: rtei/translation_strings.py:667
+msgid "Urban"
+msgstr ""
+
+#: rtei/translation_strings.py:668
+msgid "High"
+msgstr ""
+
+#: rtei/translation_strings.py:670
+msgid "Equal"
+msgstr ""
+
+#: rtei/translation_strings.py:671
+msgid "Annually"
+msgstr ""
+
+#: rtei/translation_strings.py:672
+msgid "Yes, violence and abuse is rarely practiced"
+msgstr ""
+
+#: rtei/translation_strings.py:673
+msgid "Yes it is universally available"
+msgstr ""
+
+#: rtei/translation_strings.py:674
+msgid "Yes with Reserations"
+msgstr ""
+
+#: rtei/translation_strings.py:675
+msgid "Yes  "
+msgstr ""
+
+#: rtei/translation_strings.py:676
+msgid "6191 CAD"
+msgstr ""
+
+#: rtei/translation_strings.py:677
+msgid "No, primary education is free for half the children"
+msgstr ""
+
+#: rtei/translation_strings.py:678
+msgid "Yes, it is regularly practiced"
+msgstr ""
+
+#: rtei/translation_strings.py:679
+msgid "Yes, corporal punishment is regularly practiced"
+msgstr ""
+
+#: rtei/translation_strings.py:680
+msgid "Yes, but availability is rare or uncommon"
+msgstr ""
+
+#: rtei/translation_strings.py:681
+msgid "Yes, but it is not justiciable"
+msgstr ""
+
+#: rtei/translation_strings.py:682
+msgid "No, primary education is not free for anyone"
+msgstr ""
+
+#: rtei/translation_strings.py:683
+msgid "Yes, corporal punishment is very common in practice."
+msgstr ""
+
+#: rtei/translation_strings.py:684
+msgid "Yes, corporal punishment is rarely practiced"
+msgstr ""
+
+#: rtei/translation_strings.py:685
+msgid "Yes, but mobile schools are rare or uncommon"
+msgstr ""
+
+#: rtei/translation_strings.py:686
+msgid "No, primary education is free for the majority of children."
+msgstr ""
+
+#: rtei/translation_strings.py:687
+msgid "Yes, but it is rare or uncommon"
+msgstr ""
+
+#: rtei/translation_strings.py:688
+msgid "17.6 (No data)"
+msgstr ""
+
+#: rtei/translation_strings.py:689
+msgid "46 dollars "
+msgstr ""
+
+#: rtei/translation_strings.py:690
+msgid "Yes, but it is rarely practiced."
+msgstr ""
+
+#: rtei/translation_strings.py:691
+msgid "urban"
+msgstr ""
+
+#: rtei/translation_strings.py:692
+msgid "Yes, mobile schools are available universally"
+msgstr ""
+
+#: rtei/translation_strings.py:693
+msgid "Yes, they are generally available in schools."
+msgstr ""
+
+#: rtei/translation_strings.py:694
+msgid "Yes, but it is rarely practiced"
+msgstr ""
+
+#: rtei/translation_strings.py:695
+msgid "4,773 USD"
+msgstr ""
+
+#: rtei/translation_strings.py:696
+msgid "Yes, it is nearly universally practiced."
+msgstr ""
+
+#: rtei/translation_strings.py:697
+msgid "Tsh 1,200,000"
+msgstr ""
+
+#: rtei/translation_strings.py:698
+msgid "Fmale"
+msgstr ""
+
+#: rtei/translation_strings.py:699
+msgid "5670 GBP"
+msgstr ""
+
+#: rtei/translation_strings.py:700
+msgid "Once every 3 to 5 years"
+msgstr ""
+
+#: rtei/translation_strings.py:701
+msgid ""
+"No, national law provides for free or compulsory primary education but not "
+"both."
+msgstr ""
+
+#: rtei/translation_strings.py:702
+msgid "No, primary education is free for the minority of children."
+msgstr ""
+
+#: rtei/translation_strings.py:703
+msgid "$391,66"
+msgstr ""
+
+#: search/templates/search/search.html:23
 msgid "No results found"
+msgstr ""
+
+#: search/templates/search/search.html:25
+msgid "Enter your search term on the left field"
+msgstr ""
+
+#: search/templates/search/search.html:28
+msgid "Search Results"
 msgstr ""

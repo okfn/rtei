@@ -35,11 +35,32 @@ This site can be found at https://www.rtei.org and it is powered by [Wagtail](ht
 
 # Custom Settings
 
-RTEI requires the following values to be present in the settings file.
+RTEI requires the following values to be set as env vars:
 
 ```python
+
+SECRET_KEY='xxx'
+
 # Email to receive contact requests from the form on /about/contact-us/
 RTEI_CONTACT_FORM_EMAIL = 'contact_form@example.com'
+EMAIL_HOST = 'xxx'
+EMAIL_HOST_PASSWORD = 'xxx'
+EMAIL_HOST_USER = 'xxx'
+
+# S3 Storage for docs and resources
+AWS_ACCESS_KEY_ID = 'xxx'
+AWS_SECRET_ACCESS_KEY = 'xxx'
+AWS_STORAGE_BUCKET_NAME = 'xxx'
+
+# Postgres DB to use (dev defaults to postgres://rtei:rtei@localhost/rtei)
+DATABASE_URL='postgres:...'
+
+# ElasticSearch endpoint use for search (dev defaults to http://localhost:9200)
+ELASTICSEARCH_URL = 'http://example.com/es'
+
+# Google Analytics site code for production
+GOOGLE_ANALYTICS_CODE = 'xxx'
+
 ```
 
 # Notes for development
@@ -69,10 +90,10 @@ Run `./build_data.py -h` to see all the options available.
 
 Most of the times you will want to:
 
-1. Update `data/rtei_data_2015.xlsx` if necessary
+1. Update `data/rtei_data_{year}.xlsx` if necessary
 2. Run `./build_data.py all`
 
-The JSON data files are generated in `rtei/static/data` by default. These files are:
+The JSON data files are generated in `rtei/static/data/{year}` by default. These files are:
 
 * `indicators.json`: Master dictionary that links every indicator code to its title (and level). Indicators are nested, eg:
 
@@ -80,25 +101,20 @@ The JSON data files are generated in `rtei/static/data` by default. These files 
             [
                 {
                     "code": "1",
-                    "core": true,
                     "children": [
                         {
                             "code": "1.1",
-                            "core": true,
                             "children": [
                                 {
                                     "code": "1.1.1",
-                                    "core": true,
                                     "children": [
                                         {
                                             "code": "1.1.1a",
-                                            "core": true,
                                             "level": 4,
                                             "title": "The International Covenant of Economic, Social and Cultural Rights"
                                         },
                                         {
                                             "code": "1.1.1b",
-                                            "core": true,
                                             "level": 4,
                                             "title": "The Convention on the Rights of the Child"
                                         },
@@ -140,14 +156,14 @@ The JSON data files are generated in `rtei/static/data` by default. These files 
             {
                 "CL": {
                     "1": 64.76,
-                    "1.1": 100.0,
-                    "1.2": 50.0,
-                    "1.3": 0.0,
+                    "1.1": 100
+                    "1.2": 50
+                    "1.3": 0
                     "1.4": 84.4,
                     "1.6": 89.4,
                     "2": 51.95,
                     "2.1": 33.3,
-                    "2.2": 96.0,
+                    "2.2": 96
                     "2.3": 73.2,
                     "2.4": 5.3,
                     "3": 88.3833,
@@ -166,28 +182,28 @@ The JSON data files are generated in `rtei/static/data` by default. These files 
                 },
                 "NG": {
                     "1": 94.56,
-                    "1.1": 100.0,
-                    "1.2": 100.0,
-                    "1.3": 100.0,
+                    "1.1": 100
+                    "1.2": 100
+                    "1.3": 100
                     "1.4": 84.4,
                     "1.6": 88.4,
                     "2": 53.275,
                     "2.1": 25.6,
-                    "2.2": 50.0,
+                    "2.2": 50
                     "2.3": 37.5,
-                    "2.4": 100.0,
+                    "2.4": 100
                     "3": 77.8333,
                     "3.1": 97.4,
                     "3.2": 58.3,
                     "3.3": 77.8,
                     "4": 79.9667,
-                    "4.1": 100.0,
+                    "4.1": 100
                     "4.2": 44.3,
                     "4.3": 95.6,
                     "5": 75.0667,
                     "5.1": 66.5,
                     "5.2": 92.7,
-                    "5.3": 66.0,
+                    "5.3": 66
                     "index": 76.1403
                 },
 
@@ -202,20 +218,20 @@ The JSON data files are generated in `rtei/static/data` by default. These files 
         [
           {
             "1": 12.85,
-            "1.1": 20.0,
-            "1.2": 10.0,
-            "1.3": 0.0,
+            "1.1": 20
+            "1.2": 10
+            "1.3": 0
             "1.4": 16.88,
             "1.5": 17.39,
             "2": 15.13,
             "2.1": 8.32,
-            "2.2": 24.0,
+            "2.2": 24
             "2.3": 18.3,
-            "2.4": 25.0,
-            "index": 72.90,
+            "2.4": 25
+            "index": 72.
             "name": "Chile",
             "t1A.A": 68.4,
-            "t2A": 100,
+            "t2A": 1
             "t3A": 83.07,
             "t3B": 72.03,
             "t4A": 55.53,
@@ -236,7 +252,7 @@ The JSON data files are generated in `rtei/static/data` by default. These files 
     ```json
             {
                 "1": 64.267,
-                "1.1": 100.0,
+                "1.1": 100
                 "1.1.1a": "Yes",
                 "1.1.1b": "Yes",
                 "1.1.1c": "Yes",
@@ -324,7 +340,7 @@ New strings added to the source code that need to be translated must be regularl
 To do so run the following:
 
     # Extract translatable strings from data
-    ./build-data.py translation-strings
+    ./build_data.py translation-strings
 
     # Extract strings from source code into po files (also keep the master pot file)
     ./manage.py makemessages --keep-pot
