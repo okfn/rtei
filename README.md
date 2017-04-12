@@ -298,7 +298,17 @@ Dump a new set of site data (this is the internal data for managing the site, li
     python manage.py dumpdata --natural-foreign --indent=4 -e contenttypes -e auth.Permission -e sessions -e wagtailcore.pagerevision -e auth.user > rtei/fixtures/data.json
 
 
-## Migrate data on Heroku
+## Deployment
+
+The site is hosted on Heroku:
+
+* `rtei` is the staging site, which is deployed automatically from Travis on each push to master.
+* `rtei-production` is the production site, deployed manually via git remote:
+
+	heroku git:remote -r production -a rtei-production
+	git push production master
+
+### Migrate data on Heroku
 
 Database migrates can be run on heroku against the production settings with:
 
