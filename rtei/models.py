@@ -219,6 +219,8 @@ class RTEIAncillaryPage(Page):
             else:
                 contact_form = ContactForm()
             context['contact_form'] = contact_form
+        elif self.slug in ['supporters', 'civil-society-partners']:
+            context['listing'] = True
         return context
 
     def serve(self, request):

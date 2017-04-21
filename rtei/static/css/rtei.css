@@ -2197,9 +2197,9 @@ html,
       .site-footer .credit a:hover img {
         opacity: 1; }
 
-body.partners .rich-text p {
+body.partners.listing .rich-text p {
   margin-left: 165px; }
-body.partners .rich-text h3 + p {
+body.partners.listing .rich-text h3 + p {
   margin-left: 0; }
 .rich-text .richtext-image.left {
   float: left;
