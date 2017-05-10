@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-12 08:52+0000\n"
+"POT-Creation-Date: 2017-05-10 12:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -33,11 +33,11 @@ msgstr ""
 msgid "No data available for this country"
 msgstr ""
 
-#: rtei/models.py:233
+#: rtei/models.py:235
 msgid "There was a problem submitting your contact details."
 msgstr ""
 
-#: rtei/models.py:244
+#: rtei/models.py:246
 msgid "Your contact details have been submitted."
 msgstr ""
 
@@ -69,29 +69,29 @@ msgstr ""
 msgid "Sections"
 msgstr ""
 
-#: rtei/templates/rtei/blog_index_page.html:15
+#: rtei/templates/rtei/blog_index_page.html:19
 msgid "Showing posts tagged as"
 msgstr ""
 
-#: rtei/templates/rtei/blog_index_page.html:15
+#: rtei/templates/rtei/blog_index_page.html:19
 msgid "Show all"
 msgstr ""
 
-#: rtei/templates/rtei/blog_index_page.html:25
+#: rtei/templates/rtei/blog_index_page.html:29
 msgid "No posts found"
 msgstr ""
 
-#: rtei/templates/rtei/blog_index_page.html:34
+#: rtei/templates/rtei/blog_index_page.html:38
 #: rtei/templates/rtei/resources.html:39 search/templates/search/search.html:41
 msgid "Previous"
 msgstr ""
 
-#: rtei/templates/rtei/blog_index_page.html:38
+#: rtei/templates/rtei/blog_index_page.html:42
 #: rtei/templates/rtei/resources.html:43
 msgid "Page"
 msgstr ""
 
-#: rtei/templates/rtei/blog_index_page.html:42
+#: rtei/templates/rtei/blog_index_page.html:46
 #: rtei/templates/rtei/resources.html:47 search/templates/search/search.html:45
 msgid "Next"
 msgstr ""
@@ -383,12 +383,12 @@ msgstr ""
 
 #: rtei/templates/rtei/tags/indicator_descriptions.html:75
 #: rtei/translation_strings.py:30
-msgid "Out of School Education"
+msgid "Out-of-school Education"
 msgstr ""
 
 #: rtei/templates/rtei/tags/indicator_descriptions.html:76
 #: rtei/translation_strings.py:31
-msgid "Out of School Children"
+msgid "Out-of-school Children"
 msgstr ""
 
 #: rtei/templates/rtei/tags/indicator_descriptions.html:80
@@ -2025,7 +2025,7 @@ msgid "Tertiary: Disability Parity - Advantaged Group"
 msgstr ""
 
 #: rtei/translation_strings.py:284
-msgid "Primary Schools: Out of School Rate"
+msgid "Primary Schools: Out-of-school Rate"
 msgstr ""
 
 #: rtei/translation_strings.py:300 rtei/translation_strings.py:343
@@ -2038,7 +2038,7 @@ msgid ""
 msgstr ""
 
 #: rtei/translation_strings.py:306
-msgid "Secondary Schools: Out of School Rate"
+msgid "Secondary Schools: Out-of-school Rate"
 msgstr ""
 
 #: rtei/translation_strings.py:327

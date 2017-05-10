@@ -38,7 +38,7 @@ MODIFIERS = {
     'inc-hmp': 'High to Medium Quartile Income Ratio',
     'inc-mlp': 'Medium to Low Quartile Income Ratio',
     'Overage': 'Overage Learners',
-    'Out': 'Out of School Rate',
+    'Out': 'Out-of-school Rate',
 
 }
 
