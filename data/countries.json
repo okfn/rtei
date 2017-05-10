@@ -905,9 +905,8 @@
     "PS": {
         "iso2": "PS",
         "iso3": "PSE",
-        "name": "Palestinian Territories",
-        "other_names": ["Palestine"]
-
+        "name": "Palestine",
+        "other_names": ["Palestinian Territories"]
     },
     "PT": {
         "iso2": "PT",
