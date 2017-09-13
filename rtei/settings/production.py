@@ -29,6 +29,7 @@ ALLOWED_HOSTS = [
     'rtei.herokuapp.com',
     'rtei-production.herokuapp.com',
     'www.rtei.org',
+    'rtei.org',
 ]
 
 # Email to receive contact requests from the form on /about/contact-us/
