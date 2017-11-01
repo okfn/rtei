@@ -1,8 +1,8 @@
 Django>=1.9,<1.10
 wagtail==1.9
 psycopg2==2.6.1
-wagtail-modeltranslation==0.6.0rc1
-django-debug-toolbar==1.4
+wagtail-modeltranslation==0.6.0rc2
+django-debug-toolbar==1.8
 gunicorn==19.4.5
 dj-database-url==0.4.0
 whitenoise==2.0.6
