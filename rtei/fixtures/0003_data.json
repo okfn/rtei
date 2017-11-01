@@ -172,6 +172,7 @@
         "depth": 1,
         "numchild": 2,
         "title": "Root",
+        "draft_title": "Root",
         "slug": "root",
         "content_type": [
             "wagtailcore",
@@ -200,6 +201,7 @@
         "depth": 2,
         "numchild": 0,
         "title": "Welcome to your new Wagtail site!",
+        "draft_title": "Welcome to your new Wagtail site!",
         "slug": "home",
         "content_type": [
             "wagtailcore",
@@ -228,6 +230,7 @@
         "depth": 2,
         "numchild": 5,
         "title": "Homepage",
+        "draft_title": "Homepage",
         "slug": "homepage",
         "content_type": [
             "rtei",
@@ -256,6 +259,7 @@
         "depth": 3,
         "numchild": 0,
         "title": "About",
+        "draft_title": "About",
         "slug": "about",
         "content_type": [
             "rtei",
@@ -284,6 +288,7 @@
         "depth": 3,
         "numchild": 0,
         "title": "Resources",
+        "draft_title": "Resources",
         "slug": "resources",
         "content_type": [
             "rtei",
@@ -312,6 +317,7 @@
         "depth": 3,
         "numchild": 0,
         "title": "Partners",
+        "draft_title": "Partners",
         "slug": "partners",
         "content_type": [
             "rtei",
@@ -340,6 +346,7 @@
         "depth": 3,
         "numchild": 0,
         "title": "Contact Us",
+        "draft_title": "Contact Us",
         "slug": "contact-us",
         "content_type": [
             "rtei",
@@ -368,6 +375,7 @@
         "depth": 3,
         "numchild": 4,
         "title": "Explore",
+        "draft_title": "Explore",
         "slug": "explore",
         "content_type": [
             "rtei",
@@ -396,6 +404,7 @@
         "depth": 4,
         "numchild": 0,
         "title": "Map",
+        "draft_title": "Map",
         "slug": "map",
         "content_type": [
             "rtei",
@@ -424,6 +433,7 @@
         "depth": 4,
         "numchild": 0,
         "title": "RTEI by Theme",
+        "draft_title": "RTEI by Theme",
         "slug": "rtei-theme",
         "content_type": [
             "rtei",
@@ -452,6 +462,7 @@
         "depth": 4,
         "numchild": 0,
         "title": "RTEI by Country",
+        "draft_title": "RTEI by Country",
         "slug": "rtei-country",
         "content_type": [
             "rtei",
@@ -480,6 +491,7 @@
         "depth": 4,
         "numchild": 0,
         "title": "RTEI over Time",
+        "draft_title": "RTEI over Time",
         "slug": "rtei-over-time",
         "content_type": [
             "rtei",
@@ -508,6 +520,7 @@
         "depth": 3,
         "numchild": 1,
         "title": "Blog",
+        "draft_title": "Blog",
         "slug": "blog",
         "content_type": [
             "rtei",
@@ -536,6 +549,7 @@
         "depth": 4,
         "numchild": 0,
         "title": "This is a test post on the RTEI Blog",
+        "draft_title": "This is a test post on the RTEI Blog",
         "slug": "test-post-rtei-blog",
         "content_type": [
             "rtei",
