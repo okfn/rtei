@@ -3,7 +3,9 @@ python:
 - 2.7
 sudo: required
 install: ./bin/travis-setup
-script: ./manage.py test --with-coverage --cover-package=rtei
+script:
+  - ./manage.py collectstatic --no-input
+  - ./manage.py test --with-coverage --cover-package=rtei
 notifications:
   slack: openknowledge:wnDLkoYYddR3sYR9eTsBXzz2
   on_success: never
