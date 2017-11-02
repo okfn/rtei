@@ -16,7 +16,6 @@ def load_stores_from_fixture(apps, schema_editor):
 
 class Migration(migrations.Migration):
     dependencies = [
-        ('wagtailcore', '0040_page_draft_title'),
         ('rtei', '0003_blogpage_intro'),
     ]
 

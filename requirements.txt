@@ -4,13 +4,12 @@
 #
 #    pip-compile --output-file requirements.txt requirements.in
 #
--e git+git://github.com/brew/wagtail-modeltranslation.git@fix-RemovedInWagtail113Warning#egg=wagtail-modeltranslation
 beautifulsoup4==4.5.3     # via wagtail
 boto==2.39.0
 dj-database-url==0.4.0
 django-debug-toolbar==1.8
 django-modelcluster==3.1  # via wagtail
-django-modeltranslation==0.12
+django-modeltranslation==0.12  # via wagtail-modeltranslation
 django-nose==1.4.5
 django-storages==1.4
 django-taggit==0.22.0     # via wagtail
@@ -31,7 +30,8 @@ six==1.10.0               # via html5lib
 sqlparse==0.2.3           # via django-debug-toolbar
 unidecode==0.4.20         # via wagtail
 urllib3==1.20             # via elasticsearch
-wagtail==1.13
+wagtail-modeltranslation==0.6.0rc2
+wagtail==1.12.2
 webencodings==0.5         # via html5lib
 whitenoise==2.0.6
-willow==1.0               # via wagtail
+willow==0.4               # via wagtail

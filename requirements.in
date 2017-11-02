@@ -1,7 +1,7 @@
 Django>=1.10,<1.11
-wagtail>=1.13,<1.14
+wagtail>=1.12,<1.13
 psycopg2==2.6.1
--e git+git://github.com/brew/wagtail-modeltranslation.git@fix-RemovedInWagtail113Warning#egg=wagtail-modeltranslation
+wagtail-modeltranslation==0.6.0rc2
 django-debug-toolbar==1.8
 gunicorn==19.4.5
 dj-database-url==0.4.0
