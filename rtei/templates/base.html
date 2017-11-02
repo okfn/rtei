@@ -15,6 +15,7 @@
         {# Global stylesheets #}
         <link href='//fonts.googleapis.com/css?family=Lato:400,700,400italic' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" type="text/css" href="{% static 'css/rtei.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'vendor/jquery-modal/jquery.modal.min.css' %}">
 
         {% block extra_css %}
             {# Override this in templates to add extra stylesheets #}
@@ -44,6 +45,14 @@
                 <li>
                   <a href="{% url 'wagtail_serve' 'glossary/' %}">{% trans "Glossary" %}</a>
                 </li>
+                <li>
+                  <a href="#sign-up-form" rel="modal:open">Subscribe to RTEI Updates</a>
+                  <div id="sign-up-form" style="display:none">
+                    <div id="8d88ff50-910b-40c0-b62b-6459f460f8c9" class="modal">
+                      <script type="text/javascript" src="https://default.salsalabs.org/api/widget/template/abe81301-e7a4-4ba5-a475-d6e79c1bc1b2/?tId=8d88ff50-910b-40c0-b62b-6459f460f8c9" ></script>
+                    </div>
+                  </div>
+                </li>
               </ul>
 
               <ul class="social">
@@ -57,7 +66,6 @@
                   <a href="https://www.youtube.com/user/RESULTSorg" target="_blank">{% include "icons/youtube.svg" %}</a>
                 </li>
               </ul>
-
           </div>
 
           <div class="secondary">
@@ -92,6 +100,7 @@
         <script>window.jQuery || document.write('<script src="{% static 'js/jquery-2.1.3.min.js' %}"><\/script>')</script>
         <script type="text/javascript" src="{% static 'js/plugins.js' %}"></script>
         <script type="text/javascript" src="{% static 'js/rtei.js' %}"></script>
+        <script type="text/javascript" src="{% static 'vendor/jquery-modal/jquery.modal.min.js' %}"></script>
         {% if year %}
         <script>RTEI.year = {{ year }}</script>
         {% endif %}
