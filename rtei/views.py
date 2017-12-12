@@ -1,38 +1,30 @@
+import logging
+
+from django.templatetags.static import static
 from django.shortcuts import redirect
 from django.http import Http404
-
-from wagtail.wagtailcore.models import Collection
-
-from rtei.models import RteiDocument
+from django.conf import settings
 
 
-import logging
 log = logging.getLogger(__name__)
 
 
 def latest_document(request):
     '''Redirects to latest Completed Questionnaire document url'''
-
-    questionnaire_collection_id = \
-        Collection.objects.get(name='Completed Questionnaires').id
-
-    latest_doc = RteiDocument.objects.filter(
-        collection=questionnaire_collection_id).latest()
-
-    return redirect(latest_doc.url)
+    year = settings.YEARS[-1]
+    return redirect_to_year(year)
 
 
-def document_by_year(requesti, year):
+def document_by_year(request, year):
     '''Redirects to Completed Questionnaire document url for the relevant
         year
     '''
 
-    questionnaire_collection_id = \
-        Collection.objects.get(name='Completed Questionnaires').id
-
-    doc = RteiDocument.objects.filter(
-        collection=questionnaire_collection_id, year=year).first()
-    if not doc:
+    if year not in settings.YEARS:
         raise Http404
 
-    return redirect(doc.url)
+    return redirect_to_year(year)
+
+
+def redirect_to_year(year):
+    return redirect(static('data/rtei_data_{}.xlsx'.format(year)))

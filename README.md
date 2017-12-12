@@ -90,7 +90,7 @@ Run `./build_data.py -h` to see all the options available.
 
 Most of the times you will want to:
 
-1. Update `data/rtei_data_{year}.xlsx` if necessary
+1. Update `/rtei/static/data/rtei_data_{year}.xlsx` if necessary
 2. Run `./build_data.py all`
 
 The JSON data files are generated in `rtei/static/data/{year}` by default. These files are:
