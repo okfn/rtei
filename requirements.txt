@@ -23,7 +23,7 @@ html5lib==0.999999999     # via wagtail
 nose==1.3.7               # via django-nose
 olefile==0.44             # via pillow
 pillow==4.0.0             # via wagtail
-psycopg2==2.6.1
+psycopg2==2.7.3
 pytz==2016.10             # via django-modelcluster
 requests==2.13.0          # via wagtail
 six==1.10.0               # via html5lib
