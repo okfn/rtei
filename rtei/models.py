@@ -8,7 +8,7 @@ from django.db import models
 from django.http import Http404
 from django.utils.translation import ugettext as _
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.core.validators import RegexValidator
+from django.core.validators import RegexValidator, URLValidator
 from django.shortcuts import redirect
 from django.contrib import messages
 from django.conf import settings
@@ -346,8 +346,6 @@ class RteiDocument(AbstractDocument, index.Indexed):
         help_text='e.g. 1999',
         max_length=4,
         blank=True)
-
-    from django.core.validators import URLValidator
 
     file = models.FileField(
         upload_to='documents', verbose_name=_('file'), blank=True,
