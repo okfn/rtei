@@ -341,12 +341,23 @@ class RteiDocument(AbstractDocument, index.Indexed):
 
     year = models.CharField(validators=[
         RegexValidator(regex='^\d{4}$',
-                       message='Must be 4 numbers',
+                       message=_('Must be 4 numbers'),
                        code='nomatch')],
         help_text='e.g. 1999',
         max_length=4,
         blank=True)
 
+    from django.core.validators import URLValidator
+
+    file = models.FileField(
+        upload_to='documents', verbose_name=_('file'), blank=True,
+        help_text="Use this to upload a file and list it as a resource")
+    external_url = models.CharField(
+        validators=[URLValidator(message=_('Must be a valid URL'))],
+        blank=True,
+        max_length=1000,
+        verbose_name=_('External Link'),
+        help_text="Use this to add an external website as a listed resource")
     country = models.CharField(max_length=256, blank=True)
     is_resource = models.BooleanField(default=True,
                                       help_text="Determines whether document "
@@ -357,6 +368,7 @@ class RteiDocument(AbstractDocument, index.Indexed):
         'title',
         'description',
         'file',
+        'external_url',
         'collection',
         'country',
         'year',
