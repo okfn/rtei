@@ -1,4 +1,5 @@
 {% load wagtailcore_tags %}
+{% load i18n %}
 
 <li>
   <a class="icon" href="{{result.url}}" title="{{result.title}}">
@@ -12,7 +13,18 @@
   </a>
 
   <span class="text {% if not result.is_resource %}single-line{% endif %}">
-    <h3><a href="{{result.url}}" title="{{result.title}}">{{result.title}}{% if result.country %} - {{result.country}}{% endif %}{% if result.year %} - {{result.year}}{% endif %}</a></h3>
+    <h3>
+        {% if result.external_url %}
+            <a href="{{result.external_url}}" title="{{result.title}}" target="_blank">{{result.title}}{% if result.country %} - {{result.country}}{% endif %}{% if result.year %} - {{result.year}}{% endif %}
+            
+                <span class="external" title="{% trans "Link will open in a new tab" %}">    {% include "icons/external_link.svg" %}</span>
+            </a>
+        {% else %}
+            <a href="{{result.url}}" title="{{result.title}}">{{result.title}}{% if result.country %} - {{result.country}}{% endif %}{% if result.year %} - {{result.year}}{% endif %}</a>
+        {% endif %}
+        
+    
+    </h3>
     {% if result.description %}
        {{result.description|richtext}}
     {% endif %}
