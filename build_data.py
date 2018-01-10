@@ -6,12 +6,13 @@ Check ./build_data.py -h for details
 '''
 import re
 import os
-import json
+import simplejson as json
 import csv
 import argparse
 import random
 import string
 from collections import OrderedDict
+from decimal import Decimal
 
 from openpyxl import load_workbook
 
@@ -129,7 +130,7 @@ def get_numeric_cell_value(cell):
     otherwise
     '''
     if isinstance(cell.value, float):
-        return round(cell.value, 2)
+        return round(Decimal(cell.value), 2)
     else:
         return cell.value
 
@@ -371,8 +372,6 @@ def get_all_indicators(include_columns=False):
 
     indicators = get_indicators(include_columns=include_columns)
 
-    # indicators = sorted(core_indicators, key=lambda k: k['code'])
-
     return indicators
 
 
@@ -394,10 +393,13 @@ def get_main_scores(country_indicators):
 
         if (code.count('.') == 1 and not code[-1].isalpha()
                 and value is not None):
-            if isinstance(value, float) or isinstance(value, int):
+            if isinstance(value, (int, float)):
+                scores[code[:1]].append(Decimal(
+                    value * 100 if value <= 1 else value))
+            elif isinstance(value, Decimal):
                 scores[code[:1]].append(value * 100 if value <= 1 else value)
 
-    return {score: int(round(sum(values) / len(values)))
+    return {score: Decimal(round(sum(values) / len(values)))
             for score, values in scores.iteritems() if values}
 
 
@@ -416,7 +418,7 @@ def get_full_score(country_indicators):
     '''
     values = [country_indicators[str(code)] for code in xrange(1, 6)
               if str(code) in country_indicators]
-    return {'index': int(round(sum(values) / len(values)))}
+    return {'index': Decimal(round(sum(values) / len(values)))}
 
 
 def add_full_score(country_indicators):
@@ -502,6 +504,7 @@ def indicators_per_country(max_level=4, derived=True, random_values=False,
                 country_name)
         country_codes.append(country_code)
         out[country_code] = OrderedDict()
+
     for i, country_code in enumerate(country_codes):
         for indicator in indicators:
             if indicator['level'] <= max_level and indicator.get('column'):
@@ -533,7 +536,7 @@ def indicators_per_country(max_level=4, derived=True, random_values=False,
                 if (indicator['code'].count('.') == 1 and
                         not indicator['code'][-1].isalpha() and
                         value is not None and value != 'No data'):
-                    out[country_code][indicator['code']] = int(round(
+                    out[country_code][indicator['code']] = Decimal(round(
                         value * 100 if value <= 1 else value, 2))
 
         add_main_scores(out[country_code])
@@ -609,7 +612,7 @@ def themes_per_country(prefix=None, random_values=False):
 
                 key = str(prefix) + theme['code'] if prefix else theme['code']
 
-                if isinstance(value, (long, float)):
+                if isinstance(value, (long, float, Decimal)):
                     value = round(value, 2)
 
                 # Output as percentages
@@ -908,9 +911,9 @@ def c3_ready_json(output_dir=OUTPUT_DIR, random_values=False):
             if code == 'index' or isinstance(value, basestring):
                 continue
             if '.' not in code:
-                item[code] = value / float(len(scores['main']))
+                item[code] = value / Decimal(len(scores['main']))
             else:
-                item[code] = value / float(len(scores[code[:1]]))
+                item[code] = value / Decimal(len(scores[code[:1]]))
 
         # Add Transversal themes
         item.update(themes[country_code])

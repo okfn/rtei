@@ -64,7 +64,7 @@ $(document).ready(function(){
       $('#current-indicator-label').text(label);
 
       var value = (this.value !== 'index' && this.value.substring(0, 1) != 't') ?
-        (chartData[0][this.value] * RTEI.country.chart.groups()[0].length).toFixed(2) :
+        (chartData[0][this.value] * RTEI.country.chart.groups()[0].length) :
         chartData[0][this.value];
       $('#current-indicator-value').text(value);
       RTEI.showIndicators(this.value);
