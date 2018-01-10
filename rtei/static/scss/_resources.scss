@@ -1,5 +1,29 @@
 .resources {
   .resources-list {
+    h3 {
+      .external {
+        margin-left: 10px;
+        svg {
+
+          width: 20px;
+          height: 20px;
+          fill: $base-font-color;
+
+          //IE10+
+          @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+            height: 45px;
+          }
+        }
+
+        &:hover {
+          svg {
+            fill:currentColor;
+          }
+        }
+
+      }
+
+    }
 
     li {
       padding-top: $small-spacing;
@@ -33,7 +57,7 @@
         }
       }
 
-      .single-line {
+     .single-line {
         margin-top: 10px;
       }
 
