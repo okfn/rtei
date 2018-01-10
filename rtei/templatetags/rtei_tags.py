@@ -174,3 +174,11 @@ def resource_list_item(result):
 def country_available(country_code, year):
     return os.path.exists(
         get_file_path('{0}.json'.format(country_code), year))
+
+
+@register.simple_tag
+def document_is_external_url(form):
+    for field in form:
+        if field.name == 'external_url' and field.value():
+            return True
+    return False
