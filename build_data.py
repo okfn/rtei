@@ -130,7 +130,7 @@ def get_numeric_cell_value(cell):
     otherwise
     '''
     if isinstance(cell.value, float):
-        return round(Decimal(cell.value), 2)
+        return Decimal(cell.value)
     else:
         return cell.value
 
@@ -399,7 +399,7 @@ def get_main_scores(country_indicators):
             elif isinstance(value, Decimal):
                 scores[code[:1]].append(value * 100 if value <= 1 else value)
 
-    return {score: Decimal(round(sum(values) / len(values)))
+    return {score: Decimal(sum(values) / len(values))
             for score, values in scores.iteritems() if values}
 
 
@@ -418,7 +418,7 @@ def get_full_score(country_indicators):
     '''
     values = [country_indicators[str(code)] for code in xrange(1, 6)
               if str(code) in country_indicators]
-    return {'index': Decimal(round(sum(values) / len(values)))}
+    return {'index': Decimal(sum(values) / len(values))}
 
 
 def add_full_score(country_indicators):
@@ -536,8 +536,8 @@ def indicators_per_country(max_level=4, derived=True, random_values=False,
                 if (indicator['code'].count('.') == 1 and
                         not indicator['code'][-1].isalpha() and
                         value is not None and value != 'No data'):
-                    out[country_code][indicator['code']] = Decimal(round(
-                        value * 100 if value <= 1 else value, 2))
+                    out[country_code][indicator['code']] = Decimal(
+                        value * 100 if value <= 1 else value)
 
         add_main_scores(out[country_code])
         add_full_score(out[country_code])
@@ -612,8 +612,8 @@ def themes_per_country(prefix=None, random_values=False):
 
                 key = str(prefix) + theme['code'] if prefix else theme['code']
 
-                if isinstance(value, (long, float, Decimal)):
-                    value = round(value, 2)
+#                if isinstance(value, (long, float, Decimal)):
+#                    value = round(value, 2)
 
                 # Output as percentages
                 if value:

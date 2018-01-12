@@ -23,6 +23,10 @@ $(document).ready(function() {
 
   RTEI.currentIndex ='index';
 
+  RTEI.formatScore = function(value) {
+    return Math.round(value);
+  }
+
   // JS detection class
   document.documentElement.className = document.documentElement.className.replace("no-js","js");
 

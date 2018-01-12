@@ -54,7 +54,7 @@
 
       {% include 'rtei/tags/description_header.html' %}
 
-      <span>{% trans "Score" %}</span>: <span id="current-indicator-value">{{ country_indicators.index }}</span>
+      <span>{% trans "Score" %}</span>: <span id="current-indicator-value">{{ country_indicators.index|floatformat:0 }}</span>
 
       {% if chart_data %}
         <div id="chart" data-chart-data="{{ chart_data }}" data-chart-labels="{{ chart_labels }}"></div>

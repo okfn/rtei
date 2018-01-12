@@ -94,6 +94,8 @@ def get_indicator_value(dictionary, code):
     value = dictionary.get(code, '')
     if isinstance(value, basestring):
         value = _(value)
+    else:
+        value = int(value)
     return value
 
 

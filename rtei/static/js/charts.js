@@ -33,10 +33,10 @@ RTEI.charts = (function() {
         value: function (value, ratio, id, index) {
           if (id.substring(0, 1) != 't') {
             if (id.indexOf('.') === -1) {
-              return value * RTEI.charts.categoriesLength.index;
+              return RTEI.formatScore(value * RTEI.charts.categoriesLength.index);
             } else {
               var key = id.split('.')[0];
-              return value * RTEI.charts.categoriesLength[key];
+              return RTEI.formatScore(value * RTEI.charts.categoriesLength[key]);
             }
           } else {
             return value;

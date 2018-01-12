@@ -88,7 +88,7 @@ RTEI.map = (function() {
     content += '<div class="popup-content">';
 
     if (feature.properties[RTEI.map.currentIndex]) {
-      content += ' <div class="country-score"><span>' + RTEI.map.currentIndexLabel + ': </span>' + feature.properties[RTEI.map.currentIndex] + '</div>';
+      content += ' <div class="country-score"><span>' + RTEI.map.currentIndexLabel + ': </span>' + RTEI.formatScore(feature.properties[RTEI.map.currentIndex]) + '</div>';
     } else  {
       content += ' <div class="no country-score" title="No data available">x</div>';
     }
