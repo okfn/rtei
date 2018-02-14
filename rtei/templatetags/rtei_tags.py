@@ -89,13 +89,16 @@ def breadcrumbs(context):
     }
 
 
-@register.filter
-def get_indicator_value(dictionary, code):
+@register.simple_tag
+def get_indicator_value(dictionary, code, level):
     value = dictionary.get(code, '')
     if isinstance(value, basestring):
         value = _(value)
     elif value:
-        value = int(value)
+        if level < 3:
+            value = int(value)
+        else:
+            value = round(value, 2)
     return value
 
 

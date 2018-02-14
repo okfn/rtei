@@ -9,7 +9,8 @@
 
       {% if country_indicators %}
       <span class="indicator-value">
-        {{ country_indicators|get_indicator_value:indicator.code }}
+        {% get_indicator_value country_indicators indicator.code indicator.level as indicator_value %}
+        {{ indicator_value }}
       </span>
       {% endif %}
     </div>

@@ -525,7 +525,8 @@ def indicators_per_country(max_level=4, derived=True, random_values=False,
                 if (responses and indicator.get('column_year')
                         and value != 'No data'):
                     cell_year = indicator['column_year'] + str(i + 5)
-                    value = '{0} ({1})'.format(value, ws_core[cell_year].value)
+                    value = '{0} ({1})'.format(
+                        round(value, 2), ws_core[cell_year].value)
 
                 out[country_code][indicator['code']] = value
 
