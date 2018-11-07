@@ -17,13 +17,13 @@ from decimal import Decimal
 from openpyxl import load_workbook
 
 # Change as appropiate
-INPUT_FILE = 'rtei/static/data/rtei_data_2016.xlsx'
-OUTPUT_DIR = 'rtei/static/data/2016'
+INPUT_FILE = 'rtei/static/data/rtei_data_2017.xlsx'
+OUTPUT_DIR = 'rtei/static/data/2017'
 
 COUNTRIES_FILE = 'data/countries.json'
 
 CORE_SHEET = 'All Questionnaires'
-THEMES_SHEET = 'Cross-cutting themes'
+THEMES_SHEET = 'Cross-cutting Themes'
 THEMES_MAPPINGS_SHEET = 'Transversal Themes Mappings'
 
 # Don't include this in the parsed data
@@ -84,13 +84,13 @@ countries = None
 
 '''
 This will match any codes at the beginning of the string, starting with
-a number and ending with a colon, eg:
-1:
-1.1:
-1.1.1aa:
-1.1.1a_emp_dis:
+a number and ending with a space, eg:
+1
+1.1
+1.1.1aa
+1.1.1a_emp_dis
 '''
-valid_code = re.compile(r'^(C )?(\d)(.*?)?:')
+valid_code = re.compile(r'^(C )?(\d)(.*?)? ')
 
 
 def get_country_code(country_name, code_type='iso2'):
@@ -103,8 +103,8 @@ def get_country_code(country_name, code_type='iso2'):
     if not country_name:
         return None
     for code, country in countries.iteritems():
-        if (country_name == country['name'] or
-                country_name in country.get('other_names', [])):
+        if (country_name.lower() == country['name'].lower() or
+                country_name.lower() in [x.lower() for x in country.get('other_names', [])]):
             return country[code_type]
 
     return None
@@ -144,13 +144,12 @@ def get_level_for_indicator(code):
         # 1.2
         level = 2
     elif code.count('.') == 2:
-        try:
-            int(code.replace('.', ''))
-            # 1.3.4
-            level = 3
-        except ValueError:
+        # 1.3.4
+        level = 3
+
+    elif code.count('.') == 3:
             # 1.5.6a or 1.5.6a_dis
-            level = 4
+        level = 4
     else:
         raise ValueError('Wrong indicator code: {0}'.format(code))
 
@@ -198,9 +197,13 @@ def parse_cell(value, theme=False):
     if match:
         groups = match.groups()
         code = ''.join(g for g in groups if g and g != 'C ')
+        code = code.rstrip(':').rstrip('.')
         title = value \
             .replace(code + ':', '') \
             .replace('C ', '') \
+            .replace('\u00a0', '') \
+            .replace(code, '') \
+            .strip('.') \
             .strip()
         level = (get_level_for_theme(code) if theme
                  else get_level_for_indicator(code))
@@ -289,6 +292,7 @@ def get_themes(include_rows=False, include_indicators=False):
             }
 
             out.append(theme)
+
         if include_indicators and level in (3, 4):
             if 'indicators' not in theme:
                 theme['indicators'] = []
@@ -534,12 +538,12 @@ def indicators_per_country(max_level=4, derived=True, random_values=False,
 
                 # Show all level 2, non derived scores (eg 1.2, 3.4, 5.1)
                 # as percentages, rounded to 2 places
+
                 if (indicator['code'].count('.') == 1 and
                         not indicator['code'][-1].isalpha() and
                         value is not None and value != 'No data'):
                     out[country_code][indicator['code']] = Decimal(
                         value * 100 if value <= 1 else value)
-
         add_main_scores(out[country_code])
         add_full_score(out[country_code])
 
