@@ -1,4 +1,4 @@
-Django>=1.10,<1.11
+Django>=1.11,<2
 wagtail>=1.12,<1.13
 psycopg2==2.7.3
 wagtail-modeltranslation==0.6.0rc2
