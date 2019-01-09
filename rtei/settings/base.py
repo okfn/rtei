@@ -28,6 +28,8 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 INSTALLED_APPS = [
     # wagtail_modeltranslation needs to be before apps due to be translated.
     'wagtail_modeltranslation',
+    'wagtail_modeltranslation.makemigrations',
+    'wagtail_modeltranslation.migrate',
 
     'rtei',
     'search',
