@@ -10,14 +10,13 @@ RTEI.map = (function() {
 
     var colors = RTEI.colors;
 
-    if (!score) {
+    if (!score || score == RTEI.insufficientData) {
       if (homepage) {
         return 'rgba(255,255,255,0.4)';
       } else {
         return '#bebebd';
       }
     }
-    score = parseFloat(score);
 
     var palette;
 

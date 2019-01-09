@@ -26,6 +26,9 @@ CORE_SHEET = 'All Questionnaires'
 THEMES_SHEET = 'Cross-cutting Themes'
 THEMES_MAPPINGS_SHEET = 'Transversal Themes Mappings'
 
+INSUFFICIENT_DATA = 'Insufficient data'
+
+
 # Don't include this in the parsed data
 EXCLUDE_THEMES = ['10', '10A', '10B', '9B']
 
@@ -384,7 +387,8 @@ def get_main_scores(country_indicators):
     Return the values for the level 1 indicators (ie 1, 2, 3, 4 and 5)
 
     These are computed with the average of all level 2 indicators (eg 1.1,
-    1.2, etc). These are returned as a percentage.
+    1.2, etc) returned as a percentage, unless one of them is 'Insufficent data',
+    in which case the main score will also be INSUFFICIENT_DATA.
     '''
 
     scores = {}
@@ -397,15 +401,27 @@ def get_main_scores(country_indicators):
 
         if (code.count('.') == 1 and not code[-1].isalpha()
                 and value is not None):
+
+            if scores[code[:1]] == INSUFFICIENT_DATA:
+                continue
+
             if isinstance(value, (int, float)):
                 scores[code[:1]].append(Decimal(
                     value * 100 if value <= 1 else value))
             elif isinstance(value, Decimal):
                 scores[code[:1]].append(value * 100 if value <= 1 else value)
+            elif value == INSUFFICIENT_DATA:
+                scores[code[:1]] = INSUFFICIENT_DATA
+    out = {}
+    for score, values in scores.iteritems():
+        if not values:
+            continue
+        if values == INSUFFICIENT_DATA:
+            out[score] = values
+        else:
+            out[score] = Decimal(sum(values) / len(values))
 
-    return {score: Decimal(sum(values) / len(values))
-            for score, values in scores.iteritems() if values}
-
+    return out
 
 def add_main_scores(country_indicators):
     '''
@@ -421,7 +437,8 @@ def get_full_score(country_indicators):
     all level 1 indicators (ie 1, 2, 3, 4 and 5) returned as a percentage.
     '''
     values = [country_indicators[str(code)] for code in xrange(1, 6)
-              if str(code) in country_indicators]
+              if str(code) in country_indicators
+              and country_indicators[str(code)] != INSUFFICIENT_DATA]
     return {'index': Decimal(sum(values) / len(values))}
 
 
@@ -527,7 +544,7 @@ def indicators_per_country(max_level=4, derived=True, random_values=False,
                     value = 'No data'
 
                 if (responses and indicator.get('column_year')
-                        and value != 'No data'):
+                        and value not in ('No data', INSUFFICIENT_DATA)):
                     cell_year = indicator['column_year'] + str(i + 5)
                     value = '{0} ({1})'.format(
                         round(value, 2), ws_core[cell_year].value)
@@ -541,7 +558,7 @@ def indicators_per_country(max_level=4, derived=True, random_values=False,
 
                 if (indicator['code'].count('.') == 1 and
                         not indicator['code'][-1].isalpha() and
-                        value is not None and value != 'No data'):
+                        value is not None and value not in ('No data', INSUFFICIENT_DATA)):
                     out[country_code][indicator['code']] = Decimal(
                         value * 100 if value <= 1 else value)
         add_main_scores(out[country_code])
