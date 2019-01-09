@@ -20,10 +20,15 @@ $(document).ready(function() {
     5: 'adaptability',
   }
 
+  RTEI.insufficientData = 'Insufficient data';
+
 
   RTEI.currentIndex ='index';
 
   RTEI.formatScore = function(value) {
+    if (value == RTEI.insufficientData) {
+      return value;
+    }
     return Math.round(value);
   }
 
