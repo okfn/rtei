@@ -9,9 +9,9 @@ import django.db.models.deletion
 import modelcluster.contrib.taggit
 import modelcluster.fields
 import taggit.managers
-import wagtail.wagtailcore.fields
-import wagtail.wagtailcore.models
-import wagtail.wagtailsearch.index
+import wagtail.core.fields
+import wagtail.core.models
+import wagtail.search.index
 
 
 class Migration(migrations.Migration):
@@ -81,11 +81,11 @@ class Migration(migrations.Migration):
                 ('search_description_es', models.TextField(blank=True, null=True, verbose_name='search description')),
                 ('search_description_ar', models.TextField(blank=True, null=True, verbose_name='search description')),
                 ('intro', models.TextField(blank=True)),
-                ('body', wagtail.wagtailcore.fields.RichTextField(blank=True)),
-                ('body_en', wagtail.wagtailcore.fields.RichTextField(blank=True, null=True)),
-                ('body_fr', wagtail.wagtailcore.fields.RichTextField(blank=True, null=True)),
-                ('body_es', wagtail.wagtailcore.fields.RichTextField(blank=True, null=True)),
-                ('body_ar', wagtail.wagtailcore.fields.RichTextField(blank=True, null=True)),
+                ('body', wagtail.core.fields.RichTextField(blank=True)),
+                ('body_en', wagtail.core.fields.RichTextField(blank=True, null=True)),
+                ('body_fr', wagtail.core.fields.RichTextField(blank=True, null=True)),
+                ('body_es', wagtail.core.fields.RichTextField(blank=True, null=True)),
+                ('body_ar', wagtail.core.fields.RichTextField(blank=True, null=True)),
                 ('date', models.DateField(verbose_name='Post date')),
                 ('feed_image', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='wagtailimages.Image')),
             ],
@@ -159,11 +159,11 @@ class Migration(migrations.Migration):
                 ('search_description_fr', models.TextField(blank=True, null=True, verbose_name='search description')),
                 ('search_description_es', models.TextField(blank=True, null=True, verbose_name='search description')),
                 ('search_description_ar', models.TextField(blank=True, null=True, verbose_name='search description')),
-                ('body', wagtail.wagtailcore.fields.RichTextField(blank=True)),
-                ('body_en', wagtail.wagtailcore.fields.RichTextField(blank=True, null=True)),
-                ('body_fr', wagtail.wagtailcore.fields.RichTextField(blank=True, null=True)),
-                ('body_es', wagtail.wagtailcore.fields.RichTextField(blank=True, null=True)),
-                ('body_ar', wagtail.wagtailcore.fields.RichTextField(blank=True, null=True)),
+                ('body', wagtail.core.fields.RichTextField(blank=True)),
+                ('body_en', wagtail.core.fields.RichTextField(blank=True, null=True)),
+                ('body_fr', wagtail.core.fields.RichTextField(blank=True, null=True)),
+                ('body_es', wagtail.core.fields.RichTextField(blank=True, null=True)),
+                ('body_ar', wagtail.core.fields.RichTextField(blank=True, null=True)),
             ],
             options={
                 'abstract': False,
@@ -181,15 +181,15 @@ class Migration(migrations.Migration):
                 ('external_url', models.CharField(blank=True, help_text='Use this to add an external website as a listed resource', max_length=1000, validators=[django.core.validators.URLValidator(message='Must be a valid URL')], verbose_name='External Link')),
                 ('country', models.CharField(blank=True, max_length=256)),
                 ('is_resource', models.BooleanField(default=True, help_text='Determines whether document appears on the Resources page.')),
-                ('description', wagtail.wagtailcore.fields.RichTextField(blank=True)),
-                ('collection', models.ForeignKey(default=wagtail.wagtailcore.models.get_root_collection_id, on_delete=django.db.models.deletion.CASCADE, related_name='+', to='wagtailcore.Collection', verbose_name='collection')),
+                ('description', wagtail.core.fields.RichTextField(blank=True)),
+                ('collection', models.ForeignKey(default=wagtail.core.models.get_root_collection_id, on_delete=django.db.models.deletion.CASCADE, related_name='+', to='wagtailcore.Collection', verbose_name='collection')),
                 ('tags', taggit.managers.TaggableManager(blank=True, help_text=None, through='taggit.TaggedItem', to='taggit.Tag', verbose_name='tags')),
                 ('uploaded_by_user', models.ForeignKey(blank=True, editable=False, null=True, on_delete=django.db.models.deletion.SET_NULL, to=settings.AUTH_USER_MODEL, verbose_name='uploaded by user')),
             ],
             options={
                 'get_latest_by': 'created_at',
             },
-            bases=(wagtail.wagtailsearch.index.Indexed, models.Model),
+            bases=(wagtail.search.index.Indexed, models.Model),
         ),
         migrations.CreateModel(
             name='RTEIPage',
@@ -215,7 +215,7 @@ class Migration(migrations.Migration):
                 ('search_description_fr', models.TextField(blank=True, null=True, verbose_name='search description')),
                 ('search_description_es', models.TextField(blank=True, null=True, verbose_name='search description')),
                 ('search_description_ar', models.TextField(blank=True, null=True, verbose_name='search description')),
-                ('body', wagtail.wagtailcore.fields.RichTextField(blank=True)),
+                ('body', wagtail.core.fields.RichTextField(blank=True)),
             ],
             options={
                 'abstract': False,

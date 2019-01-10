@@ -3,8 +3,8 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext as _
 
-from wagtail.wagtailcore.models import Page
-from wagtail.wagtailsearch.models import Query
+from wagtail.core.models import Page
+from wagtail.search.models import Query
 
 from rtei.models import RteiDocument
 from rtei.data import get_countries_with_data

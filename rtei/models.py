@@ -13,14 +13,14 @@ from django.shortcuts import redirect
 from django.contrib import messages
 from django.conf import settings
 
-from wagtail.wagtailcore.models import Page, get_root_collection_id
-from wagtail.wagtailcore.fields import RichTextField
-from wagtail.wagtailadmin.edit_handlers import FieldPanel
-from wagtail.wagtaildocs.models import AbstractDocument
+from wagtail.core.models import Page, get_root_collection_id
+from wagtail.core.fields import RichTextField
+from wagtail.admin.edit_handlers import FieldPanel
+from wagtail.documents.models import AbstractDocument
 
 
-from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
-from wagtail.wagtailsearch import index
+from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail.search import index
 
 from modelcluster.fields import ParentalKey
 from modelcluster.tags import ClusterTaggableManager
