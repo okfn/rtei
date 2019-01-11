@@ -5,17 +5,28 @@ RTEI.map = (function() {
 
   var language = window.location.pathname.match(/^\/[a-zA-Z]{2}\//);
 
+  var stripes = new L.StripePattern({
+    angle: 45,
+	spaceOpacity: 1,
+	color: getBackgroundColor()
+  });
+
+  function getBackgroundColor() {
+	if (homepage) {
+	  return 'rgba(255,255,255,0.4)';
+	} else {
+	  return '#bebebd';
+	}
+  }
+
   // get color depending on the selected index
   function getColor(score) {
 
     var colors = RTEI.colors;
 
+
     if (!score || score == RTEI.insufficientData) {
-      if (homepage) {
-        return 'rgba(255,255,255,0.4)';
-      } else {
-        return '#bebebd';
-      }
+	  return getBackgroundColor()
     }
 
     var palette;
@@ -42,14 +53,24 @@ RTEI.map = (function() {
     } else {
       bColour = '#fff';
     }
-
-    return {
-      weight: 1,
-      opacity: 1,
-      color: bColour,
-      fillOpacity: 1,
-      fillColor: getColor(feature.properties[RTEI.map.currentIndex])
-    };
+    if (feature.properties[RTEI.map.currentIndex] == RTEI.insufficientData) {
+      _style = {
+        color: bColour,
+        fillPattern: stripes,
+        fillOpacity: 1,
+	    weight: 1
+      }
+    } else {
+      _style = {
+        weight: 1,
+        opacity: 1,
+        color: bColour,
+        fillOpacity: 1,
+        fillColor: getColor(feature.properties[RTEI.map.currentIndex]),
+        fillPattern: null
+      };
+    }
+    return _style;
   }
 
   function highlightFeature(e) {
@@ -148,6 +169,8 @@ RTEI.map = (function() {
         }).setView([55, 10], 1.5);
         L.control.zoom({position: 'topright'}).addTo(RTEI.map.map);
       }
+
+      stripes.addTo(RTEI.map.map);
 
       // TODO: remove once we have the final data
       var random = Boolean((location.search.split('random=')[1]||'').split('&')[0]);
