@@ -1,23 +1,25 @@
 {% load i18n rtei_tags %}
 
 {% for indicator in indicators %}
-  <li id="indicator_container_{{ indicator.code }}" class="indicator-container">
-    <div id="indicator_item_{{ indicator.code }}" class="indicator">
-      <span class="indicator-title">
-        <span class="code">{{ indicator.code }}</span>{% trans indicator.title %}
-      </span>
+  {% if indicator.show_in_menu is not False %}
+    <li id="indicator_container_{{ indicator.code }}" class="indicator-container">
+      <div id="indicator_item_{{ indicator.code }}" class="indicator">
+        <span class="indicator-title">
+          <span class="code">{{ indicator.code }}</span>{% trans indicator.title %}
+        </span>
 
-      {% if country_indicators %}
-      <span class="indicator-value">
-        {% get_indicator_value country_indicators indicator.code indicator.level as indicator_value %}
-        {{ indicator_value }}
-      </span>
+        {% if country_indicators %}
+        <span class="indicator-value">
+          {% get_indicator_value country_indicators indicator.code indicator.level as indicator_value %}
+          {{ indicator_value }}
+        </span>
+        {% endif %}
+      </div>
+      {% if indicator.children %}
+        <ul>
+        {% indicators_list indicator.children country_indicators is_theme %}
+        </ul>
       {% endif %}
-    </div>
-    {% if indicator.children %}
-      <ul>
-      {% indicators_list indicator.children country_indicators is_theme %}
-      </ul>
-    {% endif %}
-  </li>
+    </li>
+  {% endif %}
 {% endfor %}

@@ -23,6 +23,7 @@ OUTPUT_DIR = 'rtei/static/data/2017'
 COUNTRIES_FILE = 'data/countries.json'
 
 CORE_SHEET = 'All Questionnaires'
+MAIN_SCORES_SHEET = 'Country Comparisons'
 THEMES_SHEET = 'Cross-cutting Themes'
 THEMES_MAPPINGS_SHEET = 'Transversal Themes Mappings'
 
@@ -78,6 +79,56 @@ INDICATOR_TYPES = {
         'b': 'Adult',
     }
 }
+
+MAIN_INDICATORS = [
+    {
+        'code': '1',
+        'title': 'Governance',
+        'level': 1
+    },
+    {
+        'code': '2',
+        'title': 'Availability',
+        'level': 1
+    },
+    {
+        'code': '3',
+        'title': 'Accessibility',
+        'level': 1
+    },
+    {
+        'code': '4',
+        'title': 'Acceptability',
+        'level': 1
+    },
+    {
+        'code': '5',
+        'title': 'Adaptability',
+        'level': 1
+    },
+]
+
+
+EXTRA_INDICATORS = [
+    {
+        'code': 'S',
+        'title': 'Structure',
+        'level': 1,
+        'show_in_menu': False,
+    },
+    {
+        'code': 'P',
+        'title': 'Process',
+        'level': 1,
+        'show_in_menu': False,
+    },
+    {
+        'code': 'O',
+        'title': 'Outcome',
+        'level': 1,
+        'show_in_menu': False,
+    },
+]
 
 # Excel handler
 wb = None
@@ -379,57 +430,89 @@ def get_all_indicators(include_columns=False):
 
     indicators = get_indicators(include_columns=include_columns)
 
+    # Add extra indicators not defined in the core sheet
+    indicators = indicators + EXTRA_INDICATORS
+
     return indicators
 
 
-def get_main_scores(country_indicators):
+def get_main_scores():
     '''
-    Return the values for the level 1 indicators (ie 1, 2, 3, 4 and 5)
+    Return the values for the level 1 indicators (ie 1, 2, 3, 4 and 5),
+    SPO and global index for a particular country.
 
-    These are computed with the average of all level 2 indicators (eg 1.1,
-    1.2, etc) returned as a percentage, unless one of them is 'Insufficent data',
-    in which case the main score will also be INSUFFICIENT_DATA.
+    These are read directly from the MAIN_SCORES_SHEET
+
     '''
 
-    scores = {}
-    for code, value in country_indicators.iteritems():
-        if code == 'index':
-            continue
+    ws = wb[MAIN_SCORES_SHEET]
 
-        if code[:1] not in scores:
-            scores[code[:1]] = []
+    row_index = None
 
-        if (code.count('.') == 1 and not code[-1].isalpha()
-                and value is not None):
+    value_columns = [chr(i) for i in range(ord('B'), ord('J') + 1)]
 
-            if scores[code[:1]] == INSUFFICIENT_DATA:
+    indicators = MAIN_INDICATORS + EXTRA_INDICATORS
+
+    out = {}
+
+    # Get the country row
+    for cell in ws.columns[0]:
+
+        name = cell.value
+
+        if not name:
+            if cell.row > 3:
+                break
+            else:
                 continue
 
-            if isinstance(value, (int, float)):
-                scores[code[:1]].append(Decimal(
-                    value * 100 if value <= 1 else value))
-            elif isinstance(value, Decimal):
-                scores[code[:1]].append(value * 100 if value <= 1 else value)
-            elif value == INSUFFICIENT_DATA:
-                scores[code[:1]] = INSUFFICIENT_DATA
-    out = {}
-    for score, values in scores.iteritems():
-        if not values:
+        if name.lower() == 'country':
             continue
-        if values == INSUFFICIENT_DATA:
-            out[score] = values
-        else:
-            out[score] = Decimal(sum(values) / len(values))
+
+        country_code = get_country_code(name)
+        if not country_code:
+            print('Could not find a data row for country {}'.format(country_code))
+            continue
+
+        row_index = cell.row
+
+        out[country_code] = {}
+
+        # Read values for that row (columns B to J)
+        for column in value_columns:
+            indicator_cell = '{}{}'.format(column, 2)
+            indicator_title = ws[indicator_cell].value
+
+            # Get indicator code
+            if indicator_title.lower() == 'index score':
+                indicator_code = 'index'
+            else:
+                for indicator in indicators:
+                    if indicator_title.lower() == indicator['title'].lower():
+                        indicator_code = indicator['code']
+                        break
+            if not indicator_code:
+                print('Could not find code for indicator {}'.format(indicator_title))
+                continue
+
+            value_cell = '{}{}'.format(column, row_index)
+            value = get_numeric_cell_value(ws[value_cell])
+
+            out[country_code][indicator_code] = value * 100 if value <= 1 else value
 
     return out
 
-def add_main_scores(country_indicators):
+def add_main_scores(indicators):
     '''
     Add the values for the level 1 indicators (ie 1, 2, 3, 4 and 5) to the
     passed country_indicators dict.
-    '''
-    country_indicators.update(get_main_scores(country_indicators))
 
+    '''
+    main_scores = get_main_scores()
+    for k in indicators:
+        if k not in main_scores:
+            continue
+        indicators[k].update(main_scores[k])
 
 def get_full_score(country_indicators):
     '''
@@ -561,8 +644,7 @@ def indicators_per_country(max_level=4, derived=True, random_values=False,
                         value is not None and value not in ('No data', INSUFFICIENT_DATA)):
                     out[country_code][indicator['code']] = Decimal(
                         value * 100 if value <= 1 else value)
-        add_main_scores(out[country_code])
-        add_full_score(out[country_code])
+    add_main_scores(out)
 
     if random_values:
         for code, country in countries.iteritems():
@@ -822,10 +904,7 @@ def scores_per_country_as_json(output_dir=OUTPUT_DIR, random_values=False):
 
     out = indicators_per_country(max_level=2, derived=False,
                                  random_values=random_values)
-    for country in out.keys():
-
-        add_main_scores(out[country])
-        add_full_score(out[country])
+    add_main_scores(out)
 
     file_name = ('scores_per_country.json' if not random_values
                  else 'scores_per_country_random.json')
@@ -855,8 +934,8 @@ def scores_per_country_as_csv(output_dir=OUTPUT_DIR, random_values=False):
     for country in out.keys():
         if country in themes:
             out[country].update(themes[country])
-        add_main_scores(out[country])
-        add_full_score(out[country])
+        # TODO
+        #add_main_scores(country, out[country])
         out[country]['iso2'] = country
 
         out_list.append(out[country])
@@ -925,9 +1004,9 @@ def c3_ready_json(output_dir=OUTPUT_DIR, random_values=False):
         for code, value in values.iteritems():
             if code == 'index':
                 continue
-            if '.' not in code:
+            if '.' not in code and value is not INSUFFICIENT_DATA:
                 scores['main'].append(value)
-            else:
+            elif value is not INSUFFICIENT_DATA:
                 scores[code[:1]].append(value)
         for code, value in values.iteritems():
             if code == 'index' or isinstance(value, basestring):

@@ -7,25 +7,28 @@
   </li>
   {% endif %}
   {% for indicator in indicators %}
-  <li>
-  <input type="radio" name="indicator"
-         value="{% if themes %}t{% endif %}{{ indicator.code }}"
-         id="indicator_{% if themes %}t{% endif %}{{ indicator.code }}"/>
-  <label for="indicator_{% if themes %}t{% endif %}{{ indicator.code }}">{% trans indicator.title %}</label>
-    {% if show_second_level %}
-    <h6>{% trans "Sub-categories" %}</h6>
-    <ul class="subindicators">
-      {% for subindicator in indicator.children %}
-        <li>
-          <input type="radio" name="indicator"
-                 value="{% if themes %}t{% endif %}{{ subindicator.code }}"
-                 id="{% if themes %}t{% endif %}indicator_{{ subindicator.code }}"/>
-          <label for="{% if themes %}t{% endif %}indicator_{{ subindicator.code }}">{% trans subindicator.title %}</label>
-        </li>
-      {% endfor %}
-    </ul>
+    {% if indicator.show_in_menu is not False %}
+      <li>
+      <input type="radio" name="indicator"
+             value="{% if themes %}t{% endif %}{{ indicator.code }}"
+             id="indicator_{% if themes %}t{% endif %}{{ indicator.code }}"/>
+      <label for="indicator_{% if themes %}t{% endif %}{{ indicator.code }}">{% trans indicator.title %}</label>
+        {% if show_second_level %}
+        <h6>{% trans "Sub-categories" %}</h6>
+        <ul class="subindicators">
+          {% for subindicator in indicator.children %}
+            <li>
+              <input type="radio" name="indicator"
+                     value="{% if themes %}t{% endif %}{{ subindicator.code }}"
+                     id="{% if themes %}t{% endif %}indicator_{{ subindicator.code }}"/>
+              <label for="{% if themes %}t{% endif %}indicator_{{ subindicator.code }}">{% trans subindicator.title %}</label>
+            </li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </li>
+
     {% endif %}
-  </li>
   {% endfor %}
 </ul>
 
