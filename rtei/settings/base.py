@@ -28,21 +28,23 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 INSTALLED_APPS = [
     # wagtail_modeltranslation needs to be before apps due to be translated.
     'wagtail_modeltranslation',
+    'wagtail_modeltranslation.makemigrations',
+    'wagtail_modeltranslation.migrate',
 
     'rtei',
     'search',
 
-    'wagtail.wagtailforms',
-    'wagtail.wagtailredirects',
-    'wagtail.wagtailembeds',
-    'wagtail.wagtailsites',
-    'wagtail.wagtailusers',
-    'wagtail.wagtailsnippets',
-    'wagtail.wagtaildocs',
-    'wagtail.wagtailimages',
-    'wagtail.wagtailsearch',
-    'wagtail.wagtailadmin',
-    'wagtail.wagtailcore',
+    'wagtail.contrib.forms',
+    'wagtail.contrib.redirects',
+    'wagtail.embeds',
+    'wagtail.sites',
+    'wagtail.users',
+    'wagtail.snippets',
+    'wagtail.documents',
+    'wagtail.images',
+    'wagtail.search',
+    'wagtail.admin',
+    'wagtail.core',
 
     'wagtail.contrib.settings',
     'wagtail_feeds',
@@ -66,6 +68,7 @@ INSTALLED_APPS = [
 MIDDLEWARE_CLASSES = [
     'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -73,10 +76,9 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
-    'django.middleware.locale.LocaleMiddleware',
 
-    'wagtail.wagtailcore.middleware.SiteMiddleware',
-    'wagtail.wagtailredirects.middleware.RedirectMiddleware'
+    'wagtail.core.middleware.SiteMiddleware',
+    'wagtail.contrib.redirects.middleware.RedirectMiddleware'
 ]
 
 ROOT_URLCONF = 'rtei.urls'
@@ -179,7 +181,7 @@ WAGTAILDOCS_DOCUMENT_MODEL = 'rtei.RteiDocument'
 
 WAGTAILSEARCH_BACKENDS = {
     'default': {
-        'BACKEND': 'wagtail.wagtailsearch.backends.elasticsearch2',
+        'BACKEND': 'wagtail.search.backends.elasticsearch2',
         'URLS': ['http://localhost:9200'],
         'INDEX': 'wagtail',
         'TIMEOUT': 5,

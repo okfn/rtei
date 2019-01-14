@@ -92,7 +92,7 @@ def breadcrumbs(context):
 @register.simple_tag
 def get_indicator_value(dictionary, code, level):
     value = dictionary.get(code, '')
-    if isinstance(value, basestring):
+    if isinstance(value, str):
         value = _(value)
     elif value:
         if level < 3:

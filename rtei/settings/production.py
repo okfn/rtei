@@ -71,7 +71,7 @@ LOGGING = {
 
 WAGTAILSEARCH_BACKENDS = {
     'default': {
-        'BACKEND': 'wagtail.wagtailsearch.backends.elasticsearch2',
+        'BACKEND': 'wagtail.search.backends.elasticsearch2',
         'URLS': [os.environ.get('ELASTICSEARCH_URL')],
         'INDEX': 'wagtail',
         'TIMEOUT': 5,

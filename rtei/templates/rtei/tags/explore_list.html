@@ -1,7 +1,8 @@
+{% load wagtail_modeltranslation %}
 {% load i18n wagtailcore_tags %}
 
 <div>
-  <a href="{% slugurl 'map' %}">
+  <a href="{% slugurl_trans 'map' %}">
     {% include "icons/map.svg" %}
     <h2>{% trans "Explore the Map" %}</h2>
     <p>
@@ -11,7 +12,7 @@
 </div>
 
 <div>
-  <a href="{% slugurl 'rtei-theme' %}">
+  <a href="{% slugurl_trans 'rtei-theme' %}">
     {% include "icons/bars.svg" %}
     <h2>{% trans "RTEI by Theme" %}</h2>
     <p>
@@ -21,7 +22,7 @@
 </div>
 
 <div>
-  <a href="{% slugurl 'rtei-country' %}">
+  <a href="{% slugurl_trans 'rtei-country' %}">
     {% include "icons/earth.svg" %}
     <h2>{% trans "RTEI by Country" %}</h2>
     <p>
@@ -31,7 +32,7 @@
 </div>
 
 <div>
-  <a href="{% slugurl 'resources' %}">
+  <a href="{% slugurl_trans 'resources' %}">
     {% include "icons/download.svg" %}
     <h2>{% trans "Download the Data" %}</h2>
     <p>
