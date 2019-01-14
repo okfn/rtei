@@ -1,4 +1,4 @@
-from __future__ import unicode_literals
+
 import sys
 import json
 from collections import OrderedDict
@@ -152,8 +152,8 @@ def get_country_context(context, country_code, year):
             get_chart_labels(context['indicators'], context['themes']))
 
     context['available_countries'] = OrderedDict(
-        sorted({code: data.get_country_name(code) for code, c
-                in data.get_scores_per_country(year).iteritems()}.items(),
+        sorted(list({code: data.get_country_name(code) for code, c
+                in data.get_scores_per_country(year).items()}.items()),
                key=lambda t: t[1]))
 
 

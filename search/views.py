@@ -31,7 +31,7 @@ def search(request):
     if search_query:
 
         search_results_countries = []
-        for code, name in get_countries_with_data().iteritems():
+        for code, name in get_countries_with_data().items():
             if name.lower().startswith(search_query.lower()):
                 search_results_countries.append(CountryResult(code, name))
 
