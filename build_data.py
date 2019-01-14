@@ -514,23 +514,6 @@ def add_main_scores(indicators):
             continue
         indicators[k].update(main_scores[k])
 
-def get_full_score(country_indicators):
-    '''
-    Return an object {'index':<num>}, where number is the computed average of
-    all level 1 indicators (ie 1, 2, 3, 4 and 5) returned as a percentage.
-    '''
-    values = [country_indicators[str(code)] for code in xrange(1, 6)
-              if str(code) in country_indicators
-              and country_indicators[str(code)] != INSUFFICIENT_DATA]
-    return {'index': Decimal(sum(values) / len(values))}
-
-
-def add_full_score(country_indicators):
-    '''
-    Add the full overall score to the country indicators with the `index` key.
-    '''
-    country_indicators.update(get_full_score(country_indicators))
-
 
 def indicators_per_country(max_level=4, derived=True, random_values=False,
                            responses=True):
@@ -1011,7 +994,9 @@ def c3_ready_json(output_dir=OUTPUT_DIR, random_values=False):
         for code, value in values.iteritems():
             if code == 'index' or isinstance(value, basestring):
                 continue
-            if '.' not in code:
+            if code in ('S', 'P', 'O'):
+                item[code] = value
+            elif '.' not in code:
                 item[code] = value / Decimal(len(scores['main']))
             else:
                 item[code] = value / Decimal(len(scores[code[:1]]))
@@ -1019,8 +1004,8 @@ def c3_ready_json(output_dir=OUTPUT_DIR, random_values=False):
         # Add Transversal themes
         item.update(themes[country_code])
 
-        # Add full score
-        item.update(get_full_score(values))
+        # Add main index
+        item['index'] = values['index']
 
         # Add country name
         item['name'] = get_country_name(country_code)

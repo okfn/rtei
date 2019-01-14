@@ -33,7 +33,11 @@ RTEI.charts = (function() {
         value: function (value, ratio, id, index) {
           if (id.substring(0, 1) != 't') {
             if (id.indexOf('.') === -1) {
-              return RTEI.formatScore(value * RTEI.charts.categoriesLength.index);
+              if (id == 'O' || id == 'P' || id == 'S') {
+                return RTEI.formatScore(value)
+              } else {
+                return RTEI.formatScore(value * RTEI.charts.categoriesLength.index);
+              }
             } else {
               var key = id.split('.')[0];
               return RTEI.formatScore(value * RTEI.charts.categoriesLength[key]);
@@ -125,7 +129,7 @@ RTEI.charts = (function() {
 
       var values = [];
       if (code == 'index') {
-        values = ['1', '2', '3', '4', '5'];
+        values = ['S', 'P', 'O'];
       } else if (code.substring(0, 1) != 't') {
         for (var key in config.data.names) {
           if (config.data.names.hasOwnProperty(key) &&
