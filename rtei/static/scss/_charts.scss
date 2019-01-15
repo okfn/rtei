@@ -10,3 +10,21 @@
     margin-left: -5px;
   }
 }
+
+#chart-insufficient-data {
+  display: none;
+  z-index: 10;
+  position: absolute;
+  margin-top: 7px;
+  margin-left: 25%;
+  border-style: solid;
+  border: 1px solid $base-border-color;
+  padding: inherit;
+
+  h5 {
+    margin-bottom: 5px;
+  }
+  p {
+    color: $base-font-color;
+  }
+}

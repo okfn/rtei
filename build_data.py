@@ -987,19 +987,25 @@ def c3_ready_json(output_dir=OUTPUT_DIR, random_values=False):
         for code, value in values.iteritems():
             if code == 'index':
                 continue
-            if '.' not in code and value is not INSUFFICIENT_DATA:
+            if '.' not in code:
                 scores['main'].append(value)
             elif value is not INSUFFICIENT_DATA:
                 scores[code[:1]].append(value)
         for code, value in values.iteritems():
-            if code == 'index' or isinstance(value, basestring):
+            if code == 'index':
                 continue
             if code in ('S', 'P', 'O'):
                 item[code] = value
             elif '.' not in code:
-                item[code] = value / Decimal(len(scores['main']))
+                if value == INSUFFICIENT_DATA:
+                    item[code] = value
+                else:
+                    item[code] = value / Decimal(len(scores['main']))
             else:
-                item[code] = value / Decimal(len(scores[code[:1]]))
+                if value == INSUFFICIENT_DATA:
+                    item[code] = value
+                else:
+                    item[code] = value / Decimal(len(scores[code[:1]]))
 
         # Add Transversal themes
         item.update(themes[country_code])

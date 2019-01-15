@@ -31,6 +31,9 @@ RTEI.charts = (function() {
     tooltip: {
       format: {
         value: function (value, ratio, id, index) {
+          if (value === 0.01) {
+            return RTEI.insufficientData;
+          }
           if (id.substring(0, 1) != 't') {
             if (id.indexOf('.') === -1) {
               if (id == 'O' || id == 'P' || id == 'S') {
@@ -131,6 +134,38 @@ RTEI.charts = (function() {
       if (code == 'index') {
         values = ['S', 'P', 'O'];
       } else if (code.substring(0, 1) != 't') {
+        noData = [];
+        for (var i = 0; i < config.data.json.length; i++) {
+          country = config.data.json[i];
+
+          if (country[code] == RTEI.insufficientData || country[code] == 0.01) {
+            // All theme (1,2,3,4) has insufficient data
+            noData.push(country['name']);
+
+            for (var key in config.data.names) {
+              if (key.substring(0, 1) == code) {
+                country[key] = 0.01;
+              }
+            }
+          } else {
+            for (var key in config.data.names) {
+              if (key.substring(0, 1) == code) {
+                if (country[key] == RTEI.insufficientData) {
+                  country[key] = 0.01;
+                }
+              }
+            }
+          }
+        }
+        if (noData.length == config.data.json.length) {
+          // No data available for all countries, don't build the graph
+          config.tooltip.show = false;
+          $('#chart-insufficient-data').show();
+        } else {
+          config.tooltip.show = true;
+          $('#chart-insufficient-data').hide();
+        }
+
         for (var key in config.data.names) {
           if (config.data.names.hasOwnProperty(key) &&
               key.substring(0, 1) == code &&
