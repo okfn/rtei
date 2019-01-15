@@ -63,9 +63,14 @@ $(document).ready(function(){
       var label = $('label[for="' + this.id + '"]').text();
       $('#current-indicator-label').text(label);
 
-      var value = (this.value !== 'index' && this.value.substring(0, 1) != 't') ?
+      var value;
+      if (chartData[0][this.value] === 0.01 || chartData[0][this.value] === RTEI.insufficientData) {
+        value = RTEI.insufficientData;
+      } else {
+        value = (this.value !== 'index' && this.value.substring(0, 1) != 't') ?
         (chartData[0][this.value] * RTEI.country.chart.groups()[0].length) :
         chartData[0][this.value];
+      }
       $('#current-indicator-value').text(RTEI.formatScore(value));
       RTEI.showIndicators(this.value);
       RTEI.charts.updateChart('country', this.value);
