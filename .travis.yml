@@ -1,6 +1,6 @@
 language: python
 python:
-- 2.7
+- 3.6
 sudo: required
 install: ./bin/travis-setup
 before_script:

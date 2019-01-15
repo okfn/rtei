@@ -1,4 +1,4 @@
-from __future__ import unicode_literals
+
 import sys
 import json
 from collections import OrderedDict
@@ -13,14 +13,14 @@ from django.shortcuts import redirect
 from django.contrib import messages
 from django.conf import settings
 
-from wagtail.wagtailcore.models import Page, get_root_collection_id
-from wagtail.wagtailcore.fields import RichTextField
-from wagtail.wagtailadmin.edit_handlers import FieldPanel
-from wagtail.wagtaildocs.models import AbstractDocument
+from wagtail.core.models import Page, get_root_collection_id
+from wagtail.core.fields import RichTextField
+from wagtail.admin.edit_handlers import FieldPanel
+from wagtail.documents.models import AbstractDocument
 
 
-from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
-from wagtail.wagtailsearch import index
+from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail.search import index
 
 from modelcluster.fields import ParentalKey
 from modelcluster.tags import ClusterTaggableManager
@@ -152,8 +152,8 @@ def get_country_context(context, country_code, year):
             get_chart_labels(context['indicators'], context['themes']))
 
     context['available_countries'] = OrderedDict(
-        sorted({code: data.get_country_name(code) for code, c
-                in data.get_scores_per_country(year).iteritems()}.items(),
+        sorted(list({code: data.get_country_name(code) for code, c
+                in data.get_scores_per_country(year).items()}.items()),
                key=lambda t: t[1]))
 
 

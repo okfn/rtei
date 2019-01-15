@@ -79,6 +79,6 @@ def get_country_name(country_code):
         code_type = 'iso3'
 
     return next(
-        (c['name'] for code, c in get_countries().iteritems()
+        (c['name'] for code, c in get_countries().items()
          if c[code_type] == country_code.upper()),
         None)

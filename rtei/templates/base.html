@@ -76,7 +76,7 @@
 {#               {% for lang_code, lang_name in languages  %} #}
 {#                 {% language lang_code %} #}
 {#                 <li {% if lang_code == current_lang_code %}class="active"{% endif %}> #}
-{#                   <a href="{% slugurl page.slug %}">{{ lang_code|upper }}</a> #}
+{#                   <a href="{% slugurl_trans page.slug %}">{{ lang_code|upper }}</a> #}
 {#                 </li> #}
 {#                 {% endlanguage %} #}
 {#               {% endfor %} #}
