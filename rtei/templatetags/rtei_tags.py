@@ -94,7 +94,7 @@ def get_indicator_value(dictionary, code, level):
     value = dictionary.get(code, '')
     if isinstance(value, str):
         value = _(value)
-    elif value:
+    elif value and level:
         if level < 3:
             value = int(value)
         else:
