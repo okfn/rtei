@@ -31,7 +31,7 @@
          {% if not country_code %}
             <option value="">{% trans "Select a country ..." %}</option>
          {% endif %}
-         {% for code, name in available_countries.iteritems %}
+         {% for code, name in available_countries.items %}
          <option value="{{ code }}" {% if code == country_code %}selected="selected"{% endif%}>{{ name }}</option>
          {% endfor %}
         </select>
