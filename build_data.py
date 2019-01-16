@@ -198,12 +198,16 @@ def get_level_for_indicator(code):
         # 1.2
         level = 2
     elif code.count('.') == 2:
-        # 1.3.4
-        level = 3
-
+        try:
+            int(code.replace('.', ''))
+            # 1.3.4
+            level = 3
+        except ValueError:
+            # 1.3.4a
+            level = 4
     elif code.count('.') == 3:
-            # 1.5.6a or 1.5.6a_dis
-        level = 4
+            # 1.5.6a.a
+        level = 5
     else:
         raise ValueError('Wrong indicator code: {0}'.format(code))
 
