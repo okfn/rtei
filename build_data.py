@@ -156,7 +156,7 @@ def get_country_code(country_name, code_type='iso2'):
     '''
     if not country_name:
         return None
-    for code, country in countries.iteritems():
+    for code, country in countries.items():
         if (country_name.lower() == country['name'].lower() or
                 country_name.lower() in [x.lower() for x in country.get('other_names', [])]):
             return country[code_type]
@@ -173,7 +173,7 @@ def get_country_name(country_code):
         code_type = 'iso3'
 
     return next(
-        (c['name'] for code, c in countries.iteritems()
+        (c['name'] for code, c in countries.items()
          if c[code_type] == country_code.upper()),
         None)
 
@@ -255,7 +255,7 @@ def parse_cell(value, theme=False):
         title = value \
             .replace(code + ':', '') \
             .replace('C ', '') \
-            .replace('\u00a0', '') \
+            .replace('\\u00a0', '') \
             .replace(code, '') \
             .strip('.') \
             .strip()
@@ -266,7 +266,7 @@ def parse_cell(value, theme=False):
         title = 'Year'
         level = 4
     elif any('_' + modifier.replace('-', '_') in value.split()[0]
-             for modifier in MODIFIERS.keys()):
+             for modifier in list(MODIFIERS.keys())):
         # This is a derived indicator, we compute the title automatically
         # in the form:
         # Indicator type: Modifer - Modifier
@@ -280,7 +280,7 @@ def parse_cell(value, theme=False):
         if indicator_type:
             title = '{0}: {1}'.format(indicator_type, ' - '.join(title_parts))
         else:
-            print 'Warning, could not get indicator type for {0}'.format(value)
+            print('Warning, could not get indicator type for {0}'.format(value))
             title = ' - '.join(title_parts)
 
         code = value.split()[0]
@@ -288,7 +288,7 @@ def parse_cell(value, theme=False):
 
     # Replace fake apostrophes
     if title:
-        title = title.replace(u'\u2019', '\'')
+        title = title.replace('\u2019', '\'')
 
     return code, title, level
 
@@ -313,7 +313,7 @@ def get_themes(include_rows=False, include_indicators=False):
 
     codes_done = []
     theme = None
-    for i in xrange(2, len(ws.rows) + 1):
+    for i in range(2, len(ws.rows) + 1):
         cell = ws.cell(row=i, column=1)
         if not cell.value:
             continue
@@ -471,7 +471,7 @@ def get_main_scores():
 
         country_code = get_country_code(name)
         if not country_code:
-            print('Could not find a data row for country {}'.format(country_code))
+            print(('Could not find a data row for country {}'.format(country_code)))
             continue
 
         row_index = cell.row
@@ -492,13 +492,14 @@ def get_main_scores():
                         indicator_code = indicator['code']
                         break
             if not indicator_code:
-                print('Could not find code for indicator {}'.format(indicator_title))
+                print(('Could not find code for indicator {}'.format(indicator_title)))
                 continue
 
             value_cell = '{}{}'.format(column, row_index)
             value = get_numeric_cell_value(ws[value_cell])
 
-            out[country_code][indicator_code] = value * 100 if value <= 1 else value
+
+            out[country_code][indicator_code] = value * 100 if not isinstance(value, str) and value <= 1 else value
 
     return out
 
@@ -581,14 +582,14 @@ def indicators_per_country(max_level=4, derived=True, random_values=False,
     ws_core = wb[CORE_SHEET]
     country_codes = []
 
-    for i in xrange(5, len(ws_core.rows) + 1):
+    for i in range(5, len(ws_core.rows) + 1):
         country_name = ws_core['A' + str(i)].value
         if not country_name:
             continue
         country_code = get_country_code(country_name)
         if not country_code:
-            print 'Warning: Could not get country code for {0}'.format(
-                country_name)
+            print('Warning: Could not get country code for {0}'.format(
+                country_name))
         country_codes.append(country_code)
         out[country_code] = OrderedDict()
 
@@ -630,7 +631,7 @@ def indicators_per_country(max_level=4, derived=True, random_values=False,
     add_main_scores(out)
 
     if random_values:
-        for code, country in countries.iteritems():
+        for code, country in countries.items():
             if country['iso2'] not in country_codes and country['iso2']:
                 out[country['iso2']] = OrderedDict()
                 for indicator in indicators:
@@ -681,8 +682,8 @@ def themes_per_country(prefix=None, random_values=False):
             break
         country_code = get_country_code(country_name)
         if not country_code:
-            print 'Warning: Could not get country code for {0}'.format(
-                country_name)
+            print('Warning: Could not get country code for {0}'.format(
+                country_name))
         available_countries.append((country_code, letter))
         out[country_code] = OrderedDict()
 
@@ -694,7 +695,7 @@ def themes_per_country(prefix=None, random_values=False):
 
                 value = get_numeric_cell_value(ws[cell])
 
-                if isinstance(value, basestring):
+                if isinstance(value, str):
                     value = None
 
                 key = str(prefix) + theme['code'] if prefix else theme['code']
@@ -710,7 +711,7 @@ def themes_per_country(prefix=None, random_values=False):
 
     if random_values:
         country_codes = [c[0] for c in available_countries]
-        for code, country in countries.iteritems():
+        for code, country in countries.items():
             if country['iso2'] not in country_codes and country['iso2']:
                 out[country['iso2']] = OrderedDict()
                 for theme in themes:
@@ -875,7 +876,7 @@ def indicators_per_country_as_json(one_file=True, output_dir=OUTPUT_DIR):
         with open(output_file, 'w') as f:
             f.write(json.dumps(out))
     else:
-        for country_code in out.keys():
+        for country_code in list(out.keys()):
             output_file = os.path.join(output_dir,
                                        '{0}.json'.format(country_code))
 
@@ -914,7 +915,7 @@ def scores_per_country_as_csv(output_dir=OUTPUT_DIR, random_values=False):
     themes = themes_per_country(prefix='t', random_values=random_values)
 
     out_list = []
-    for country in out.keys():
+    for country in list(out.keys()):
         if country in themes:
             out[country].update(themes[country])
         # TODO
@@ -928,7 +929,7 @@ def scores_per_country_as_csv(output_dir=OUTPUT_DIR, random_values=False):
     output_file = os.path.join(output_dir, file_name)
 
     with open(output_file, 'w') as f:
-        w = csv.DictWriter(f, out_list[0].keys())
+        w = csv.DictWriter(f, list(out_list[0].keys()))
         w.writeheader()
         w.writerows(out_list)
 
@@ -978,20 +979,20 @@ def c3_ready_json(output_dir=OUTPUT_DIR, random_values=False):
     themes = themes_per_country(prefix='t', random_values=random_values)
 
     out = []
-    for country_code, values in indicators.iteritems():
+    for country_code, values in indicators.items():
         item = OrderedDict()
 
         # Normalize scores
-        scores = {str(n): [] for n in xrange(1, 6)}
+        scores = {str(n): [] for n in range(1, 6)}
         scores['main'] = []
-        for code, value in values.iteritems():
+        for code, value in values.items():
             if code == 'index':
                 continue
             if '.' not in code:
                 scores['main'].append(value)
             elif value is not INSUFFICIENT_DATA:
                 scores[code[:1]].append(value)
-        for code, value in values.iteritems():
+        for code, value in values.items():
             if code == 'index':
                 continue
             if code in ('S', 'P', 'O'):
@@ -1074,10 +1075,10 @@ def translation_strings():
     out.append('# Responses')
     responses_done = []
     year = re.compile(r'.*\(20.*\)')
-    for country, response_values in responses.iteritems():
-        for key, value in response_values.iteritems():
+    for country, response_values in responses.items():
+        for key, value in response_values.items():
             if (value not in responses_done and
-                    isinstance(value, basestring) and
+                    isinstance(value, str) and
                     not year.match(value)):
                 out.append(translatable_string(value))
                 responses_done.append(value)
@@ -1091,7 +1092,7 @@ def countries_with_data(output_dir=OUTPUT_DIR):
     data_available = indicators_per_country(max_level=2, derived=False)
 
     out = {}
-    for country_code in data_available.keys():
+    for country_code in list(data_available.keys()):
         out[country_code] = get_country_name(country_code)
 
     output_file = os.path.join(output_dir, 'countries_with_data.json')
@@ -1175,4 +1176,4 @@ The available outputs are:
     elif args.type == 'translation-strings':
         translation_strings()
     else:
-        print 'Unknown output type'
+        print('Unknown output type')
