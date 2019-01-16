@@ -348,7 +348,8 @@ class RteiDocument(AbstractDocument, index.Indexed):
         blank=True)
 
     file = models.FileField(
-        upload_to='documents', verbose_name=_('file'), blank=True,
+        upload_to='documents', verbose_name=_('file'), blank=True, null=True,
+        default='empty.txt',
         help_text="Use this to upload a file and list it as a resource")
     external_url = models.CharField(
         validators=[URLValidator(message=_('Must be a valid URL'))],
