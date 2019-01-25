@@ -31,7 +31,7 @@ RTEI.charts = (function() {
     tooltip: {
       format: {
         value: function (value, ratio, id, index) {
-          if (value === 0.01) {
+          if (RTEI.charts.isInsufficientDataValue(value)) {
             return RTEI.insufficientData;
           }
           if (id.substring(0, 1) != 't') {
@@ -67,6 +67,10 @@ RTEI.charts = (function() {
   return {
 
     categoriesLength: {},
+
+    isInsufficientDataValue: function(value) {
+      return (value == RTEI.insufficientData || (value % 1).toFixed(5) == '0.12345');
+    },
 
     initChartConfig: function(chartId, data, customChartConfig, names) {
 
@@ -107,6 +111,9 @@ RTEI.charts = (function() {
           }
         }
         config.data.colors = colors;
+        config.data.color = function(color, d) {
+          return (RTEI.charts.isInsufficientDataValue(d.value)) ? '#bebebd' : color;
+        }
       }
 
       register[chartId] = {};
@@ -138,21 +145,24 @@ RTEI.charts = (function() {
         for (var i = 0; i < config.data.json.length; i++) {
           country = config.data.json[i];
 
-          if (country[code] == RTEI.insufficientData || country[code] == 0.01) {
+          if (RTEI.charts.isInsufficientDataValue(country[code])) {
             // All theme (1,2,3,4) has insufficient data
             noData.push(country['name']);
 
             for (var key in config.data.names) {
               if (key.substring(0, 1) == code) {
-                country[key] = 0.01;
+                country[key] = 100.12345;
               }
             }
           } else {
             for (var key in config.data.names) {
               if (key.substring(0, 1) == code) {
-                if (country[key] == RTEI.insufficientData) {
-                  country[key] = 0.01;
-                }
+                if (RTEI.charts.isInsufficientDataValue(country[key])) {
+                  country[key] = Math.round(100 / RTEI.charts.categoriesLength[key.substring(0, 1)]) + 0.12345;
+                } else {
+                  country[key] = Math.round(country[key]);
+				}
+
               }
             }
           }
