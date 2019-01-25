@@ -138,7 +138,9 @@ RTEI.charts = (function() {
       }
 
       var values = [];
-      if (code == 'index') {
+      if (code == 'index' && RTEI.year < 2017) {
+        values = ['1', '2', '3', '4', '5'];
+      } else if (code == 'index') {
         values = ['S', 'P', 'O'];
       } else if (code.substring(0, 1) != 't') {
         noData = [];
