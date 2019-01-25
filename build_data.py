@@ -17,8 +17,8 @@ from decimal import Decimal
 from openpyxl import load_workbook
 
 # Change as appropiate
-INPUT_FILE = 'rtei/static/data/rtei_data_2017.xlsx'
-OUTPUT_DIR = 'rtei/static/data/2017'
+INPUT_FILE = 'rtei/static/data/rtei_data_2018.xlsx'
+OUTPUT_DIR = 'rtei/static/data/2018'
 
 COUNTRIES_FILE = 'data/countries.json'
 
