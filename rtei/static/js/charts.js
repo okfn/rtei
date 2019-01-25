@@ -175,7 +175,9 @@ RTEI.charts = (function() {
         }
       } else {
         values = [code]
-      }
+        config.tooltip.show = true;
+        $('#chart-insufficient-data').hide();
+       }
       values.sort()
 
       var customConfig = $.extend(true, {}, config, {
