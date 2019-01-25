@@ -76,7 +76,11 @@
   <div id="desc_label_5.4">{% trans "Out-of-school Children" %}</div>
 
 
-  <div id="desc_index">{% trans "The overall index score is a general indication of progress towards the right to education in a country." %}</div>
+  {% if year == '2015' or year == '2016' %}
+    <div id="desc_index">{% trans "The overall index score is a general indication of progress towards the right to education in a country." %}</div>
+  {% else %}
+    <div id="desc_index">{% trans "The overall index score is a general indication of progress towards the right to education in a country. It is based on a composite of structural (legal and policy commitments), process (implementation of those commitments), and outcome (citizen enjoyment of the right to education) progress." %}</div>
+  {% endif %}
   <div id="desc_1">{% trans "The legal structure of education in a State. This includes State ratification of international declarations or treaties, education financing, and education standards and regulations." %}</div>
   <div id="desc_1.1">{% trans "Indicates whether a country has ratified international and regional treaties associated with the right to education." %}</div>
   <div id="desc_1.2">{% trans "Indicates whether the right to education at all levels is enshrined in national law and whether individuals have the liberty to direct the education of their children." %}</div>

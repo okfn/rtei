@@ -6,7 +6,11 @@
   <span class="text">
     <h2 id="current-indicator-label">{% trans "Overall Index" %}</h2>
     <span id="current-indicator-desc">
-        {% trans "The overall index score is a general indication of progress towards the right to education in a country." %}
+        {% if year == '2015' or year == '2016' %}
+          {% trans "The overall index score is a general indication of progress towards the right to education in a country." %}
+        {% else %}
+          {% trans "The overall index score is a general indication of progress towards the right to education in a country. It is based on a composite of structural (legal and policy commitments), process (implementation of those commitments), and outcome (citizen enjoyment of the right to education) progress." %}
+        {% endif %}
     </span>
   </span>
 
