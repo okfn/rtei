@@ -1123,16 +1123,6 @@ body {
   font-size: 0.8em;
   margin-left: -5px; }
 
-#chart-insufficient-data {
-  display: none;
-  text-align: center;
-  padding-bottom: inherit; }
-  #chart-insufficient-data .title {
-    font-weight: bold;
-    color: #af202f; }
-  #chart-insufficient-data p {
-    color: #3b3b3b; }
-
 body .years a {
   font-size: 1.5em;
   padding: 10px; }

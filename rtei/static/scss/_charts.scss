@@ -10,19 +10,3 @@
     margin-left: -5px;
   }
 }
-
-#chart-insufficient-data {
-
-  display: none;
-  text-align: center;
-  padding-bottom: inherit;
-
-
-  .title {
-	font-weight: bold;
-    color: #af202f;
-  }
-  p {
-    color: $base-font-color;
-  }
-}

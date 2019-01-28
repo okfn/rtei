@@ -31,6 +31,9 @@ RTEI.charts = (function() {
     tooltip: {
       format: {
         value: function (value, ratio, id, index) {
+          if (id == RTEI.insufficientData) {
+            return '';
+          }
           if (RTEI.charts.isInsufficientDataValue(value)) {
             return RTEI.insufficientData;
           }
@@ -110,6 +113,7 @@ RTEI.charts = (function() {
             }
           }
         }
+		colors[RTEI.insufficientData] = '#bebebd';
         config.data.colors = colors;
         config.data.color = function(color, d) {
           return (RTEI.charts.isInsufficientDataValue(d.value)) ? '#bebebd' : color;
@@ -159,12 +163,8 @@ RTEI.charts = (function() {
           if (RTEI.charts.isInsufficientDataValue(country[code])) {
             // All theme (1,2,3,4) has insufficient data
             noData.push(country['name']);
-
-            for (var key in config.data.names) {
-              if (key.substring(0, 1) == code) {
-                country[key] = 100.123456789;
-              }
-            }
+			country[RTEI.insufficientData] = 100.123456789;
+			values = [RTEI.insufficientData];
           } else {
             for (var key in config.data.names) {
               if (key.substring(0, 1) == code) {
@@ -175,27 +175,18 @@ RTEI.charts = (function() {
             }
           }
         }
-        if (noData.length == config.data.json.length) {
-          // No data available for all countries, don't build the graph
-          config.tooltip.show = false;
-          $('#chart-insufficient-data').show();
-        } else {
-          config.tooltip.show = true;
-          $('#chart-insufficient-data').hide();
-        }
-
-        for (var key in config.data.names) {
-          if (config.data.names.hasOwnProperty(key) &&
-            key.substring(0, 1) == code &&
-            key.indexOf('.') !== -1) {
-            values.push(key);
+        if (values.indexOf(RTEI.insufficientData) === -1) {
+          for (var key in config.data.names) {
+            if (config.data.names.hasOwnProperty(key) &&
+              key.substring(0, 1) == code &&
+              key.indexOf('.') !== -1) {
+              values.push(key);
+            }
           }
-        }
+		}
       } else {
         values = [code]
-        config.tooltip.show = true;
-        $('#chart-insufficient-data').hide();
-       }
+      }
 
       return values;
     },
