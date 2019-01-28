@@ -1000,7 +1000,11 @@ def c3_ready_json(output_dir=OUTPUT_DIR, random_values=False):
             if code == 'index':
                 continue
             if code in ('S', 'P', 'O'):
-                item[code] = value
+                if code == 'O':
+                    item[code] = value * Decimal(0.7)
+                else:
+                    item[code] = value * Decimal(0.15)
+
             elif '.' not in code:
                 if value == INSUFFICIENT_DATA:
                     item[code] = value

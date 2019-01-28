@@ -40,7 +40,11 @@ RTEI.charts = (function() {
           if (id.substring(0, 1) != 't') {
             if (id.indexOf('.') === -1) {
               if (id == 'O' || id == 'P' || id == 'S') {
-                return RTEI.formatScore(value)
+                if (id == 'O') {
+                  return RTEI.formatScore(value / 0.7);
+                } else {
+                  return RTEI.formatScore(value / 0.15);
+                }
               } else {
                 return RTEI.formatScore(value * RTEI.charts.categoriesLength.index);
               }
