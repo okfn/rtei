@@ -69,7 +69,7 @@ RTEI.charts = (function() {
     categoriesLength: {},
 
     isInsufficientDataValue: function(value) {
-      return (value == RTEI.insufficientData || (value % 1).toFixed(5) == '0.12345');
+      return (value == RTEI.insufficientData || (value % 1).toFixed(9) == '0.123456789');
     },
 
     initChartConfig: function(chartId, data, customChartConfig, names) {
@@ -162,18 +162,15 @@ RTEI.charts = (function() {
 
             for (var key in config.data.names) {
               if (key.substring(0, 1) == code) {
-                country[key] = 100.12345;
+                country[key] = 100.123456789;
               }
             }
           } else {
             for (var key in config.data.names) {
               if (key.substring(0, 1) == code) {
                 if (RTEI.charts.isInsufficientDataValue(country[key])) {
-                  country[key] = Math.round(100 / RTEI.charts.categoriesLength[key.substring(0, 1)]) + 0.12345;
-                } else {
-                  country[key] = Math.round(country[key]);
-        }
-
+                  country[key] = Math.round(100 / RTEI.charts.categoriesLength[key.substring(0, 1)]) + 0.123456789;
+                }
               }
             }
           }
