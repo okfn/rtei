@@ -68,7 +68,7 @@ $(document).ready(function(){
         value = RTEI.insufficientData;
       } else {
         value = (this.value !== 'index' && this.value.substring(0, 1) != 't') ?
-        (chartData[0][this.value] * RTEI.country.chart.groups()[0].length) :
+        chartData[0][this.value] * 5 :  // level 1 themes
         chartData[0][this.value];
       }
       $('#current-indicator-value').text(RTEI.formatScore(value));

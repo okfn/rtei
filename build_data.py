@@ -990,7 +990,7 @@ def c3_ready_json(output_dir=OUTPUT_DIR, random_values=False):
         scores = {str(n): [] for n in range(1, 6)}
         scores['main'] = []
         for code, value in values.items():
-            if code == 'index':
+            if code == 'index' or code in ('S', 'P', 'O'):
                 continue
             if '.' not in code:
                 scores['main'].append(value)
