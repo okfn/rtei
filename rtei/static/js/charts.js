@@ -129,18 +129,27 @@ RTEI.charts = (function() {
       return config;
     },
 
-    updateChart: function(chartId, code) {
-      var config = register[chartId].config;
-      var chart = register[chartId].chart;
+    handleChartValuesLegacy: function(code, config) {
+        var values = [];
+        if (code == 'index') {
+          values = ['1', '2', '3', '4', '5'];
+        } else if (code.substring(0, 1) != 't') {
+          for (var key in config.data.names) {
+            if (config.data.names.hasOwnProperty(key) &&
+                key.substring(0, 1) == code &&
+                key.indexOf('.') !== -1) {
+              values.push(key);
+            }
+          }
+        } else {
+          values = [code]
+        }
+        return values;
+    },
 
-      if (chart) {
-        chart = chart.destroy;
-      }
-
+    handleChartValues: function(code, config) {
       var values = [];
-      if (code == 'index' && RTEI.year < 2017) {
-        values = ['1', '2', '3', '4', '5'];
-      } else if (code == 'index') {
+      if (code == 'index') {
         values = ['S', 'P', 'O'];
       } else if (code.substring(0, 1) != 't') {
         noData = [];
@@ -163,7 +172,7 @@ RTEI.charts = (function() {
                   country[key] = Math.round(100 / RTEI.charts.categoriesLength[key.substring(0, 1)]) + 0.12345;
                 } else {
                   country[key] = Math.round(country[key]);
-				}
+        }
 
               }
             }
@@ -180,8 +189,8 @@ RTEI.charts = (function() {
 
         for (var key in config.data.names) {
           if (config.data.names.hasOwnProperty(key) &&
-              key.substring(0, 1) == code &&
-              key.indexOf('.') !== -1) {
+            key.substring(0, 1) == code &&
+            key.indexOf('.') !== -1) {
             values.push(key);
           }
         }
@@ -190,6 +199,20 @@ RTEI.charts = (function() {
         config.tooltip.show = true;
         $('#chart-insufficient-data').hide();
        }
+
+      return values;
+    },
+
+    updateChart: function(chartId, code) {
+      var config = register[chartId].config;
+      var chart = register[chartId].chart;
+
+      if (chart) {
+        chart = chart.destroy;
+      }
+
+      var values = (RTEI.year < 2017) ? this.handleChartValuesLegacy(code, config) :
+        this.handleChartValues(code, config);
       values.sort()
 
       var customConfig = $.extend(true, {}, config, {
