@@ -11,6 +11,8 @@ import csv
 import argparse
 import random
 import string
+import math
+import locale
 from collections import OrderedDict
 from decimal import Decimal
 
@@ -29,6 +31,8 @@ THEMES_MAPPINGS_SHEET = 'Transversal Themes Mappings'
 
 INSUFFICIENT_DATA = 'Insufficient data'
 
+# Ensure proper currency formatting
+locale.setlocale(locale.LC_ALL, 'en_US.utf-8')
 
 # Don't include this in the parsed data
 EXCLUDE_THEMES = ['10', '10A', '10B', '9B']
@@ -250,9 +254,16 @@ def parse_cell(value, theme=False):
     title = None
     level = None
 
+    value = value.strip()
+
     match = valid_code.match(value)
 
-    if match:
+    if '_year' in value.split()[0] or (len(value.split()) > 1 and value.split()[1].lower() == 'year'):
+        code = value.split()[0] if '_year' in value else value.split()[0] + '_year'
+        title = 'Year'
+        level = (get_level_for_theme(code) if theme
+                 else get_level_for_indicator(code))
+    elif match:
         groups = match.groups()
         code = ''.join(g for g in groups if g and g != 'C ')
         code = code.rstrip(':').rstrip('.')
@@ -265,10 +276,6 @@ def parse_cell(value, theme=False):
             .strip()
         level = (get_level_for_theme(code) if theme
                  else get_level_for_indicator(code))
-    elif '_year' in value.split()[0]:
-        code = value.split()[0]
-        title = 'Year'
-        level = 4
     elif any('_' + modifier.replace('-', '_') in value.split()[0]
              for modifier in list(MODIFIERS.keys())):
         # This is a derived indicator, we compute the title automatically
@@ -521,7 +528,7 @@ def add_main_scores(indicators):
 
 
 def indicators_per_country(max_level=4, derived=True, random_values=False,
-                           responses=True):
+                           responses=True, number_format=False):
     '''
     Returns a dict containing the values for all indicators for all countries,
     with the following structure:
@@ -575,7 +582,10 @@ def indicators_per_country(max_level=4, derived=True, random_values=False,
     If `random_values` is True, countries not present in the spreadsheet are
     returned with random values (only for levels 1 and 2).
 
-    Values with `999` are replaced with `No data`.
+    If `number_format` is True, the value is modified to include any formatting
+    like percentages or currency signs.
+
+    Values with `999` are replaced with `No data` and `997` with `N/A`.
 
     '''
 
@@ -609,29 +619,37 @@ def indicators_per_country(max_level=4, derived=True, random_values=False,
                 else:
                     cell = indicator['column'] + str(i + 5)
 
+
                 value = get_numeric_cell_value(ws_core[cell])
 
                 if value == 999:
                     value = 'No data'
+                elif value == 997:
+                    value = 'N/A'
 
-                if (responses and indicator.get('column_year')
-                        and value not in ('No data', INSUFFICIENT_DATA)):
+                if indicator['level'] >= 3 and number_format:
+                    number_format = ws_core[cell].number_format
+                    if number_format == '0%':
+                        if not isinstance(value, str):
+                            value = str(math.trunc(value * 100)) + '%'
+                    elif '$' in number_format:
+                        value = locale.currency(value, grouping=True)
+
+                if (responses and indicator.get('column_year')):
                     cell_year = indicator['column_year'] + str(i + 5)
-                    value = '{0} ({1})'.format(
-                        round(value, 2), ws_core[cell_year].value)
+                    value = round(value, 2) if not isinstance(value, str) else value
+                    year = 'N/A' if ws_core[cell_year].value == 997 else ws_core[cell_year].value
+                    value = '{0} ({1})'.format(value, year)
 
                 out[country_code][indicator['code']] = value
-
-                # Custom stuff :|
-
-                # Show all level 2, non derived scores (eg 1.2, 3.4, 5.1)
-                # as percentages, rounded to 2 places
 
                 if (indicator['code'].count('.') == 1 and
                         not indicator['code'][-1].isalpha() and
                         value is not None and value not in ('No data', INSUFFICIENT_DATA)):
                     out[country_code][indicator['code']] = Decimal(
                         value * 100 if value <= 1 else value)
+
+
     add_main_scores(out)
 
     if random_values:
@@ -703,9 +721,6 @@ def themes_per_country(prefix=None, random_values=False):
                     value = None
 
                 key = str(prefix) + theme['code'] if prefix else theme['code']
-
-#                if isinstance(value, (long, float, Decimal)):
-#                    value = round(value, 2)
 
                 # Output as percentages
                 if value:
@@ -873,7 +888,7 @@ def themes_as_json(output_dir=OUTPUT_DIR):
 
 def indicators_per_country_as_json(one_file=True, output_dir=OUTPUT_DIR):
 
-    out = indicators_per_country()
+    out = indicators_per_country(number_format=True)
     if one_file:
         output_file = os.path.join(output_dir, 'indicators_per_country.json')
 
@@ -891,7 +906,7 @@ def indicators_per_country_as_json(one_file=True, output_dir=OUTPUT_DIR):
 def scores_per_country_as_json(output_dir=OUTPUT_DIR, random_values=False):
 
     out = indicators_per_country(max_level=2, derived=False,
-                                 random_values=random_values)
+                                 random_values=random_values, number_format=True)
     add_main_scores(out)
 
     file_name = ('scores_per_country.json' if not random_values
