@@ -12,17 +12,15 @@
 }
 
 #chart-insufficient-data {
-  display: none;
-  z-index: 10;
-  position: absolute;
-  margin-top: 7px;
-  margin-left: 25%;
-  border-style: solid;
-  border: 1px solid $base-border-color;
-  padding: inherit;
 
-  h5 {
-    margin-bottom: 5px;
+  display: none;
+  text-align: center;
+  padding-bottom: inherit;
+
+
+  .title {
+	font-weight: bold;
+    color: #af202f;
   }
   p {
     color: $base-font-color;
