@@ -7,7 +7,7 @@ This site can be found at https://www.rtei.org and it is powered by [Wagtail](ht
 
 # Setup
 
-* Create a Postgres User and Database:
+* Create a Postgres User and Database (password `pass`):
 
         sudo -u postgres createuser -d -S -R -P -l rtei
         sudo -u postgres createdb -O rtei rtei -E utf-8
@@ -37,29 +37,29 @@ This site can be found at https://www.rtei.org and it is powered by [Wagtail](ht
 
 RTEI requires the following values to be set as env vars:
 
-```python
+```bash
 
 SECRET_KEY='xxx'
 
 # Email to receive contact requests from the form on /about/contact-us/
-RTEI_CONTACT_FORM_EMAIL = 'contact_form@example.com'
-EMAIL_HOST = 'xxx'
-EMAIL_HOST_PASSWORD = 'xxx'
-EMAIL_HOST_USER = 'xxx'
+RTEI_CONTACT_FORM_EMAIL='contact_form@example.com'
+EMAIL_HOST='xxx'
+EMAIL_HOST_PASSWORD='xxx'
+EMAIL_HOST_USER='xxx'
 
 # S3 Storage for docs and resources
-AWS_ACCESS_KEY_ID = 'xxx'
-AWS_SECRET_ACCESS_KEY = 'xxx'
-AWS_STORAGE_BUCKET_NAME = 'xxx'
+AWS_ACCESS_KEY_ID='xxx'
+AWS_SECRET_ACCESS_KEY='xxx'
+AWS_STORAGE_BUCKET_NAME='xxx'
 
-# Postgres DB to use (dev defaults to postgres://rtei:rtei@localhost/rtei)
+# Postgres DB to use (dev defaults to postgres://rtei:pass@localhost/rtei)
 DATABASE_URL='postgres:...'
 
 # ElasticSearch endpoint use for search (dev defaults to http://localhost:9200)
-ELASTICSEARCH_URL = 'http://example.com/es'
+ELASTICSEARCH_URL='http://example.com/es'
 
 # Google Analytics site code for production
-GOOGLE_ANALYTICS_CODE = 'xxx'
+GOOGLE_ANALYTICS_CODE='xxx'
 
 ```
 
@@ -76,6 +76,9 @@ Run:
     ./manage.py test
 
 
+## Contents for development
+
+Use the staging database's dump to populate contents for development. Copy images from the staging site to mimic the blog appearance.
 
 ## Generate data
 

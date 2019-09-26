@@ -6,3 +6,6 @@ db.sqlite3
 */settings/local.py
 /node_modules/
 .coverage
+package-lock.json
+rtei/static/data/countries.topojson
+.env
