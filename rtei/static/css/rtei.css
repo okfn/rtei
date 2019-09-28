@@ -1114,6 +1114,8 @@ body {
       padding-top: 2.25em; }
       .template-home .main > div:last-child {
         margin-right: 0; } }
+.template-home .featured {
+  background-color: white; }
 
 .template-rtei .c3 path,
 .template-rtei .c3 line {
