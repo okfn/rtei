@@ -1,10 +1,10 @@
 {% load i18n rtei_tags wagtail_modeltranslation wagtailcore_tags wagtailimages_tags%}
 
 {% featured_content as items %}
-{% if items %}
+{% if items|length >= 3 %}
   <div class="container">
     <h2>Featured Content</h2>
-      {% for item in items %}
+      {% for item in items|slice:":3" %}
         {% image item.feed_image width-620 as img %}
         <h3>{{ item.title }}</h3>
         <p><img src="{{ img.url }}" alt=""></p>

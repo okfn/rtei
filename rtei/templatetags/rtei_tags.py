@@ -191,5 +191,5 @@ def document_is_external_url(form):
 
 @register.simple_tag
 def featured_content():
-    items = BlogPage.objects.filter(is_featured=True)
+    items = BlogPage.objects.filter(is_featured=True).order_by('-date')
     return items
