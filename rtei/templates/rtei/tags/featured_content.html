@@ -3,12 +3,39 @@
 {% featured_content as items %}
 {% if items|length >= 3 %}
   <div class="container">
-    <h2>Featured Content</h2>
+    <div class="posts-list">
       {% for item in items|slice:":3" %}
-        {% image item.feed_image width-620 as img %}
-        <h3>{{ item.title }}</h3>
-        <p><img src="{{ img.url }}" alt=""></p>
-        <p>{{ item.intro }}</p>
+        <div class="post">
+
+          {% if item.feed_image %}
+            {% image item.feed_image width-620 as img %}
+          {% endif %}
+          <a href="{% pageurl item %}" class="post-image"{% if img %} style="background-image:url('{{ img.url }}')"{% endif %}></a>
+
+          <div class="post-body truncate">
+            <a href="{% pageurl item %}">
+              <h3 class="post-heading">{{ item.title }}</h3>
+            </a>
+            <p class="post-date">{{ item.date }}</p>
+            {% if item.search_description %}
+              <p>{{ item.search_description }}</p>
+            {% elif item.intro %}
+              <p>{{ item.intro }}</p>
+            {% endif %}
+          </div>
+
+          {% for tag in item.tags.all %}
+            <a href="{% pageurl self %}?tag={{ tag }}" class="post-tag">
+              <i class="glyphicon glyphicon-tag"></i> {{ tag }}
+            </a>
+          {% endfor %}
+
+          <a href="{% pageurl item %}" class="more">
+            {% trans "Read more" %}
+          </a>
+        </div>
       {% endfor %}
+    </div>
   </div>
+
 {% endif %}

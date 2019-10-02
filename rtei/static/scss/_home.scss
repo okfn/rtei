@@ -161,7 +161,60 @@
   }
 
   .featured {
-    background-color: white;
+    padding-top: 1.5em;
+    background-color: #ddd;
+
+    .posts-list {
+      background-color: inherit;
+      @include clearfix;
+
+      .post {
+        background-color: $base-background-color;
+        overflow: hidden;
+
+        .post-image {
+          padding-top: 62%;
+          display: block;
+          background-image:url("../img/placeholder.png");
+          background-repeat: no-repeat;
+          background-position: center center;
+          background-size: cover;
+        }
+
+        .post-body {
+          padding: $base-spacing $base-spacing $small-spacing/2 $base-spacing;
+          height: 12em;
+          overflow: hidden;
+
+          .post-heading {
+            font-size: 1.5em;
+            margin-bottom: 0;
+          }
+
+          .post-date {
+            color: transparentize($base-font-color, 0.6);
+            font-size: 0.9em;
+            margin-bottom: 0.4em;
+            display: block;
+          }
+        }
+
+        .post-tag {
+          display: none;
+        }
+
+        .more {
+          @include button;
+          margin: 0 $base-spacing $base-spacing $base-spacing;
+        }
+
+        @include media($medium-screen) {
+          @include span-columns(4);
+          @include omega(3n);
+          margin-bottom: $base-spacing;
+        }
+      }
+    }
   }
 
 }
