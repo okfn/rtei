@@ -450,6 +450,10 @@ class BlogPage(Page):
         on_delete=models.SET_NULL,
         related_name='+'
     )
+    is_featured = models.BooleanField(
+        default=False,
+        help_text="Determines whether document appears in the Featured Contents."
+    )
 
     search_fields = Page.search_fields + [
         index.SearchField('body'),
@@ -466,6 +470,7 @@ class BlogPage(Page):
 BlogPage.content_panels = [
     FieldPanel('title', classname="full title"),
     FieldPanel('date'),
+    FieldPanel('is_featured'),
     FieldPanel('intro', classname="full"),
     FieldPanel('body', classname="full"),
 ]

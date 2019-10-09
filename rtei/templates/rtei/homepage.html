@@ -34,13 +34,20 @@
     {% include 'rtei/tags/explore_list.html' %}
   </div>
 
+  <div class="featured">
+    {% include 'rtei/tags/featured_content.html' %}
+  </div>
+
 {% endblock %}
 
 {% block extra_js %}
   <script src="{% static 'vendor/leaflet/leaflet.min.js' %}"></script>
   <script src="{% static 'vendor/leaflet/leaflet-omnivore.min.js' %}"></script>
   <script src="{% static 'vendor/leaflet/leaflet-pattern.min.js' %}"></script>
-
   <script src="{% static 'js/map.js' %}"></script>
-
+  <script>
+    $(document).ready(function() {
+      $(".truncate").dotdotdot({watch	: true,});
+    });
+  </script>
 {% endblock %}

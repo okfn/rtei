@@ -1,16 +1,22 @@
-language: python
+sudo:
+  required
+
+services:
+  - postgresql
+  - elasticsearch
+
+language:
+  python
+
 python:
-- 3.6
-sudo: required
-install: ./bin/travis-setup
+  - 3.6
+
+install:
+  - ./bin/travis-setup
+
 before_script:
   - sleep 10
+
 script:
   - ./manage.py collectstatic --no-input
   - ./manage.py test --with-coverage --cover-package=rtei
-services:
-  - elasticsearch
-notifications:
-  slack: openknowledge:wnDLkoYYddR3sYR9eTsBXzz2
-  on_success: never
-  on_failure: change

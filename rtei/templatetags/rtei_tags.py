@@ -3,7 +3,7 @@ import os
 from django import template
 from django.utils.translation import ugettext as _, get_language
 
-from rtei.models import Page, RTEIAncillaryPage
+from rtei.models import Page, RTEIAncillaryPage, BlogPage
 from rtei.data import get_file_path
 
 import logging
@@ -187,3 +187,9 @@ def document_is_external_url(form):
         if field.name == 'external_url' and field.value():
             return True
     return False
+
+
+@register.simple_tag
+def featured_content():
+    items = BlogPage.objects.filter(is_featured=True).order_by('-date')
+    return items
