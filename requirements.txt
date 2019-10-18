@@ -17,7 +17,7 @@ django-storages==1.4
 django-taggit==0.23.0     # via wagtail
 django-treebeard==4.3     # via wagtail
 django-wagtail-feeds==0.1.0
-django==1.11.18
+django==1.11.23
 djangorestframework==3.9.0  # via wagtail
 draftjs-exporter==2.1.5   # via wagtail
 elasticsearch==2.3.0
