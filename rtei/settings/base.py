@@ -188,5 +188,11 @@ WAGTAILSEARCH_BACKENDS = {
     }
 }
 
+WAGTAILADMIN_RICH_TEXT_EDITORS = {
+    'default': {
+        'WIDGET': 'wagtail.admin.rich_text.HalloRichTextArea'
+    }
+}
+
 # Tests
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
