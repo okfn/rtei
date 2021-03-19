@@ -4,37 +4,89 @@
 #
 #    pip-compile --output-file requirements.txt requirements.in
 #
-beautifulsoup4==4.6.0     # via wagtail
+beautifulsoup4==4.6.0
+    # via wagtail
 boto==2.39.0
-certifi==2018.11.29       # via requests
-chardet==3.0.4            # via requests
+    # via -r requirements.in
+certifi==2018.11.29
+    # via requests
+chardet==3.0.4
+    # via requests
 dj-database-url==0.5.0
+    # via -r requirements.in
 django-debug-toolbar==1.11
-django-modelcluster==4.3  # via wagtail
-django-modeltranslation==0.12.2  # via wagtail-modeltranslation
+    # via -r requirements.in
+django-modelcluster==4.3
+    # via wagtail
+django-modeltranslation==0.12.2
+    # via wagtail-modeltranslation
 django-nose==1.4.5
+    # via -r requirements.in
 django-storages==1.4
-django-taggit==0.23.0     # via wagtail
-django-treebeard==4.3     # via wagtail
+    # via -r requirements.in
+django-taggit==0.23.0
+    # via wagtail
+django-treebeard==4.3
+    # via wagtail
 django-wagtail-feeds==0.1.0
+    # via -r requirements.in
 django==1.11.18
-djangorestframework==3.9.0  # via wagtail
-draftjs-exporter==2.1.5   # via wagtail
+    # via
+    #   -r requirements.in
+    #   django-debug-toolbar
+    #   django-taggit
+    #   django-treebeard
+    #   django-wagtail-feeds
+    #   djangorestframework
+    #   wagtail
+    #   wagtail-modeltranslation
+djangorestframework==3.11.2
+    # via wagtail
+draftjs-exporter==2.1.5
+    # via wagtail
 elasticsearch==2.3.0
+    # via -r requirements.in
 gunicorn==19.5.0
-html5lib==1.0.1           # via wagtail
-idna==2.8                 # via requests
-nose==1.3.7               # via django-nose
-pillow==5.4.1             # via wagtail
+    # via -r requirements.in
+html5lib==1.0.1
+    # via wagtail
+idna==2.8
+    # via requests
+nose==1.3.7
+    # via django-nose
+pillow==5.4.1
+    # via wagtail
 psycopg2==2.7.6.1
-pytz==2018.9              # via django, django-modelcluster, wagtail
-requests==2.21.0          # via wagtail
-six==1.12.0               # via html5lib, wagtail
-sqlparse==0.2.4           # via django-debug-toolbar
-unidecode==1.0.23         # via wagtail
-urllib3==1.24.1           # via elasticsearch, requests
+    # via -r requirements.in
+pytz==2018.9
+    # via
+    #   django
+    #   django-modelcluster
+    #   wagtail
+requests==2.21.0
+    # via wagtail
+six==1.12.0
+    # via
+    #   html5lib
+    #   wagtail
+sqlparse==0.2.4
+    # via django-debug-toolbar
+unidecode==1.0.23
+    # via wagtail
+urllib3==1.24.1
+    # via
+    #   elasticsearch
+    #   requests
 wagtail-modeltranslation==0.9.0
+    # via -r requirements.in
 wagtail==2.3
-webencodings==0.5.1       # via html5lib
+    # via
+    #   -r requirements.in
+    #   django-wagtail-feeds
+    #   wagtail-modeltranslation
+webencodings==0.5.1
+    # via html5lib
 whitenoise==2.0.6
-willow==1.1               # via wagtail
+    # via -r requirements.in
+willow==1.1
+    # via wagtail
