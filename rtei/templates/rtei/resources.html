@@ -31,23 +31,6 @@
             {% endfor %}
           </ul>
 
-          {# Pagination - uses django.core.paginator #}
-          {# Append any other url query string variables to the next and previous links - allows tag to be passed through #}
-          <div class="pagination">
-              <div class="previous">
-                  {% if documents.has_previous %}
-                      <a href="?page={{ documents.previous_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{ key }}={{ value }}{% endifnotequal %}{% endfor %}">{% trans "Previous" %}</a>
-                  {% endif %}
-              </div>
-              <div class="pages">
-                  {% trans "Page" %} {{ documents.number }} / {{ documents.paginator.num_pages }}
-              </div>
-              <div class="next">
-                  {% if documents.has_next %}
-                      <a href="?page={{ documents.next_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{ key }}={{ value }}{% endifnotequal %}{% endfor %}">{% trans "Next" %}</a>
-                  {% endif %}
-              </div>
-          </div>
       {% endif %}
 
     </section>

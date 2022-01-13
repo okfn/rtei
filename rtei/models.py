@@ -325,14 +325,14 @@ class ResourceIndexPage(Page):
                         **kwargs)
                 has_filter = True
 
-        page = request.GET.get('page')
-        paginator = Paginator(resources_to_display, 10)
-        try:
-            resources_to_display = paginator.page(page)
-        except PageNotAnInteger:
-            resources_to_display = paginator.page(1)
-        except EmptyPage:
-            resources_to_display = paginator.page(paginator.num_pages)
+#        page = request.GET.get('page')
+#        paginator = Paginator(resources_to_display, 10)
+#        try:
+#            resources_to_display = paginator.page(page)
+#        except PageNotAnInteger:
+#            resources_to_display = paginator.page(1)
+#        except EmptyPage:
+#            resources_to_display = paginator.page(paginator.num_pages)
 
         context['documents'] = resources_to_display
         context['has_filter'] = has_filter
