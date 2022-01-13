@@ -417,17 +417,17 @@ class BlogIndexPage(Page):
         if tag:
             blogs = blogs.filter(tags__name=tag)
 
-        # Pagination
-        page = request.GET.get('page')
-        paginator = Paginator(blogs, 10)  # Show 10 posts per page
-        try:
-            blogs = paginator.page(page)
-        except PageNotAnInteger:
-            blogs = paginator.page(1)
-        except EmptyPage:
-            blogs = paginator.page(paginator.num_pages)
+        ## Pagination
+        #page = request.GET.get('page')
+        #paginator = Paginator(blogs, 10)  # Show 10 posts per page
+        #try:
+        #    blogs = paginator.page(page)
+        #except PageNotAnInteger:
+        #    blogs = paginator.page(1)
+        #except EmptyPage:
+        #    blogs = paginator.page(paginator.num_pages)
 
-        # Update template context
+        ## Update template context
         context = super(BlogIndexPage, self).get_context(request)
         context['blogs'] = blogs
         return context

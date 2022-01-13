@@ -30,23 +30,6 @@
         {% endfor %}
     </div>
 
-    {# Pagination - uses django.core.paginator #}
-    {# Append any other url query string variables to the next and previous links - allows tag to be passed through #}
-    <div class="pagination">
-        <div class="previous">
-            {% if blogs.has_previous %}
-                <a href="?page={{ blogs.previous_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{ key }}={{ value }}{% endifnotequal %}{% endfor %}">{% trans "Previous" %}</a>
-            {% endif %}
-        </div>
-        <div class="pages">
-            {% trans "Page" %} {{ blogs.number }} / {{ blogs.paginator.num_pages }}
-        </div>
-        <div class="next">
-            {% if blogs.has_next %}
-                <a href="?page={{ blogs.next_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{ key }}={{ value }}{% endifnotequal %}{% endfor %}">{% trans "Next" %}</a>
-            {% endif %}
-        </div>
-    </div>
 
   </div>
 
