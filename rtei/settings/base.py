@@ -63,6 +63,7 @@ INSTALLED_APPS = [
     'django_nose',
 
     'debug_toolbar',
+    'bakery',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -196,3 +197,16 @@ WAGTAILADMIN_RICH_TEXT_EDITORS = {
 
 # Tests
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
+
+
+BUILD_DIR = '/home/adria/dev/pyenvs/rtei/src/out'
+
+BAKERY_VIEWS = [
+    'rtei.bakery_views.RTEIPageStatic',
+    'rtei.bakery_views.RTEIAncillaryPageStatic',
+    'rtei.bakery_views.ResourceIndexPageStatic',
+    'rtei.bakery_views.BlogIndexPageStatic',
+    'rtei.bakery_views.BlogPageStatic',
+]
+
+ALLOWED_HOSTS = ['testserver', '127.0.0.1', 'localhost']

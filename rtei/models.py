@@ -165,6 +165,7 @@ def get_theme_context(context, year):
 
 
 class RTEIPage(Page):
+    bakery_views = ('rtei.bakery_views.RTEIPageStatic',)
 
     body = RichTextField(blank=True)
 
@@ -201,6 +202,7 @@ class RTEIPage(Page):
 class RTEIAncillaryPage(Page):
     '''About page and other static content pages.'''
 
+    bakery_views = ('rtei.bakery_views.RTEIAncillaryPageStatic',)
     body = RichTextField(blank=True)
 
     content_panels = Page.content_panels + [
@@ -258,6 +260,8 @@ class RTEIAncillaryPage(Page):
 
 
 class ResourceIndexPage(Page):
+
+    bakery_views = ('rtei.bakery_views.ResourceIndexPageStatic',)
     template = 'rtei/resources.html'
 
     def resources(self):
@@ -392,6 +396,8 @@ class RteiDocument(AbstractDocument, index.Indexed):
 
 class BlogIndexPage(Page):
 
+    bakery_views = ('rtei.bakery_views.BlogIndexPageStatic',)
+
     @property
     def blogs(self):
         # Get list of live blog pages that are descendants of this page
@@ -439,6 +445,7 @@ class BlogPageTag(TaggedItemBase):
 
 class BlogPage(Page):
 
+    bakery_views = ('rtei.bakery_views.BlogPageStatic',)
     intro = models.TextField(blank=True)
     body = RichTextField(blank=True)
     tags = ClusterTaggableManager(through=BlogPageTag, blank=True)
