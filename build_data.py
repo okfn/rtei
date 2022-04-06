@@ -19,13 +19,13 @@ from decimal import Decimal
 from openpyxl import load_workbook
 
 # Change as appropiate
-INPUT_FILE = 'rtei/static/data/rtei_data_2018.xlsx'
-OUTPUT_DIR = 'rtei/static/data/2018'
+INPUT_FILE = 'rtei/static/data/rtei_data_2021.xlsx'
+OUTPUT_DIR = 'rtei/static/data/2021'
 
 COUNTRIES_FILE = 'data/countries.json'
 
-CORE_SHEET = 'All Questionnaires'
-MAIN_SCORES_SHEET = 'Country Comparisons'
+CORE_SHEET = 'All questionnaires'
+MAIN_SCORES_SHEET = 'Country comparisons'
 THEMES_SHEET = 'Cross-cutting Themes'
 THEMES_MAPPINGS_SHEET = 'Transversal Themes Mappings'
 
@@ -408,8 +408,11 @@ def get_indicators(include_columns=False):
                     else:
                         continue
                 elif '_year' in code and i == 3:
-                    indicator = [o for o in out
-                                 if o['code'] == code.replace('_year', '')][0]
+                    try:
+                        indicator = [o for o in out
+                                     if o['code'] == code.replace('_year', '')][0]
+                    except IndexError:
+                        import ipdb; ipdb.set_trace()
                 else:
                     codes_done.append(code)
 
@@ -491,13 +494,20 @@ def get_main_scores():
 
         # Read values for that row (columns B to J)
         for column in value_columns:
-            indicator_cell = '{}{}'.format(column, 2)
+            indicator_cell = '{}{}'.format(column, 1)
             indicator_title = ws[indicator_cell].value
+            indicator_code = None
 
             # Get indicator code
-            if indicator_title.lower() == 'index score':
+            try:
+                indicator_title.lower()
+            except AttributeError:
+                import ipdb; ipdb.set_trace()
+            if indicator_title.lower() in('index score', 'index'):
                 indicator_code = 'index'
             else:
+                if indicator_title.lower() == 'Accessibility':
+                    import ipdb; ipdb.set_trace()
                 for indicator in indicators:
                     if indicator_title.lower() == indicator['title'].lower():
                         indicator_code = indicator['code']
@@ -917,7 +927,7 @@ def scores_per_country_as_json(output_dir=OUTPUT_DIR, random_values=False):
         f.write(json.dumps(out))
 
 
-def scores_per_country_as_csv(output_dir=OUTPUT_DIR, random_values=False):
+def scores_per_country_as_csv(output_dir=OUTPUT_DIR, random_values=False, show_themes=True):
     '''
     Write a CSV file with the level 1 and 2 scores for each country, as well as
     the transversal themes, in the form:
@@ -931,12 +941,14 @@ def scores_per_country_as_csv(output_dir=OUTPUT_DIR, random_values=False):
     '''
     out = indicators_per_country(max_level=2, derived=False,
                                  random_values=random_values)
-    themes = themes_per_country(prefix='t', random_values=random_values)
+    if show_themes:
+        themes = themes_per_country(prefix='t', random_values=random_values)
 
     out_list = []
     for country in list(out.keys()):
-        if country in themes:
-            out[country].update(themes[country])
+        if show_themes:
+            if country in themes:
+                out[country].update(themes[country])
         # TODO
         #add_main_scores(country, out[country])
         out[country]['iso2'] = country
@@ -953,7 +965,7 @@ def scores_per_country_as_csv(output_dir=OUTPUT_DIR, random_values=False):
         w.writerows(out_list)
 
 
-def c3_ready_json(output_dir=OUTPUT_DIR, random_values=False):
+def c3_ready_json(output_dir=OUTPUT_DIR, random_values=False, show_themes=True):
     '''
     Writes a C3 optimized JSON file to display the country bar charts.
 
@@ -995,7 +1007,6 @@ def c3_ready_json(output_dir=OUTPUT_DIR, random_values=False):
     indicators = indicators_per_country(max_level=2, derived=False,
                                         random_values=random_values)
 
-    themes = themes_per_country(prefix='t', random_values=random_values)
 
     out = []
     for country_code, values in indicators.items():
@@ -1032,7 +1043,9 @@ def c3_ready_json(output_dir=OUTPUT_DIR, random_values=False):
                     item[code] = value / Decimal(len(scores[code[:1]]))
 
         # Add Transversal themes
-        item.update(themes[country_code])
+        if show_themes:
+            themes = themes_per_country(prefix='t', random_values=random_values)
+            item.update(themes[country_code])
 
         # Add main index
         item['index'] = values['index']
@@ -1163,11 +1176,15 @@ The available outputs are:
                         action='store_true',
                         help='Fill values for missing countries with '
                              'random values')
+    parser.add_argument('--no-themes',
+                        action='store_true',
+                        help='Don\'t process cross-cutting themes')
 
     args = parser.parse_args()
 
     input_file = args.input or INPUT_FILE
     output_dir = args.output or OUTPUT_DIR
+    no_themes = args.no_themes
 
     wb = load_workbook(input_file, data_only=True)
 
@@ -1175,10 +1192,11 @@ The available outputs are:
         countries = json.load(f)
     if args.type == 'all':
         indicators_as_json(output_dir)
-        themes_as_json(output_dir)
+        if not no_themes:
+            themes_as_json(output_dir)
         indicators_per_country_as_json(one_file=False, output_dir=output_dir)
         scores_per_country_as_json(output_dir, random_values=args.random)
-        c3_ready_json(output_dir=output_dir)
+        c3_ready_json(output_dir=output_dir, show_themes=not no_themes)
         countries_with_data(output_dir=output_dir)
     elif args.type == 'indicators-json':
         indicators_as_json(output_dir)
@@ -1189,11 +1207,11 @@ The available outputs are:
     elif args.type == 'scores-per-country-json':
         scores_per_country_as_json(output_dir, random_values=args.random)
     elif args.type == 'scores-per-country-csv':
-        scores_per_country_as_csv(output_dir, random_values=args.random)
+        scores_per_country_as_csv(output_dir, random_values=args.random, show_themes=not no_themes)
     elif args.type == 'indicators-per-country':
         indicators_per_country_as_json(one_file=False, output_dir=output_dir)
     elif args.type == 'c3-ready-json':
-        c3_ready_json(output_dir=output_dir, random_values=args.random)
+        c3_ready_json(output_dir=output_dir, random_values=args.random, show_themes=not no_themes)
     elif args.type == 'countries-with-data':
         countries_with_data(output_dir=output_dir)
     elif args.type == 'translation-strings':
