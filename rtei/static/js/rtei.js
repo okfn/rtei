@@ -9,7 +9,7 @@ $(document).ready(function() {
     2: ['#bdb831', '#d4cf58', '#ddda7c', '#e7e4a1', '#f0eec5'],  // availability
     3: ['#af1f2c', '#da3140', '#e15864', '#e87f88', '#efa6ac'],  // accessibility
     4: ['#357b9e', '#4d9cc3', '#6fafcf', '#92c2da', '#b4d5e6'],  // acceptability
-    5: ['#469a8f', '#64b9ae', '#84c7be', '#a4d5cf', '#c3e4e0'],  // adaptability
+    5: ['#469a8f', '#52A197', '#64b9ae', '#84c7be', '#9DCDC7', '#a4d5cf', '#c3e4e0'],  // adaptability
     'O': ['#af202f'],  // outcome
     'P': ['#da3344'], // process
     'S': ['#e15968']  // structure

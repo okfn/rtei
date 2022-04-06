@@ -159,7 +159,7 @@ STATICFILES_FINDERS = [
 
 # RTEI settings
 # There needs to be a matching folder with data files on `rtei/static/data`
-YEARS = ['2015', '2016', '2018']
+YEARS = ['2015', '2016', '2018', '2021']
 
 STATICFILES_DIRS = [
     os.path.join(PROJECT_DIR, 'static'),
