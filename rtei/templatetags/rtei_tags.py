@@ -96,7 +96,7 @@ def get_indicator_value(dictionary, code, level):
         value = _(value)
     elif value and level:
         if level < 3:
-            value = int(value)
+            value = int(round(value))
         else:
             value = round(value, 2)
     return value
