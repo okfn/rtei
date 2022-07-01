@@ -1,2 +1,2 @@
-openpyxl==2.3.3
+openpyxl==2.4.2
 simplejson
