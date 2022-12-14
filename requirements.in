@@ -11,3 +11,5 @@ django-wagtail-feeds==0.1.0
 boto==2.39.0
 django-nose==1.4.5
 elasticsearch==2.3.0
+requests==2.22.0
+urllib3==1.25.4
