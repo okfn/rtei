@@ -9,3 +9,4 @@ db.sqlite3
 package-lock.json
 rtei/static/data/countries.topojson
 .env
+src
