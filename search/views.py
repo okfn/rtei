@@ -16,10 +16,12 @@ class CountryResult(object):
 
         self.code = code
         self.name = name
-        self.url = (reverse(
-                            'wagtail_serve',
-                            args=['explore/rtei-country/'])
-                    + '?id=' + self.code)
+        self.url = (
+            reverse(
+                'wagtail_serve',
+                args=['explore/rtei-country/']
+            ) + '-' + self.code.lower()
+        )
         self.title = '{0}: {1}'.format(_('RTEI by Country'), self.name)
 
 

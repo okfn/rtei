@@ -1,6 +1,7 @@
 
 import sys
 import json
+import re
 from collections import OrderedDict
 from smtplib import SMTPException
 
@@ -131,7 +132,7 @@ def get_country_context(context, country_code, year):
     if country_code:
         country_data = data.get_indicators_for_country(country_code, year)
         if not country_data:
-            raise Http404(_('No data available for this country'))
+            raise Http404(_(f'No data available for this country {country_code}, {year}'))
 
         context['country_code'] = country_code
 
@@ -173,6 +174,12 @@ class RTEIPage(Page):
         FieldPanel('body', classname="full")
     ]
 
+    def _is_custom_page(self):
+        is_country_year_data = re.match(r'^[a-z]{2}-\d{4}$', self.slug)
+        is_country_data = re.match(r'^[a-z]{2}$', self.slug)
+        is_year_only = re.match(r'^\d{4}$', self.slug)
+        return is_country_data, is_country_year_data, is_year_only
+
     def get_context(self, request):
         context = super(RTEIPage, self).get_context(request)
 
@@ -180,8 +187,7 @@ class RTEIPage(Page):
         if not year or year not in settings.YEARS:
             year = settings.YEARS[-1]
 
-        context['year'] = year
-        context['all_years'] = settings.YEARS
+        is_country_data, is_country_year_data, is_year_only = self._is_custom_page()
 
         if self.slug == 'map':
             get_map_context(context, year)
@@ -189,12 +195,37 @@ class RTEIPage(Page):
             get_country_context(context, request.GET.get('id'), year)
         elif self.slug == 'rtei-theme':
             get_theme_context(context, year)
+        elif is_year_only:
+            year = self.slug
+            get_country_context(context, None, year)
+        elif is_country_data or is_country_year_data:
+            country = self.slug.split('-')[0].upper()
+            year = settings.YEARS[-1] if is_country_data else self.slug.split('-')[1]
+            # get last year with data
+            ys = settings.YEARS.copy()
+            ys.reverse()
+            for y in ys:
+                try:
+                    get_country_context(context, country, y)
+                    year = y
+                    break
+                except Http404:
+                    pass
+            else:
+                raise Http404(_(f'No data available for this country {country} {year}'))
+
+        context['year'] = year
+        context['all_years'] = settings.YEARS
 
         return context
 
     def get_template(self, request, *args, **kwargs):
         # Define a template path derived from the app name and model instance
         # slug
+        is_country_data, is_country_year_data, is_year_only = self._is_custom_page()
+        if is_country_data or is_country_year_data or is_year_only:
+            return "%s/%s.html" % (self._meta.app_label, 'rtei_country')
+
         return "%s/%s.html" % (self._meta.app_label,
                                self.slug.replace('-', '_'))
 

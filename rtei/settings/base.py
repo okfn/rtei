@@ -86,7 +86,7 @@ ROOT_URLCONF = 'rtei.urls'
 
 
 def rtei_context_processor(request):
-    return {'google_analytics_code': os.environ.get('GOOGLE_ANALYTICS_CODE')}
+    return {'google_analytics_code': 'UA-96377355-1'}
 
 
 TEMPLATES = [
@@ -160,7 +160,7 @@ STATICFILES_FINDERS = [
 
 # RTEI settings
 # There needs to be a matching folder with data files on `rtei/static/data`
-YEARS = ['2015', '2016', '2018']
+YEARS = ['2015', '2016', '2018', '2021']
 
 STATICFILES_DIRS = [
     os.path.join(PROJECT_DIR, 'static'),
@@ -172,7 +172,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
+MEDIA_URL = '/'
 
 # Wagtail settings
 
