@@ -3,14 +3,7 @@
 {% load i18n %}
 
 {% block content_body %}
-  {% if messages %}
-  <ul class="messages">
-      {% for message in messages %}
-      <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-      {% endfor %}
-  </ul>
-  {% endif %}
-
+  
   <h2>{{ self.title }}</h2>
 
   <div id="" class="vcard">
@@ -26,8 +19,4 @@
     <a class="email" href="mailto:rtei@results.org">rtei@results.org</a>
   </div>
 
-  <p>{% trans "To receive periodic updates and announcements on RTEI and its activies, please fill out and submit the following form:" %}</p>
-<div id="114bcc11-5509-4ba7-8b27-02636dba7435">
-    <script type="text/javascript" src="https://default.salsalabs.org/api/widget/template/abe81301-e7a4-4ba5-a475-d6e79c1bc1b2/?tId=114bcc11-5509-4ba7-8b27-02636dba7435" ></script>
-</div>
 {% endblock content_body %}
