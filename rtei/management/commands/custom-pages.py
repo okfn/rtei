@@ -24,15 +24,20 @@ class Command(BaseCommand):
         years = settings.YEARS
 
         self.stdout.write(self.style.SUCCESS(f' - Countries: {len(countries)}'))
-        base_country_page = RTEIPage.objects.get(slug='rtei-country')
+        base_page = RTEIPage.objects.get(slug='rtei-country')
         n = 0
         for year in years:
             # Create a custom year-only page
+            if delete:
+                pages = RTEIPage.objects.filter(slug=f'{year}')
+                self.stdout.write(self.style.SUCCESS(f' - Deleted: {year}'))
+                pages.delete()
+                continue
             n += 1
-            page = RTEIPage.objects.create(
+            page = RTEIPage(
                 slug=f'{year}',
-                depth=base_country_page.depth + 1,
-                path=base_country_page.path + f'{n:04d}',
+                depth=base_page.depth + 1,
+                path=base_page.path + f'{n:04d}',
                 # url_path=f'{country_code}-{year}/',
                 # url_path_en=f'{country_code}-{year}/',
                 show_in_menus=False,
@@ -40,7 +45,7 @@ class Command(BaseCommand):
                 live=True,
                 content_type_id=10,
             )
-            # base_country_page.add_child(instance=page)
+            base_page.add_child(instance=page)
             revision = page.save_revision(
                 approved_go_live_at=timezone.now(),
             )
@@ -60,30 +65,36 @@ class Command(BaseCommand):
                 # Non required country,
                 continue
 
-            n += 1
-            page = RTEIPage.objects.create(
-                slug=f'{country_code}',
-                depth=base_country_page.depth + 1,
-                path=base_country_page.path + f'{n:04d}',
-                # url_path=f'{country_code}-{year}/',
-                # url_path_en=f'{country_code}-{year}/',
-                show_in_menus=False,
-                title=f'RTEI by Country {country_base["name"]}',
-                live=True,
-                content_type_id=10,
-            )
-            # base_country_page.add_child(instance=page)
-            revision = page.save_revision(
-                approved_go_live_at=timezone.now(),
-            )
-            revision.publish()
+            if delete:
+                pages = RTEIPage.objects.filter(slug=f'{country_code}')
+                self.stdout.write(self.style.SUCCESS(f' - Deleted: {country_code}'))
+                pages.delete()
+            
+            if create:
+                n += 1
+                page = RTEIPage(
+                    slug=f'{country_code}',
+                    depth=base_page.depth + 1,
+                    path=base_page.path + f'{n:04d}',
+                    # url_path=f'{country_code}-{year}/',
+                    # url_path_en=f'{country_code}-{year}/',
+                    show_in_menus=False,
+                    title=f'RTEI by Country {country_base["name"]}',
+                    live=True,
+                    content_type_id=10,
+                )
+                base_page.add_child(instance=page)
+                revision = page.save_revision(
+                    approved_go_live_at=timezone.now(),
+                )
+                revision.publish()
 
             for year in years:
                 country_data = get_indicators_for_country(country_code.upper(), year)
                 if not country_data:
                     continue
                 pages = RTEIPage.objects.filter(
-                    slug=f'rtei-country-{country_code}-{year}',
+                    slug=f'{country_code}-{year}',
                 )
                 page_exists = pages.count() > 0
                 if page_exists:
@@ -106,10 +117,10 @@ class Command(BaseCommand):
                     raise Exception('Unexpected params, --test, --create or --delete must be set')
 
                 n += 1
-                page = RTEIPage.objects.create(
+                page = RTEIPage(
                     slug=f'{country_code}-{year}',
-                    depth=base_country_page.depth + 1,
-                    path=base_country_page.path + f'{n:04d}',
+                    depth=base_page.depth + 1,
+                    path=base_page.path + f'{n:04d}',
                     # url_path=f'{country_code}-{year}/',
                     # url_path_en=f'{country_code}-{year}/',
                     show_in_menus=False,
@@ -117,11 +128,8 @@ class Command(BaseCommand):
                     live=True,
                     content_type_id=10,
                 )
-                # base_country_page.add_child(instance=page)
+                base_page.add_child(instance=page)
                 revision = page.save_revision(
                     approved_go_live_at=timezone.now(),
                 )
                 revision.publish()
-
-            # if n > 10:
-            #     break

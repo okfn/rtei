@@ -207,6 +207,7 @@ class RTEIPage(Page):
             year = settings.YEARS[-1]
 
         is_country_data, is_country_year_data, is_year_only = self._is_custom_page()
+        context['all_years'] = settings.YEARS
 
         if self.slug == 'map':
             get_map_context(context, year)
@@ -235,27 +236,31 @@ class RTEIPage(Page):
             get_country_context(context, None, year)
             context['base_url'] = '/en/explore/rtei-country'
             context['url_prefix'] = ''
-        elif is_country_data or is_country_year_data:
+        elif is_country_year_data:
+            year = self.slug.split('-')[1]
+            country = self.slug.split('-')[0].upper()
+            get_country_context(context, country, year)
             context['base_url'] = '/en/explore/rtei-country'
             context['url_prefix'] = ''
-            country = self.slug.split('-')[0].upper()
-            year = settings.YEARS[-1] if is_country_data else self.slug.split('-')[1]
+        elif is_country_data:
+            # i DON'T KNOW THE COUNTRY
+            context['base_url'] = '/en/explore/rtei-country'
+            context['url_prefix'] = ''
+            country = self.slug.upper()
+            all_available_years = []
             # get last year with data
             ys = settings.YEARS.copy()
             ys.reverse()
             for y in ys:
-                try:
-                    get_country_context(context, country, y)
+                if data.get_indicators_for_country(country, y):
+                    all_available_years.append(y)
                     year = y
-                    break
-                except Http404:
-                    pass
-            else:
-                raise Http404(_(f'No data available for this country {country} {year}'))
+                    continue
+
+            get_country_context(context, country, year)
+            context['all_years'] = all_available_years
 
         context['year'] = year
-        context['all_years'] = settings.YEARS
-        
 
         return context
 
