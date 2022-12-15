@@ -36,8 +36,6 @@ urlpatterns += [
         name="latest_document"),
     url(r'^static/data/rtei_data_(?P<year>[0-9]{4}).xlsx', rtei_views.document_by_year,
         name="document_by_year"),
-
-    url(r'^blog/feed/rss$', ExtendedFeed(), name='blog_rss_feed'),
 ]
 
 

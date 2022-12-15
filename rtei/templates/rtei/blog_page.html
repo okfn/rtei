@@ -2,17 +2,11 @@
 
 {% load static wagtailcore_tags i18n wagtailimages_tags %}
 
-{% block extra_css %}
-<link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://www.rtei.org/blog/feed/rss">
-{% endblock %}
-
 {% block body_class %}template-blog-page{% endblock %}
 
 {% block content %}
 
   <div class="main">
-
-    {% include "rtei/tags/rss.html" %}
 
     <article>
       <div class="page-header">
