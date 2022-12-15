@@ -14,25 +14,12 @@
       </p>
     </section>
 
-    <section class="filter controls">
-        {% include 'rtei/tags/resources_filter.html' %}
-    </section>
-
     <section>
-      {% if not has_filter %}
-          <h3>{% trans "All Resources" %}</h3>
-      {% endif %}
-      {% if not documents %}
-          <h4>{% trans "No resources found that match the selected filters" %}</h4>
-      {% else %}
-          <ul class="resources-list">
-            {% for doc in documents %}
-              {% resource_list_item doc %}
-            {% endfor %}
-          </ul>
-
-      {% endif %}
-
+      <ul class="resources-list">
+        {% for doc in documents %}
+          {% resource_list_item doc %}
+        {% endfor %}
+      </ul>
     </section>
 
   </div>
