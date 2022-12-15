@@ -2,7 +2,7 @@
 {% load i18n %}
 
 <li>
-  <a class="icon" href="{{result.url}}" title="{{result.title}}">
+  <a class="icon" href="{{fixed_url}}" title="{{result.title}}">
     {% if result.file_extension == "pdf" %}
     {% include "icons/file-pdf.svg" %}
     {% elif not result.is_resource %}
@@ -20,7 +20,7 @@
                 <span class="external" title="{% trans "Link will open in a new tab" %}">    {% include "icons/external_link.svg" %}</span>
             </a>
         {% else %}
-            <a href="/documents/{{result.filename}}" title="{{result.title}}">{{result.title}}{% if result.country %} - {{result.country}}{% endif %}{% if result.year %} - {{result.year}}{% endif %}</a>
+            <a href="{{fixed_url}}" title="{{result.title}}">{{result.title}}{% if result.country %} - {{result.country}}{% endif %}{% if result.year %} - {{result.year}}{% endif %}</a>
         {% endif %}
         
     
