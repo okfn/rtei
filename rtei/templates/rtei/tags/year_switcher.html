@@ -4,7 +4,7 @@
   {% for value in all_years %}
   
     {% if country_code and country_code|country_available:value %}
-      <a href="{{ base_url }}/{{ country_code }}-{{ value }}" class="{% if year == value %}selected{% endif %}">{{ value }}</a>
+      <a href="{{ base_url }}/{{ country_code|lower }}-{{ value }}" class="{% if year == value %}selected{% endif %}">{{ value }}</a>
     {% elif not country_code %}
       <a href="{{ base_url }}/{{ url_prefix }}{{ value }}" class="{% if year == value %}selected{% endif %}">{{ value }}</a>
     {% endif %}
