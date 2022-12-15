@@ -172,6 +172,7 @@ def translated_field(obj, field, lang):
 def resource_list_item(result):
     return {
         'result': result,
+        'fixed_url': '/documents/' + '/'.join(result.url.split('/')[3:])
     }
 
 
