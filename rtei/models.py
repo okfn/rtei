@@ -180,6 +180,25 @@ class RTEIPage(Page):
         is_year_only = re.match(r'^\d{4}$', self.slug)
         return is_country_data, is_country_year_data, is_year_only
 
+    def tpl_from_slug(self):
+        is_country_data, is_country_year_data, is_year_only = self._is_custom_page()
+        if self.slug == 'map':
+            return f'{self._meta.app_label}/map.html'
+        elif self.slug.startswith('map-'):
+            return f'{self._meta.app_label}/map.html'
+        elif self.slug == 'rtei-country':
+            return f'{self._meta.app_label}/rtei_country.html'
+        elif self.slug == 'rtei-theme':
+            return f'{self._meta.app_label}/rtei_theme.html'
+        elif self.slug.startswith('theme-'):
+            return f'{self._meta.app_label}/rtei_theme.html'
+        elif is_year_only:
+            return f'{self._meta.app_label}/rtei_country.html'
+        elif is_country_data or is_country_year_data:
+            return f'{self._meta.app_label}/rtei_country.html'
+        else:
+            return f"{self._meta.app_label}/{self.slug.replace('-', '_')}.html"
+
     def get_context(self, request):
         context = super(RTEIPage, self).get_context(request)
 
@@ -191,14 +210,34 @@ class RTEIPage(Page):
 
         if self.slug == 'map':
             get_map_context(context, year)
+            context['url_prefix'] = 'map-'
+            context['base_url'] = '/en/explore/map'
+        elif self.slug.startswith('map-'):
+            year = self.slug.split('-')[1]
+            get_map_context(context, year)
+            context['url_prefix'] = 'map-'
+            context['base_url'] = '/en/explore/map'
         elif self.slug == 'rtei-country':
             get_country_context(context, request.GET.get('id'), year)
+            context['url_prefix'] = ''
+            context['base_url'] = '/en/explore/rtei-country'
         elif self.slug == 'rtei-theme':
             get_theme_context(context, year)
+            context['url_prefix'] = 'theme-'
+            context['base_url'] = '/en/explore/rtei-theme'
+        elif self.slug.startswith('theme-'):
+            year = self.slug.split('-')[1]
+            get_theme_context(context, year)
+            context['url_prefix'] = 'theme-'
+            context['base_url'] = '/en/explore/rtei-theme'
         elif is_year_only:
             year = self.slug
             get_country_context(context, None, year)
+            context['base_url'] = '/en/explore/rtei-country'
+            context['url_prefix'] = ''
         elif is_country_data or is_country_year_data:
+            context['base_url'] = '/en/explore/rtei-country'
+            context['url_prefix'] = ''
             country = self.slug.split('-')[0].upper()
             year = settings.YEARS[-1] if is_country_data else self.slug.split('-')[1]
             # get last year with data
@@ -216,18 +255,13 @@ class RTEIPage(Page):
 
         context['year'] = year
         context['all_years'] = settings.YEARS
+        
 
         return context
 
     def get_template(self, request, *args, **kwargs):
-        # Define a template path derived from the app name and model instance
-        # slug
-        is_country_data, is_country_year_data, is_year_only = self._is_custom_page()
-        if is_country_data or is_country_year_data or is_year_only:
-            return "%s/%s.html" % (self._meta.app_label, 'rtei_country')
-
-        return "%s/%s.html" % (self._meta.app_label,
-                               self.slug.replace('-', '_'))
+        res = self.tpl_from_slug()
+        return res
 
 
 class RTEIAncillaryPage(Page):
